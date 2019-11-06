@@ -1,5 +1,7 @@
 class WebfingerController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:account]
+
   def account
 
     username = params[:resource].match('(?<=\:).+?(?=\@)').to_s
