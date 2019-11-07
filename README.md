@@ -1,1 +1,4 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Note:
+
+You must define `ROOT_CLASSIFEDS_URL` in your environment.
+AND `CLASSIFEDS_DOMAIN` too. For now.
