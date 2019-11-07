@@ -26,8 +26,8 @@ class ActorController < ApplicationController
 
       case body["type"]
       when "Follow"
-        accept_message_body = generate_accept_message(actor["id"], body)
-        send_accept_message(accept_message_body, user)
+        message = generate_accept_message(actor["id"], body)
+        send_accept_message(message, user)
       else
         render json: {'error': "Action not supported."}, status: 400
       end
@@ -41,20 +41,25 @@ class ActorController < ApplicationController
   private
 
   def generate_accept_message(actor_id, body)
-    {
+    logger.info 'START generating accept message body...'
+    message = {
       "@context": "https://www.w3.org/ns/activitystreams",
       "id": "#{ENV['ROOT_CLASSIFEDS_URL']}#{SecureRandom.uuid}",
       "type": "Accept",
       "actor": "#{actor_id}",
       "object": body
     }
+    logger.info message
+    logger.info 'DONE generating accept message body...'
+    return message
   end
 
-  def send_accept_message(accept_message_body, user)
+  def send_accept_message(message, user)
 
-    logger.info 'Sending accept message...'
+    logger.info 'STARTED Sending accept message...'
+    logger.info message
+
     time = Time.now.utc.to_s
-
     inboxFragment = "something"
     targetDomain = "some.domain"
     string_to_sign = "(request-target): post #{inboxFragment}\nhost: #{targetDomain}\ndate: #{time}`;"
@@ -62,7 +67,7 @@ class ActorController < ApplicationController
     signature = OpenSSL::HMAC.hexdigest(digest, user.privkey, string_to_sign)
     signature_b64 = Base64.strict_encode64(signature)
 
-    header = "keyId=\"#{accept_message_body["id"]}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
+    header = "keyId=\"#{message["id"]}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
     logger.info header
   end
 
