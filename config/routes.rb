@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # ActivityPub actor
   get '/u/:username', to: 'actor#get_actor'
 
+  # API Contoller?
+  post '/api/inbox', to: 'api#inbox'
+
 end
