@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get '/.well-known/webfinger', to: 'webfinger#account'
 
   # ActivityPub actor
-  get '/u/@:username', to: 'actor#get_actor'
+  get '/u/:username', to: 'actor#get_actor'
 
 end

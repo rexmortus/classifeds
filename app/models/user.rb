@@ -48,7 +48,7 @@ class User < ApplicationRecord
         {
           "rel": "self",
           "type": "application/activity+json",
-          "href": "#{ENV['ROOT_CLASSIFEDS_URL']}u/@#{self.username}"
+          "href": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}"
         }
       ]
     }
