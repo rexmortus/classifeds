@@ -1,9 +1,6 @@
 class ActorController < ApplicationController
 
-  before_action :authenticate_user!, :except => [
-    :show_actor_for_user,
-    :inbox_for_actor
-  ]
+  skip_before_action :authenticate_user!, :verify_authenticity_token
 
   # show an activitypub actor for a given username
   def show_actor_for_user
