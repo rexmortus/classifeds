@@ -6,12 +6,11 @@ class WebfingerController < ApplicationController
 
     username = params[:resource].match('(?<=\:).+?(?=\@)').to_s
     user = User.find_by username: username
-    # binding.pry
 
     if user.present?
       render :json => user.webfinger
     else
-      render :json => {'error': 'doesnt exist'}
+      render json: {'error': "User #{username} found."}, status: 400
     end
 
   end
