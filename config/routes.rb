@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get '/u/:username', to: 'actor#show_actor_for_user'
 
   # API (???) Contoller
-  post '/u/:username/inbox', to: 'actor#inbox'
+  post '/u/:username/inbox', to: 'actor#inbox_for_actor'
 
 end
