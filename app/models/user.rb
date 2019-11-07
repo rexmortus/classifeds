@@ -26,7 +26,7 @@ class User < ApplicationRecord
       "id": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}",
       "type": "Person",
       "preferredUsername": "#{self.username}",
-      "inbox": "#{ENV['ROOT_CLASSIFEDS_URL']}api/inbox",
+      "inbox": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}/inbox",
       "followers": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}/followers",
 
       "publicKey": {
