@@ -10,15 +10,7 @@ class ActorController < ApplicationController
 
   # the inbox for a individual activitypub actor
   def inbox_for_actor
-
-    logger.info request.body
-    body = request.body.read.to_json
-
-    case body["type"]
-    when "Follow"
-      logger.info "Follow request for #{params[:username]} received."
-    else
-      logger.info "#{body[:type]} received."
-    end
+    body = JSON.parse(request.body.read)
+    logger.info body
   end
 end
