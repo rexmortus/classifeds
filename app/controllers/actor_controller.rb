@@ -30,15 +30,15 @@ class ActorController < ApplicationController
           "@context": "https://www.w3.org/ns/activitystreams",
           "id": "#{ENV['ROOT_CLASSIFEDS_URL']}#{SecureRandom.uuid}",
           "type": "Accept",
-          "actor": "#{user.actor["id"]}",
+          "actor": "#{user.actor['id']}",
           "object": body
         }
         logger.info accept_message_body
       else
-        render json: {'error', "#{body['type']} not supported"}, status: 500
+        render json: {'error': "Action not supported."}, status: 400
       end
     else
-      render json: {'error': "User #{username} found."}, status: 400
+      render json: {'error': "User #{username} not found."}, status: 400
     end
 
 
