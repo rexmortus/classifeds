@@ -77,7 +77,7 @@ class ActorController < ApplicationController
     signature = OpenSSL::HMAC.hexdigest(digest, user.privkey, string_to_sign)
     signature_b64 = Base64.strict_encode64(signature)
 
-    header = "keyId=\"#{actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
+    header = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
     logger.info header
   end
 
