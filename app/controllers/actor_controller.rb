@@ -28,7 +28,7 @@ class ActorController < ApplicationController
       remote_action = JSON.parse(request.body.read)
 
       # The remote actor, taking the action
-      remote_actor = sender_action["actor"]
+      remote_actor = remote_action["actor"]
 
       # Generate a response message based on action type
       case remote_action["type"]
@@ -48,13 +48,13 @@ class ActorController < ApplicationController
   private
 
   # Generate an 'Accept' message on behalf of the receiving actor
-  def generate_accept_message(local_actor, sender_action)
+  def generate_accept_message(local_actor, remote_action)
     return {
       "@context": "https://www.w3.org/ns/activitystreams",
       "id": "#{ENV['ROOT_CLASSIFEDS_URL']}#{SecureRandom.uuid}",
       "type": "Accept",
       "actor": "#{local_actor["id"]}",
-      "object": sender_action
+      "object": remote_action
     }
   end
 
