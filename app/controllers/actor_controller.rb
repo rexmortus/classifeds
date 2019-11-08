@@ -24,6 +24,8 @@ class ActorController < ApplicationController
       body = JSON.parse(request.body.read)
       actor = JSON.parse(user.actor)
 
+      info.logger body["type"]
+
       case body["type"]
       when "Follow"
         message = generate_accept_message(actor, body)
