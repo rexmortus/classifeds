@@ -24,17 +24,25 @@ class ActorController < ApplicationController
       # The local actor, receiving the action
       local_actor = JSON.parse(user.actor)
 
-      # The remote action
+      # The remote action, e.g.:
+      # {
+      #   '@context': 'https://www.w3.org/ns/activitystreams',
+      #   id: 'https://aus.social/cd7037a7-1d6c-49a3-8450-cf206548cc98',
+      #   type: 'Follow',
+      #   actor: 'https://aus.social/users/rexmortus',
+      #   object: 'https://89a1028f.ngrok.io/u/rexmortus'
+      # }
       remote_action = JSON.parse(request.body.read)
 
-      # The remote actor, taking the action
+      # The remote actor, taking the action (a string), e.g.
+      # https://aus.social/users/rexmortus
       remote_actor = remote_action["actor"]
 
       # Generate a response message based on action type
       case remote_action["type"]
       when "Follow"
         accept_message = generate_accept_message(local_actor, remote_action)
-        send_accept_message(accept_message, local_actor, remote_actor)
+        send_accept_message(accept_message, user, local_actor, remote_actor)
       else
         render json: {'error': "Action not supported."}, status: 400
       end
@@ -58,7 +66,7 @@ class ActorController < ApplicationController
     }
   end
 
-  def send_accept_message(accept_message, local_actor, remote_actor)
+  def send_accept_message(accept_message, user, local_actor, remote_actor)
 
     time = Time.now.utc.to_s
     inboxPath = "#{remote_actor}/inbox"
