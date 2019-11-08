@@ -24,7 +24,7 @@ class ActorController < ApplicationController
       body = JSON.parse(request.body.read)
       actor = JSON.parse(user.actor)
 
-      info.logger body["type"]
+      logger.info body["type"]
 
       case body["type"]
       when "Follow"
