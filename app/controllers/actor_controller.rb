@@ -88,7 +88,7 @@ class ActorController < ApplicationController
     req = Net::HTTP::Post.new(uri.path, initheader = {
       'Host' => targetDomain,
       'Date' => time,
-      'Signature' => header
+      'Signature' => header,
       'Content-Type' => 'application/json+ld'
     })
     req.body = accept_message
