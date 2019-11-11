@@ -1,3 +1,5 @@
+# Having received a remote "Follow" activity, send an "Accept" activity in reply
+
 class AcceptFollowJob < ApplicationJob
   queue_as :default
 
@@ -6,11 +8,11 @@ class AcceptFollowJob < ApplicationJob
     response = send_accept_message(accept_message, user, local_actor, remote_action["actor"])
 
     if response.status.success?
-      logger.info "#{URI(remote_actor).host} SUCCESS"
+      logger.info "#{URI(remote_action["actor"]).host} SUCCESS"
     elsif response.status.client_error?
-      logger.warn "#{URI(remote_actor).host} CLIENT ERROR"
+      logger.warn "#{URI(remote_action["actor"]).host} CLIENT ERROR"
     elsif response.status.server_error?
-      logger.error "#{URI(remote_actor).host} SERVER ERROR"
+      logger.error "#{URI(remote_action["actor"]).host} SERVER ERROR"
     else
 
     end
