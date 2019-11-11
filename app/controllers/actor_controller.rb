@@ -22,11 +22,11 @@ class ActorController < ApplicationController
     local_actor = JSON.parse(@user.actor)
     remote_action = JSON.parse(request.body.read)
 
-    case remote_action["type"]
-    when "Follow"
+    case remote_action['type']
+    when 'Follow'
       AcceptFollowJob.perform_now(@user, local_actor, remote_action)
     else
-      render json: {'error': "Action not supported."}, status: 501
+      render json: {'error': "Action #{remote_action['type']} not supported."}, status: 501
     end
   end
 
