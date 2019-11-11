@@ -90,7 +90,7 @@ class ActorController < ApplicationController
     .post("#{remote_actor}/inbox", body: accept_message.to_json)
 
     logger.info "Response from #{targetDomain}"
-    logger.info response.body.to_s
+    logger.info response.status
 
   end
 
