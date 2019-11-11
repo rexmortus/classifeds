@@ -15,15 +15,7 @@ class ActorController < ApplicationController
   end
 
   def followers_for_user
-    actor = JSON.parse(@user.actor)
-
-    render :json => {
-      "@context": ["https://www.w3.org/ns/activitystreams"],
-      "type": "Collection",
-      "totalItems": @user.followers.length,
-      "id": "#{actor['id']}/followers",
-      "items": @user.followers.map { |follower| follower.actor }
-    }
+    render :json => @user.followers_as_collection
   end
 
   def inbox_for_actor

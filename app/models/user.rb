@@ -8,6 +8,16 @@ class User < ApplicationRecord
 
   has_many :followers
 
+  def followers_as_collection
+    return {
+      "@context": ["https://www.w3.org/ns/activitystreams"],
+      "type": "Collection",
+      "totalItems": self.followers.length,
+      "id": "#{JSON.parse(self.actor)['id']}/followers",
+      "items": self.followers.map { |follower| follower.actor }
+    }
+  end
+
   private
 
   def generate_keys
