@@ -4,11 +4,17 @@ class AcceptFollowJob < ApplicationJob
   def perform(user, local_actor, remote_action)
     accept_message = generate_accept_message(local_actor, remote_action)
     response = send_accept_message(accept_message, user, local_actor, remote_action["actor"])
-    logger.info 'RESPONSE FROM SERVER'
-    logger.info response.status
-  end
 
-  private
+    if response.status.success?
+      logger.info "#{URI(remote_actor).host} SUCCESS"
+    elsif response.status.client_error?
+      logger.warn "#{URI(remote_actor).host} CLIENT ERROR"
+    elsif response.status.server_error?
+      logger.error "#{URI(remote_actor).host} SERVER ERROR"
+    else
+
+    end
+  end
 
   # Generate an 'Accept' message on behalf of the receiving actor
   def generate_accept_message(local_actor, remote_action)
