@@ -1,3 +1,6 @@
+require 'net/http'
+require 'net/https'
+
 class ActorController < ApplicationController
 
   skip_before_action :authenticate_user!, :verify_authenticity_token
@@ -73,14 +76,25 @@ class ActorController < ApplicationController
     inboxPath = "#{uri.path}/inbox"
     targetDomain = uri.host
     string_to_sign = "(request-target): post #{inboxPath}\nhost: #{targetDomain}\ndate: #{time}"
-    logger.info string_to_sign
     digest = OpenSSL::Digest.new('sha256')
     signature = OpenSSL::HMAC.hexdigest(digest, user.privkey, string_to_sign)
     signature_b64 = Base64.strict_encode64(signature)
 
     header = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
 
-    logger.info header
+    https = https = Net::HTTP.new(uri.host, uri.port)
+    https = Net::HTTP.new(uri.host,uri.port)
+    https.use_ssl = true
+    req = Net::HTTP::Post.new(uri.path, initheader = {
+      'Host' => targetDomain,
+      'Date' => time,
+      'Signature' => header
+      'Content-Type' => 'application/json+ld'
+    })
+    req.body = accept_message
+    res = https.request(req)
+    puts "Response #{res.code} #{res.message}: #{res.body}"
+
   end
 
 end
