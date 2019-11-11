@@ -69,8 +69,9 @@ class ActorController < ApplicationController
   def send_accept_message(accept_message, user, local_actor, remote_actor)
 
     time = Time.now.utc.to_s
-    inboxPath = "#{remote_actor}/inbox"
-    targetDomain = URI(remote_actor).host
+    uri = URI(remote_actor)
+    inboxPath = "#{uri.path}/inbox"
+    targetDomain = uri.host
     string_to_sign = "(request-target): post #{inboxPath}\nhost: #{targetDomain}\ndate: #{time}"
     logger.info string_to_sign
     digest = OpenSSL::Digest.new('sha256')
@@ -78,6 +79,7 @@ class ActorController < ApplicationController
     signature_b64 = Base64.strict_encode64(signature)
 
     header = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
+
     logger.info header
   end
 
