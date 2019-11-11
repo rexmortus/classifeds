@@ -30,7 +30,7 @@ class ActorController < ApplicationController
       # Generate a response message based on action type
       case remote_action["type"]
       when "Follow"
-        AcceptFollowJob.perform(user, local_actor, remote_action)
+        AcceptFollowJob.perform_now(user, local_actor, remote_action)
       else
         render json: {'error': "Action not supported."}, status: 400
       end
