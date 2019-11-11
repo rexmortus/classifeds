@@ -86,7 +86,7 @@ class ActorController < ApplicationController
         'Date': date,
         'Signature': header
       })
-    .post("#{remote_actor}/inbox", body: accept_message)
+    .post("#{remote_actor}/inbox", body: accept_message.to_json)
 
   end
 
