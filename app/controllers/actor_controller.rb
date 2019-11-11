@@ -1,5 +1,5 @@
-require 'net/http'
-require 'net/https'
+require 'http'
+require 'openssl'
 
 class ActorController < ApplicationController
 
@@ -71,29 +71,22 @@ class ActorController < ApplicationController
 
   def send_accept_message(accept_message, user, local_actor, remote_actor)
 
-    time = Time.now.utc.to_s
-    uri = URI(remote_actor)
-    inboxPath = "#{uri.path}/inbox"
-    targetDomain = uri.host
-    string_to_sign = "(request-target): post #{inboxPath}\nhost: #{targetDomain}\ndate: #{time}"
-    digest = OpenSSL::Digest.new('sha256')
-    signature = OpenSSL::HMAC.hexdigest(digest, user.privkey, string_to_sign)
-    signature_b64 = Base64.strict_encode64(signature)
+    date            = Time.now.utc.httpdate
+    inboxPath       = "#{URI(remote_actor).path}/inbox"
+    targetDomain    = URI(remote_actor).host
+    signed_string  = "(request-target): post #{inboxPath}\nhost: #{targetDomain}\ndate: #{date}"
+    keypair         = OpenSSL::PKey::RSA.new(user.privkey)
+    signature       = Base64.strict_encode64(keypair.sign(OpenSSL::Digest::SHA256.new, signed_string))
 
-    header = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature_b64}\"";
+    header          = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature}\"";
 
-    https = https = Net::HTTP.new(uri.host, uri.port)
-    https = Net::HTTP.new(uri.host,uri.port)
-    https.use_ssl = true
-    req = Net::HTTP::Post.new(uri.path, initheader = {
-      'Host' => targetDomain,
-      'Date' => time,
-      'Signature' => header,
-      'Content-Type' => 'application/json+ld'
-    })
-    req.body = accept_message
-    res = https.request(req)
-    puts "Response #{res.code} #{res.message}: #{res.body}"
+    HTTP.headers(
+      {
+        'Host': targetDomain,
+        'Date': date,
+        'Signature': header
+      })
+    .post("#{remote_actor}/inbox", body: accept_message)
 
   end
 
