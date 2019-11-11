@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # ActivityPub actor
   get '/u/:username', to: 'actor#actor_for_user'
+  get '/u/:username/followers', to: 'actor#followers_for_user'
   post '/u/:username/inbox', to: 'actor#inbox_for_actor'
 
 end
