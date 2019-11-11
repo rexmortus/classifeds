@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get '/.well-known/webfinger', to: 'webfinger#account'
 
   # ActivityPub actor
-  get '/u/:username', to: 'actor#show_actor_for_user'
-
-  # API (???) Contoller
+  get '/u/:username', to: 'actor#actor_for_user'
   post '/u/:username/inbox', to: 'actor#inbox_for_actor'
 
 end

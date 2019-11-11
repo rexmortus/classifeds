@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   after_create :generate_keys, :generate_actor, :generate_webfinger
 
+  has_many :followers
+
   private
 
   def generate_keys

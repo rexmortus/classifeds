@@ -1,7 +1,7 @@
 class ActorController < ApplicationController
 
-  skip_before_action :authenticate_user!, :verify_authenticity_token
   before_action :load_user
+  skip_before_action :authenticate_user!, :verify_authenticity_token
 
   def load_user
     @user = User.find_by username: params[:username]
@@ -10,7 +10,7 @@ class ActorController < ApplicationController
     end
   end
 
-  def show_actor_for_user
+  def actor_for_user
     render :json => @user.actor
   end
 
@@ -25,4 +25,5 @@ class ActorController < ApplicationController
       render json: {'error': "Action not supported."}, status: 501
     end
   end
+
 end

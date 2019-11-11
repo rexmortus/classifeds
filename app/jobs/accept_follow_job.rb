@@ -9,6 +9,7 @@ class AcceptFollowJob < ApplicationJob
 
     if response.status.success?
       logger.info "#{URI(remote_action["actor"]).host} SUCCESS"
+      user.followers << Follower.new(actor: remote_action["actor"])
     elsif response.status.client_error?
       logger.warn "#{URI(remote_action["actor"]).host} CLIENT ERROR"
     elsif response.status.server_error?
