@@ -80,13 +80,16 @@ class ActorController < ApplicationController
 
     header          = "keyId=\"#{local_actor['id']}\",headers=\"(request-target) host date\",signature=\"#{signature}\"";
 
-    HTTP.headers(
+    response = HTTP.headers(
       {
         'Host': targetDomain,
         'Date': date,
         'Signature': header
-      })
+      }
+    )
     .post("#{remote_actor}/inbox", body: accept_message.to_json)
+
+    logger.info response
 
   end
 
