@@ -35,7 +35,7 @@ class AcceptFollowJob < ApplicationJob
     response = HTTP[
       :Host => targetDomain,
       :Date => date,
-      :Signature' => header
+      :Signature => header
     ]
     .post("#{remote_actor}/inbox", body: accept_message.to_json)
 

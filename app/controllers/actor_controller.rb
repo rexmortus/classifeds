@@ -1,6 +1,3 @@
-require 'http'
-require 'openssl'
-
 class ActorController < ApplicationController
 
   skip_before_action :authenticate_user!, :verify_authenticity_token
@@ -28,13 +25,6 @@ class ActorController < ApplicationController
       local_actor = JSON.parse(user.actor)
 
       # The remote action, e.g.:
-      # {
-      #   '@context': 'https://www.w3.org/ns/activitystreams',
-      #   id: 'https://aus.social/cd7037a7-1d6c-49a3-8450-cf206548cc98',
-      #   type: 'Follow',
-      #   actor: 'https://aus.social/users/rexmortus',
-      #   object: 'https://89a1028f.ngrok.io/u/rexmortus'
-      # }
       remote_action = JSON.parse(request.body.read)
 
       # Generate a response message based on action type
