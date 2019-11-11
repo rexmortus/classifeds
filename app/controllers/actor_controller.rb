@@ -74,7 +74,7 @@ class ActorController < ApplicationController
     date            = Time.now.utc.httpdate
     inboxPath       = "#{URI(remote_actor).path}/inbox"
     targetDomain    = URI(remote_actor).host
-    signed_string  = "(request-target): post #{inboxPath}\nhost: #{targetDomain}\ndate: #{date}"
+    signed_string  = "(request-target)s: post #{inboxPath}\nhost: #{targetDomain}\ndate: #{date}"
     keypair         = OpenSSL::PKey::RSA.new(user.privkey)
     signature       = Base64.strict_encode64(keypair.sign(OpenSSL::Digest::SHA256.new, signed_string))
 
