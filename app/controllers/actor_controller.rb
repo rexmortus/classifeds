@@ -1,14 +1,7 @@
 class ActorController < ApplicationController
 
-  before_action :load_user
+  before_action :set_user
   skip_before_action :authenticate_user!, :verify_authenticity_token
-
-  def load_user
-    @user = User.find_by username: params[:username]
-    unless @user.present?
-      render json: { 'error': "User #{params[:username]} found." }, status: 404
-    end
-  end
 
   def actor_for_user
     render :json => @user.actor
@@ -27,6 +20,15 @@ class ActorController < ApplicationController
       AcceptFollowJob.perform_now(@user, local_actor, remote_action)
     else
       render json: {'error': "Action #{remote_action['type']} not supported."}, status: 501
+    end
+  end
+
+  private
+
+  def set_user
+    @user = User.find_by username: params[:username]
+    unless @user.present?
+      render json: { 'error': "User #{params[:username]} found." }, status: 404
     end
   end
 

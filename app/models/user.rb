@@ -5,8 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :generate_keys, :generate_actor, :generate_webfinger
+  after_find :set_actor_id
 
   has_many :followers
+  has_many :notes
+  has_many :advertisements
+
+  attr_reader :actor_id
+
+  def actor_as_hash
+    return JSON.parse(self.actor)
+  end
 
   def followers_as_collection
     return {
@@ -28,7 +37,6 @@ class User < ApplicationRecord
   end
 
   def generate_actor
-
     actor = {
       "@context": [
         "https://www.w3.org/ns/activitystreams",
@@ -49,11 +57,9 @@ class User < ApplicationRecord
     }
     self.actor = actor.to_json.to_s
     self.save
-
   end
 
   def generate_webfinger
-
     webfinger = {
       "subject": "acct:#{self.username}@#{ENV['CLASSIFEDS_DOMAIN']}",
       "links": [
@@ -66,7 +72,10 @@ class User < ApplicationRecord
     }
     self.webfinger = webfinger.to_json.to_s
     self.save
+  end
 
+  def set_actor_id
+    @actor_id = self.actor_as_hash["id"]
   end
 
 end

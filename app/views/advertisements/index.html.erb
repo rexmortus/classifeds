@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Advertisements</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Created</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advertisements.each do |advertisement| %>
+      <tr>
+        <td><%= time_ago_in_words advertisement.created_at %> ago</td>
+        <td><%= link_to advertisement.title, advertisement %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Advertisement', new_advertisement_path %>
+<% end %>
