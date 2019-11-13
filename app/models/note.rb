@@ -6,8 +6,8 @@ class Note < ApplicationRecord
     view_url = "#{ENV['ROOT_CLASSIFEDS_URL']}advertisements/#{advertisement.id}"
     content = """
       #{advertisement.user.username}@#{ENV['CLASSIFEDS_DOMAIN']}
-      posted: #{advertisement.title}\n
-      #{advertisement.body[0..50]}...\n
+      posted: #{advertisement.title}\n\n
+      #{advertisement.body[0..50]}...\n\n
       <a href=\"#{view_url}\">View it here!</a>
     """
     Note.create!({
