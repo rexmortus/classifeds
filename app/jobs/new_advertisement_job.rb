@@ -9,7 +9,7 @@ class NewAdvertisementJob < ApplicationJob
 
     advertisement.user.followers.each do |follower|
 
-      response = send_create_activity(create_activty, advertisement.user, follower)
+      response = send_create_activity(create_activty, advertisement.user, follower.actor)
 
       if response.status.success?
         logger.info "#{URI(remote_action["actor"]).host} SUCCESS"
@@ -33,6 +33,8 @@ class NewAdvertisementJob < ApplicationJob
   end
 
   def send_create_activity(create_activty, user, remote_actor)
+
+    binding.pry
 
     date            = Time.now.utc.httpdate
     inboxPath       = "#{URI(remote_actor).path}/inbox"
