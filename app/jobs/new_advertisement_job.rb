@@ -12,11 +12,11 @@ class NewAdvertisementJob < ApplicationJob
       response = send_create_activity(create_activty, advertisement.user, follower.actor)
 
       if response.status.success?
-        logger.info "#{URI(remote_action["actor"]).host} SUCCESS"
+        logger.info "SENDING ADVERTISEMENT MESSAGE - SUCCESS"
       elsif response.status.client_error?
-        logger.warn "#{URI(remote_action["actor"]).host} CLIENT ERROR"
+        logger.warn "SENDING ADVERTISEMENT MESSAGE - CLIENT ERROR"
       elsif response.status.server_error?
-        logger.error "#{URI(remote_action["actor"]).host} SERVER ERROR"
+        logger.error "SENDING ADVERTISEMENT MESSAGE - SERVER ERROR"
       end
     end
   end
