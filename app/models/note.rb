@@ -4,7 +4,12 @@ class Note < ApplicationRecord
   # Create a note object reflecting the creation of a new advertisement
   def self.note_for_advertisement(advertisement)
     view_url = "#{ENV['ROOT_CLASSIFEDS_URL']}advertisements/#{advertisement.id}"
-    content = "#{advertisement.user} posted: #{advertisement.title}<br><a href=\"#{view_url}\">View it here</a>"
+    content = """
+      #{advertisement.user.username}@#{ENV['CLASSIFEDS_DOMAIN']}
+      posted: #{advertisement.title}\n
+      #{advertisement.body[0..50]}...\n
+      <a href=\"#{view_url}\">View it here!</a>
+    """
     Note.create!({
       "user": advertisement.user,
       "object_id": SecureRandom.uuid,
