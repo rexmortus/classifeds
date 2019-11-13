@@ -5,8 +5,9 @@ class Note < ApplicationRecord
   def self.note_for_advertisement(advertisement)
     view_url = "#{ENV['ROOT_CLASSIFEDS_URL']}advertisements/#{advertisement.id}"
     content = """
-      #{advertisement.body[0..50]}...\n\n
-      <a href=\"#{view_url}\">View it here!</a>
+      <p>#{advertisement.title}</p>
+      <p>#{advertisement.body[0..50]}...</p>
+      <p><a href=\"#{view_url}\">View it here!</a></p>
     """
     Note.create!({
       "user": advertisement.user,
