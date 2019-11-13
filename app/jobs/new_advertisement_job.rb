@@ -17,7 +17,7 @@ class NewAdvertisementJob < ApplicationJob
         logger.warn "#{URI(remote_action["actor"]).host} CLIENT ERROR"
       elsif response.status.server_error?
         logger.error "#{URI(remote_action["actor"]).host} SERVER ERROR"
-      else
+      end
     end
   end
 
