@@ -7,7 +7,7 @@ class NewAdvertisementJob < ApplicationJob
     advertisement_note = Note::note_for_advertisement(advertisement)
     create_activty = generate_create_advertisement_activity(advertisement, advertisement_note)
 
-    advertisement.user.followers each do |follower|
+    advertisement.user.followers.each do |follower|
 
       response = send_create_activity(create_activty, advertisement.user, follower)
 
