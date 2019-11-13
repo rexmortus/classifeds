@@ -34,8 +34,6 @@ class NewAdvertisementJob < ApplicationJob
 
   def send_create_activity(create_activty, user, remote_actor)
 
-    binding.pry
-
     date            = Time.now.utc.httpdate
     inboxPath       = "#{URI(remote_actor).path}/inbox"
     targetDomain    = URI(remote_actor).host
