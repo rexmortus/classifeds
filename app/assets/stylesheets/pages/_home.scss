@@ -1,1 +1,291 @@
-// Specific CSS for your home-page
+body {
+  background-color: #ffffff;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+  *:focus {
+    outline-offset: 3px;
+    transition: outline .05s ease-in-out !important;
+  }
+
+  *:focus {
+    border-color: 1px solid $primary-color !important;
+    outline: 3px solid $primary-color !important;
+  }
+
+}
+
+.reveal {
+  outline-offset: 0px !important;
+}
+
+// Selectize styles
+.input-active {
+  transition: outline .05s ease-in-out !important;
+  outline-offset: 3px;
+  outline: 3px solid $primary-color !important;
+}
+
+// CKEditor styles
+.cke_focus {
+  transition: outline .05s ease-in-out !important;
+  outline-offset: 3px;
+  outline: 3px solid $primary-color !important;
+}
+
+.menu-text {
+  text-decoration: underline 1px dotted black;
+}
+
+.menu.vertical a {
+  transition: all .05s ease-in-out;
+}
+
+.menu.vertical a.is-refined {
+  font-weight: bold;
+  color: $alert-color !important;
+}
+
+.menu.vertical a:hover {
+  font-weight: bold;
+}
+
+a .card {
+  position: relative;
+  transition: all .05s ease-in-out;
+  background-color: rgba(255,255,255,1);
+
+  img {
+    width: 100%;
+    transition: all .05s ease-in-out;
+    opacity: 0.90;
+    filter: blur(0.5px) grayscale(35%);;
+  }
+
+  .card-location {
+    color: $primary-color !important;
+    margin-bottom: 0px;
+  }
+
+  .emoji {
+    opacity: 0.5;
+    transition: all .05s ease-in-out;
+  }
+
+}
+
+a .card:hover {
+  outline: 3px solid $primary-color;
+  outline-offset: 3px;
+  transform: scale(1.0125);
+  border-color: white !important;
+
+  img {
+    opacity: 1;
+    filter: blur(0) grayscale(0);;
+  }
+
+  .card-section {
+    // background-color: lighten($primary-color, 56.5);
+  }
+
+  .emoji {
+    opacity: 1;
+  }
+
+}
+
+.selectize-input {
+  border-color: #cacaca !important;
+  margin-top: -1px !important;
+  border-radius: 0 !important;
+  padding-left: 11px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+input.ais-SearchBox-input {
+  border-radius: 0px !important;
+}
+
+input.ais-SearchBox-input:focus {
+  transition: all .05s ease-in-out;
+  outline: 3px solid $primary-color;
+}
+
+[data-attribute="for"] {
+  color: white;
+  background-color: $primary-color;
+}
+
+[data-attribute="for"]:before {
+  content: 'For '
+}
+
+[data-attribute="category_name"] {
+  color: black;
+  background-color: $warning-color;
+}
+
+[data-attribute="category_name"]:before {
+  content: 'In '
+}
+
+.clear-filters {
+  color: white !important;
+  cursor: pointer;
+  transition: all .05s ease-in-out;
+}
+
+.clear-filters:hover {
+  color: white;
+
+  background-color: darken($alert-color, 10);
+}
+
+.image-container {
+
+  position: relative;
+  transition: all .05s ease-in-out;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  img {
+    filter: grayscale(50%);
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    transition: all .05s ease-in-out;
+    background-color: rgba(0,0,0,.2);
+    opacity: 0;
+  }
+
+}
+
+.image-container:hover {
+
+  transform: scale(1.0175);
+
+  img {
+    filter: grayscale(0%);
+    outline: 3px solid $primary-color;
+  }
+
+  .image-overlay {
+    opacity: 1.0;
+  }
+
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  padding-top: 25px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  font-weight: bold;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+
+  .idle {
+    opacity: 0.5;
+  }
+
+}
+
+.emoji-picker {
+
+  border-radius: 0px !important;
+
+  .emoji-picker__tab {
+
+    svg {
+        box-sizing: content-box !important;
+    }
+
+    &.active {
+        background: $primary-color !important;
+    }
+
+  }
+
+  .emoji-picker__tab-body {
+
+    &.active {
+
+      h2 {
+        display: none !important;
+      }
+
+    }
+
+  }
+
+  .emoji-picker__search-container {
+    margin-bottom: 0px !important;
+  }
+
+  .emoji-picker__search {
+    padding-left: .5rem;
+    border-color: rgb(202, 202, 202) !important;
+    border-radius: 0px !important;
+
+    &:focus {
+      border-color: rgb(202, 202, 202) !important;
+    }
+
+  }
+
+  .emoji-picker__search-icon {
+    margin-top: -3px;
+  }
+
+}
+
+.top-emoji a {
+
+  color: $primary-color !important;
+  font-weight: bold;
+
+  &:hover {
+    background-color: darken($warning-color, 7.5);
+  }
+
+}
+
+.reacts-at-bottom {
+
+  p {
+    font-weight: bold;
+  }
+
+  font-size: 12px;
+  color: grey;
+  padding-bottom: 20px;
+}
+
+.advertisement_title input {
+  height: 3.5rem;
+  font-size: 2.0rem;
+  padding: 1rem 0.5rem 1rem 1rem;
+}
+
+.js-emoji-picker {
+  cursor: pointer;
+}

@@ -1,32 +1,50 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="#">
-   <img src="https://miro.medium.com/fit/c/256/256/1*LTwq6EitbpiByxv3LwZn6Q.png" width="30" height="30" class="d-inline-block align-top" alt="">
-   Classifeds @ <small><%=ENV['CLASSIFEDS_DOMAIN']%></small>
- </a>
-
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Advertisements", advertisements_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://api.adorable.io/avatars/40/#{current_user.email}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+<div class="top-bar bg-white">
+  <div class="top-bar-left">
+  <ul class="dropdown menu" data-dropdown-menu>
+    <% if !user_signed_in? %>
+      <li><a tabindex="-1" href="#">My Classifeds</a>
+    <% else %>
+      <li><a tabindex="-1" href="#"><%= current_user.username %></a>
+    <% end %>
+      <ul class="menu">
+        <% if !user_signed_in? %>
+        <li>
+          <div style="padding: 10px">
+            <small>
+              Welcome to Classifeds. Sign in or Register to:<br>
+              <ul>
+                <li>Send and receive messages</li>
+                <li>Post and manage your ads</li>
+                <li>Rate other users</li>
+              </ul>
+            </small>
           </div>
         </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Register", new_user_registration_path %></li>
+        <% else %>
+          <%= link_to 'Post Advertisement', new_advertisement_path %>
+          <%= link_to "Edit Profile", '/profile/edit' %>
+          <%= link_to 'Sign out', destroy_user_session_path %>
+        <% end %>
+      </ul>
+    </li>
+    <%= link_to '/about', :class => 'menu-text', tabindex: -1  do %>
+    ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
+    <% end %>
+    <%= link_to '/', tabindex: -1  do %>
+    Search <i class="fi-magnifying-glass"></i>
+    <% end %>
+    <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
+    <li>
+      <a tabindex="-1" href="#"><%= key %></a>
+      <ul class="menu" tabindex="-1">
+        <% value.each do |item| %>
+        <li><a tabindex="-1" href="/a/<%= item[1][0] %>/<%= item[1][1] %>"><%= item[0] %></a></li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
   </div>
 </div>

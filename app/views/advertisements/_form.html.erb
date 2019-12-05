@@ -1,12 +1,26 @@
 
-<%= simple_form_for(@advertisement) do |f| %>
+<%= simple_form_for @advertisement, :url => advertisement_path(uuid: @advertisement.uuid) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :body %>
-    <%= f.input :published %>
+    <%= f.input :body, input_html: {
+      id: "editor"
+    } %>
+    <%= f.input :location,
+                required: true,
+                input_html: {
+                  autocomplete: "new-password",
+                  id: "address-input",
+                  placeholder: "Location",
+                  value: @advertisement.location.present? ? @advertisement.location : current_user.location
+                } %>
+    <%= f.input :subcategory_id,
+       :as => :grouped_select,
+       :collection => Advertisement.categories_as_form_collection,
+       :group_method => :last,
+       :group_label_method => :first %>
   </div>
 
   <div class="form-actions">

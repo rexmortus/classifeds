@@ -6,7 +6,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements
   # GET /advertisements.json
   def index
-    @advertisements = Advertisement.all
+    redirect_to root_path
   end
 
   # GET /advertisements/1
@@ -26,13 +26,27 @@ class AdvertisementsController < ApplicationController
   # POST /advertisements
   # POST /advertisements.json
   def create
-    @advertisement = Advertisement.new(advertisement_params)
-    @advertisement.user = current_user
+    params = advertisement_params
+
+    @advertisement = Advertisement.new(
+      user: current_user,
+      title: params['title'],
+      body: params['body'],
+      emoji: params['emoji'],
+      published: params['published'],
+      expires_at: DateTime.now + 3.days,
+      category_name: JSON.parse(advertisement_params['category_name'])[0],
+      subcategory_name: JSON.parse(advertisement_params['category_name'])[1],
+      location: params['location'],
+      for: params['for']
+    )
+
+    binding.pry
 
     respond_to do |format|
       if @advertisement.save
-        NewAdvertisementJob.perform_now(@advertisement)
-        format.html { redirect_to @advertisement, notice: 'Advertisement was successfully created.' }
+        # NewAdvertisementJob.perform_now(@advertisement)
+        format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully created.' }
         format.json { render :show, status: :created, location: @advertisement }
       else
         format.html { render :new }
@@ -44,9 +58,18 @@ class AdvertisementsController < ApplicationController
   # PATCH/PUT /advertisements/1
   # PATCH/PUT /advertisements/1.json
   def update
+    params = advertisement_params
     respond_to do |format|
-      if @advertisement.update(advertisement_params)
-        format.html { redirect_to @advertisement, notice: 'Advertisement was successfully updated.' }
+      if @advertisement.update({
+          title: params['title'],
+          body: params['body'],
+          emoji: params['emoji'],
+          category_name: JSON.parse(advertisement_params['category_name'])[0],
+          subcategory_name: JSON.parse(advertisement_params['category_name'])[1],
+          location: params['location'],
+          for: params['for']
+        })
+        format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully updated.' }
         format.json { render :show, status: :ok, location: @advertisement }
       else
         format.html { render :edit }
@@ -65,14 +88,19 @@ class AdvertisementsController < ApplicationController
     end
   end
 
+  def subcategory
+    @advertisements = Advertisement.where(category_id: params[:category_id], subcategory_id: params[:subcategory_id])
+    @pagetitle = Advertisement.title_header_for_category_page(params[:category_id], params[:subcategory_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_advertisement
-      @advertisement = Advertisement.find(params[:id])
+      @advertisement = Advertisement.references([:emoji_react, :user]).find(params[:uuid])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advertisement_params
-      params.require(:advertisement).permit(:title, :body, :published)
+      params.require(:advertisement).permit(:uuid, :title, :body, :published, :location, :category_name, :for, :emoji)
     end
 end

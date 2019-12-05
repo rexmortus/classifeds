@@ -1,0 +1,6 @@
+function refreshEmoji(innerHTML) {
+  const emojiContainer = document.getElementById('js-top-emoji');
+  emojiContainer.innerHTML = innerHTML;
+}
+
+refreshEmoji('<%= j render "emojireact/emoji-tags", grouped_emoji: @advertisement.grouped_emoji %>');

@@ -13,6 +13,9 @@ class User < ApplicationRecord
 
   attr_reader :actor_id
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   def actor_as_hash
     return JSON.parse(self.actor)
   end

@@ -1,21 +1,122 @@
-<p id="notice"><%= notice %></p>
+<div class="grid-x grid-padding-x grid-padding-y" id="algoliasearch">
+  <div class="cell small-2 medium-4 large-3">
+    <div>
+      <div class="grid grid-x">
+        <div class="cell small-12 medium-12 large-12">
+          <!-- Map -->
+          <fieldset class="fieldset" style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px;">
+            <div id='map' style='width: 100%; height: 300px;'></div><br>
+            <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
+              <strong><a tabindex="-1" href="#" class="bottom" tabindex="2" title="Click to update location">
+                <i class="fi-marker"></i> <%= @advertisement.location %>
+              </a></strong>
+            </legend>
+          </fieldset>
+          <!-- Contact Information -->
+          <fieldset class="fieldset" style="margin-bottom: 0px;">
+            <legend><strong><a tabindex="-1" href="#"><i class="fi-at-sign"></i> Contact</a></strong></legend>
+            <dl>
+              <dt> Email</dt>
+              <dd><a tabindex="-1" href="#"><small><strong><i class="fi-mail"></i> <%= @advertisement.user.email %></strong></small></a></dd>
+            </dl>
+          </fieldset>
+          <!-- Information -->
+          <fieldset class="fieldset" style="margin-bottom: 0px;">
+            <legend><strong><a tabindex="-1" href="#"><i class="fi-info"></i> Info</a></strong></legend>
+            <dl>
+              <dt>Posted By</dt>
+              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.user.actor_id %></strong></small></a></dd>
+              <dt>Date Listed</dt>
+              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.created_at %></strong></small></a></dd>
+              <dt>Last Updated</dt>
+              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.updated_at %></strong></small></a></dd>
+              <dt>Expires</dt>
+              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.expires_at %></strong></small></a></dd>
+            </dl>
+          </fieldset>
+          <!-- Signature -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cell small-12 medium-8 large-6" style="padding-top: 26px">
+    <div class="grid grid-x">
+      <div class="cell large-11">
+        <h1><%= @advertisement.title %></h1>
+      </div>
+      <div class="cell large-1" style="text-align: right">
+        <h1><%= @advertisement.emoji %></h1>
+      </div>
+    </div>
+    <p>
+      <span class="label success">Near <%= @advertisement.location %></span>
+      <span class="label primary">For <%= @advertisement.for %></span>
+      <span class="label warning">In <%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
+    </p>
+    <p class="top-emoji" id="js-top-emoji">
+      <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
+    </p
+    <% if user_signed_in? %>
+      <p>
+        <small>
+          <strong>
+            <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
+          </strong> |
+          <strong>
+            <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+          </strong>
+        </small>
+      </p>
+    <% end %>
+    <%== @advertisement.body %>
+    <hr>
+    <div class="reacts-at-bottom">
+    <% @advertisement.emoji_react.each do |react| %>
+      <span><%= react.emoji %> <strong><a href="#"><%= react.actor %></a> added a reaction</strong></span><br>
+    <% end %>
+    </div>
+  </div>
+  <div class="cell small-12 medium-8 large-3">
 
-<h1>
-  <%= @advertisement.title %>
-</h1>
 
-<p>
-  <strong>Posted by:</strong>
-  <%= JSON.parse(@advertisement.user.webfinger)["subject"] %>
-  <small><%= time_ago_in_words @advertisement.created_at %> ago</small>
-</p>
+    <fieldset class="fieldset show-pics" style="margin-top: 0px;">
+      <legend><a tabindex="-1" href="#"><strong><i class="fi-camera"></i> Images</strong></a></legend>
 
-<p>
-  <%= @advertisement.body %>
-</p>
+      <div class="image-container js-reveal-photo">
+        <img src="https://picsum.photos/1024/768?random=<%= @advertisement.title %>-1">
+        <div class="image-overlay"><i class="fi-magnifying-glass"></i></div>
+      </div>
+      <div class="image-container js-reveal-photo">
+        <img src="https://picsum.photos/1024/768?random=<%= @advertisement.title %>-2">
+        <div class="image-overlay"><i class="fi-magnifying-glass"></i></div>
+      </div>
+      <div class="image-container js-reveal-photo">
+        <img src="https://picsum.photos/1024/768?random=<%= @advertisement.title %>-3">
+        <div class="image-overlay"><i class="fi-magnifying-glass"></i></div>
+      </div>
 
+    </fieldset>
+
+  </div>
+</div>
+
+<div class="reveal small" id="modal" data-reveal data-close-on-click="true" data-animation-in="hinge-in-from-top fast" data-animation-out="hinge-out-from-top fast">
+  <div class="card">
+    <img src="">
+    <div class="card-section">
+      <p>Some caption</p>
+    </div>
+  </div>
+</div>
+<div class="footer" id="js-tab-navigation">
+
+</div>
 
 <% if user_signed_in? %>
-  <%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
+  <%= simple_form_for :emoji,
+      remote: true,
+      authenticity_token: true,
+      url: advertisement_react_path(@advertisement) do |f| %>
+      <%= f.input :emoji, :as => :hidden, :input_html => {value: ""} %>
+  <% end %>
 <% end %>
-<%= link_to 'Back', advertisements_path %>

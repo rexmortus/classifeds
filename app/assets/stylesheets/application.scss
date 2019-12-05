@@ -1,13 +1,11 @@
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
+@import "foundation_and_overrides";
+@import "foundation-icons";
+@import "pages/home";
 
-// External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+.algolia-places button svg {
+  margin-top: -8px;
+}
 
-// Your CSS partials
-@import "components/index";
-@import "pages/index";
+.fieldset {
+    background-color: rgba(255, 255, 255, 0.75);
+}

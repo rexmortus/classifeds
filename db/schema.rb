@@ -10,19 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_230312) do
+ActiveRecord::Schema.define(version: 2019_11_30_064217) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "advertisements", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "advertisements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
     t.string "title"
     t.text "body"
     t.boolean "published"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "location"
+    t.datetime "expires_at"
+    t.text "contact_methods"
+    t.string "for"
+    t.string "for_unit"
+    t.string "category_name"
+    t.string "subcategory_name"
+    t.string "emoji"
     t.index ["user_id"], name: "index_advertisements_on_user_id"
+  end
+
+  create_table "emoji_reacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "advertisement_id"
+    t.string "actor"
+    t.string "emoji"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["advertisement_id"], name: "index_emoji_reacts_on_advertisement_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -44,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_230312) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -57,6 +77,11 @@ ActiveRecord::Schema.define(version: 2019_11_12_230312) do
     t.text "webfinger"
     t.text "pubkey"
     t.text "privkey"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "location"
+    t.string "phone"
+    t.string "social"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

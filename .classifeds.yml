@@ -1,0 +1,49 @@
+default_location: Melbourne, Victoria, Australia
+
+types:
+  - Karma
+  - Trade
+  - Loan
+  - Sale
+  - Hire
+  - Your Info
+  - Seeking
+
+categories:
+    Books:
+      - Fiction
+      - Non-Fiction
+      - Fantasy
+      - Science Fiction
+      - Textbooks
+    Computer & Electronics:
+      - Laptops
+      - Desktops
+      - Phones
+      - Tablets
+      - Arduino
+    Clubs:
+      - Politics
+      - Sports
+      - Food
+    Tools:
+      - Electronics
+      - Home/Garden
+      - Kitchen
+    Video Games:
+      - Nintendo Switch
+    Services:
+      - Software Developers
+      - Tutors
+    Housing:
+      - Sharehousing
+    Personals:
+      - Dating
+      - Information
+      - Alerts & Warnings
+    Automobiles:
+      - Motorcycles
+    会所:
+      - 反法西斯
+      - 反共产主义
+      - 亲民主

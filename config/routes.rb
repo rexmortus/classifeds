@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :advertisements
+
+  resources :advertisements, param: :uuid do
+    post '/react', to: 'emojireact#create'
+  end
+
+  get '/a/:category_id/:subcategory_id', to: 'advertisements#subcategory'
+
   devise_for :users
-  root to: 'advertisements#index'
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Webfinger account lookup
@@ -14,5 +20,12 @@ Rails.application.routes.draw do
 
   # ActivityPub note
   get '/n/:uuid', to: 'notes#note_for_uuid'
+
+  # Edit profile
+  get '/profile/edit', to: 'profiles#edit'
+  patch '/profile/edit', to: 'profiles#update'
+
+  # Show instance about page
+  get '/about', to: 'profiles#about'
 
 end
