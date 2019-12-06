@@ -75,10 +75,8 @@
     <% end %>
     <%== @advertisement.body %>
     <hr>
-    <div class="reacts-at-bottom">
-    <% @advertisement.emoji_react.each do |react| %>
-      <span><%= react.emoji %> <strong><a href="#"><%= react.actor %></a> added a reaction</strong></span><br>
-    <% end %>
+    <div id="js-reacts" class="reacts-at-bottom">
+      <%= render 'emojireact/emoji-reacts', emoji: @advertisement.emoji_react %>
     </div>
   </div>
   <div class="cell small-12 medium-8 large-3">

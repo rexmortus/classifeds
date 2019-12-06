@@ -3,4 +3,10 @@ function refreshEmoji(innerHTML) {
   emojiContainer.innerHTML = innerHTML;
 }
 
+function refreshReacts(innerHTML) {
+  const reactsContainer = document.getElementById('js-reacts');
+  reactsContainer.innerHTML = innerHTML;
+}
+
 refreshEmoji('<%= j render "emojireact/emoji-tags", grouped_emoji: @advertisement.grouped_emoji %>');
+refreshReacts('<%= j render "emojireact/emoji-reacts", emoji: @advertisement.emoji_react %>');
