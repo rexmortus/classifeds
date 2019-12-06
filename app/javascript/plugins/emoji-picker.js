@@ -2,6 +2,7 @@ import EmojiButton from '@joeattardi/emoji-button';
 
 const editPageButton = document.querySelector('.js-emoji-picker');
 
+// Loads on EDIT page
 if (editPageButton) {
 
   const input = document.getElementById('advertisement_emoji');
@@ -24,6 +25,7 @@ if (editPageButton) {
 
 }
 
+ // Loads on SHOW page
 const addReactionButton = document.getElementById('js-top-emoji');
 
 if (addReactionButton) {

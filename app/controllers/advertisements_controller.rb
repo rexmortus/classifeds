@@ -41,8 +41,6 @@ class AdvertisementsController < ApplicationController
       for: params['for']
     )
 
-    binding.pry
-
     respond_to do |format|
       if @advertisement.save
         # NewAdvertisementJob.perform_now(@advertisement)
