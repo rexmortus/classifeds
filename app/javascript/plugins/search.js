@@ -283,18 +283,18 @@ $(document).ready(function() {
             ${hits
               .map(
                 item =>
-                  `<div class="cell small-10 medium-6 large-3">
+                  `<div class="cell small-12 medium-6 large-4 x-large-3">
                     <a href="/advertisements/${ item.objectID }">
                       <div class="card">
                         <img height="320" width="240" src="https://picsum.photos/320/240?random=${ item.objectID }" alt="${ item.title }" />
                         <div class="card-section">
                           <div class="grid grid-x">
-                            <div class="cell large-11">
+                            <div class="cell small-12 medium-12 large-11">
                               <p><span class="label primary">${ item.for }</span><span class="label warning">${ item.subcategory_name }</span></p>
                               <h5>${ item.title }</h5>
                               <p class="card-location"><strong><small><i class="fi-marker"></i> ${ item.location }</small></strong></p>
                             </div>
-                            <div class="cell large-1">
+                            <div class="cell small-12 medium-12 large-1">
                               <h4 class="emoji">${ item.emoji }</h4>
                             </div>
                           </div>
