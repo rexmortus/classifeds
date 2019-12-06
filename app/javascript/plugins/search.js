@@ -5,6 +5,7 @@ $(document).ready(function() {
   var searchElement = document.getElementById('algoliasearch');
 
   if (searchElement) {
+
     // 1. Instantiate the search
     const search = instantsearch({
       indexName: 'Advertisement',
@@ -144,25 +145,25 @@ $(document).ready(function() {
       const { hasRefinements, refine, widgetParams } = renderOptions;
 
       if (isFirstRender) {
-        const label = document.createElement('span');
-        label.className = "label alert clear-filters"
-        label.textContent = '<i class="fi-x-circle"></i>Clear filters';
+        const a = document.createElement('a');
+        a.className = "label alert clear-filters"
+        a.innerHTML = '<i class="fi-x-circle"></i>Clear filters';
 
-        label.addEventListener('click', () => {
+        a.addEventListener('click', () => {
           refine();
         });
 
-        widgetParams.container.appendChild(label);
+        widgetParams.container.appendChild(a);
       }
 
-      const label = widgetParams.container.querySelector('span')
+      const a = widgetParams.container.querySelector('a')
 
       if (!hasRefinements) {
-        label.textContent = 'No filters';
-        label.className = "label secondary"
+        a.innerHTML = 'No filters';
+        a.className = "label secondary"
       } else {
-        label.innerHTML = '<i class="fi-x"></i> Clear filters';
-        label.className = "label alert clear-filters"
+        a.innerHTML = '<i class="fi-x"></i> Clear filters';
+        a.className = "label alert clear-filters"
       }
 
 

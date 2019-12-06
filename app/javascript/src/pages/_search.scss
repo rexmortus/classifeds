@@ -1,0 +1,75 @@
+a .card {
+  position: relative;
+  transition: all .05s ease-in-out;
+  background-color: rgba(255,255,255,1);
+
+  img {
+    width: 100%;
+    transition: all .05s ease-in-out;
+    opacity: 0.90;
+    filter: blur(0.5px) grayscale(35%);;
+  }
+
+  .card-location {
+    color: $primary-color !important;
+    margin-bottom: 0px;
+  }
+
+  .emoji {
+    opacity: 0.5;
+    transition: all .05s ease-in-out;
+  }
+
+}
+
+a .card:hover {
+  outline: 3px solid $primary-color;
+  outline-offset: 3px;
+  transform: scale(1.0125);
+
+  img {
+    opacity: 1;
+    filter: blur(0) grayscale(0);;
+  }
+
+  .emoji {
+    opacity: 1;
+    transform: scale(1.125);
+  }
+
+}
+
+[data-attribute="for"] {
+  color: white;
+  background-color: $primary-color;
+}
+
+[data-attribute="for"]:before {
+  content: 'For '
+}
+
+[data-attribute="category_name"] {
+  color: black;
+  background-color: $warning-color;
+}
+
+[data-attribute="category_name"]:before {
+  content: 'In '
+}
+
+.clear-filters {
+  color: white !important;
+  cursor: pointer;
+  transition: all .05s ease-in-out;
+}
+
+.clear-filters:hover {
+  color: white;
+  font-weight: bold;
+  background-color: darken($alert-color, 5);
+}
+
+.clear-filters:active {
+  outline-offset: 3px;
+  outline: 3px solid $primary-color;
+}

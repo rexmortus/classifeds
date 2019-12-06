@@ -2,13 +2,10 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "jquery"
-import "foundation"
+import "foundation-sites"
 
 // CSS
-import "foundation-sites";
-import "motion-ui/dist/motion-ui.min.css"
-import "mapbox-gl/dist/mapbox-gl.css"
-import "instantsearch.css/themes/algolia-min.css"
+import "src/application.scss"
 
 // My plugins
 import "plugins/map"
@@ -19,5 +16,13 @@ import "plugins/places"
 import "plugins/reveal-image"
 import "plugins/emoji-picker"
 
-// Initialise Foundation
-$(document).foundation();
+function fireOnReady() {
+  $(document).foundation();
+  window.dispatchEvent(new Event('resize'));
+}
+
+if (document.readyState === 'complete') {
+    fireOnReady();
+} else {
+    document.addEventListener("DOMContentLoaded", fireOnReady);
+}

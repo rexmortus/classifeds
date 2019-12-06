@@ -1,0 +1,52 @@
+.emoji-picker {
+
+  border-radius: 0px !important;
+
+  .emoji-picker__tab {
+
+    svg {
+        box-sizing: content-box !important;
+    }
+
+    &.active {
+        background: $primary-color !important;
+    }
+
+  }
+
+  .emoji-picker__tab-body {
+
+    &.active {
+
+      h2 {
+        display: none !important;
+      }
+
+    }
+
+  }
+
+  .emoji-picker__search-container {
+    margin-bottom: 0px !important;
+  }
+
+  .emoji-picker__search {
+    padding-left: .5rem;
+    border-color: rgb(202, 202, 202) !important;
+    border-radius: 0px !important;
+
+    &:focus {
+      border-color: rgb(202, 202, 202) !important;
+    }
+
+  }
+
+  .emoji-picker__search-icon {
+    margin-top: -3px;
+  }
+
+}
+
+.js-emoji-picker {
+  cursor: pointer;
+}

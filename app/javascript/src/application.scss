@@ -1,0 +1,78 @@
+@import "src/foundation_and_overrides.scss";
+
+@import "mapbox-gl/dist/mapbox-gl.css";
+@import "instantsearch.css/themes/algolia-min.css";
+
+// Import component styles
+@import "src/components/search-filters-list.scss";
+@import "src/components/emoji-picker.scss";
+
+// Import page-specific styles
+@import "src/pages/_search.scss";
+@import "src/pages/_show.scss";
+
+// @import "foundation-icons/foundation-icons.scss";
+
+body {
+  background-color: #ffffff;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png");
+
+  *:focus {
+    outline-offset: 3px;
+    transition: outline .05s ease-in-out !important;
+  }
+
+  *:focus {
+    border-color: 1px solid $primary-color !important;
+    outline: 3px solid $primary-color !important;
+  }
+
+}
+
+.algolia-places button svg {
+  margin-top: -8px;
+}
+
+.fieldset {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+// CKEditor styles
+.cke_focus {
+  transition: outline .05s ease-in-out !important;
+  outline-offset: 3px;
+  outline: 3px solid $primary-color !important;
+}
+
+input.ais-SearchBox-input {
+  border-radius: 0px !important;
+}
+
+input.ais-SearchBox-input:focus {
+  transition: all .05s ease-in-out;
+  outline: 3px solid $primary-color;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  padding-top: 25px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  font-weight: bold;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+
+}
+
+.advertisement_title input {
+  height: 3.5rem;
+  font-size: 2.0rem;
+  padding: 1rem 0.5rem 1rem 1rem;
+}
