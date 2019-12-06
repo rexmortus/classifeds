@@ -10,7 +10,7 @@ class Advertisement < ApplicationRecord
     end
     add_attribute :cover_image do
       if self.images.attached?
-        "#{ENV["CLASSIFEDS_DOMAIN"]}#{Rails.application.routes.url_helpers.rails_blob_path(self.images.first, only_path: true)}"
+        Rails.application.routes.url_helpers.rails_blob_path(self.images.first, only_path: true)
       else
         "https://picsum.photos/1024/768?random=#{self.title}-1"
       end
