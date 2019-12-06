@@ -6,6 +6,7 @@ import "foundation-sites"
 
 // CSS
 import "src/application.scss"
+import 'file-upload-with-preview/dist/file-upload-with-preview.min.css'
 
 // My plugins
 import "plugins/map"
@@ -15,6 +16,7 @@ import "plugins/editor"
 import "plugins/places"
 import "plugins/reveal-image"
 import "plugins/emoji-picker"
+import "plugins/uploader"
 
 function fireOnReady() {
   $(document).foundation();

@@ -2929,6 +2929,11 @@ file-loader@^3.0.1:
     loader-utils "^1.0.2"
     schema-utils "^1.0.0"
 
+file-upload-with-preview@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/file-upload-with-preview/-/file-upload-with-preview-4.0.8.tgz#4bc67de03afed2ee429bc0d5aa2a23cdaedc21a5"
+  integrity sha512-ZlxHvPBcx1LLPOH8vuwxRnYgeUfbDgl5JYXl9GiRGDZvB4zZMHKJOlBt5CwH/jb+Aw9EhQS33NmJ33KHLoRaSQ==
+
 fill-range@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
