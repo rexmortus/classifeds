@@ -6,7 +6,7 @@ types:
   - Loan
   - Sale
   - Hire
-  - Your Info
+  - Info
   - Seeking
 
 categories:
@@ -20,30 +20,22 @@ categories:
       - Laptops
       - Desktops
       - Phones
-      - Tablets
-      - Arduino
     Clubs:
       - Politics
       - Sports
-      - Food
     Tools:
       - Electronics
       - Home/Garden
       - Kitchen
     Video Games:
+      - Nintendo 3DS
       - Nintendo Switch
     Services:
-      - Software Developers
+      - Software Development
+      - Graphic Design
       - Tutors
-    Housing:
-      - Sharehousing
     Personals:
       - Dating
+    Other:
       - Information
       - Alerts & Warnings
-    Automobiles:
-      - Motorcycles
-    会所:
-      - 反法西斯
-      - 反共产主义
-      - 亲民主
