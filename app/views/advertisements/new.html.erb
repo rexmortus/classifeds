@@ -1,4 +1,4 @@
-<%= simple_form_for @advertisement do |f| %>
+<%= simple_form_for @advertisement, :multipart => true do |f| %>
 <div class="grid-x grid-padding-x grid-padding-y" id="algoliasearch" style="margin-top:-18px">
   <div class="cell small-2 medium-4 large-3">
     <div>
@@ -59,7 +59,7 @@
               <h1 class="js-emoji-picker">😀</h1>
               <%= f.input :emoji,
                 :label => false,
-                :input_html => {value: '😀'}
+                :input_html => {value: '😀'},
                 :as => :hidden %>
             </div>
           </div>
@@ -72,9 +72,6 @@
             <%= f.button :submit, :class => "button" %>
           </div>
 
-
-        <% end %>
-
       </div>
     </div>
 
@@ -83,8 +80,10 @@
     <fieldset class="fieldset">
       <legend><i class="fi-camera"></i> Images</legend>
       <div style="text-align: center;">
+        <%= f.file_field :images, :multiple => true %>
         <button class="button success"><i class="fi-plus"></i> Add Image</button>
       </div>
     </fieldset>
   </div>
 </div>
+<% end %>

@@ -30,16 +30,17 @@ class AdvertisementsController < ApplicationController
 
     @advertisement = Advertisement.new(
       user: current_user,
-      title: params['title'],
-      body: params['body'],
-      emoji: params['emoji'],
-      published: params['published'],
-      expires_at: DateTime.now + 3.days,
-      category_name: JSON.parse(advertisement_params['category_name'])[0],
-      subcategory_name: JSON.parse(advertisement_params['category_name'])[1],
-      location: params['location'],
-      for: params['for']
+      title: params[:title],
+      body: params[:body],
+      emoji: params[:emoji],
+      published: params[:published],
+      category_name: JSON.parse(advertisement_params[:category_name])[0],
+      subcategory_name: JSON.parse(advertisement_params[:category_name])[1],
+      location: params[:location],
+      for: params[:for]
     )
+
+    @advertisement.images.attach(params[:images])
 
     respond_to do |format|
       if @advertisement.save
@@ -81,7 +82,7 @@ class AdvertisementsController < ApplicationController
   def destroy
     @advertisement.destroy
     respond_to do |format|
-      format.html { redirect_to advertisements_url, notice: 'Advertisement was successfully destroyed.' }
+      format.html { redirect_to '/', notice: 'Advertisement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -99,6 +100,6 @@ class AdvertisementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advertisement_params
-      params.require(:advertisement).permit(:uuid, :title, :body, :published, :location, :category_name, :for, :emoji)
+      params.require(:advertisement).permit(:uuid, :title, :body, :published, :location, :category_name, :for, :emoji, :images => [])
     end
 end

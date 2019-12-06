@@ -286,7 +286,7 @@ $(document).ready(function() {
                   `<div class="cell small-12 medium-6 large-4 x-large-3">
                     <a href="/advertisements/${ item.objectID }">
                       <div class="card">
-                        <img height="320" width="240" src="https://picsum.photos/320/240?random=${ item.objectID }" alt="${ item.title }" />
+                        <img height="320" width="240" src="${ item.cover_image }" />
                         <div class="card-section">
                           <div class="grid grid-x">
                             <div class="cell small-12 medium-12 large-11">

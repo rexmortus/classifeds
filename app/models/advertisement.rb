@@ -8,10 +8,18 @@ class Advertisement < ApplicationRecord
     add_attribute :subcategory_name do
       category_name + " > " + subcategory_name
     end
+    add_attribute :cover_image do
+      if self.images.attached?
+        "#{ENV["CLASSIFEDS_DOMAIN"]}#{Rails.application.routes.url_helpers.rails_blob_path(self.images.first, only_path: true)}"
+      else
+        "https://picsum.photos/1024/768?random=#{self.title}-1"
+      end
+    end
   end
 
   belongs_to :user
   has_many :emoji_react
+  has_many_attached :images
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
@@ -45,8 +53,5 @@ class Advertisement < ApplicationRecord
       [category, values]
     end
   end
-
-
-
 
 end
