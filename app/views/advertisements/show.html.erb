@@ -1,7 +1,9 @@
 <!-- app/views/offers/show.html.erb -->
 <% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} - #{@advertisement.location}" %>
 <% content_for :meta_description, "#{strip_tags(@advertisement.body)}" %>
-<% content_for :meta_image, "https://picsum.photos/1024/768?random=#{@advertisement.title}-1" %>
+<% if @advertisement.images.attached? %>
+  <% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
+<% end %>
 
 <div class="grid-x grid-padding-x grid-padding-y">
   <div class="cell small-12 medium-4 large-3">
