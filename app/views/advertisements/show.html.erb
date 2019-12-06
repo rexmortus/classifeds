@@ -13,21 +13,21 @@
             <div id='map' style='width: 100%; height: 300px;'></div><br>
             <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
               <strong><a tabindex="-1" href="#" class="bottom" tabindex="2" title="Click to update location">
-                <i class="fi-marker"></i> <%= @advertisement.location %>
+                📍 <%= @advertisement.location %>
               </a></strong>
             </legend>
           </fieldset>
           <!-- Contact Information -->
           <fieldset class="fieldset" style="margin-bottom: 0px;">
-            <legend><strong><a tabindex="-1" href="#"><i class="fi-at-sign"></i> Contact</a></strong></legend>
+            <legend><strong><a tabindex="-1" href="#">💌 Contact</a></strong></legend>
             <dl>
               <dt> Email</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><i class="fi-mail"></i> <%= @advertisement.user.email %></strong></small></a></dd>
+              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.user.email %></strong></small></a></dd>
             </dl>
           </fieldset>
           <!-- Information -->
           <fieldset class="fieldset" style="margin-bottom: 0px;">
-            <legend><strong><a tabindex="-1" href="#"><i class="fi-info"></i> Info</a></strong></legend>
+            <legend><strong><a tabindex="-1" href="#">ℹ️ Info</a></strong></legend>
             <dl>
               <dt>Posted By</dt>
               <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.user.actor_id %></strong></small></a></dd>
@@ -83,7 +83,7 @@
 
 
     <fieldset class="fieldset show-pics" style="margin-top: 0px;">
-      <legend><a tabindex="-1" href="#"><strong><i class="fi-camera"></i> Images</strong></a></legend>
+      <legend><a tabindex="-1" href="#"><strong>📷 Images</strong></a></legend>
 
       <div class="image-container js-reveal-photo">
         <img src="https://picsum.photos/1024/768?random=<%= @advertisement.title %>-1">

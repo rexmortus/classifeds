@@ -31,8 +31,6 @@
              <%= f.input :category_name,
                 :label => 'Category',
                 :as => :grouped_select,
-                # :include_blank => false,
-                # :include_hidden => false,
                 :collection => Advertisement.categories_as_form_collection,
                 :group_method => :last,
                 :group_label_method => :first,

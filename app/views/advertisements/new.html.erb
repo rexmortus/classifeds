@@ -50,14 +50,16 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <div class="grid-x grid-padding-x grid-padding-y">
             <div class="cell large-11">
-              <%= f.input :title, :placeholder => false, :label => false %>
+              <%= f.input :title,
+              :placeholder => 'Title',
+              :label => false
+              %>
             </div>
             <div class="cell large-1">
-              <span class="js-emoji-picker button warning">🙂</span>
+              <h1 class="js-emoji-picker">😀</h1>
               <%= f.input :emoji,
                 :label => false,
-                :as => :hidden,
-                :input_html => {value: '🙂'} %>
+                :as => :hidden %>
             </div>
           </div>
           <%= f.input :body, :label => false, input_html: {
