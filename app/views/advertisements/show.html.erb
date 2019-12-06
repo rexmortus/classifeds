@@ -1,3 +1,8 @@
+<!-- app/views/offers/show.html.erb -->
+<% content_for :meta_title, "#{@advertisement.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @advertisement.body %>
+<% content_for :meta_image, "https://picsum.photos/1024/768?random=#{@advertisement.title}-1" %>
+
 <div class="grid-x grid-padding-x grid-padding-y">
   <div class="cell small-2 medium-4 large-3">
     <div>
