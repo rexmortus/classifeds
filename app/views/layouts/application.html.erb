@@ -23,6 +23,7 @@
     <meta name="twitter:image:src" content="<%= meta_image %>">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
   <body>
     <div id="wrapper">
@@ -34,10 +35,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/3.6.0/instantsearch.production.min.js" charset="utf-8"></script>
 
       <!-- TODO - LOAD RAILS/UJS WITH WEBPACK -->
-      <%= javascript_include_tag "application" %>
-
+      <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>
-      <%= stylesheet_pack_tag 'application' %>
     </div>
   </body>
 </html>
