@@ -283,7 +283,7 @@ $(document).ready(function() {
             ${hits
               .map(
                 item =>
-                  `<div class="cell small-12 medium-6 large-4 x-large-3">
+                  `<div class="cell small-12 medium-6 large-3 x-large-3">
                     <a href="/advertisements/${ item.objectID }">
                       <div class="card">
                         <img height="320" width="240" src="${ item.cover_image }" />
