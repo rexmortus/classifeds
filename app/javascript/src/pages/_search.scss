@@ -45,7 +45,7 @@ a .card:hover {
 }
 
 [data-attribute="for"]:before {
-  content: 'For '
+
 }
 
 [data-attribute="category_name"] {
@@ -54,19 +54,16 @@ a .card:hover {
 }
 
 [data-attribute="category_name"]:before {
-  content: 'In '
+
 }
 
 .clear-filters {
-  color: white !important;
   cursor: pointer;
   transition: all .05s ease-in-out;
 }
 
 .clear-filters:hover {
-  color: white;
   font-weight: bold;
-  background-color: darken($alert-color, 5);
 }
 
 .clear-filters:active {

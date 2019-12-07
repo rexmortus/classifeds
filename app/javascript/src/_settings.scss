@@ -6,11 +6,11 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #247BA0,
-  secondary: #70C1B3,
-  success: #B2DBBF,
-  warning: #F3FFBD,
-  alert: lighten(#FF1654, 15),
+  primary: darken(#69aeb5, 5),
+  secondary: #69aeb5,
+  success: #ef633f,
+  warning: lighten(#ebe3b2, 10),
+  alert: lighten(#ef633f, 15),
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;

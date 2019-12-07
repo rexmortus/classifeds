@@ -24,8 +24,8 @@ if (slider) {
           "source": "polygon",
           "layout": {},
           "paint": {
-              "fill-color": "green",
-              "fill-opacity": 0.1
+              "fill-color": "#ef633f",
+              "fill-opacity": 0.25
           }
       });
 
