@@ -27,6 +27,8 @@ gem 'unicode-emoji'
 gem 'redcarpet'
 gem 'gemoji'
 gem 'faker'
+gem 'cloudinary'
+gem 'activestorage-cloudinary-service'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,0 +1,12 @@
+development:
+  cloud_name: classifeds
+  api_key: '998987924739192'
+  api_secret: KfV_isjqkxH5zxrmnJCJIi_TN7k
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: classifeds
+  api_key: '998987924739192'
+  api_secret: KfV_isjqkxH5zxrmnJCJIi_TN7k
+  enhance_image_tag: true
+  static_file_support: true
