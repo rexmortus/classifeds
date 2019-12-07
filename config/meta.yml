@@ -1,7 +1,7 @@
 # config/meta.yml
 
 meta_product_name: "Classifeds"
-meta_title: "Classifeds - Your Community's Advertisment Board"
-meta_description: "Your Community's Advertisment Board"
+meta_title: "Classifeds - Your Community's Notice Board"
+meta_description: "Your Community's Notice Board"
 meta_image: "https://picsum.photos/1024/768?random="
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
