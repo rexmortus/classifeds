@@ -15,6 +15,15 @@
 
 body {
   // background-color: lighten($warning-color, 7);
+  background-color: $body-background;
+  $body-background-alt: darken($body-background, 1);
+  background-image:
+  radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+  radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
+  background-size: 100px 50px;
 
   *:focus {
     outline-offset: 3px;
