@@ -14,8 +14,7 @@
 // @import "foundation-icons/foundation-icons.scss";
 
 body {
-  background-color: #ffffff;
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png");
+  background-color: lighten($warning-color, 7);
 
   *:focus {
     outline-offset: 3px;
@@ -27,6 +26,23 @@ body {
     outline: 3px solid $primary-color !important;
   }
 
+}
+
+.top-bar {
+  background-color: $secondary-color !important;
+  color: white !important;
+
+  ul {
+    background-color: $secondary-color !important;
+
+    li, a {
+      color: white !important;
+
+      &::after {
+        border-color: white transparent transparent !important;
+      }
+    }
+  }
 }
 
 .algolia-places button svg {
