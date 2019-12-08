@@ -318,12 +318,12 @@ $(document).ready(function() {
       })
     ]);
 
-    search.addWidget(
-      instantsearch.widgets.pagination({
-        container: '#pagination',
-         totalPages: 3,
-      })
-    );
+    // search.addWidget(
+    //   instantsearch.widgets.pagination({
+    //     container: '#pagination',
+    //      totalPages: 3,
+    //   })
+    // );
 
     // 5. Start the search!
     search.start();
