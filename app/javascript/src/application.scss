@@ -37,7 +37,10 @@ body {
 
     li, a {
       color: white !important;
-      font-weight: bold !important;
+
+      &:focus {
+        outline: 3px solid white !important;
+      }
 
       &::after {
         border-color: white transparent transparent !important;
