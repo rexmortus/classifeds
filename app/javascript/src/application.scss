@@ -14,7 +14,7 @@
 // @import "foundation-icons/foundation-icons.scss";
 
 body {
-  background-color: lighten($warning-color, 7);
+  // background-color: lighten($warning-color, 7);
 
   *:focus {
     outline-offset: 3px;
@@ -54,7 +54,7 @@ body {
 }
 
 .fieldset {
-    background-color: rgba(255, 255, 255, 0.75);
+    @include callout-style($alert-color);
 }
 
 // CKEditor styles
@@ -71,6 +71,10 @@ input.ais-SearchBox-input {
 input.ais-SearchBox-input:focus {
   transition: all .05s ease-in-out;
   outline: 3px solid $primary-color;
+}
+
+.ais-SearchBox-submitIcon {
+  display: none;
 }
 
 .footer {
