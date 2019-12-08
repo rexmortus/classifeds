@@ -8,7 +8,7 @@ $global-lineheight: 1.5;
 $foundation-palette: (
   primary: darken(#69aeb5, 5),
   secondary: #69aeb5,
-  success: #ef633f,
+  success: lighten(#ef633f, 10),
   warning: lighten(#ebe3b2, 10),
   alert: lighten(#ef633f, 15),
 );
