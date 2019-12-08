@@ -25,7 +25,7 @@ if (slider) {
           "layout": {},
           "paint": {
               "fill-color": "#ef633f",
-              "fill-opacity": 0.25
+              "fill-opacity": 0.20
           }
       });
 

@@ -58,10 +58,10 @@
         <h1><%= @advertisement.emoji %></h1>
       </div>
     </div>
-    <p>
-      <span class="label success">Near <%= @advertisement.location %></span>
-      <span class="label primary">For <%= @advertisement.for %></span>
-      <span class="label warning">In <%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
+    <p class="information">
+      <span class="label success"><%= @advertisement.location %></span>
+      <span class="label primary"><%= @advertisement.for %></span>
+      <span class="label warning"><%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
     </p>
     <p class="top-emoji" id="js-top-emoji">
       <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>

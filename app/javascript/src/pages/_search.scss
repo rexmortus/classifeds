@@ -1,3 +1,23 @@
+.card {
+
+  .card-section {
+
+    span {
+      font-weight: bold;
+    }
+
+    span.primary {
+      color: white;
+    }
+
+    span.warning {
+      color: $primary-color;
+    }
+
+  }
+
+}
+
 a .card {
   position: relative;
   transition: all .05s ease-in-out;
@@ -39,31 +59,37 @@ a .card:hover {
 
 }
 
-[data-attribute="for"] {
-  color: white;
-  background-color: $primary-color;
-}
-
-[data-attribute="for"]:before {
-
-}
-
-[data-attribute="category_name"] {
-  color: black;
-  background-color: $warning-color;
-}
-
-[data-attribute="category_name"]:before {
-
-}
-
-.clear-filters {
-  cursor: pointer;
-  transition: all .05s ease-in-out;
-}
-
-.clear-filters:hover {
+.filter-labels {
   font-weight: bold;
+
+  #clear-refinements {
+    a {
+      color: white;
+    }
+  }
+
+  .success {
+    color: white;
+  }
+
+  [data-attribute="for"] {
+    color: white;
+    background-color: $primary-color;
+  }
+
+  [data-attribute="category_name"] {
+    color: $primary-color;
+    background-color: $warning-color;
+  }
+
+  .clear-filters {
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($alert-color, 10);
+    }
+  }
 }
 
 .clear-filters:active {
