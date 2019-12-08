@@ -23,16 +23,16 @@ class ProfilesController < ApplicationController
 
     # NOTE: showing with default options specified explicitly
     @png = qrcode.as_png(
-      bit_depth: 1,
-      border_modules: 4,
+      bit_depth: 12,
+      border_modules: 0,
       color_mode: ChunkyPNG::COLOR_GRAYSCALE,
       color: 'black',
       file: nil,
       fill: 'white',
-      module_px_size: 6,
-      resize_exactly_to: false,
-      resize_gte_to: false,
-      size: 480
+      module_px_size: 1,
+      resize_exactly_to: 32,
+      resize_gte_to: 32,
+      size: 70
     )
 
   end

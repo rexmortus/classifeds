@@ -43,8 +43,8 @@ if (placesAutocomplete && updateMap) {
           "source": "polygon",
           "layout": {},
           "paint": {
-              "fill-color": "#ef633f",
-              "fill-opacity": 0.20
+              "fill-color": "#6e4d54",
+              "fill-opacity": 0.15
           }
       });
 
