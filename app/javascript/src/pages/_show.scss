@@ -15,6 +15,14 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       max-width:400px;
     }
 
+    #map {
+
+      @include breakpoint(medium only) {
+        height: 150px !important;
+      }
+
+    }
+
     .map-container {
       padding-bottom: 0px;
     }
@@ -40,11 +48,17 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .center-column {
 
-    @include breakpoint(large) {
+    @include breakpoint(medium and up) {
       .heading-container {
         margin-top: 17px;
       }
+
+      .emoji {
+        text-align: right;
+      }
     }
+
+
 
     .poster-controls {
 
@@ -85,7 +99,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .images-container {
 
-      @include breakpoint(large) {
+      @include breakpoint(medium and up) {
         margin-top: 17px !important;
       }
 

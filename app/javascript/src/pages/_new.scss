@@ -7,6 +7,20 @@
       max-width:400px;
     }
 
+    #map {
+
+      @include breakpoint(medium only) {
+        height: 150px !important;
+      }
+
+    }
+
+    svg {
+      @include breakpoint(medium down) {
+        display: none;
+      }
+    }
+
     .map-container {
       padding-bottom: 0px;
     }
@@ -32,10 +46,14 @@
 
   .center-column {
 
-    @include breakpoint(large) {
+    @include breakpoint(medium and up) {
       .heading-container {
         margin-top: 30px;
       }
+    }
+
+    .js-emoji-picker {
+      text-align: right;
     }
 
     .form-controls {
@@ -66,16 +84,12 @@
 
       .packery-item {
 
-        @include breakpoint(small) {
-          width: 100%;
-        }
+        // @include breakpoint(medium down) {
 
-        @include breakpoint(medium) {
-          width: 100% !important;
-        }
+        // }
 
         @include breakpoint(large) {
-          // width: 48%;
+          width: 31.333%;
         }
       }
     }

@@ -28,16 +28,17 @@
 
 .image-container:hover {
 
-  transform: scale(1.0175);
+  @include breakpoint(medium and up) {
+    
+    img {
+      filter: grayscale(0%);
+      outline: 3px solid $primary-color;
+      outline-offset: 3px;
+    }
 
-  img {
-    filter: grayscale(0%);
-    outline: 3px solid $primary-color;
-    outline-offset: 3px;
-  }
-
-  .image-overlay {
-    opacity: 0.75;
+    .image-overlay {
+      opacity: 0.75;
+    }
   }
 
 }

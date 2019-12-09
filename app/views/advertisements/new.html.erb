@@ -1,5 +1,10 @@
 <%= simple_form_for @advertisement, :multipart => true do |f| %>
 
+  <div class="row">
+    <div class="column">
+    </div>
+  </div>
+
   <!-- Main row -->
   <div class="row new-advertisement">
 
@@ -7,12 +12,12 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <!-- Left column (map, info, contact) -->
-    <div class="column small-12 large-3 left-column">
+    <div class="column small-12 medium-3 large-3 left-column">
 
       <!-- Map / Location Selector -->
       <fieldset class="fieldset map-container">
         <legend id="user_location" data-geocode="<%= current_user.geocode %>">Location</legend>
-        <div id='map' style='width: 100%; height: 300px;'></div><br>
+        <div id='map' style='width: 100%; height: 300px'></div><br>
         <%=
           f.input :location,
           label: false,
@@ -48,13 +53,13 @@
     </div>
 
     <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
-    <div class="column small-12 large-expand center-column">
+    <div class="column small-12 medium-6 large-expand center-column">
 
       <!-- Heading -->
       <div class="row heading-container">
 
         <!-- Advertisement Title -->
-        <div class="column small-12 large-expand">
+        <div class="column small-12 medium-10 large-10">
           <%=
             f.input :title,
             :placeholder => 'Title',
@@ -63,7 +68,7 @@
         </div>
 
         <!-- Advertisement Emoji -->
-        <div class="column small-12 large-1 align-right align-middle">
+        <div class="column small-12 medium-expand large-expand align-right align-middle">
           <h1 class="js-emoji-picker">😀</h1>
           <%=
             f.input :emoji,
@@ -101,7 +106,7 @@
     </div>
 
     <!-- Right column (images) -->
-    <div class="column small-12 large-3 right-column">
+    <div class="column small-12 medium-3 large-5 right-column">
       <fieldset class="fieldset" style="padding-bottom: 10px;">
         <legend>Images</legend>
          <label for="advertisement_images">
