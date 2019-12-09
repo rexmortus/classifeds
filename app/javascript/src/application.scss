@@ -62,54 +62,14 @@ body {
   font-weight: bold !important;
 }
 
-.tippy-top-bar {
-  background-color: $secondary-color !important;
-
-  .menu-icon {
-    padding: 3px;
-    margin: 12px;
-    margin-left: 16px;
-  }
-
-  ul {
-    background-color: $secondary-color !important;
-
-    li, a {
-      color: white !important;
-      background-color: $secondary-color !important;
-
-      &:hover {
-        background-color: darken($secondary-color, 5);
-      }
-
-      &::after {
-        border-color: white transparent transparent !important;
-      }
-
-      &:focus {
-        outline: none !important;
-      }
-    }
-  }
-}
-
 .top-bar {
 
   color: white !important;
-  background-color: darken($secondary-color, 10);
 
   ul {
 
-    border: none !important;
-    background-color: darken($secondary-color, 10);
-
     li, a {
       color: white !important;
-      background-color: darken($secondary-color, 10);
-
-      &:hover {
-        background-color: darken($secondary-color, 10);
-      }
 
       &::after {
         border-color: white transparent transparent !important;

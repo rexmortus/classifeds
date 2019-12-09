@@ -5,13 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :generate_keys, :generate_actor, :generate_webfinger
-  after_find :set_actor_id
+  after_find :set_actor_id, :set_preferred_username
 
   has_many :followers
   has_many :notes
   has_many :advertisements
 
-  attr_reader :actor_id
+  attr_reader :actor_id, :preferred_username
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
       "id": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}",
       "type": "Person",
-      "preferredUsername": "#{self.username}",
+      "preferredUsername": "#{ENV['ROOT_CLASSIFEDS_URL']}@#{self.username}",
       "inbox": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}/inbox",
       "followers": "#{ENV['ROOT_CLASSIFEDS_URL']}u/#{self.username}/followers",
 
@@ -79,6 +79,10 @@ class User < ApplicationRecord
 
   def set_actor_id
     @actor_id = self.actor_as_hash["id"]
+  end
+
+  def set_preferred_username
+    @preferred_username = self.actor_as_hash["preferredUsername"]
   end
 
 end

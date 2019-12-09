@@ -12,40 +12,51 @@
   <!-- Left column (map, info, contact) -->
   <div class="column small-12 medium-3 large-3 left-column">
 
-    <!-- Map -->
-    <fieldset class="fieldset map-container">
-      <div id='map' style="width: 100%; height: 300px;"></div><br>
-      <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
-        <%= @advertisement.location %>
-      </legend>
-    </fieldset>
+    <div class="row">
 
-    <!-- Contact Information -->
-    <fieldset class="fieldset contact-container">
-      <legend>Contact</legend>
-      <dl>
-        <dt>Email</dt>
-        <dd><a href="#"><%= @advertisement.user.email %></a></dd>
-      </dl>
-    </fieldset>
+      <div class="column small-6 medium-12 large-12">
 
-    <!-- Post Information -->
-    <fieldset class="fieldset information-container">
-      <legend>Info</legend>
-      <dl>
-        <dt>Posted By</dt>
-        <dd><a href="#"><%= @advertisement.user.actor_id %></a></dd>
-        <dt>Date Listed</dt>
-        <dd><a href="#"><%= @advertisement.created_at %></a></dd>
-        <dt>Last Updated</dt>
-        <dd><a href="#"><%= @advertisement.updated_at %></a></dd>
-      </dl>
-    </fieldset>
+        <!-- Map -->
+        <fieldset class="fieldset map-container">
+          <div id='map' style="height: 300px;"></div><br>
+          <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
+            <%= @advertisement.location %>
+          </legend>
+        </fieldset>
+      </div>
+
+      <div class="column small-6 medium-12 large-12">
+
+        <!-- Contact Information -->
+        <fieldset class="fieldset contact-container">
+          <legend>Contact</legend>
+          <dl>
+            <dt>Email</dt>
+            <dd><a href="#"><%= @advertisement.user.email %></a></dd>
+          </dl>
+        </fieldset>
+
+        <!-- Post Information -->
+        <fieldset class="fieldset information-container">
+          <legend>Info</legend>
+          <dl>
+            <dt>Posted By</dt>
+            <dd><a href="#"><%= @advertisement.user.preferred_username %></a></dd>
+            <dt>Date Listed</dt>
+            <dd><a href="#"><%= @advertisement.created_at %></a></dd>
+            <dt>Last Updated</dt>
+            <dd><a href="#"><%= @advertisement.updated_at %></a></dd>
+          </dl>
+        </fieldset>
+      </div>
+    </div>
+
+
 
   </div>
 
   <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
-  <div class="column small-12 medium-6 large-expand center-column">
+  <div class="column small-12 medium-5 large-expand center-column">
 
     <!-- Page title -->
     <div class="row heading-container align-middle">
@@ -68,23 +79,19 @@
       </div>
     </div>
 
-    <!-- Poster Controls -->
-    <div class="row">
-      <div class="column poster-controls">
-        <% if user_signed_in? %>
-          <p>
-            <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
-              |
-            <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-          </p>
-        <% end %>
-      </div>
-    </div>
-
     <!-- Advertisement body -->
     <div class="row">
       <div class="column">
         <%== @advertisement.body %>
+        <div class="poster-controls">
+          <% if user_signed_in? %>
+            <p>
+              <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
+                |
+              <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+            </p>
+          <% end %>
+        </div>
         <hr>
       </div>
     </div>
