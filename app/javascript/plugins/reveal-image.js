@@ -22,4 +22,5 @@ if (modal) {
   $('#modal').on('open.zf.reveal', function() {
     window.dispatchEvent(new Event('resize'));
   });
+
 }

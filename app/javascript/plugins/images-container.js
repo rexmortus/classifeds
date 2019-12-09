@@ -1,5 +1,6 @@
 import "jquery"
 import Packery from "packery"
+import imagesLoaded from "imagesloaded"
 
 const container = document.getElementById('js-images-container');
 
@@ -11,6 +12,7 @@ if (container) {
     percentPosition: true,
   });
 
-  pckry.layout();
-
+  imagesLoaded(container, function( instance ) {
+    pckry.layout();
+  });
 }
