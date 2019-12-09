@@ -111,8 +111,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 #modal {
   background: $spiral-gradient;
-  border-top: 54px solid $primary-color;
-  border-bottom: 54px solid $primary-color;
+  border-top: 54px solid $secondary-color;
+  border-bottom: 54px solid $secondary-color;
   background-size: 100px 50px;
 }
 
@@ -125,6 +125,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 }
 
 .carousel-cell img {
+  border: 1px solid $medium-gray;
   display: block;
   max-height: 100%;
 }

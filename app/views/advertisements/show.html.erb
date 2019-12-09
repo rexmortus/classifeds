@@ -1,6 +1,6 @@
 <!-- app/views/offers/show.html.erb -->
 <% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} | #{@advertisement.category_name} &gt; #{@advertisement.subcategory_name } | #{@advertisement.location}" %>
-<% content_for :meta_description, "#{strip_tags(@advertisement.body)}" %>
+<% content_for :meta_description, "#{strip_tags(@advertisement.body[0..197])}..." %>
 
 <% if @advertisement.images.attached? %>
 <% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>

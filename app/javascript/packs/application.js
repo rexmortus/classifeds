@@ -22,7 +22,6 @@ import "plugins/images-container"
 
 function fireOnReady() {
   $(document).foundation();
-  window.dispatchEvent(new Event('resize'));
 }
 
 if (document.readyState === 'complete') {

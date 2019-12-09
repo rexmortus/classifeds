@@ -48,17 +48,21 @@ body {
 }
 
 .top-bar {
-  background-color: $secondary-color !important;
   color: white !important;
 
   ul {
     background-color: $secondary-color !important;
+    border: none !important;
+
+    &:hover {
+      background-color: darken($secondary-color, 5);
+    }
 
     li, a {
       color: white !important;
 
-      &:focus {
-        outline: 3px solid white !important;
+      &:hover {
+        background-color: darken($secondary-color, 5);
       }
 
       &::after {
