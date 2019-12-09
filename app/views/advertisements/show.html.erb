@@ -110,8 +110,8 @@
     <fieldset class="fieldset show-pics images-container">
       <legend>Images</legend>
       <div id="js-images-container" class="grid">
-        <% @advertisement.images.each do |image| %>
-          <div class="image-container packery-item js-reveal-carousel">
+        <% @advertisement.images.each_with_index do |image, index| %>
+          <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
             <img src="<%= url_for(image) %>">
             <div class="image-overlay">🔎</div>
           </div>
@@ -122,8 +122,8 @@
     <!-- Reveal -->
     <div class="reveal full" id="modal" data-reveal data-close-on-click="true">
       <div class="carousel">
-        <% @advertisement.images.each do |image| %>
-          <div class="carousel-cell">
+        <% @advertisement.images.each_with_index do |image, index| %>
+          <div class="carousel-cell" data-slide-id="<%= index %>">
             <img class="carousel-cell-image"
               src="<%= url_for(image) %>" />
           </div>
