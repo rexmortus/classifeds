@@ -10,7 +10,7 @@
 <div class="row show-advertisement">
 
   <!-- Left column (map, info, contact) -->
-  <div class="column small-12 large-3 left-column">
+  <div class="column small-12 medium-3 large-3 left-column">
 
     <!-- Map -->
     <fieldset class="fieldset map-container">
@@ -45,15 +45,15 @@
   </div>
 
   <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
-  <div class="column small-12 large-expand center-column">
+  <div class="column small-12 medium-6 large-expand center-column">
 
     <!-- Page title -->
     <div class="row heading-container">
-      <div class="column small-12 large-11">
+      <div class="column small-12 medium-10 large-11">
         <h1><%= @advertisement.title %></h1>
       </div>
-      <div class="column small-12 large-1 align-right">
-        <h1><%= @advertisement.emoji %></h1>
+      <div class="column small-12 medium-expand large-1 align-right">
+        <h1 class="emoji"><%= @advertisement.emoji %></h1>
       </div>
     </div>
 
@@ -104,7 +104,7 @@
   </div>
 
   <!-- Right column (images) -->
-  <div class="column small-12 large-3 right-column">
+  <div class="column small-12 medium-3 large-5 right-column">
 
     <!-- Image container -->
     <fieldset class="fieldset show-pics images-container">
