@@ -9,7 +9,8 @@ if (modal) {
 
   const flkty = new Flickity( elem, {
     cellAlign: 'center',
-    contain: true
+    contain: true,
+    transitionDuration: 0,
   });
 
   $('.js-reveal-carousel').on('click', function(event) {
