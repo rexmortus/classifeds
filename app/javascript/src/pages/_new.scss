@@ -71,11 +71,11 @@
         }
 
         @include breakpoint(medium) {
-          width: 100%;
+          width: 100% !important;
         }
 
         @include breakpoint(large) {
-          width: 48%;
+          // width: 48%;
         }
       }
     }

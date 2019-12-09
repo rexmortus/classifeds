@@ -95,18 +95,14 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
       .packery-item {
 
-        @include breakpoint(small) {
-          width: 100%;
-        }
-
-        @include breakpoint(medium) {
-          width: 100%;
-        }
+        // @include breakpoint(medium down) {
+        //   align-items: center;
+        //   width: 100%;
+        // }
 
         @include breakpoint(large) {
           width: 48%;
         }
-
       }
     }
   }
