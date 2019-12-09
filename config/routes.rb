@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'v2_search/search'
   resources :advertisements, param: :uuid do
     post '/react', to: 'emojireact#create'
   end
