@@ -8,7 +8,6 @@ if (modal) {
   const elem = document.querySelector('.carousel');
 
   const flkty = new Flickity( elem, {
-    // options
     cellAlign: 'center',
     contain: true
   });
