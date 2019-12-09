@@ -1,4 +1,5 @@
 import Packery from "packery";
+import imagesLoaded from "imagesloaded";
 
 const previewContainer = document.getElementById('js-image-preview');
 
@@ -15,10 +16,16 @@ if (previewContainer) {
 
 }
 
+imagesLoaded(previewContainer, function( instance ) {
+  pckry.layout();
+});
+
 const imageInput = document.getElementById('advertisement_images');
 
 if (imageInput) {
+
   imageInput.addEventListener("change", previewImages);
+
 }
 
 const imageCounter = document.getElementById('js-images-count');
@@ -31,14 +38,21 @@ function previewImages() {
   imageCounter.innerHTML = this.files.length;
 
   if (this.files) {
+
     [].forEach.call(this.files, readAndPreview);
+
   }
 
   function readAndPreview(file) {
 
     if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+
       return alert(file.name + " is not an image");
-    } else {
+
+    }
+
+    else {
+
       const reader = new FileReader();
 
       reader.addEventListener("load", function() {
@@ -58,9 +72,7 @@ function previewImages() {
         pckry.addItems(div);
         pckry.layout();
 
-      });
-
-      window.dispatchEvent(new Event('resize'));
+    });
 
       reader.readAsDataURL(file);
     }
