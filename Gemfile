@@ -29,6 +29,7 @@ gem 'gemoji'
 gem 'faker'
 gem 'cloudinary'
 gem 'activestorage-cloudinary-service'
+gem 'mini_magick'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
