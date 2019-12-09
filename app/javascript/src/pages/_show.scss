@@ -10,6 +10,9 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .left-column {
 
+    // word-break: break-all;
+    // word-wrap: break-word;
+
     @include breakpoint(large) {
       min-width:400px;
       max-width:400px;
@@ -48,7 +51,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .center-column {
 
-    @include breakpoint(medium and up) {
+    @include breakpoint(medium and large) {
       .heading-container {
         margin-top: 17px;
 
@@ -75,11 +78,18 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .emoji-reacts {
 
+
+
       a {
         cursor: pointer;
         color: $primary-color !important;
         transition: all .05s ease-in-out;
         font-weight: bold;
+
+        &.emoji {
+          font-size: 2.25rem;
+          margin-bottom: 4px;
+        }
 
         &:hover {
           background-color: darken($warning-color, 5);
@@ -104,7 +114,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .images-container {
 
-      @include breakpoint(medium and up) {
+      @include breakpoint(medium and large) {
         margin-top: 17px !important;
       }
 

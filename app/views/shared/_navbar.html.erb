@@ -1,18 +1,13 @@
-<div class="top-bar tippy-top-bar" data-responsive-toggle="responsive-menu" data-hide-for="xxlarge">
+<div class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
-      <ul class="menu">
-        <li>
-          <a href="#" class="menu-icon" data-toggle="responsive-menu"></a>
-        </li>
-      </ul>
-      <li></li>
-      <% if !user_signed_in? %>
-        <li><a href="#">My Classifeds</a>
-      <% else %>
-        <li><a href="#"><%= current_user.username %></a>
-      <% end %>
-        <ul class="menu">
+      <li>
+        <% if !user_signed_in? %>
+        <a href="#">My Classifeds</a>
+        <% else %>
+        <a href="#"><%= current_user.username %></a>
+        <% end %>
+        <ul class="menu vertical">
           <% if !user_signed_in? %>
           <li>
             <div style="padding: 10px">
@@ -34,29 +29,33 @@
           <% end %>
         </ul>
       </li>
-      <%= link_to '/about', :class => 'menu-text', tabindex: -1  do %>
-      ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
-      <% end %>
-      <%= link_to '/' do %>
-      Search
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="top-bar stacked-for-medium stacked-for-small" id="responsive-menu">
-  <div class="top-bar-left">
-    <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
-    <ul class="dropdown menu" data-dropdown-menu>
       <li>
-        <a href="#"><%= key %></a>
-        <ul class="menu">
-          <% value.each do |item| %>
-          <li><a href="#"><%= item[0] %></a></li>
-          <% end %>
-        </ul>
+        <%= link_to '/about', :class => 'menu-text', tabindex: -1  do %>
+        ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
+        <% end %>
       </li>
-    <% end %>
-  </ul>
+      <li>
+        <%= link_to '/' do %>
+        Search
+        <% end %>
+      </li>
+      <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+        <li class="has-submenu">
+          <a href="#">Categories</a>
+          <ul class="submenu menu vertical" data-submenu="">
+            <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
+            <li>
+              <a href="#"><%= key %></a>
+              <ul class="submenu menu vertical" data-submenu="">
+                <% value.each do |item| %>
+                <li><a href="#"><%= item[0] %></a></li>
+                <% end %>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </ul>
   </div>
 </div>
