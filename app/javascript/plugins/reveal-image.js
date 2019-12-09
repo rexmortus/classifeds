@@ -5,16 +5,17 @@ const modal = document.getElementById('modal');
 
 if (modal) {
 
-  var elem = document.querySelector('.carousel');
+  const elem = document.querySelector('.carousel');
 
-  var flkty = new Flickity( elem, {
+  const flkty = new Flickity( elem, {
     // options
     cellAlign: 'center',
     contain: true
   });
 
   $('.js-reveal-carousel').on('click', function(event) {
-    event.preventDefault();
+    const slideId = event.target.parentElement.dataset.slideId
+    flkty.select(slideId, true, true);
     $(modal).foundation('open');
   })
 
