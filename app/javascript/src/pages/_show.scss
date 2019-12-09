@@ -51,6 +51,11 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
     @include breakpoint(medium and up) {
       .heading-container {
         margin-top: 17px;
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
       }
 
       .emoji {
