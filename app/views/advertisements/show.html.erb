@@ -41,10 +41,10 @@
           <dl>
             <dt>Posted By</dt>
             <dd><a href="#"><%= @advertisement.user.preferred_username %></a></dd>
-            <dt>Date Listed</dt>
-            <dd><a href="#"><%= @advertisement.created_at %></a></dd>
+            <dt>Listed</dt>
+            <dd><a href="#"><%= time_ago_in_words(@advertisement.created_at) %> ago</a></dd>
             <dt>Last Updated</dt>
-            <dd><a href="#"><%= @advertisement.updated_at %></a></dd>
+            <dd><a href="#"><%= time_ago_in_words(@advertisement.updated_at) %> ago</a></dd>
           </dl>
         </fieldset>
       </div>
@@ -103,6 +103,7 @@
         <div id="js-reacts" class="reacts-at-bottom">
           <%= render 'emojireact/emoji-reacts', emoji: @advertisement.emoji_react %>
         </div>
+        <p class="view-counter"><%= @advertisement.hits %> views</p>
       </div>
     </div>
 
@@ -114,7 +115,7 @@
     <!-- Image container -->
     <fieldset class="fieldset show-pics images-container">
       <legend>Images</legend>
-      <div class="images-container-container">
+      <div class="images-inner-container">
         <div id="js-images-container" class="grid">
           <% @advertisement.images.each_with_index do |image, index| %>
             <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">

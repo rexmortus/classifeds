@@ -172,6 +172,9 @@ GEM
     public_suffix (4.0.1)
     puma (4.2.1)
       nio4r (~> 2.0)
+    punching_bag (0.6.1)
+      railties (>= 3.2)
+      voight_kampff (~> 0.2)
     rack (2.0.7)
     rack-cors (1.0.3)
     rack-proxy (0.6.5)
@@ -266,6 +269,9 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode-emoji (2.3.1)
+    voight_kampff (0.2.2)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.6)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
@@ -307,6 +313,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  punching_bag
   rack-cors
   rails (= 6.0.1)
   redcarpet
