@@ -34,6 +34,10 @@ class Advertisement < ApplicationRecord
   # Enums
   enum category: Rails.application.config.classifeds_categories
 
+  def category_subcategory
+    "#{self.category_name} > #{self.subcategory_name}"
+  end
+
   def _geoloc
     self.geocode
   end
@@ -60,6 +64,22 @@ class Advertisement < ApplicationRecord
       end
       [category, values]
     end
+  end
+
+  def self.categories_as_checkbox_collection
+    values = []
+    self.categories.each do |category|
+
+      title = category.first
+      subcategories = category.last
+      values.push(title)
+      subcategories.each do |subcategory|
+        values.push("#{title} > #{subcategory}")
+      end
+
+
+    end
+    return values
   end
 
 end

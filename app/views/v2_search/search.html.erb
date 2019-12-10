@@ -1,15 +1,60 @@
-<div class="container">
-  <form action="/v2_search/search">
-    Search<br>
-    <input type="text" name="query"><br>
-    Location<br>
-    <input type="text" name="location">
-    Distance<br>
-    <input type="number" name="distance">
-    Category<br>
-    <input type="text" name="category">
-    Type<br>
-    <input type="text" name="for">
-    <input type="submit">
-  </form>
+<%= simple_form_for :search,
+  :method => :get,
+  :remote => true,
+  :url => v2_search_search_path do |f|
+%>
+<div class="row">
+
+  <!-- Left column -->
+  <div class="columns large-3">
+    <br>
+      <%= f.input :location,
+      :input_html => {
+          value: @location_param
+      }
+      %>
+      <%= f.input :distance,
+      :input_html => {
+          value: @distance_param
+      }
+      %>
+      <%=
+        f.collection_check_boxes :types, Rails.application.config.classifeds_types, :to_s, :to_s, {
+          :include_blank => false,
+          :include_hidden => false,
+          :selected => []
+        }, {}
+       %>
+       <div class="callout">
+         <%=
+           f.collection_radio_buttons :category_subcategory, Advertisement.categories_as_checkbox_collection, :to_s, :to_s, {
+             :include_blank => true,
+             :include_hidden => false,
+             :selected => []
+           }, {}
+          %>
+       </div>
+
+      <%= f.button :submit %>
+  </div>
+
+  <!-- Right column -->
+  <div class="columns">
+    <br>
+    <div class="callout primary" id="js-params-container">
+      <%== params %>
+    </div>
+
+    <%=
+      f.input :query,
+      :input_html => {
+          value: @query_param
+      }
+    %>
+
+    <div id="js-results-container">
+      <%= render 'v2_search/partials/search_results', advertisements: @advertisements %>
+    </div>
+  </div>
 </div>
+<% end %>

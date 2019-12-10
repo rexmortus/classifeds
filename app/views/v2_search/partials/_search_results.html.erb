@@ -1,0 +1,23 @@
+<% if advertisements %>
+  <% advertisements.each do |ad| %>
+    <div class="card">
+      <a href="/advertisements/<%= ad.id %>">
+        <div class="card">
+          <img height="320" width="240" src="https://picsum.photos/320" />
+          <div class="card-section">
+            <div class="grid grid-x">
+              <div class="">
+                <p><span class="label primary"><%= ad.for %></span><span class="label warning"><%= ad.subcategory_name %></span></p>
+                <h5><%= ad.title %></h5>
+                <p class="card-location"><strong><small><i class="fi-marker"></i> <%= ad.location %></small></strong></p>
+              </div>
+              <div class="">
+                <h4 class="emoji"><%= ad.emoji %></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% end %>
+<% end %>

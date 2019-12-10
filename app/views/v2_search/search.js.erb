@@ -1,0 +1,5 @@
+var paramsContainer = document.getElementById('js-params-container');
+var resultsContainer = document.getElementById('js-results-container');
+
+resultsContainer.innerHTML = '<%= j render "v2_search/partials/search_results", advertisements: @advertisements %>'
+paramsContainer.innerHTML = '<%= j params %>'
