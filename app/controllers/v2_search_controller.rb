@@ -23,7 +23,7 @@ class V2SearchController < ApplicationController
   private
 
   def filter(ads)
-    # ads = ads.where("title ILIKE (?) OR body ILIKE (?)", "%#{@query_param}%", "%#{@query_param}%")
+    ads = ads.where("title ILIKE (?) OR body ILIKE (?)", "%#{@query_param}%", "%#{@query_param}%")
 
     ads = ads.near(@location_param, @distance_param, units: :km)
 
