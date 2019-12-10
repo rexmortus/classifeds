@@ -13,7 +13,6 @@
   <div class="column small-12 medium-3 large-3 left-column">
 
     <div class="row">
-
       <div class="column small-6 medium-12 large-12">
 
         <!-- Map -->
@@ -56,7 +55,7 @@
   </div>
 
   <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
-  <div class="column small-12 medium-5 large-expand center-column">
+  <div class="column small-12 medium-6 large-expand center-column">
 
     <!-- Page title -->
     <div class="row heading-container align-middle">
@@ -73,9 +72,10 @@
           <span class="label primary"><%= @advertisement.for %></span>
           <span class="label warning"><%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
         </p>
-        <p class="emoji-reacts" id="js-top-emoji">
+        <div class="emoji-reacts" id="js-top-emoji">
           <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
-        </p>
+        </div>
+        <hr>
       </div>
     </div>
 
@@ -83,6 +83,7 @@
     <div class="row">
       <div class="column">
         <%== @advertisement.body %>
+        <!-- Poster Controls -->
         <div class="poster-controls">
           <% if user_signed_in? %>
             <p>

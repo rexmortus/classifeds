@@ -31,7 +31,13 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
     }
 
     .contact-container {
+      margin-top: 0px;
+      padding-top: 10px;
       padding-bottom: 0px;
+
+      @include breakpoint(small) {
+        margin-top: 18px;
+      }
 
       dd a {
         font-size: $small-font-size;
@@ -41,6 +47,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .information-container {
       padding-bottom: 0px;
+      padding-top: 10px;
 
       dd a {
         font-size: $small-font-size;
@@ -51,12 +58,21 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .center-column {
 
-    @include breakpoint(medium and large) {
+    .heading-container {
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+    }
+
+    @include breakpoint(medium) {
       .heading-container {
         margin-top: 17px;
 
         h1 {
-          font-size: 2.5rem;
+          margin-bottom: 3px;
+          font-size: 2.4rem;
         }
 
       }
@@ -66,7 +82,21 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       }
     }
 
+    @include breakpoint(large) {
+      .heading-container {
+        margin-top: 17px;
 
+        h1 {
+          margin-bottom: 3px;
+          font-size: 2.4rem;
+        }
+
+      }
+
+      .emoji {
+        text-align: right;
+      }
+    }
 
     .poster-controls {
 
@@ -78,13 +108,21 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .emoji-reacts {
 
+      margin-bottom: 0px;
 
+      .label {
 
-      a {
         cursor: pointer;
         color: $primary-color !important;
         transition: all .05s ease-in-out;
         font-weight: bold;
+
+        &.new-reaction {
+          margin-bottom: 0px;
+          width: 100%;
+          text-align: center;
+          padding: 17px;
+        }
 
         &.emoji {
           font-size: 2.25rem;
@@ -94,7 +132,59 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         &:hover {
           background-color: darken($warning-color, 5);
         }
+
       }
+
+      @include breakpoint(medium) {
+        .label {
+
+          cursor: pointer;
+          color: $primary-color !important;
+          transition: all .05s ease-in-out;
+          font-weight: bold;
+
+          &.new-reaction {
+            padding: 0.33333rem 0.5rem;
+            width: auto !important;
+          }
+
+          &.emoji {
+            font-size: 2.25rem;
+            margin-bottom: 4px;
+          }
+
+          &:hover {
+            background-color: darken($warning-color, 5);
+          }
+
+        }
+      }
+
+      @include breakpoint(large) {
+        .label {
+
+          cursor: pointer;
+          color: $primary-color !important;
+          transition: all .05s ease-in-out;
+          font-weight: bold;
+
+          &.new-reaction {
+            padding: 0.33333rem 0.5rem;
+            width: auto !important;
+          }
+
+          &.emoji {
+            font-size: 2.25rem;
+            margin-bottom: 4px;
+          }
+
+          &:hover {
+            background-color: darken($warning-color, 5);
+          }
+
+        }
+      }
+
     }
 
     .reacts-at-bottom {
