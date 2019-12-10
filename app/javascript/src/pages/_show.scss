@@ -20,6 +20,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     #map {
 
+      border: 1px solid $medium-gray;
+
       @include breakpoint(medium only) {
         height: 150px !important;
       }
@@ -205,12 +207,23 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .images-container {
 
-      @include breakpoint(medium and large) {
+      padding-top: 7px;
+
+      @include breakpoint(medium) {
+        margin-top: 17px !important;
+      }
+
+      @include breakpoint(large) {
         margin-top: 17px !important;
       }
 
       @include breakpoint(small) {
         margin-top: 0px;
+      }
+
+      .images-inner-container {
+        border: 1px solid $light-gray;
+        padding: 5px;
       }
 
       .packery-item {

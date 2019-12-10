@@ -114,13 +114,15 @@
     <!-- Image container -->
     <fieldset class="fieldset show-pics images-container">
       <legend>Images</legend>
-      <div id="js-images-container" class="grid">
-        <% @advertisement.images.each_with_index do |image, index| %>
-          <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
-            <img src="<%= url_for(image) %>">
-            <div class="image-overlay">🔎</div>
-          </div>
-        <% end %>
+      <div class="images-container-container">
+        <div id="js-images-container" class="grid">
+          <% @advertisement.images.each_with_index do |image, index| %>
+            <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
+              <img src="<%= url_for(image) %>">
+              <div class="image-overlay">🔎</div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </fieldset>
 
