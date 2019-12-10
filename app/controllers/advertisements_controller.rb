@@ -12,6 +12,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1
   # GET /advertisements/1.json
   def show
+    @advertisement.punch(request)
   end
 
   # GET /advertisements/new
