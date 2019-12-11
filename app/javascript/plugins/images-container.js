@@ -8,7 +8,7 @@ if (container) {
 
   var pckry = new Packery(container, {
     itemSelector: '.image-container',
-    gutter: 16,
+    gutter: '.gutter-sizer',
     percentPosition: true,
   });
 
