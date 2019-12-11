@@ -1,14 +1,26 @@
 import "jquery"
+import Flickity from "flickity"
 
 const modal = document.getElementById('modal');
 
 if (modal) {
 
-  $('.js-reveal-photo').on('click', function(event) {
-    event.preventDefault();
-    const clicked_src = event.target.parentElement.children[0].src
-    const modal_img = modal.children[0].children[0].src = clicked_src
+  const elem = document.querySelector('.carousel');
 
+  const flkty = new Flickity( elem, {
+    cellAlign: 'center',
+    contain: true,
+    transitionDuration: 0,
+  });
+
+  $('.js-reveal-carousel').on('click', function(event) {
+    const slideId = event.target.parentElement.dataset.slideId
+    flkty.select(slideId, true, true);
     $(modal).foundation('open');
   })
+
+  $('#modal').on('open.zf.reveal', function() {
+    window.dispatchEvent(new Event('resize'));
+  });
+
 }

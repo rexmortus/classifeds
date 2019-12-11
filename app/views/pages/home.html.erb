@@ -35,10 +35,10 @@
     <div class="search-filters-menu" id="category-list"></div>
   </div>
   <div class="cell small-12 medium-7 large-9" style="padding-top: 26px">
-      <div class="callout secondary" style="padding-bottom: 0px">
+      <div class="callout alert" style="padding-bottom: 0px">
         <div id="searchbox"></div>
       </div>
-      <p style="margin-bottom: 20px;">
+      <p class="filter-labels">
         <span class="label success">Within <strong><span id="distance-label">25</span>km</strong> of <%= current_user.location if user_signed_in? %></span>
         <span id="current-refinements"></span>
         <span id="clear-refinements"></span>

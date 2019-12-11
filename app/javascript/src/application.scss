@@ -6,27 +6,64 @@
 // Import component styles
 @import "src/components/search-filters-list.scss";
 @import "src/components/emoji-picker.scss";
+@import "src/components/image-container.scss";
 
 // Import page-specific styles
 @import "src/pages/_search.scss";
 @import "src/pages/_show.scss";
+@import "src/pages/_new.scss";
 
 // @import "foundation-icons/foundation-icons.scss";
 
 body {
-  background-color: #ffffff;
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lightpaperfibers.png");
 
-  *:focus {
-    outline-offset: 3px;
-    transition: outline .05s ease-in-out !important;
+  background-color: $body-background;
+  $body-background-alt: darken($body-background, 1);
+
+  $spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+  radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
+
+  background-image: $spiral-gradient;
+
+  background-size: 100px 50px;
+
+  fieldset legend {
+    color: $primary-color;
+    font-weight: bold;
   }
 
-  *:focus {
-    border-color: 1px solid $primary-color !important;
-    outline: 3px solid $primary-color !important;
+  a,input {
+    &:focus {
+      outline-offset: 3px;
+      transition: outline .05s ease-in-out !important;
+      outline: 3px solid $primary-color !important;
+    }
   }
+}
 
+
+
+.label {
+  font-weight: bold !important;
+}
+
+.top-bar {
+
+  color: white !important;
+
+  ul {
+
+    li, a {
+      color: white !important;
+
+      &::after {
+        border-color: white transparent transparent !important;
+      }
+    }
+  }
 }
 
 .algolia-places button svg {
@@ -34,7 +71,7 @@ body {
 }
 
 .fieldset {
-    background-color: rgba(255, 255, 255, 0.75);
+    @include callout-style($alert-color);
 }
 
 // CKEditor styles
@@ -51,6 +88,10 @@ input.ais-SearchBox-input {
 input.ais-SearchBox-input:focus {
   transition: all .05s ease-in-out;
   outline: 3px solid $primary-color;
+}
+
+.ais-SearchBox-submitIcon {
+  display: none;
 }
 
 .footer {

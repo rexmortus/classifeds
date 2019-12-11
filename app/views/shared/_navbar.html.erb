@@ -1,49 +1,61 @@
-<div class="top-bar bg-white">
+<div class="top-bar">
   <div class="top-bar-left">
-  <ul class="dropdown menu" data-dropdown-menu>
-    <% if !user_signed_in? %>
-      <li><a tabindex="-1" href="#">My Classifeds</a>
-    <% else %>
-      <li><a tabindex="-1" href="#"><%= current_user.username %></a>
-    <% end %>
-      <ul class="menu">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
         <% if !user_signed_in? %>
-        <li>
-          <div style="padding: 10px">
-            <small>
-              Welcome to Classifeds. Sign in or Register to:<br>
-              <ul>
-                <li>Post and manage ads</li>
-                <li>Send emoji reactions! 🎉</li>
-              </ul>
-            </small>
-          </div>
-        </li>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Register", new_user_registration_path %></li>
+        <a href="#">My Classifeds</a>
         <% else %>
-          <%= link_to 'Post Advertisement', new_advertisement_path %>
-          <%= link_to "Edit Profile", '/profile/edit' %>
-          <%= link_to 'Sign out', destroy_user_session_path %>
+        <a href="#"><%= current_user.username %></a>
         <% end %>
-      </ul>
-    </li>
-    <%= link_to '/about', :class => 'menu-text', tabindex: -1  do %>
-    ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
-    <% end %>
-    <%= link_to '/', tabindex: -1  do %>
-    Search <i class="fi-magnifying-glass"></i>
-    <% end %>
-    <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
-    <li>
-      <a tabindex="-1" href="#"><%= key %></a>
-      <ul class="menu" tabindex="-1">
-        <% value.each do |item| %>
-        <li><a tabindex="-1" href="/a/<%= item[1][0] %>/<%= item[1][1] %>"><%= item[0] %></a></li>
+        <ul class="menu vertical">
+          <% if !user_signed_in? %>
+          <li>
+            <div style="padding: 10px">
+              <small>
+                Welcome to Classifeds. Sign in or Register to:<br>
+                <ul>
+                  <li>Post and manage ads</li>
+                  <li>Send emoji reactions! 🎉</li>
+                </ul>
+              </small>
+            </div>
+          </li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to 'Post Advertisement', new_advertisement_path %></li>
+            <li><%= link_to "Edit Profile", '/profile/edit' %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+          <% end %>
+        </ul>
+      </li>
+      <li>
+        <%= link_to '/about', :class => 'menu-text', tabindex: -1  do %>
+        ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
         <% end %>
+      </li>
+      <li>
+        <%= link_to '/' do %>
+        Search
+        <% end %>
+      </li>
+      <ul class="menu vertical medium-horizontal" data-responsive-menu="medium-dropdown">
+        <li class="dropdown menu has-submenu">
+          <a href="#">Categories</a>
+          <ul class="submenu menu vertical" data-submenu="">
+            <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
+            <li>
+              <a href="#"><%= key %></a>
+              <ul class="submenu menu vertical" data-submenu="">
+                <% value.each do |item| %>
+                <li><a href="#"><%= item[0] %></a></li>
+                <% end %>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </li>
       </ul>
-    </li>
-    <% end %>
-  </ul>
+    </ul>
   </div>
 </div>

@@ -1,73 +1,281 @@
-.reveal {
-  outline-offset: 0px !important;
-}
+$body-background-alt: darken($body-background, 1);
 
-.image-container {
+$spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
 
-  position: relative;
-  transition: all .05s ease-in-out;
-  margin-bottom: 16px;
-  cursor: pointer;
+.show-advertisement {
 
-  img {
-    filter: grayscale(50%);
+  .left-column {
+
+    // word-break: break-all;
+    // word-wrap: break-word;
+
+    @include breakpoint(large) {
+      min-width:400px;
+      max-width:400px;
+    }
+
+    #map {
+
+      border: 1px solid $medium-gray;
+
+      @include breakpoint(medium only) {
+        height: 150px !important;
+      }
+
+    }
+
+    .map-container {
+      padding-bottom: 0px;
+    }
+
+    .contact-container {
+      margin-top: 0px;
+      padding-top: 10px;
+      padding-bottom: 0px;
+
+      @include breakpoint(small) {
+        margin-top: 18px;
+      }
+
+      dd a {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
+
+    .information-container {
+      padding-bottom: 0px;
+      padding-top: 10px;
+
+      dd a {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
   }
 
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
+  .center-column {
+
+    .heading-container {
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+    }
+
+    @include breakpoint(medium) {
+      .heading-container {
+        margin-top: 17px;
+
+        h1 {
+          margin-bottom: 3px;
+          font-size: 2.4rem;
+        }
+
+      }
+
+      .emoji {
+        text-align: right;
+      }
+    }
+
+    @include breakpoint(large) {
+      .heading-container {
+        margin-top: 17px;
+
+        h1 {
+          margin-bottom: 3px;
+          font-size: 2.4rem;
+        }
+
+      }
+
+      .emoji {
+        text-align: right;
+      }
+    }
+
+    .poster-controls {
+
+      a {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
+
+    .emoji-reacts {
+
+      margin-bottom: 0px;
+      vertical-align: text-bottom;
+
+      .label {
+
+        cursor: pointer;
+        color: $primary-color !important;
+        transition: all .05s ease-in-out;
+        font-weight: bold;
+
+        &.new-reaction {
+          margin-bottom: 0px;
+          width: 100%;
+          text-align: center;
+          padding: 17px;
+        }
+
+        &.emoji {
+          font-size: 2.25rem;
+          margin-bottom: 4px;
+        }
+
+        &:hover {
+          background-color: darken($warning-color, 5);
+        }
+
+      }
+
+      @include breakpoint(medium) {
+        .label {
+
+          cursor: pointer;
+          color: $primary-color !important;
+          transition: all .05s ease-in-out;
+          font-weight: bold;
+
+          &.new-reaction {
+            padding: 0.33333rem 0.5rem;
+            width: auto !important;
+          }
+
+          &.emoji {
+            font-size: 2.25rem;
+            margin-bottom: 4px;
+          }
+
+          &:hover {
+            background-color: darken($warning-color, 5);
+          }
+
+        }
+      }
+
+      @include breakpoint(large) {
+        .label {
+
+          cursor: pointer;
+          color: $primary-color !important;
+          transition: all .05s ease-in-out;
+          font-weight: bold;
+
+          &.new-reaction {
+            padding: 0.33333rem 0.5rem;
+            width: auto !important;
+          }
+
+          &.emoji {
+            font-size: 2.25rem;
+            margin-bottom: 4px;
+          }
+
+          &:hover {
+            background-color: darken($warning-color, 5);
+          }
+
+        }
+      }
+
+    }
+
+    .reacts-at-bottom {
+
+      p {
+        font-weight: bold;
+      }
+
+
+      font-size: $small-font-size;
+      color: grey;
+      padding-bottom: 20px;
+    }
+
+    .view-counter {
+      font-size: 0.75em;
+      font-weight: bold;
+      color: grey;
+    }
+
+  }
+
+  .right-column {
+
+    .images-container {
+
+      padding-top: 7px;
+
+      @include breakpoint(medium) {
+        margin-top: 17px !important;
+      }
+
+      @include breakpoint(large) {
+        margin-top: 17px !important;
+      }
+
+      @include breakpoint(small) {
+        margin-top: 0px;
+      }
+
+      .images-inner-container {
+        border: 1px solid $light-gray;
+        padding: 5px;
+      }
+
+      .packery-item {
+
+        // @include breakpoint(medium down) {
+        //   align-items: center;
+        //   width: 100%;
+        // }
+
+        @include breakpoint(large) {
+          width: 48%;
+        }
+      }
+    }
+  }
+}
+
+#modal {
+  background: $spiral-gradient;
+  border-top: 54px solid $secondary-color;
+  border-bottom: 54px solid $secondary-color;
+  background-size: 100px 50px;
+}
+
+.carousel-cell {
+  width: 100%; /* full width */
+  height: 81vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-cell img {
+  border: 1px solid $medium-gray;
+  display: block;
+  max-height: 100%;
+}
+
+.information {
+
+  .success, .primary {
     color: white;
-    transition: all .05s ease-in-out;
-    background-color: rgba(0,0,0,.2);
-    opacity: 0;
   }
 
-}
-
-.image-container:hover {
-
-  transform: scale(1.0175);
-
-  img {
-    filter: grayscale(0%);
-    outline: 3px solid $primary-color;
+  .warning {
+    color: $primary-color;
   }
-
-  .image-overlay {
-    opacity: 0.75;
-  }
-
-}
-
-.top-emoji a {
-
-  color: $primary-color !important;
-  font-weight: bold;
-
-  &:hover {
-    background-color: darken($warning-color, 1.5);
-  }
-
-}
-
-.reacts-at-bottom {
-
-  p {
-    font-weight: bold;
-  }
-
-  font-size: 12px;
-  color: grey;
-  padding-bottom: 20px;
-}
-
-.label.bold {
-  font-weight: bold;
 }

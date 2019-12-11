@@ -17,13 +17,21 @@ class Advertisement < ApplicationRecord
     end
   end
 
+  # Relationships
   belongs_to :user
   has_many :emoji_react
   has_many_attached :images
 
+  # Geocoder
   geocoded_by :location
+
+  # View Counter
+  acts_as_punchable
+
+  # Event hooks
   after_validation :geocode, if: :will_save_change_to_location?
 
+  # Enums
   enum category: Rails.application.config.classifeds_categories
 
   def _geoloc

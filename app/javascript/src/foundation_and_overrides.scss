@@ -8,6 +8,7 @@
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
 @include foundation-flex-classes;
+@include foundation-flex-grid;
 @include foundation-typography;
 @include foundation-forms;
 @include foundation-button;
@@ -32,7 +33,7 @@
 @include foundation-pagination;
 @include foundation-progress-bar;
 @include foundation-slider;
-@include foundation-sticky;
+// @include foundation-sticky;
 @include foundation-reveal;
 @include foundation-switch;
 @include foundation-table;

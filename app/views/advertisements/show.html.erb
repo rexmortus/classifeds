@@ -1,115 +1,151 @@
 <!-- app/views/offers/show.html.erb -->
-<% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} - #{@advertisement.location}" %>
-<% content_for :meta_description, "#{strip_tags(@advertisement.body)}" %>
+<% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} | #{@advertisement.category_name} &gt; #{@advertisement.subcategory_name } | #{@advertisement.location}" %>
+<% content_for :meta_description, "#{strip_tags(@advertisement.body[0..197])}..." %>
+
 <% if @advertisement.images.attached? %>
-  <% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
+<% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
 <% end %>
 
-<div class="grid-x grid-padding-x grid-padding-y">
-  <div class="cell small-12 medium-4 large-3">
-    <div>
-      <div class="grid grid-x">
-        <div class="cell small-12 medium-12 large-12">
-          <!-- Map -->
-          <fieldset class="fieldset" style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px;">
-            <div id='map' style='width: 100%; height: 300px;'></div><br>
-            <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
-              <strong><a tabindex="-1" href="#" class="bottom" tabindex="2" title="Click to update location">
-                📍 <%= @advertisement.location %>
-              </a></strong>
-            </legend>
-          </fieldset>
-          <!-- Contact Information -->
-          <fieldset class="fieldset" style="margin-bottom: 0px;">
-            <legend><strong><a tabindex="-1" href="#">💌 Contact</a></strong></legend>
-            <dl>
-              <dt> Email</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.user.email %></strong></small></a></dd>
-            </dl>
-          </fieldset>
-          <!-- Information -->
-          <fieldset class="fieldset" style="margin-bottom: 0px;">
-            <legend><strong><a tabindex="-1" href="#">ℹ️ Info</a></strong></legend>
-            <dl>
-              <dt>Posted By</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.user.actor_id %></strong></small></a></dd>
-              <dt>Date Listed</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.created_at %></strong></small></a></dd>
-              <dt>Last Updated</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.updated_at %></strong></small></a></dd>
-              <dt>Expires</dt>
-              <dd><a tabindex="-1" href="#"><small><strong><%= @advertisement.expires_at %></strong></small></a></dd>
-            </dl>
-          </fieldset>
-          <!-- Signature -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <% if @advertisement.images.attached? %>
-    <div class="cell small-12 medium-8 large-6" style="padding-top: 26px">
-  <% else %>
-    <div class="cell small-12 medium-8 large-9" style="padding-top: 26px">
-  <% end %>
-    <div class="grid grid-x">
-      <div class="cell large-11">
-        <h1><%= @advertisement.title %></h1>
-      </div>
-      <div class="cell large-1" style="text-align: right">
-        <h1><%= @advertisement.emoji %></h1>
-      </div>
-    </div>
-    <p>
-      <span class="label success bold">Near <%= @advertisement.location %></span>
-      <span class="label primary">For <%= @advertisement.for %></span>
-      <span class="label warning">In <%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
-    </p>
-    <p class="top-emoji" id="js-top-emoji">
-      <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
-    </p
-    <% if user_signed_in? %>
-      <p>
-        <small>
-          <strong>
-            <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
-          </strong> |
-          <strong>
-            <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-          </strong>
-        </small>
-      </p>
-    <% end %>
-    <%== @advertisement.body %>
-    <hr>
-    <div id="js-reacts" class="reacts-at-bottom">
-      <%= render 'emojireact/emoji-reacts', emoji: @advertisement.emoji_react %>
-    </div>
-  </div>
-  <% if @advertisement.images.attached? %>
-  <div class="cell small-12 medium-8 large-3">
+<!-- Main row -->
+<div class="row show-advertisement">
 
-    <fieldset class="fieldset show-pics" style="margin-top: 0px;">
-      <legend><a tabindex="-1" href="#"><strong>📷 Images</strong></a></legend>
-      <% @advertisement.images.each do |image| %>
-        <div class="image-container js-reveal-photo">
-          <img src="<%= url_for(image) %>">
-          <div class="image-overlay">🔎</div>
+  <!-- Left column (map, info, contact) -->
+  <div class="column small-12 medium-3 large-3 left-column">
+
+    <div class="row">
+      <div class="column small-6 medium-12 large-12">
+
+        <!-- Map -->
+        <fieldset class="fieldset map-container">
+          <div id='map' style="height: 300px;"></div><br>
+          <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
+            <%= @advertisement.location %>
+          </legend>
+        </fieldset>
+      </div>
+
+      <div class="column small-6 medium-12 large-12">
+
+        <!-- Contact Information -->
+        <fieldset class="fieldset contact-container">
+          <legend>Contact</legend>
+          <dl>
+            <dt>Email</dt>
+            <dd><a href="#"><%= @advertisement.user.email %></a></dd>
+          </dl>
+        </fieldset>
+
+        <!-- Post Information -->
+        <fieldset class="fieldset information-container">
+          <legend>Info</legend>
+          <dl>
+            <dt>Posted By</dt>
+            <dd><a href="#"><%= @advertisement.user.preferred_username %></a></dd>
+            <dt>Listed</dt>
+            <dd><a href="#"><%= time_ago_in_words(@advertisement.created_at) %> ago</a></dd>
+            <dt>Last Updated</dt>
+            <dd><a href="#"><%= time_ago_in_words(@advertisement.updated_at) %> ago</a></dd>
+          </dl>
+        </fieldset>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
+  <div class="column small-12 medium-6 large-expand center-column">
+
+    <!-- Page title -->
+    <div class="row heading-container align-middle">
+      <div class="column expand">
+        <h1><%= @advertisement.emoji %> <%= @advertisement.title %></h1>
+      </div>
+    </div>
+
+    <!-- Emoji reacts -->
+    <div class="row">
+      <div class="column">
+        <p class="information">
+          <span class="label success"><%= @advertisement.location %></span>
+          <span class="label primary"><%= @advertisement.for %></span>
+          <span class="label warning"><%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
+        </p>
+        <div class="emoji-reacts" id="js-top-emoji">
+          <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
         </div>
-      <% end %>
+        <hr>
+      </div>
+    </div>
+
+    <!-- Advertisement body -->
+    <div class="row">
+      <div class="column">
+        <%== @advertisement.body %>
+        <!-- Poster Controls -->
+        <div class="poster-controls">
+          <% if user_signed_in? %>
+            <p>
+              <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
+                |
+              <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+            </p>
+          <% end %>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <!-- Emoji reacts info -->
+    <div class="row">
+      <div class="column">
+        <div id="js-reacts" class="reacts-at-bottom">
+          <%= render 'emojireact/emoji-reacts', emoji: @advertisement.emoji_react %>
+        </div>
+        <p class="view-counter"><%= @advertisement.hits %> views</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right column (images) -->
+  <div class="column small-12 medium-3 large-5 right-column">
+
+    <!-- Image container -->
+    <fieldset class="fieldset show-pics images-container">
+      <legend>Images</legend>
+      <div class="images-inner-container">
+        <div id="js-images-container" class="grid">
+          <% @advertisement.images.each_with_index do |image, index| %>
+            <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
+              <img src="<%= url_for(image) %>">
+              <div class="image-overlay">🔎</div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </fieldset>
+
+    <!-- Reveal -->
+    <div class="reveal full" id="modal" data-reveal data-close-on-click="true">
+      <div class="carousel">
+        <% @advertisement.images.each_with_index do |image, index| %>
+          <div class="carousel-cell" data-slide-id="<%= index %>">
+            <img class="carousel-cell-image"
+              src="<%= url_for(image) %>" />
+          </div>
+        <% end %>
+      </div>
+      <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
   </div>
-  <% end %>
 </div>
 
-<div class="reveal small" id="modal" data-reveal data-close-on-click="true" data-animation-in="hinge-in-from-top fast" data-animation-out="hinge-out-from-top fast">
-  <div class="card">
-    <img src="">
-  </div>
-</div>
-<div class="footer" id="js-tab-navigation">
-
-</div>
-
+<!-- Hidden form (for submitting emoji reacts) -->
 <% if user_signed_in? %>
   <%= simple_form_for :emoji,
       remote: true,

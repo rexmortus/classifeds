@@ -12,6 +12,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1
   # GET /advertisements/1.json
   def show
+    @advertisement.punch(request)
   end
 
   # GET /advertisements/new
@@ -40,9 +41,10 @@ class AdvertisementsController < ApplicationController
       for: params[:for]
     )
 
+    @advertisement.images.attach(params[:images])
+
     respond_to do |format|
       if @advertisement.save
-        @advertisement.images.attach(params[:images])
         # NewAdvertisementJob.perform_now(@advertisement)
         format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully created.' }
         format.json { render :show, status: :created, location: @advertisement }

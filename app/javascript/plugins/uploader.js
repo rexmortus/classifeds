@@ -1,45 +1,80 @@
+import Packery from "packery";
+import imagesLoaded from "imagesloaded";
+
+const previewContainer = document.getElementById('js-image-preview');
+
+let pckry;
+
+if (previewContainer) {
+
+  pckry = new Packery(previewContainer, {
+    itemSelector: '.image-container',
+    gutter: 16,
+    percentPosition: true,
+    transitionDuration: 0,
+  });
+
+}
+
+imagesLoaded(previewContainer, function( instance ) {
+  pckry.layout();
+});
+
+const imageInput = document.getElementById('advertisement_images');
+
+if (imageInput) {
+
+  imageInput.addEventListener("change", previewImages);
+
+}
+
+const imageCounter = document.getElementById('js-images-count');
+
 function previewImages() {
 
-  var preview = document.getElementById('image-preview');
+  previewContainer.innerHTML = '';
+  pckry.items = [];
 
-  preview.innerHTML = '';
+  imageCounter.innerHTML = this.files.length;
 
   if (this.files) {
+
     [].forEach.call(this.files, readAndPreview);
+
   }
 
   function readAndPreview(file) {
 
     if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+
       return alert(file.name + " is not an image");
-    } // else...
 
-    var reader = new FileReader();
+    }
 
-    reader.addEventListener("load", function() {
+    else {
 
-      const div = document.createElement('div');
-      div.classList.add('image-container');
-      div.classList.add('js-reveal-photo');
+      const reader = new FileReader();
 
-      var image = new Image();
-      image.height = 300;
-      image.title  = file.name;
-      image.src    = this.result;
+      reader.addEventListener("load", function() {
 
-      div.appendChild(image);
+        const div = document.createElement('div');
+        div.classList.add('image-container');
+        div.classList.add('packery-item');
 
-      preview.appendChild(div);
+        const image = new Image();
+        image.height = 300;
+        image.title  = file.name;
+        image.src    = this.result;
+
+        div.appendChild(image);
+
+        previewContainer.appendChild(div);
+        pckry.addItems(div);
+        pckry.layout();
+
     });
 
-    reader.readAsDataURL(file);
-
+      reader.readAsDataURL(file);
+    }
   }
-
-}
-
-const image_input = document.getElementById('advertisement_images');
-
-if (image_input) {
-    image_input.addEventListener("change", previewImages);
 }

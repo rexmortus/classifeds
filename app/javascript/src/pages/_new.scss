@@ -1,0 +1,129 @@
+.new-advertisement {
+
+  .left-column {
+
+    @include breakpoint(large) {
+      min-width:400px;
+      max-width:400px;
+    }
+
+    #map {
+
+      @include breakpoint(medium only) {
+        height: 150px !important;
+      }
+
+    }
+
+    svg {
+      @include breakpoint(medium down) {
+        display: none;
+      }
+    }
+
+    .map-container {
+      padding-bottom: 0px;
+    }
+
+    .contact-container {
+      padding-bottom: 0px;
+
+      dd a {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
+
+    .information-container {
+      padding-bottom: 0px;
+
+      dd a {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .center-column {
+
+    @include breakpoint(medium and up) {
+      .heading-container {
+        margin-top: 30px;
+      }
+    }
+
+    .js-emoji-picker {
+      text-align: right;
+    }
+
+    .form-controls {
+      margin-top: 22px;
+    }
+  }
+
+  .right-column {
+
+    #advertisement_images {
+      display: none !important;
+    }
+
+    .image-count {
+      background-color: white !important;
+      color: $primary-color !important;
+    }
+
+    .images-container {
+
+      @include breakpoint(large) {
+        margin-top: 17px !important;
+      }
+
+      @include breakpoint(small) {
+        margin-top: 0px;
+      }
+
+      .packery-item {
+
+        // @include breakpoint(medium down) {
+
+        // }
+
+        @include breakpoint(large) {
+          width: 31.333%;
+        }
+      }
+    }
+  }
+
+  #modal {
+    background: $spiral-gradient;
+    border-top: 54px solid $secondary-color;
+    border-bottom: 54px solid $secondary-color;
+    background-size: 100px 50px;
+  }
+
+  .carousel-cell {
+    width: 100%; /* full width */
+    height: 81vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-cell img {
+    border: 1px solid $medium-gray;
+    display: block;
+    max-height: 100%;
+  }
+
+  .information {
+
+    .success, .primary {
+      color: white;
+    }
+
+    .warning {
+      color: $primary-color;
+    }
+  }
+}
