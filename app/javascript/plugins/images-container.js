@@ -10,6 +10,7 @@ if (container) {
     itemSelector: '.image-container',
     gutter: '.gutter-sizer',
     percentPosition: true,
+    transitionDuration: 0,
   });
 
   imagesLoaded(container, function( instance ) {
