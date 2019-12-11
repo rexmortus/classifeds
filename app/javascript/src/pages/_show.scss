@@ -36,26 +36,43 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       margin-top: 0px;
       padding-top: 10px;
       padding-bottom: 0px;
-
-      @include breakpoint(small) {
-        margin-top: 18px;
-      }
+      overflow-wrap: break-word;
 
       dd a {
         font-size: $small-font-size;
         font-weight: bold;
       }
+
     }
 
     .information-container {
-      padding-bottom: 0px;
+      margin-top: 17px;
       padding-top: 10px;
+      padding-bottom: 0px;
 
       dd a {
         font-size: $small-font-size;
         font-weight: bold;
       }
+
+      @include breakpoint(medium) {
+        margin-top: 0px !important;
+      }
+
+      @include breakpoint(large) {
+        margin-top: 0px !important;
+      }
     }
+
+    .small-screen-emoji-container {
+      text-align: center;
+      border-color: $medium-gray !important;
+
+      span {
+        font-size: 4.25rem;
+      }
+    }
+
   }
 
   .center-column {
