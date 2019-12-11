@@ -117,6 +117,7 @@
       <legend>Images</legend>
       <div class="images-inner-container">
         <div id="js-images-container" class="grid">
+          <div class="gutter-sizer"></div>
           <% @advertisement.images.each_with_index do |image, index| %>
             <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
               <img src="<%= url_for(image) %>">
