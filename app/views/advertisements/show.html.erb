@@ -106,7 +106,8 @@
         <p class="view-counter"><%= @advertisement.hits %> views</p>
       </div>
     </div>
-
+      </div>
+    </div>
   </div>
 
   <!-- Right column (images) -->
@@ -115,6 +116,7 @@
     <!-- Image container -->
     <fieldset class="fieldset show-pics images-container">
       <legend>Images</legend>
+
       <div class="images-inner-container">
         <div id="js-images-container" class="grid">
           <% @advertisement.images.each_with_index do |image, index| %>

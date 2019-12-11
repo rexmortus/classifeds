@@ -29,7 +29,7 @@
 .image-container:hover {
 
   @include breakpoint(medium and up) {
-    
+
     img {
       filter: grayscale(0%);
       outline: 3px solid $primary-color;
