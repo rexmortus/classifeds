@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/a/:category_id/:subcategory_id', to: 'advertisements#subcategory'
 
 
-  root to: 'v2search#search'
+  root to: 'v2_search#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Webfinger account lookup
