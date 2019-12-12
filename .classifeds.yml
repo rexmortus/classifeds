@@ -1,5 +1,5 @@
 default_location: Melbourne, Victoria, Australia
-max_search_distance: 750
+max_search_distance: 500
 default_search_distance: 50
 
 types:

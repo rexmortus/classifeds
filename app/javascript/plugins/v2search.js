@@ -79,15 +79,11 @@ if (form) {
 
   $(form).on('ajax:before', function() {
     $('#search_query').blur();
-    appliedFiltersContainer.classList.add('submitting');
-    container.classList.add('submitting');
   })
 
   $(form).on('ajax:success', function(event, xhr, status, error) {
     pckry.reloadItems();
     pckry.layout();
-    appliedFiltersContainer.classList.remove('submitting');
-    container.classList.remove('submitting');
   });
 
 }
