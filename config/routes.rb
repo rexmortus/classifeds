@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'v2_search/search'
+  get '/search', to: 'v2_search#search'
 
   resources :advertisements, param: :uuid do
     post '/react', to: 'emojireact#create'
