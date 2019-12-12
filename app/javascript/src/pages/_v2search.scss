@@ -13,11 +13,15 @@
 
   }
 
+  .type-filters-container {
+    margin-top: 0px;
+  }
+
   #js-type-filters {
 
     .selected {
       font-weight: bold;
-      background-color: $alert-color;
+      background-color: $primary-color;
 
       a {
         color: white !important;
