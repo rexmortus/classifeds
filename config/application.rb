@@ -26,6 +26,8 @@ module Classifeds
     config.classifeds_default_geocode = Geocoder.search(config.classifeds_default_location).first.coordinates
     config.classifeds_categories = classifeds_config['categories']
     config.classifeds_types = classifeds_config['types']
+    config.classifeds_max_search_distance = classifeds_config['max_search_distance']
+    config.classifeds_default_search_distance = classifeds_config['default_search_distance']
 
     # Load and sign the Classifeds pledge
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)

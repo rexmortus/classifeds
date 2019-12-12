@@ -52,6 +52,9 @@
     #js-results-grid {
 
         .js-packery-item {
+          transition: all .05s ease-in-out;
+          outline: none;
+          outline-offset: 0px;
 
           img {
             transition: all .05s ease-in-out;
