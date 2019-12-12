@@ -68,6 +68,16 @@
         color: $primary-color;
       }
 
+      .label.alert {
+        color: white;
+
+        &:hover {
+          cursor: pointer;
+          background-color: darken($alert-color, 10);
+        }
+
+      }
+
     }
 
     #js-results-grid {

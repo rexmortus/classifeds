@@ -2,14 +2,20 @@
 
 <% if types.present? %>
   <% types.each do |type| %>
-    <span class="label primary"><%= type %></span>
+  <span class="label primary"><%= type %></span>
   <% end %>
 <% else %>
-    <span class="label primary">All Types</span>
+  <span class="label primary">All Types</span>
 <% end %>
 
 <% if category.present? %>
   <span class="label warning"><%= category %></span>
 <% else %>
-    <span class="label warning">All Categories</span>
+  <span class="label warning">All Categories</span>
+<% end %>
+
+<% if types.present? || category.present? %>
+  <span class="label alert">Clear Filters</span>
+<% else %>
+  <span class="label alert">No Filters</span>
 <% end %>
