@@ -59,7 +59,22 @@
           img {
             transition: all .05s ease-in-out;
             opacity: 0.90;
-            filter: blur(0.5px) grayscale(35%);;
+            filter: blur(0.3px) grayscale(15%);
+          }
+
+          .label {
+            transition: all .05s ease-in-out;
+            filter: grayscale(15%);
+          }
+
+          .warning {
+            color: $primary-color;
+          }
+
+          .emoji {
+            transition: all .05s ease-in-out;
+            opacity: 0.90;
+            filter: blur(0.3px) grayscale(15%);
           }
 
           &:hover {
@@ -68,7 +83,16 @@
 
             img {
               opacity: 1;
-              filter: blur(0) grayscale(0);;
+              filter: blur(0) grayscale(0);
+            }
+
+            .label {
+              filter: grayscale(0);
+            }
+
+            .emoji {
+              opacity: 1;
+              filter: blur(0) grayscale(0);
             }
 
           }
