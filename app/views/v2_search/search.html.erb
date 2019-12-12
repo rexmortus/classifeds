@@ -22,21 +22,27 @@
           </legend>
 
           <!-- Distance slider -->
-          <div class="slider" id="radius-slider" data-slider data-initial-start="25" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
-            <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance"></span>
-            <span class="slider-fill" data-slider-fill></span>
-          </div>
-          <div class="input-group">
-            <span class="input-group-label">+</span>
-            <%= f.input :distance,
-            :label => false,
-            :input_html => {
-              class: "input-group-field",
-              value: @distance_param
-            } %>
-            <div class="input-group-button">
-              <input type="submit" class="button" value="km">
+          <div class="row">
+            <div class="column small-expand medium-expand large-expand">
+              <div class="slider" id="radius-slider" data-slider data-initial-start="25" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
+                <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance"></span>
+                <span class="slider-fill" data-slider-fill></span>
+              </div>
             </div>
+            <div class="column small-5 medium-12 large-5">
+              <div class="input-group">
+                <%= f.input :distance,
+                :label => false,
+                :input_html => {
+                  class: "input-group-field",
+                  value: @distance_param
+                } %>
+                <div class="input-group-button">
+                  <input type="submit" class="button" value="km">
+                </div>
+              </div>
+            </div>
+
           </div>
         </fieldset>
 
