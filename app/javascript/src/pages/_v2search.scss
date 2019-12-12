@@ -13,6 +13,23 @@
 
   }
 
+  #js-type-filters {
+
+    .selected {
+      font-weight: bold;
+      background-color: $alert-color;
+
+      a {
+        color: white !important;
+      }
+    }
+  }
+
+  #type-filter-inputs {
+    height: 0px;
+    visibility: hidden;
+  }
+
 }
 
 
@@ -50,6 +67,8 @@
     }
 
     #js-results-grid {
+
+        margin-top: 3px;
 
         .js-packery-item {
           transition: all .05s ease-in-out;

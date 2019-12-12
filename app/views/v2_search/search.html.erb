@@ -45,15 +45,20 @@
       <div class="column small-4 medium-12 large-12 small-order-2 medium-order-3 large-order-">
 
         <!-- Type -->
-        <fieldset class="fieldset information-container">
+        <fieldset class="fieldset">
           <legend>Type</legend>
+          <div id="js-type-filters">
+          <%= render 'v2_search/partials/type_filters', filters: @types_param %>
+          </div>
+          <div id="type-filter-inputs">
           <%=
             f.collection_check_boxes :types, Rails.application.config.classifeds_types, :to_s, :to_s, {
               :include_blank => false,
               :include_hidden => false,
-              :selected => []
+              :selected => @types_param
             }, {}
            %>
+           </div>
           </fieldset>
 
          <!-- Category -->

@@ -8,7 +8,7 @@ class V2SearchController < ApplicationController
       @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
       @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
       @distance_param =     params[:search][:distance].to_i
-      @types_param =        params[:search][:types]
+      @types_param =        params[:search][:types].present? ? params[:search][:types] : []
       @categories_param =   params[:search][:category_subcategory]
       @advertisements =     filter(Advertisement.all)
     else

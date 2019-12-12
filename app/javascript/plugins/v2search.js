@@ -23,6 +23,15 @@ if (form) {
     pckry.layout();
   });
 
+  // Applying type filters
+  $('#js-type-filters').on('click', function(event) {
+    let typeFilter = event.target.dataset.typeFilter;
+    let filterInput = document.getElementById('search_types_' + typeFilter)
+    filterInput.checked = !filterInput.checked
+    Rails.fire(form, 'submit');
+  });
+
+  // Applying distance filter
   $('#radius-slider').on('changed.zf.slider', function() {
 
     if (window.map.removeLayer) {
@@ -66,11 +75,6 @@ if (form) {
         ]);
     }
 
-  });
-
-
-  $("#search_form :input,:input[name=checkbox],:input[name=radio]").change(function() {
-    Rails.fire(form, 'submit');
   });
 
   $(form).on('ajax:before', function() {

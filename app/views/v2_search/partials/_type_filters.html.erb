@@ -1,0 +1,8 @@
+<ul class="vertical menu">
+  <% (Rails.application.config.classifeds_types && filters).each do |type| %>
+    <li class="selected"><a href="#" data-type-filter="<%= type.downcase %>"><%= type %></a></li>
+  <% end %>
+  <% (Rails.application.config.classifeds_types - filters).each do |type| %>
+    <li><a href="#" data-type-filter="<%= type.downcase %>"><%= type %></a></li>
+  <% end %>
+</ul>
