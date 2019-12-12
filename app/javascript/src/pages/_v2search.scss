@@ -34,6 +34,23 @@
     visibility: hidden;
   }
 
+  #js-category-filters {
+
+    .selected {
+      font-weight: bold;
+      background-color: $warning-color;
+
+      a {
+        color: $primary-color !important;
+      }
+    }
+  }
+
+  #category-filter-inputs {
+    height: 0px;
+    visibility: hidden;
+  }
+
 }
 
 

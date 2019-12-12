@@ -61,6 +61,7 @@
             f.collection_check_boxes :types, Rails.application.config.classifeds_types, :to_s, :to_s, {
               :include_blank => false,
               :include_hidden => false,
+              :label => false,
               :selected => @types_param
             }, {}
            %>
@@ -70,13 +71,18 @@
          <!-- Category -->
          <fieldset class="fieldset contact-container">
            <legend>Category</legend>
+           <div id="js-category-filters">
+           <%= render 'v2_search/partials/category_filters', filters: @categories_param %>
+           </div>
+           <div id="category-filter-inputs">
            <%=
              f.collection_radio_buttons :category_subcategory, Advertisement.categories_as_checkbox_collection, :to_s, :to_s, {
                :include_blank => true,
                :include_hidden => false,
-               :selected => []
+               :selected => @categories_param
              }, {}
             %>
+            </div>
           </fieldset>
 
       </div>

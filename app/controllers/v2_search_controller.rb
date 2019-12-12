@@ -17,6 +17,7 @@ class V2SearchController < ApplicationController
       @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
       @distance_param =     Rails.application.config.classifeds_default_search_distance
       @types_param =        []
+      @categories_param =   []
       @advertisements =     Advertisement.near(@geocode_param, @distance_param, units: :km).first(10)
     end
     # raise

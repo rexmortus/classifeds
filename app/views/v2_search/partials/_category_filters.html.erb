@@ -1,0 +1,39 @@
+<% if filters.present? %>
+
+<ul class="vertical menu">
+
+  <% @all_categories = Rails.application.config.classifeds_categories.to_a %>
+
+  <% @all_categories.each do |category| %>
+    <% category_selected = filters.include?(category.first) %>
+    <% @selected_category = category.clone if category_selected %>
+    <% @all_categories.delete(category) if category_selected %>
+  <% end %>
+
+  <li>
+    <a class="selected" href="#" data-category-filter="<%= @selected_category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= @selected_category.first %></a>
+    <ul class="nested vertical menu">
+      <% @selected_category.second.each do |subcategory| %>
+      <% subcategory_selected = filters.include?(subcategory) %>
+      <li>
+        <a class="<%= "selected" if subcategory_selected %>" href="#" data-category-filter="<%= "#{@selected_category.first.downcase.tr('&\/', '').gsub(' ', '_')}__#{subcategory.downcase.tr('&\/', '').gsub(' ', '_')}" %>"><%= subcategory %></a>
+      </li>
+      <% end %>
+    </ul>
+  </li>
+
+  <% (@all_categories - @selected_category).each do |category| %>
+  <li>
+    <a href="#" data-category-filter="<%= category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= category.first %></a>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+<ul class="vertical menu">
+  <% Rails.application.config.classifeds_categories.each do |category| %>
+    <li>
+      <a href="#" data-category-filter="<%= category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= category.first %></a>
+    </li>
+  <% end %>
+</ul>
+<% end %>

@@ -5,11 +5,8 @@ default_search_distance: 50
 types:
   - Karma
   - Trade
-  - Loan
   - Sale
   - Hire
-  - Info
-  - Seeking
 
 categories:
     Art:

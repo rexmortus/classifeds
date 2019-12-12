@@ -7,10 +7,12 @@ const form = document.getElementById('search_form');
 
 if (form) {
 
-  let container = document.getElementById('js-results-grid');
+  let resultsContainer = document.getElementById('js-results-grid');
   let appliedFiltersContainer = document.getElementById('js-applied-filters');
+  let typeFiltersContainer = document.getElementById('js-type-filters');
+  let categoryFiltersContainer = document.getElementById('js-category-filters');
 
-  let pckry = new Packery(container, {
+  let pckry = new Packery(resultsContainer, {
     itemSelector: '.js-packery-item',
     gutter: '.js-gutter-sizer',
     percentPosition: true,
@@ -19,19 +21,38 @@ if (form) {
 
   pckry.layout();
 
-  imagesLoaded(container, function( instance ) {
+  imagesLoaded(resultsContainer, function( instance ) {
     pckry.layout();
   });
 
   // Applying type filters
-  $('#js-type-filters').on('click', function(event) {
+  typeFiltersContainer.addEventListener('click', function(event) {
+    event.preventDefault();
     let typeFilter = event.target.dataset.typeFilter;
     let filterInput = document.getElementById('search_types_' + typeFilter)
     filterInput.checked = !filterInput.checked
     Rails.fire(form, 'submit');
-  });
+  })
 
-  // Clearing filter
+  // Applying category filters
+  categoryFiltersContainer.addEventListener('click', function(event) {
+    event.preventDefault();
+    let categoryFilter = event.target.dataset.categoryFilter;
+    let filterInput = document.getElementById('search_category_subcategory_' + categoryFilter)
+    filterInput.checked = !filterInput.checked
+    Rails.fire(form, 'submit');
+  })
+
+  // A function to clear filters
+  window.clearFilters = function() {
+    document.getElementsByName('search[types][]').forEach(function(element) {
+    	element.checked = false;
+    })
+    document.getElementsByName('search[category_subcategory]').forEach(function(element) {
+    	element.checked = false;
+    })
+    Rails.fire(form, 'submit');
+  }
 
   // Applying distance filter
   $('#radius-slider').on('changed.zf.slider', function() {
@@ -82,14 +103,14 @@ if (form) {
   $(form).on('ajax:before', function() {
     $('#search_query').blur();
     appliedFiltersContainer.classList.add('submitting');
-    container.classList.add('submitting');
+    resultsContainer.classList.add('submitting');
   })
 
   $(form).on('ajax:success', function(event, xhr, status, error) {
     pckry.reloadItems();
     pckry.layout();
     appliedFiltersContainer.classList.remove('submitting');
-    container.classList.remove('submitting');
+    resultsContainer.classList.remove('submitting');
   });
 
 }

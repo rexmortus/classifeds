@@ -1,4 +1,6 @@
-<span class="label success">Within <%= distance %> km of <%= location %></span>
+<span class="label success">
+  Within <%= distance %> km of <%= location %>
+</span>
 
 <% if types.present? %>
   <% types.each do |type| %>
@@ -15,7 +17,7 @@
 <% end %>
 
 <% if types.present? || category.present? %>
-  <span class="label alert">Clear Filters</span>
+  <span class="label alert" onclick="window.clearFilters()">Clear Filters</span>
 <% else %>
   <span class="label alert">No Filters</span>
 <% end %>
