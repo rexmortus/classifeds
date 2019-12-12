@@ -1,5 +1,5 @@
-var paramsContainer = document.getElementById('js-params-container');
-var resultsContainer = document.getElementById('js-results-container');
+var resultsContainer = document.getElementById('js-results-grid');
+var appliedFiltersContainer = document.getElementById('js-applied-filters');
 
 resultsContainer.innerHTML = '<%= j render "v2_search/partials/search_results", advertisements: @advertisements %>'
-paramsContainer.innerHTML = '<%= j params %>'
+appliedFiltersContainer.innerHTML = '<%= j render "v2_search/partials/applied_filters", location: @location_param, distance: @distance_param, types: @types_param, category: @categories_param %>'

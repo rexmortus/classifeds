@@ -5,16 +5,16 @@ class V2SearchController < ApplicationController
   def search
     if params[:search].present?
       @query_param =        params[:search][:query]
-      @location_param =     params[:search][:location]
+      @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
       @distance_param =     params[:search][:distance].to_i
       @types_param =        params[:search][:types]
       @categories_param =   params[:search][:category_subcategory]
       @advertisements =     filter(Advertisement.all)
     else
       @query_param =    ""
-      @location_param = Rails.application.config.classifeds_default_location
+      @location_param = user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
       @distance_param = 25
-      @type_param = []
+      @types_param = []
       @advertisements = Advertisement.near(@location_param, @distance_param, units: :km).first(10)
     end
     # raise
@@ -23,7 +23,6 @@ class V2SearchController < ApplicationController
   private
 
   def filter(ads)
-    ads = ads.where("title ILIKE (?) OR body ILIKE (?)", "%#{@query_param}%", "%#{@query_param}%")
 
     ads = ads.near(@location_param, @distance_param, units: :km)
 
