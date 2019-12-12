@@ -73,6 +73,10 @@
           .card {
             margin-bottom: 0 !important;
 
+            .card-image {
+              padding: 0.125rem;
+            }
+
             .card-location {
               color: $primary-color !important;
               margin-bottom: 0px;

@@ -3,11 +3,13 @@
   <% advertisements.each do |ad| %>
     <a class="js-packery-item" href="/advertisements/<%= ad.id %>">
       <div class="card">
-        <% if ad.images.attached? %>
-        <img src="<%= url_for(ad.images.first) %>" />
-        <% else %>
-        <img src="https://picsum.photos/320" />
-        <% end %>
+        <div class="card-image">
+          <% if ad.images.attached? %>
+          <img src="<%= url_for(ad.images.first) %>" />
+          <% else %>
+          <img src="https://picsum.photos/320" />
+          <% end %>
+        </div>
         <div class="card-section">
           <div class="row">
             <div class="columns small-expand medium-expand large-expand">
