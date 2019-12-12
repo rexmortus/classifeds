@@ -11,8 +11,7 @@ import "flickity/dist/flickity.css"
 
 // My plugins
 import "plugins/map"
-import "plugins/search"
-import "plugins/search-slider"
+import "plugins/v2search"
 import "plugins/editor"
 import "plugins/places"
 import "plugins/reveal-image"

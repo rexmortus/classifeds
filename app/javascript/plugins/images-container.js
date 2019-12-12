@@ -1,4 +1,3 @@
-import "jquery"
 import Packery from "packery"
 import imagesLoaded from "imagesloaded"
 

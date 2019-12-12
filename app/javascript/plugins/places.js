@@ -1,12 +1,6 @@
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js"
 import { createGeoJSONCircle } from 'plugins/geojsoncircle'
 
-$('form').on('keypress', e => {
-    if (e.keyCode == 13) {
-        return false;
-    }
-});
-
 // Places autocomplete
 var placesAutocomplete = document.getElementById('address-input');
 

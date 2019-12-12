@@ -1,0 +1,15 @@
+<span class="label success">Within <%= distance %> km of <%= location %></span>
+
+<% if types.present? %>
+  <% types.each do |type| %>
+    <span class="label primary"><%= type %></span>
+  <% end %>
+<% else %>
+    <span class="label primary">All Types</span>
+<% end %>
+
+<% if category.present? %>
+  <span class="label warning"><%= category %></span>
+<% else %>
+    <span class="label warning">All Categories</span>
+<% end %>

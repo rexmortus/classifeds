@@ -9,7 +9,8 @@
 @import "src/components/image-container.scss";
 
 // Import page-specific styles
-@import "src/pages/_search.scss";
+// @import "src/pages/_search.scss";
+@import "src/pages/_v2search.scss";
 @import "src/pages/_show.scss";
 @import "src/pages/_new.scss";
 
@@ -33,6 +34,7 @@ body {
   fieldset legend {
     color: $primary-color;
     font-weight: bold;
+    text-overflow: hidden;
   }
 
   a,input {
