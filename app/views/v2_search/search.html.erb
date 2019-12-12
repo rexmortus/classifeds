@@ -22,7 +22,7 @@
           </legend>
 
           <!-- Distance slider -->
-          <div class="slider" id="radius-slider" data-slider data-initial-start="25" data-start="1" data-end="500" data-step="5">
+          <div class="slider" id="radius-slider" data-slider data-initial-start="25" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
             <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance"></span>
             <span class="slider-fill" data-slider-fill></span>
           </div>
