@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   get 'v2_search/search'
+
   resources :advertisements, param: :uuid do
     post '/react', to: 'emojireact#create'
   end
 
   get '/a/:category_id/:subcategory_id', to: 'advertisements#subcategory'
 
-  devise_for :users
-  root to: 'pages#home'
+
+  root to: 'v2search#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Webfinger account lookup

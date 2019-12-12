@@ -19,7 +19,8 @@ if (editPageButton) {
      input.value = emoji;
    });
 
-   editPageButton.addEventListener('click', () => {
+   editPageButton.addEventListener('click', (event) => {
+     event.preventDefault();
      picker.pickerVisible ? picker.hidePicker() : picker.showPicker(editPageButton);
    });
 
