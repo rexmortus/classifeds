@@ -38,7 +38,7 @@
                   value: @distance_param
                 } %>
                 <div class="input-group-button">
-                  <input type="submit" class="button" value="km">
+                  <input type="submit" class="button expand" value="km">
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
             :label => false,
             :input_html => {
               placeholder: "Search #{Advertisement.all.count} classifeds",
-              autofocus: true,
+              autofocus: false,
               value: @query_param
             }
           %>
