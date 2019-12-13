@@ -28,30 +28,31 @@
 
 <!-- List view -->
 <% elsif view_type === 'list' %>
-<div class="callout warning">
-  <table>
-    <thead>
-      <tr>
-        <th width="200">Image</th>
-        <th width="200">Title</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% advertisements.each do |ad| %>
-      <tr>
-        <td><img height="150" src="<%= url_for(ad.images.first) %>" /></td>
-        <td><%= "#{ad.emoji} #{ad.title}" %></td>
-        <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="list-container">
+    <table class="hover striped">
+      <thead>
+        <tr>
+          <td>Image</td>
+          <td>Title</td>
+          <td>Description</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% advertisements.each do |ad| %>
+        <tr>
+          <td width="150px" class="image-holder"><img src="<%= url_for(ad.images.first) %>" /></td>
+          <td width="250px"><a href="/advertisements/<%= ad.id %>"><%= "#{ad.emoji} #{ad.title}" %></a></td>
+          <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
 </div>
 
 <!-- Map view -->
 <% elsif view_type === 'map' %>
-<div class="map-container">
+<div class="map-container stretch">
   <div id='map-results-view' style="height: 673px;"></div>
 </div>
 <% end %>

@@ -646,11 +646,11 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 50. Table
 // ---------
 
-$table-background: $white;
-$table-color-scale: 5%;
-$table-border: 1px solid smart-scale($table-background, $table-color-scale);
+$table-background: #faf0f1;
+$table-color-scale: 3%;
+$table-border: none;
 $table-padding: rem-calc(8 10 10);
-$table-hover-scale: 2%;
+$table-hover-scale: 5%;
 $table-row-hover: darken($table-background, $table-hover-scale);
 $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
 $table-is-striped: true;
@@ -660,7 +660,7 @@ $table-head-background: smart-scale($table-background, $table-color-scale / 2);
 $table-head-row-hover: darken($table-head-background, $table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
-$table-head-font-color: $body-font-color;
+$table-head-font-color: $primary-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 $table-stack-breakpoint: medium;
