@@ -54,7 +54,6 @@ if (form) {
     })
   });
 
-
   // A function to clear filters
   window.clearFilters = function() {
     document.getElementsByName('search[types][]').forEach(function(element) {
@@ -118,10 +117,6 @@ if (form) {
       element.classList.add('submitting');
     })
     resultsContainer.classList.add('submitting');
-  })
-
-  $(form).on('ajax:beforeSend', function(xhr, settings) {
-    // window.history.pushState({"html":'',"pageTitle":xhr.originalEvent.detail[1].url},"", xhr.originalEvent.detail[1].url);
   })
 
   $(form).on('ajax:success', function(event, xhr, status, error) {

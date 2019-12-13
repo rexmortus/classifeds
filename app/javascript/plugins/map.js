@@ -75,6 +75,12 @@ $(document).ready(function() {
 // Start up the big map
 $(window).on('initialise-map-view', function() {
 
+  // Hide the small map
+  var smallMap = document.getElementById('map');
+  smallMap.style.visibility = 'hidden';
+  smallMap.style.height = '0px';
+  smallMap.style.marginTop = '-30px';
+
   var map = document.getElementById('map-results-view')
 
   if (map) {
@@ -84,17 +90,23 @@ $(window).on('initialise-map-view', function() {
     var map = new mapboxgl.Map({
       container: 'map-results-view',
       center: $('#user_location').data('geocode').slice().reverse(),
-      zoom: 8,
+      zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v9',
       pitch: 50,
-      interactive: false
+      interactive: true
     });
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
     var searchRadius = 3;
 
+    // On initial load
     map.on('load', function() {
 
+      // Save the map to the window global
+      window.mapView = map
+      window.markers = [];
+
+      // Generate a new search radius polygon
       var polygon = createGeoJSONCircle(coordinates, searchRadius);
       map.addSource("polygon", polygon);
 
@@ -109,17 +121,14 @@ $(window).on('initialise-map-view', function() {
           }
       });
 
-      var geocode = $('#user_location').data('geocode').slice().reverse()
-
-      window.map = map
-      window.markers = [];
-
+      // Create a marker
       const marker = new mapboxgl.Marker()
-        .setLngLat(geocode)
+        .setLngLat(coordinates)
         .addTo(map);
 
       window.markers.push(marker);
 
+      // Center the map on the new coordinates
       var center_x = coordinates[0];
       var center_y = coordinates[1];
       var earth_radius = 6378.1;
@@ -131,7 +140,7 @@ $(window).on('initialise-map-view', function() {
       var x2 = center_x + dX;
       var y2 = center_y + dY;
 
-      window.map.fitBounds(
+      window.mapView.fitBounds(
         [
           [x1,y1],
           [x2,y2]
@@ -139,5 +148,52 @@ $(window).on('initialise-map-view', function() {
 
     })
 
+    window.addEventListener('remove-map-view', function() {
+      smallMap.style.visibility = 'visible';
+      smallMap.style.height = '150px';
+      smallMap.style.marginTop = '0px';
+      window.mapView = null;
+    });
+
   }
 })
+
+$(window).on('update-map-view', function() {
+
+  const coordinates = $('#user_location').data('geocode').slice().reverse()
+  const searchRadius = parseInt($('#search_distance').val());
+
+  const polygon = createGeoJSONCircle(coordinates, searchRadius);
+  window.mapView.removeLayer('polygon');
+  window.mapView.removeSource('polygon');
+  window.mapView.addSource("polygon", polygon);
+
+  window.mapView.addLayer({
+      "id": "polygon",
+      "type": "fill",
+      "source": "polygon",
+      "layout": {},
+      "paint": {
+          "fill-color": "#6e4d54",
+          "fill-opacity": 0.15
+      }
+  });
+
+  const center_x = coordinates[0];
+  const center_y = coordinates[1];
+  const earth_radius = 6378.1;
+  const dY = 360 * searchRadius / earth_radius * 0.2;
+  const dX = dY * Math.cos(center_y / (Math.PI / 180)) * 0.2;
+
+  const x1 = center_x - dX;
+  const y1 = center_y - dY;
+  const x2 = center_x + dX;
+  const y2 = center_y + dY;
+
+  window.mapView.fitBounds(
+    [
+      [x1,y1],
+      [x2,y2]
+    ]);
+
+});

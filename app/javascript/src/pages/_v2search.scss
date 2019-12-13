@@ -128,10 +128,6 @@
         padding-bottom: 0px;
         border-color: $medium-gray;
 
-        @include breakpoint(small) {
-
-        }
-
         @include breakpoint(medium) {
           margin-top: 30px;
         }
@@ -144,6 +140,19 @@
 
       .view-type-toggle {
         text-align: right;
+      }
+
+      .map-container {
+
+        @include callout-style($alert-color);
+        border: 1px solid $medium-gray;
+        padding: 1rem;
+
+        #map-results-view {
+          border: 1px solid $medium-gray;
+          height: 700px;
+        }
+
       }
 
       #search_view_type_masonry {
