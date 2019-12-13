@@ -21,7 +21,7 @@
 
     .selected {
       font-weight: bold;
-      background-color: $primary-color;
+      background-color: $success-color;
 
       a {
         color: white !important;
@@ -161,31 +161,46 @@
           }
         }
 
-        .js-gutter-sizer {
-          width: 1.25rem;
-        }
+        // (container width - (columns * column width)) / number of gutters = gutter widt
 
         @include breakpoint(small) {
 
+          .js-gutter-sizer {
+            width: calc(100% - (2 * 49%) / 1);
+          }
+
           .js-packery-item {
-            width: calc(50% - 1.25rem);
+            width: 49%;
           }
 
         }
 
         @include breakpoint(medium) {
 
+          .js-gutter-sizer {
+            width: calc(2rem / 2);
+          }
+
           .js-packery-item {
-            width: calc(33.333% - 1.25rem);
+            width: calc(33.2345% - (2rem / 3));
           }
 
         }
 
         @include breakpoint(large) {
 
+          .js-gutter-sizer {
+            width: calc(3rem / 4);
+          }
+
           .js-packery-item {
-            width: calc(20% - 1.25rem);
+            width: calc(20% - (3rem / 5));
           }
         }
     }
+
+    .no-results {
+      color: $dark-gray;
+    }
+
 }

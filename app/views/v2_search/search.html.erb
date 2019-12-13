@@ -16,9 +16,9 @@
 
         <!-- Map -->
         <fieldset class="fieldset map-container">
-          <div id='map' style="height: 300px;"></div><br>
+          <div id='map' style="height: 150px;"></div><br>
           <legend id="user_location" data-geocode="<%= user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode %>">
-            <i class="fi-marker"></i> <%= user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location %>
+            <i class="material-icons">language</i> <%= user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location %>
           </legend>
 
           <!-- Distance slider -->
@@ -52,7 +52,7 @@
 
         <!-- Type -->
         <fieldset class="fieldset type-filters-container">
-          <legend>Type</legend>
+          <legend><i class="material-icons">info</i> Type</legend>
           <div id="js-type-filters">
           <%= render 'v2_search/partials/type_filters', filters: @types_param %>
           </div>
@@ -70,7 +70,7 @@
 
          <!-- Category -->
          <fieldset class="fieldset category-container">
-           <legend>Category</legend>
+           <legend><i class="material-icons">category</i> Category</legend>
            <div id="js-category-filters">
            <%= render 'v2_search/partials/category_filters', filters: @categories_param %>
            </div>
@@ -100,6 +100,7 @@
             f.input :query,
             :label => false,
             :input_html => {
+              placeholder: "Search #{Advertisement.all.count} classifeds",
               autofocus: true,
               value: @query_param
             }
@@ -128,4 +129,3 @@
   </div>
 </div>
 <% end %>
-<hr>

@@ -18,6 +18,24 @@
 
 body {
 
+  .material-icons {
+
+    @include breakpoint(small) {
+      font-size: 22px;
+    }
+
+    @include breakpoint(medium) {
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+    @include breakpoint(large) {
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+  }
+
   background-color: $body-background;
   $body-background-alt: darken($body-background, 1);
 
