@@ -109,6 +109,12 @@
 
   }
 
+  .view-type-toggle {
+
+    .selected {
+      color: $success-color;
+    }
+  }
 
   .center-column {
 
@@ -131,9 +137,8 @@
 
       }
 
-      #js-applied-filters {
-
-
+      .view-type-toggle {
+        text-align: right;
       }
 
       #js-results-grid {
