@@ -10,26 +10,29 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .left-column {
 
-    // word-break: break-all;
-    // word-wrap: break-word;
-
     @include breakpoint(large) {
       min-width:400px;
       max-width:400px;
     }
 
-    #map {
-
-      border: 1px solid $medium-gray;
-
-      @include breakpoint(medium only) {
-        height: 150px !important;
-      }
-
-    }
-
     .map-container {
       padding-bottom: 0px;
+
+      @include breakpoint(small) {
+        margin-top: 0px;
+      }
+
+      @include breakpoint(medium) {
+        margin-top: 17px;
+      }
+
+      @include breakpoint(large) {
+        margin-top: 17px;
+      }
+
+      #map {
+        border: 1px solid $medium-gray;
+      }
     }
 
     .contact-container {
@@ -52,6 +55,10 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       dd a {
         font-size: $small-font-size;
         font-weight: bold;
+      }
+
+      @include breakpoint(small) {
+        margin-top: 0px !important;
       }
 
       @include breakpoint(medium) {
@@ -78,6 +85,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .heading-container {
 
+      margin-top: 17px;
+
       h1 {
         font-size: 1.8rem;
       }
@@ -94,9 +103,12 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     }
 
+    @include breakpoint(small) {
+
+    }
+
     @include breakpoint(medium) {
       .heading-container {
-        margin-top: 17px;
 
         h1 {
           margin-bottom: 3px;
@@ -240,27 +252,42 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
     .images-container {
 
-      // padding-top: 7px;
-
-      @include breakpoint(medium) {
-        margin-top: 17px !important;
-      }
-
-      @include breakpoint(large) {
-        margin-top: 17px !important;
+      .packery-item {
+        img {
+          width: 100%;
+        }
       }
 
       @include breakpoint(small) {
         margin-top: 0px;
+
+        .gutter-sizer {
+          width: 1rem;
+        }
+
+        .packery-item {
+          width: 100%;
+        }
+
       }
 
-      .gutter-sizer {
-        width: 1.25rem;
+      @include breakpoint(medium) {
+        .gutter-sizer {
+          width: 1rem;
+        }
+
+        .packery-item {
+          width: 100%;
+        }
       }
 
-      .packery-item {
-        @include breakpoint(large) {
-          width: calc(50% - 0.625rem);
+      @include breakpoint(large) {
+        .gutter-sizer {
+          width: calc(2rem / 2);
+        }
+
+        .packery-item {
+          width: calc(33.2345% - (2rem / 3));
         }
       }
     }
@@ -269,8 +296,6 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 #modal {
   background: $spiral-gradient;
-  border-top: 54px solid $secondary-color;
-  border-bottom: 54px solid $secondary-color;
   background-size: 100px 50px;
 }
 
