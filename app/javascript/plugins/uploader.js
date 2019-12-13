@@ -45,7 +45,7 @@ function previewImages() {
 
   function readAndPreview(file) {
 
-    if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+    if (!/\.(jpe?g|png|gif|webp)$/i.test(file.name)) {
 
       return alert(file.name + " is not an image");
 
