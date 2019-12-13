@@ -82,6 +82,16 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         font-size: 1.8rem;
       }
 
+      #js-add-bookmark {
+        text-align: right;
+
+      }
+
+      .material-icons {
+        color: $secondary-color;
+        cursor: pointer;
+      }
+
     }
 
     @include breakpoint(medium) {

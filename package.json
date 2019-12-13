@@ -19,7 +19,6 @@
     "jquery": "^3.4.1",
     "jquery-emoji-picker": "^0.2.2",
     "mapbox-gl": "^1.5.1",
-    "material-design-icons": "^3.0.1",
     "motion-ui": "^2.0.3",
     "packery": "^2.1.2",
     "places.js": "^1.17.1",
