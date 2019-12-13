@@ -272,6 +272,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       }
 
       @include breakpoint(medium) {
+        margin-top: 17px;
+
         .gutter-sizer {
           width: 1rem;
         }
@@ -282,6 +284,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       }
 
       @include breakpoint(large) {
+        margin-top: 17px;
+
         .gutter-sizer {
           width: calc(2rem / 2);
         }
@@ -301,7 +305,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 .carousel-cell {
   width: 100%; /* full width */
-  height: 81vh;
+  margin-top: 8vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
