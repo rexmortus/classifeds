@@ -1,5 +1,8 @@
 <% if advertisements.present? %>
-  <div class="js-gutter-sizer"/>  
+
+<!-- Masonry view -->
+<% if view_type === 'masonry' %>
+  <div class="js-gutter-sizer"/>
   <% advertisements.each do |ad| %>
     <a class="js-packery-item" href="/advertisements/<%= ad.id %>">
       <div class="card">
@@ -22,6 +25,36 @@
       </div>
     </a>
   <% end %>
+
+<!-- List view -->
+<% elsif view_type === 'list' %>
+<div class="callout warning">
+  <table>
+    <thead>
+      <tr>
+        <th width="200">Image</th>
+        <th width="200">Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% advertisements.each do |ad| %>
+      <tr>
+        <td><img height="150" src="<%= url_for(ad.images.first) %>" /></td>
+        <td><%= "#{ad.emoji} #{ad.title}" %></td>
+        <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Map view -->
+<% elsif view_type === 'map' %>
+<div class="callout warning">
+  <div id='map-results-view' style="height: 600px;"></div>
+</div>
+<% end %>
+
 <% else %>
   <h2 class="no-results">😅 No results</h2>
 <% end %>

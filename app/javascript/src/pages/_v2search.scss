@@ -109,6 +109,11 @@
 
   }
 
+  #view-type-inputs {
+    height: 0px;
+    visibility: hidden;
+  }
+
   .view-type-toggle {
 
     .selected {
@@ -139,6 +144,11 @@
 
       .view-type-toggle {
         text-align: right;
+      }
+
+      #search_view_type_masonry {
+        height: 0;
+        width: 0;
       }
 
       #js-results-grid {

@@ -43,6 +43,18 @@ if (form) {
     Rails.fire(form, 'submit');
   })
 
+  // Applying view-type selector
+  let viewTypeSelectorContainer = document.querySelectorAll('[data-view-type-toggle]');
+  viewTypeSelectorContainer.forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      let viewTypeFilter = event.target.dataset.viewFilter;
+      let filterInput = document.getElementById('search_view_type_' + viewTypeFilter)
+      filterInput.checked = !filterInput.checked;
+      Rails.fire(form, 'submit');
+    })
+  });
+
+
   // A function to clear filters
   window.clearFilters = function() {
     document.getElementsByName('search[types][]').forEach(function(element) {
