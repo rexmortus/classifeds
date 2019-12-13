@@ -46,15 +46,27 @@ body {
   }
 }
 
-
+#mobile-title-bar {
+  background-color: lighten($secondary-color, 5);
+}
 
 .label {
   font-weight: bold !important;
 }
 
+
+
 .top-bar {
 
   color: white !important;
+
+  .main-menu {
+
+    @include breakpoint(small) {
+        background-color: red;
+    }
+
+  }
 
   ul {
 

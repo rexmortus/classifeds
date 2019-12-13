@@ -1,6 +1,61 @@
-<div class="top-bar">
+
+<!-- Mobile toggle -->
+<div id="mobile-title-bar" class="title-bar hide-for-medium">
+  <div class="title-bar-title">
+    ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
+  </div>
+</div>
+
+<!-- Mobile menu -->
+<div class="top-bar hide-for-medium" id="mobile-nav-bar">
   <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
+    <ul class="dropdown menu expanded align-center" data-dropdown-menu>
+      <li>
+        <% if !user_signed_in? %>
+        <a href="#">My Classifeds</a>
+        <% else %>
+        <a href="#"><%= current_user.username %></a>
+        <% end %>
+        <ul class="menu vertical">
+          <% if !user_signed_in? %>
+          <li>
+            <div style="padding: 10px">
+              <small>
+                Welcome to Classifeds. Sign in or Register to:<br>
+                <ul>
+                  <li>Post and manage ads</li>
+                  <li>Send emoji reactions! 🎉</li>
+                </ul>
+              </small>
+            </div>
+          </li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to 'Post Advertisement', new_advertisement_path %></li>
+            <li><%= link_to "Edit Profile", '/profile/edit' %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+          <% end %>
+        </ul>
+      </li>
+      <li>
+        <%= link_to search_path do %>
+        Search
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+        Categories
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Desktop menu -->
+<div class="top-bar hide-for-small-only">
+  <div class="top-bar-left">
+    <ul class="dropdown menu " data-dropdown-menu>
       <li>
         <% if !user_signed_in? %>
         <a href="#">My Classifeds</a>

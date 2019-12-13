@@ -12,7 +12,7 @@
   <div class="column small-12 medium-3 large-3 left-column">
 
     <div class="row">
-      <div class="column small-8 medium-12 large-12 small-order-1 medium-order-1 large-order-">
+      <div class="column small-12 medium-12 large-12 small-order-1 medium-order-1 large-order-">
 
         <!-- Map -->
         <fieldset class="fieldset map-container">
@@ -48,7 +48,7 @@
 
       </div>
 
-      <div class="column small-4 medium-12 large-12 small-order-2 medium-order-3 large-order-">
+      <div class="column small-12 medium-12 large-12 small-order-2 medium-order-3 large-order-">
 
         <!-- Type -->
         <fieldset class="fieldset type-filters-container">
@@ -69,7 +69,7 @@
           </fieldset>
 
          <!-- Category -->
-         <fieldset class="fieldset contact-container">
+         <fieldset class="fieldset category-container">
            <legend>Category</legend>
            <div id="js-category-filters">
            <%= render 'v2_search/partials/category_filters', filters: @categories_param %>
@@ -128,3 +128,4 @@
   </div>
 </div>
 <% end %>
+<hr>
