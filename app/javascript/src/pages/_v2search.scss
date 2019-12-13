@@ -2,205 +2,250 @@
   opacity: 0.65 !important;
 }
 
-.left-column {
+#mobile-filter-bar {
+  $body-background-alt: darken($body-background, 1);
 
-  .map-container {
-    padding-bottom: 0px;
+  $spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+  radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
 
-    .input-group-field {
-      text-align: right;
-    }
+  background-image: $spiral-gradient;
 
-  }
+  background-size: 100px 50px;
+  border-bottom: 1px solid $medium-gray;
+  padding: 1rem;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-  .type-filters-container {
-    margin-top: 0px;
-  }
-
-  #js-type-filters {
-
-    .selected {
-      font-weight: bold;
-      background-color: $success-color;
-
-      a {
-        color: white !important;
-      }
-    }
-  }
-
-  #type-filter-inputs {
-    height: 0px;
-    visibility: hidden;
-  }
-
-  #js-category-filters {
-
-    .selected {
-      font-weight: bold;
-      background-color: $warning-color;
-
-      a {
-        color: $primary-color !important;
-      }
-    }
-  }
-
-  #category-filter-inputs {
-    height: 0px;
-    visibility: hidden;
+  .form-control {
+    border-color: $medium-gray !important;
   }
 
 }
 
+.search-page-container {
 
-.center-column {
+  .applied-filters {
 
-    .query-container {
+    @include breakpoint(small only) {
+      text-align: center;
+    }
 
+    .label.success {
+      color: white;
+    }
+
+    .label.warning {
+      color: $primary-color;
+    }
+
+    .label.alert {
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken($alert-color, 10);
+      }
+
+    }
+  }
+
+  .left-column {
+
+    .map-container {
       padding-bottom: 0px;
-      border-color: $medium-gray;
 
-      @include breakpoint(small) {
-
+      @include breakpoint(small only) {
+        margin-top: 6.5rem !important;
       }
 
-      @include breakpoint(medium) {
-        margin-top: 30px;
-      }
-
-      @include breakpoint(large) {
-        margin-top: 30px;
+      .input-group-field {
+        text-align: right;
       }
 
     }
 
-    #js-applied-filters {
-
-      .label.success {
-        color: white;
-      }
-
-      .label.warning {
-        color: $primary-color;
-      }
-
-      .label.alert {
-        color: white;
-
-        &:hover {
-          cursor: pointer;
-          background-color: darken($alert-color, 10);
-        }
-
-      }
-
+    .type-filters-container {
+      margin-top: 0px;
     }
 
-    #js-results-grid {
+    #js-type-filters {
 
-        margin-top: 3px;
+      .selected {
+        font-weight: bold;
+        background-color: $success-color;
 
-        .js-packery-item {
-          transition: all .05s ease-in-out;
-          outline: none;
-          outline-offset: 0px;
-
-          img {
-            transition: all .05s ease-in-out;
-            opacity: 0.90;
-            filter: blur(0.3px) grayscale(15%);
-          }
-
-          .label {
-            transition: all .05s ease-in-out;
-            filter: grayscale(15%);
-          }
-
-          .warning {
-            color: $primary-color;
-          }
-
-          .emoji {
-            transition: all .05s ease-in-out;
-            opacity: 0.90;
-            filter: blur(0.3px) grayscale(15%);
-          }
-
-          &:hover {
-            outline: 3px solid $primary-color;
-            outline-offset: 3px;
-
-            img {
-              opacity: 1;
-              filter: blur(0) grayscale(0);
-            }
-
-            .label {
-              filter: grayscale(0);
-            }
-
-            .emoji {
-              opacity: 1;
-              filter: blur(0) grayscale(0);
-            }
-
-          }
-
-          .card {
-            margin-bottom: 0 !important;
-
-            .card-image {
-              padding: 0.125rem;
-            }
-
-            .card-location {
-              color: $primary-color !important;
-              margin-bottom: 0px;
-            }
-          }
+        a {
+          color: white !important;
         }
+      }
+    }
 
-        // (container width - (columns * column width)) / number of gutters = gutter widt
+    #type-filter-inputs {
+      height: 0px;
+      visibility: hidden;
+    }
+
+    #js-category-filters {
+
+      .selected {
+        font-weight: bold;
+        background-color: $warning-color;
+
+        a {
+          color: $primary-color !important;
+        }
+      }
+    }
+
+    #category-filter-inputs {
+      height: 0px;
+      visibility: hidden;
+    }
+
+  }
+
+
+  .center-column {
+
+      .query-container {
+
+        padding-bottom: 0px;
+        border-color: $medium-gray;
 
         @include breakpoint(small) {
-
-          .js-gutter-sizer {
-            width: calc(100% - (2 * 49%) / 1);
-          }
-
-          .js-packery-item {
-            width: 49%;
-          }
 
         }
 
         @include breakpoint(medium) {
-
-          .js-gutter-sizer {
-            width: calc(2rem / 2);
-          }
-
-          .js-packery-item {
-            width: calc(33.2345% - (2rem / 3));
-          }
-
+          margin-top: 30px;
         }
 
         @include breakpoint(large) {
+          margin-top: 30px;
+        }
 
-          .js-gutter-sizer {
-            width: calc(3rem / 4);
-          }
+      }
+
+      #js-applied-filters {
+
+
+      }
+
+      #js-results-grid {
+
+          margin-top: 3px;
 
           .js-packery-item {
-            width: calc(20% - (3rem / 5));
-          }
-        }
-    }
+            transition: all .05s ease-in-out;
+            outline: none;
+            outline-offset: 0px;
 
-    .no-results {
-      color: $dark-gray;
-    }
+            img {
+              transition: all .05s ease-in-out;
+              opacity: 0.90;
+              filter: blur(0.3px) grayscale(15%);
+            }
+
+            .label.success {
+              color: white;
+            }
+
+            .label {
+              transition: all .05s ease-in-out;
+              filter: grayscale(15%);
+            }
+
+            .warning {
+              color: $primary-color;
+            }
+
+            .emoji {
+              transition: all .05s ease-in-out;
+              opacity: 0.90;
+              filter: blur(0.3px) grayscale(15%);
+            }
+
+            &:hover {
+              outline: 3px solid $primary-color;
+              outline-offset: 3px;
+
+              img {
+                opacity: 1;
+                filter: blur(0) grayscale(0);
+              }
+
+              .label {
+                filter: grayscale(0);
+              }
+
+              .emoji {
+                opacity: 1;
+                filter: blur(0) grayscale(0);
+              }
+
+            }
+
+            .card {
+              margin-bottom: 0 !important;
+
+              .card-image {
+                padding: 0.125rem;
+              }
+
+              .card-location {
+                color: $primary-color !important;
+                margin-bottom: 0px;
+              }
+            }
+          }
+
+          // (container width - (columns * column width)) / number of gutters = gutter widt
+
+          @include breakpoint(small) {
+
+            .js-gutter-sizer {
+              width: calc(100% - (2 * 49%) / 1);
+            }
+
+            .js-packery-item {
+              width: 49%;
+            }
+
+          }
+
+          @include breakpoint(medium) {
+
+            .js-gutter-sizer {
+              width: calc(2rem / 2);
+            }
+
+            .js-packery-item {
+              width: calc(33.2345% - (2rem / 3));
+            }
+
+          }
+
+          @include breakpoint(large) {
+
+            .js-gutter-sizer {
+              width: calc(3rem / 4);
+            }
+
+            .js-packery-item {
+              width: calc(20% - (3rem / 5));
+            }
+          }
+      }
+
+      .no-results {
+        color: $dark-gray;
+      }
+
+  }
 
 }

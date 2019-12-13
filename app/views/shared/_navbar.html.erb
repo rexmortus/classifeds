@@ -1,4 +1,4 @@
-<!-- Mobile toggle -->
+<!-- Mobile header -->
 <div id="mobile-title-bar" class="title-bar hide-for-medium">
   <div class="title-bar-title">
     ads@<%= ENV['CLASSIFEDS_DOMAIN'] %>
@@ -6,12 +6,12 @@
 </div>
 
 <!-- Mobile menu -->
-<div class="top-bar hide-for-medium" id="mobile-nav-bar">
+<div class="top-bar hide-for-medium footer">
   <div class="top-bar-left">
-    <ul class="dropdown menu expanded align-center icons icon-top" data-dropdown-menu>
+    <ul class="dropdown menu expanded align-center icons icon-top top" data-dropdown-menu>
       <li>
         <% if !user_signed_in? %>
-        <a href="#">My Classifeds</a>
+        <a href="#"><i class="material-icons">face</i>Sign In</a>
         <% else %>
         <a href="#"><i class="material-icons">face</i><%= current_user.username %></a>
         <% end %>

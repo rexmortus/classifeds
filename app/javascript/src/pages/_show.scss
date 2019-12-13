@@ -8,6 +8,11 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 .show-advertisement {
 
+  @include breakpoint(small only) {
+    margin-top: 3rem;
+    margin-bottom: calc(65px + 2rem);
+  }
+
   .left-column {
 
     @include breakpoint(large) {

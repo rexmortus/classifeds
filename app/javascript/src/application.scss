@@ -9,12 +9,9 @@
 @import "src/components/image-container.scss";
 
 // Import page-specific styles
-// @import "src/pages/_search.scss";
 @import "src/pages/_v2search.scss";
 @import "src/pages/_show.scss";
 @import "src/pages/_new.scss";
-
-// @import "foundation-icons/foundation-icons.scss";
 
 body {
 
@@ -66,14 +63,17 @@ body {
 }
 
 #mobile-title-bar {
-  background-color: lighten($secondary-color, 5);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  background-color: $secondary-color;
+  z-index: 10000;
+  height: 3.6rem;
 }
 
 .label {
   font-weight: bold !important;
 }
-
-
 
 .top-bar {
 
@@ -146,21 +146,10 @@ input.ais-SearchBox-input:focus {
 }
 
 .footer {
+  z-index: 9999;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  text-align: center;
-  padding-top: 25px;
-  color: white;
-  text-shadow: 3px 3px 3px black;
-  font-weight: bold;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.15),
-    transparent
-  );
-
 }
 
 .advertisement_title input {

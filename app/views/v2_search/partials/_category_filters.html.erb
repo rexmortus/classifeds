@@ -21,12 +21,6 @@
       <% end %>
     </ul>
   </li>
-
-  <% (@all_categories - @selected_category).each do |category| %>
-  <li>
-    <a href="#" data-category-filter="<%= category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= category.first %></a>
-  </li>
-  <% end %>
 </ul>
 <% else %>
 <ul class="vertical menu">

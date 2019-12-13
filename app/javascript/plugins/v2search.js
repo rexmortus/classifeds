@@ -8,7 +8,7 @@ const form = document.getElementById('search_form');
 if (form) {
 
   let resultsContainer = document.getElementById('js-results-grid');
-  let appliedFiltersContainer = document.getElementById('js-applied-filters');
+  let appliedFiltersContainers = document.querySelectorAll('[data-applied-filters]');
   let typeFiltersContainer = document.getElementById('js-type-filters');
   let categoryFiltersContainer = document.getElementById('js-category-filters');
 
@@ -102,7 +102,9 @@ if (form) {
 
   $(form).on('ajax:before', function() {
     $('#search_query').blur();
-    appliedFiltersContainer.classList.add('submitting');
+    appliedFiltersContainers.forEach(function(element) {
+      element.classList.add('submitting');
+    })
     resultsContainer.classList.add('submitting');
   })
 
@@ -113,7 +115,9 @@ if (form) {
   $(form).on('ajax:success', function(event, xhr, status, error) {
     pckry.reloadItems();
     pckry.layout();
-    appliedFiltersContainer.classList.remove('submitting');
+    appliedFiltersContainers.forEach(function(element) {
+      element.classList.remove('submitting');
+    })
     resultsContainer.classList.remove('submitting');
   });
 
