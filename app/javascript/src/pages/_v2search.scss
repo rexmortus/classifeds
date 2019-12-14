@@ -231,10 +231,9 @@
 
             .card {
               margin-bottom: 0 !important;
-
-              .card-image {
-                padding: 0.125rem;
-              }
+              outline: 1px solid $medium-gray;
+              border: 0.125rem solid white;
+              background-color: lighten($alert-color, 23.5);
 
               .card-location {
                 color: $primary-color !important;
