@@ -16,10 +16,6 @@ if (previewContainer) {
 
 }
 
-imagesLoaded(previewContainer, function( instance ) {
-  pckry.layout();
-});
-
 const imageInput = document.getElementById('advertisement_images');
 
 if (imageInput) {
@@ -38,17 +34,15 @@ function previewImages() {
   imageCounter.innerHTML = this.files.length;
 
   if (this.files) {
-
     [].forEach.call(this.files, readAndPreview);
-
   }
+
+  packery.layout();
 
   function readAndPreview(file) {
 
     if (!/\.(jpe?g|png|gif|webp)$/i.test(file.name)) {
-
       return alert(file.name + " is not an image");
-
     }
 
     else {

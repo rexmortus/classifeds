@@ -16,7 +16,6 @@ if (editorElement) {
 
   CKEDITOR.replace('editor', {
     plugins: 'basicstyles,undo,link,wysiwygarea,toolbar',
-    height: 576
   });
 
 };

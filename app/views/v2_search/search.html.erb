@@ -20,7 +20,6 @@
             value: @query_param
           }
         %>
-
       </div>
       <div class="column small-12 applied-filters">
         <div data-applied-filters>
@@ -41,35 +40,24 @@
         <div class="column small-12 medium-12 large-12 small-order-1 medium-order-1 large-order-">
 
           <!-- Map -->
-          <fieldset class="fieldset map-container">
-            <div id='map' style="height: 150px;"></div><br>
-            <legend id="user_location" data-geocode="<%= user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode %>">
-              <i class="material-icons">language</i> <%= user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location %>
-            </legend>
-
-            <!-- Distance slider -->
-            <div class="row">
-              <div class="column small-expand medium-expand large-expand">
+          <div class="map-container" id="user_location" data-geocode="<%= user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode %>">
+            <div class="inner-container">
+              <div id='map' style="height: 300px;"></div>
+              <!-- Distance slider -->
+              <div id="distance-slider">
                 <div class="slider" id="radius-slider" data-slider data-initial-start="25" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
-                  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance"></span>
+                  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance">Loading</span>
                   <span class="slider-fill" data-slider-fill></span>
                 </div>
-              </div>
-              <div class="column small-5 medium-12 large-5">
-                <div class="input-group">
-                  <%= f.input :distance,
+                <%= f.input :distance,
                   :label => false,
                   :input_html => {
                     class: "input-group-field",
                     value: @distance_param
-                  } %>
-                  <div class="input-group-button">
-                    <input type="submit" class="button expand" value="km">
-                  </div>
-                </div>
+                } %>
               </div>
             </div>
-          </fieldset>
+          </div>
         </div>
 
 

@@ -46,6 +46,16 @@
 
   .center-column {
 
+    #cke_editor {
+        // height: 400px;
+        height: calc(100vh - 240px);
+    }
+
+    #cke_1_contents {
+      // height: 358px !important;
+      height: calc(100vh - 282px) !important;
+    }
+
     @include breakpoint(medium and up) {
       .heading-container {
         margin-top: 30px;

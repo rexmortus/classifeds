@@ -38,13 +38,13 @@ $(document).ready(function() {
           }
       });
 
-      var geocode = $('#user_location').data('geocode').slice().reverse()
+
 
       window.map = map
       window.markers = [];
 
       const marker = new mapboxgl.Marker()
-        .setLngLat(geocode)
+        .setLngLat(coordinates)
         .addTo(map);
 
       window.markers.push(marker);
@@ -64,7 +64,12 @@ $(document).ready(function() {
         [
           [x1,y1],
           [x2,y2]
-        ]);
+        ], {padding: {
+          top: 0,
+          right: 0,
+          bottom: 50,
+          left: 0
+        }});
 
     })
 
@@ -79,7 +84,6 @@ $(window).on('initialise-map-view', function() {
   var smallMap = document.getElementById('map');
   smallMap.style.visibility = 'hidden';
   smallMap.style.height = '0px';
-  smallMap.style.marginTop = '-30px';
 
   var map = document.getElementById('map-results-view')
 
@@ -144,13 +148,13 @@ $(window).on('initialise-map-view', function() {
         [
           [x1,y1],
           [x2,y2]
-        ]);
+        ], 50);
 
     })
 
     window.addEventListener('remove-map-view', function() {
       smallMap.style.visibility = 'visible';
-      smallMap.style.height = '150px';
+      smallMap.style.height = '300px';
       smallMap.style.marginTop = '0px';
       window.mapView = null;
     });
@@ -194,6 +198,6 @@ $(window).on('update-map-view', function() {
     [
       [x1,y1],
       [x2,y2]
-    ]);
+    ], 50);
 
 });

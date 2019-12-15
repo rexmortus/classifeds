@@ -57,7 +57,56 @@
   .left-column {
 
     .map-container {
-      padding-bottom: 0px;
+      position: relative;
+      margin-top: 1.5rem !important;
+      margin-bottom: 1rem !important;
+
+
+      .inner-container {
+        // border:1px solid $medium-gray;
+      }
+
+      .mapboxgl-canvas {
+        border: 2px solid white;
+      }
+
+      a#user_location {
+        position: absolute;
+        top: 0;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      #distance-slider {
+        width: calc(100% - 6px);
+        position: absolute;
+        left: 3px;
+        bottom: 3px;
+        z-index: 9999999;
+        padding: 0 1rem 0 1rem;
+        background-color: rgba(lighten($alert-color, 25), .50);
+        height: 50px;
+        // border: 2px solid white;
+        border-top: 1px solid $light-gray;
+        backdrop-filter: blur(5px);
+      }
+
+      .slider-fill {
+        background-color: lighten($primary-color, 40);
+      }
+
+      .slider-handle {
+        @include label;
+        width: 4rem;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .input-group-field {
+        visibility: hidden;
+        height: 0;
+      }
 
       @include breakpoint(small only) {
         margin-top: 6.5rem !important;
@@ -129,11 +178,11 @@
         border-color: $medium-gray;
 
         @include breakpoint(medium) {
-          margin-top: 30px;
+          margin-top: 1.5rem;
         }
 
         @include breakpoint(large) {
-          margin-top: 30px;
+          margin-top: 1.5rem;
         }
 
       }
@@ -185,6 +234,7 @@
             outline-offset: 0px;
 
             img {
+              width: 100%;
               transition: all .05s ease-in-out;
               opacity: 0.90;
               filter: blur(0.3px) grayscale(15%);
