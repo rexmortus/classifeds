@@ -74,7 +74,11 @@
               <a href="#"><%= key %></a>
               <ul class="submenu menu vertical" data-submenu="">
                 <% value.each do |item| %>
-                <li><a href="#"><%= item[0] %></a></li>
+                <li>
+                  <a href="/search?search[category_subcategory]=<%= key %> > <%= item[0] %>")>
+                    <%= item[0] %>
+                  </a>
+                </li>
                 <% end %>
               </ul>
             </li>

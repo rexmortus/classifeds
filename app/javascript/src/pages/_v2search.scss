@@ -6,6 +6,12 @@
 //   opacity: 0.65 !important;
 //   filter: grayscale(1);
 // }
+.form-submit {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
 
 #mobile-filter-bar {
   $body-background-alt: darken($body-background, 1);
@@ -185,7 +191,12 @@
           }
 
         }
+      }
 
+      a:focus {
+        color: $primary-color;
+        font-weight: bold;
+        background-color: $warning-color;
       }
     }
 

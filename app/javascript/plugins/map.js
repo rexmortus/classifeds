@@ -15,7 +15,7 @@ $(document).ready(function() {
       center: $('#user_location').data('geocode').slice().reverse(),
       zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v9',
-      pitch: 50,
+      pitch: 0,
       interactive: false
     });
 
@@ -94,7 +94,7 @@ $(window).on('initialise-map-view', function() {
       center: $('#user_location').data('geocode').slice().reverse(),
       zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v9',
-      pitch: 50,
+      pitch: 0,
       interactive: true
     });
 
