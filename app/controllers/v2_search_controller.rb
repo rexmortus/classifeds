@@ -3,26 +3,7 @@ class V2SearchController < ApplicationController
   skip_before_action :authenticate_user!, only: [:search]
 
   def search
-    if params[:search].present?
-      @query_param =        params[:search][:query]
-      @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
-      @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
-      @distance_param =     params[:search][:distance].to_i
-      @types_param =        params[:search][:types].present? ? params[:search][:types] : []
-      @categories_param =   params[:search][:category_subcategory]
-      @view_type_param =    params[:search][:view_type]
-      @advertisements =     filter(Advertisement.all)
-    else
-      @query_param =        ""
-      @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
-      @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
-      @distance_param =     Rails.application.config.classifeds_default_search_distance
-      @types_param =        []
-      @categories_param =   []
-      @view_type_param =    "masonry"
-      @advertisements =     Advertisement.near(@geocode_param, @distance_param, units: :km).first(10)
-    end
-    # raise
+    set_params
   end
 
   private
@@ -65,6 +46,28 @@ class V2SearchController < ApplicationController
   # Check if parameter is supplied for filtering or search
   def exists?(parameter)
     parameter != "" && !parameter.nil?
+  end
+
+  def set_params
+    if params[:search].present?
+      @query_param =        params[:search][:query]
+      @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
+      @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
+      @distance_param =     params[:search][:distance].to_i
+      @types_param =        params[:search][:types].present? ? params[:search][:types] : []
+      @categories_param =   params[:search][:category_subcategory]
+      @view_type_param =    params[:search][:view_type]
+      @advertisements =     filter(Advertisement.all)
+    else
+      @query_param =        ""
+      @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
+      @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
+      @distance_param =     Rails.application.config.classifeds_default_search_distance
+      @types_param =        []
+      @categories_param =   []
+      @view_type_param =    "masonry"
+      @advertisements =     Advertisement.near(@geocode_param, @distance_param, units: :km).first(10)
+    end
   end
 
   def search_params
