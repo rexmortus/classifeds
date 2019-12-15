@@ -53,7 +53,7 @@ body {
     text-overflow: hidden;
   }
 
-  a,input {
+  input {
     &:focus {
       outline-offset: 3px;
       transition: outline .05s ease-in-out !important;

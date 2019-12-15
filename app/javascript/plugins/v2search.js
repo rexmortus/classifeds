@@ -19,8 +19,6 @@ if (form) {
     transitionDuration: 0,
   });
 
-  pckry.layout();
-
   imagesLoaded(resultsContainer, function( instance ) {
     pckry.layout();
   });
@@ -121,6 +119,7 @@ if (form) {
 
   });
 
+  // Event hooks
   $(form).on('ajax:before', function() {
     $('#search_query').blur();
     appliedFiltersContainers.forEach(function(element) {
@@ -136,6 +135,10 @@ if (form) {
       element.classList.remove('submitting');
     })
     resultsContainer.classList.remove('submitting');
+  });
+
+  window.addEventListener('refresh-masonry-layout', function() {
+    pckry.layout();
   });
 
 }

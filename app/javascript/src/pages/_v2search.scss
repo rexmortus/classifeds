@@ -169,6 +169,14 @@
 
   .view-type-toggle {
 
+    &:hover {
+      color: lighten($success-color, 10);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
     .selected {
       color: $success-color;
     }
@@ -197,7 +205,7 @@
 
       .map-container {
         height: calc(100vh - 160px - 1rem);
-        
+
 
         @include callout-style($alert-color);
         border: 1px solid $medium-gray;
