@@ -13,14 +13,14 @@ $(document).ready(function() {
     var map = new mapboxgl.Map({
       container: 'map',
       center: $('#user_location').data('geocode').slice().reverse(),
-      zoom: 8,
+      zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v9',
       pitch: 50,
       interactive: false
     });
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
-    var searchRadius = 3;
+    var searchRadius = parseInt($('#search_distance').val());
 
     map.on('load', function() {
 
@@ -37,8 +37,6 @@ $(document).ready(function() {
               "fill-opacity": 0.15
           }
       });
-
-
 
       window.map = map
       window.markers = [];
@@ -101,7 +99,7 @@ $(window).on('initialise-map-view', function() {
     });
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
-    var searchRadius = 3;
+    var searchRadius = parseInt($('#search_distance').val());
 
     // On initial load
     map.on('load', function() {
