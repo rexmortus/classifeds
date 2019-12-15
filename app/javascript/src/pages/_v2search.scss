@@ -1,9 +1,10 @@
 #js-results-grid, [data-applied-filters] {
-  transition: opacity .5s ease-in-out !important;
+  transition: all .25s ease-in-out !important;
 }
 
 .submitting {
   opacity: 0.65 !important;
+  filter: grayscale(1);
 }
 
 #mobile-filter-bar {
