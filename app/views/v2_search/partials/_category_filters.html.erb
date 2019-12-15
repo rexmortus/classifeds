@@ -11,12 +11,14 @@
   <% end %>
 
   <li>
-    <a class="selected" href="#" data-category-filter="<%= @selected_category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= @selected_category.first %></a>
+    <a class="selected" href="#" data-category-filter="<%= @selected_category.first.downcase.tr('&\/', '').gsub(' ', '_') %>"><%= @selected_category.first %> <i class="material-icons">close</i></a>
     <ul class="nested vertical menu">
       <% @selected_category.second.each do |subcategory| %>
       <% subcategory_selected = filters.include?(subcategory) %>
       <li>
-        <a class="<%= "selected" if subcategory_selected %>" href="#" data-category-filter="<%= "#{@selected_category.first.downcase.tr('&\/', '').gsub(' ', '_')}__#{subcategory.downcase.tr('&\/', '').gsub(' ', '_')}" %>"><%= subcategory %></a>
+        <a class="<%= "selected" if subcategory_selected %>" href="#" data-category-filter="<%= "#{@selected_category.first.downcase.tr('&\/', '').gsub(' ', '_')}__#{subcategory.downcase.tr('&\/', '').gsub(' ', '_')}" %>"><%= subcategory %>
+        <% if subcategory_selected %><i class="material-icons">close</i><% end %>
+      </a>
       </li>
       <% end %>
     </ul>

@@ -131,6 +131,28 @@
         a {
           color: white !important;
         }
+
+        i {
+          font-weight: bold;
+          margin-top: -4px;
+          float: right;
+        }
+
+        &:hover {
+          background-color: darken($success-color, 5);
+
+          a, i {
+            color: darken(white, 5);
+          }
+
+        }
+
+      }
+
+      a:focus {
+        color: white;
+        font-weight: bold;
+        background-color: $success-color;
       }
     }
 
@@ -148,6 +170,22 @@
         a {
           color: $primary-color !important;
         }
+
+        i {
+          font-weight: bold;
+          margin-top: -4px;
+          float: right;
+        }
+
+        &:hover {
+          background-color: darken($warning-color, 5);
+
+          a, i {
+            color: darken($primary-color, 5);
+          }
+
+        }
+
       }
     }
 
