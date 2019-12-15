@@ -1,5 +1,5 @@
-[data-applied-filters] {
-  transition: opacity .05s ease-in-out !important;
+#js-results-grid, [data-applied-filters] {
+  transition: opacity .5s ease-in-out !important;
 }
 
 .submitting {
@@ -65,11 +65,6 @@
       margin-top: 1.5rem !important;
       margin-bottom: 1rem !important;
 
-
-      .inner-container {
-        // border:1px solid $medium-gray;
-      }
-
       .mapboxgl-canvas {
         border: 2px solid white;
       }
@@ -86,7 +81,7 @@
         position: absolute;
         left: 3px;
         bottom: 3px;
-        z-index: 9999999;
+        z-index: 999;
         padding: 0 1rem 0 1rem;
         background-color: rgba(lighten($alert-color, 25), .50);
         height: 50px;
@@ -204,16 +199,15 @@
       }
 
       .map-container {
-        height: calc(100vh - 160px - 1rem);
+        height: calc(100vh - 160px - 4rem + 2px);
 
-
-        @include callout-style($alert-color);
+        background-color: white;
         border: 1px solid $medium-gray;
-        padding: 1rem;
+        padding: 2px;
 
         #map-results-view {
           border: 1px solid $medium-gray;
-          height: 700px;
+          height: calc(100vh - 160px - 4rem - 4px);
         }
 
       }
