@@ -73,8 +73,6 @@ $(window).on('initialise-map-view', function() {
   smallMap.classList.add('hidden');
 
   // Adjust the slider style
-
-
   var map = document.getElementById('map-results-view')
 
   if (map) {
@@ -103,7 +101,14 @@ $(window).on('initialise-map-view', function() {
       let el = document.createElement('span');
       el.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
 
-      const marker = new mapboxgl.Marker(el)
+      let emoji = document.createElement('span');
+      emoji.innerHTML = '<span class="badge warning emoji-marker">😎</span>';
+
+      new mapboxgl.Marker(emoji)
+        .setLngLat(coordinates)
+        .addTo(map);
+
+      let marker = new mapboxgl.Marker(el)
         .setLngLat(coordinates)
         .addTo(map);
 
