@@ -122,7 +122,9 @@ body {
 }
 
 .fieldset {
-    @include callout-style($alert-color);
+    // @include callout-style($alert-color);
+    background-color: rgba(white, 0.25);
+    backdrop-filter: blur(1px);
 }
 
 // CKEditor styles

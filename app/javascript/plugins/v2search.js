@@ -66,6 +66,8 @@ if (form) {
   // Applying distance filter
   $('#radius-slider').on('changed.zf.slider', function(event) {
 
+    Rails.fire(form, 'submit');
+
     const searchRadius = parseInt($('#search_distance').val());
 
     let valueNow = event.target.children[0].attributes[7].value;
@@ -76,22 +78,6 @@ if (form) {
     if (window.map.removeLayer && sliderElement.dataset.sliderInitialLoad == 'false') {
 
       const coordinates = $('#user_location').data('geocode').slice().reverse();
-
-      // const polygon = createGeoJSONCircle(coordinates, searchRadius);
-      // window.map.removeLayer('polygon');
-      // window.map.removeSource('polygon');
-      // window.map.addSource("polygon", polygon);
-      //
-      // window.map.addLayer({
-      //     "id": "polygon",
-      //     "type": "fill",
-      //     "source": "polygon",
-      //     "layout": {},
-      //     "paint": {
-      //         "fill-color": "#6e4d54",
-      //         "fill-opacity": 0.15
-      //     }
-      // });
 
       const center_x = coordinates[0];
       const center_y = coordinates[1];

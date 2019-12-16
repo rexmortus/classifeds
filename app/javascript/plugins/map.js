@@ -25,21 +25,6 @@ $(document).ready(function() {
 
     map.on('load', function() {
 
-      // var polygon = createGeoJSONCircle(coordinates, searchRadius);
-      // map.addSource("polygon", polygon);
-      //
-      // map.addLayer({
-      //     "id": "polygon",
-      //     "type": "fill",
-      //     "source": "polygon",
-      //     "layout": {},
-      //     "paint": {
-      //         "fill-color": "#6e4d54",
-      //         "fill-opacity": 0.15,
-      //         'fill-outline-color': '#6e4d54'
-      //     }
-      // });
-
       window.map = map
       window.markers = [];
 
@@ -115,22 +100,6 @@ $(window).on('initialise-map-view', function() {
       window.mapView = map
       window.markers = [];
 
-      // Generate a new search radius polygon
-      // var polygon = createGeoJSONCircle(coordinates, searchRadius);
-      // map.addSource("polygon", polygon);
-      //
-      // map.addLayer({
-      //     "id": "polygon",
-      //     "type": "fill",
-      //     "source": "polygon",
-      //     "layout": {},
-      //     "paint": {
-      //         "fill-color": "#6e4d54",
-      //         "fill-opacity": 0.15,
-      //         'fill-outline-color': '#6e4d54'
-      //     }
-      // });
-
       let el = document.createElement('span');
       el.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
 
@@ -171,23 +140,6 @@ $(window).on('update-map-view', function() {
 
   const coordinates = $('#user_location').data('geocode').slice().reverse()
   const searchRadius = parseInt($('#search_distance').val());
-
-  // const polygon = createGeoJSONCircle(coordinates, searchRadius);
-  // window.mapView.removeLayer('polygon');
-  // window.mapView.removeSource('polygon');
-  // window.mapView.addSource("polygon", polygon);
-  //
-  // window.mapView.addLayer({
-  //     "id": "polygon",
-  //     "type": "fill",
-  //     "source": "polygon",
-  //     "layout": {},
-  //     "paint": {
-  //         "fill-color": "#6e4d54",
-  //         "fill-opacity": 0.15,
-  //         'fill-outline-color': '#6e4d54'
-  //     }
-  // });
 
   const center_x = coordinates[0];
   const center_y = coordinates[1];
