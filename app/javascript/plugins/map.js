@@ -80,8 +80,10 @@ $(window).on('initialise-map-view', function() {
 
   // Hide the small map
   var smallMap = document.getElementById('map');
-  smallMap.style.visibility = 'hidden';
-  smallMap.style.height = '0px';
+  smallMap.classList.add('hidden');
+
+  // Adjust the slider style
+
 
   var map = document.getElementById('map-results-view')
 
@@ -151,9 +153,7 @@ $(window).on('initialise-map-view', function() {
     })
 
     window.addEventListener('remove-map-view', function() {
-      smallMap.style.visibility = 'visible';
-      smallMap.style.height = '300px';
-      smallMap.style.marginTop = '0px';
+      // smallMap.classList.remove('hidden');
       window.mapView = null;
     });
 
