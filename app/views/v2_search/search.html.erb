@@ -46,7 +46,7 @@
               <!-- Distance slider -->
               <div id="distance-slider">
                 <div class="slider" id="radius-slider" data-slider data-initial-start="<%= @distance_param %>" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
-                  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance">Loading</span>
+                  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance" data-slider-initial-load="true">Loading</span>
                   <span class="slider-fill" data-slider-fill></span>
                 </div>
                 <%= f.input :distance,
