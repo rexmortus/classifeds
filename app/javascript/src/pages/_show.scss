@@ -8,6 +8,10 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 .show-advertisement {
 
+  .show-page-container {
+    margin-top: 1rem !important;
+  }
+
   @include breakpoint(small only) {
     margin-top: 3rem;
     margin-bottom: calc(65px + 2rem);
@@ -27,13 +31,13 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         margin-top: 0px;
       }
 
-      @include breakpoint(medium) {
-        margin-top: 17px;
-      }
-
-      @include breakpoint(large) {
-        margin-top: 17px;
-      }
+      // @include breakpoint(medium) {
+      //   margin-top: 17px;
+      // }
+      //
+      // @include breakpoint(large) {
+      //   margin-top: 17px;
+      // }
 
       #map {
         border: 1px solid $medium-gray;
@@ -98,7 +102,6 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
       #js-add-bookmark {
         text-align: right;
-
       }
 
       .material-icons {
