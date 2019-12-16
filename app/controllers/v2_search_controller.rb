@@ -16,7 +16,7 @@ class V2SearchController < ApplicationController
       ads = ads.where('title ILIKE ? OR body ILIKE ?', "%#{@query_param}%", "%#{@query_param}%") if @query_param
     end
 
-    if param_exists?(:type)
+    if param_exists?(:types)
       ads = ads.where(for: @types_param)
     end
 
@@ -56,32 +56,6 @@ class V2SearchController < ApplicationController
 
     @advertisements = filter(Advertisement.all)
 
-
-    #   @categories_param =   []
-    #   # @view_type_param =    "masonry"
-    #   @advertisements =     Advertisement.near(@geocode_param, @distance_param, units: :km).first(10)
-    # user_signed_in? ? @location_param = current_user.location : @location_param = Rails.application.config.classifeds_default_location
-    # user_signed_in? ? @geocode_param = current_user.geocode : @geocode_param = Rails.application.config.classifeds_default_geocode
-
-    # if params[:search].present?
-    #   # @query_param =        params[:search][:query]
-    #   @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
-    #   @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
-    #   # @distance_param =     params[:search][:distance].to_i
-    #   @types_param =        params[:search][:types].present? ? params[:search][:types] : []
-    #   @categories_param =   params[:search][:category_subcategory]
-    #    # =    params[:search][:view_type]
-    #   @advertisements =     filter(Advertisement.all)
-    # else
-    #   # @query_param =        ""
-    #   @location_param =     user_signed_in? ? current_user.location : Rails.application.config.classifeds_default_location
-    #   @geocode_param =      user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode
-    #   # @distance_param =     Rails.application.config.classifeds_default_search_distance
-    #   @types_param =        []
-    #   @categories_param =   []
-    #   # @view_type_param =    "masonry"
-    #   @advertisements =     Advertisement.near(@geocode_param, @distance_param, units: :km).first(10)
-    # end
   end
 
   def search_params
