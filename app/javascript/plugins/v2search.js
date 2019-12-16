@@ -77,21 +77,21 @@ if (form) {
 
       const coordinates = $('#user_location').data('geocode').slice().reverse();
 
-      const polygon = createGeoJSONCircle(coordinates, searchRadius);
-      window.map.removeLayer('polygon');
-      window.map.removeSource('polygon');
-      window.map.addSource("polygon", polygon);
-
-      window.map.addLayer({
-          "id": "polygon",
-          "type": "fill",
-          "source": "polygon",
-          "layout": {},
-          "paint": {
-              "fill-color": "#6e4d54",
-              "fill-opacity": 0.15
-          }
-      });
+      // const polygon = createGeoJSONCircle(coordinates, searchRadius);
+      // window.map.removeLayer('polygon');
+      // window.map.removeSource('polygon');
+      // window.map.addSource("polygon", polygon);
+      //
+      // window.map.addLayer({
+      //     "id": "polygon",
+      //     "type": "fill",
+      //     "source": "polygon",
+      //     "layout": {},
+      //     "paint": {
+      //         "fill-color": "#6e4d54",
+      //         "fill-opacity": 0.15
+      //     }
+      // });
 
       const center_x = coordinates[0];
       const center_y = coordinates[1];
@@ -112,7 +112,7 @@ if (form) {
         ], {padding: {
           top: 0,
           right: 0,
-          bottom: 50,
+          bottom: 55,
           left: 0
         }});
     }

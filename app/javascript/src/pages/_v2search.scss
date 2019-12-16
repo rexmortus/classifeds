@@ -73,9 +73,68 @@
         border: 2px solid white;
       }
 
+      @keyframes scan {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(1turn);
+        }
+      }
+
+      // $gn: darken($primary-color, 25);
+      $gn: darken($success-color, 50);
+      $gnT: rgba(0,192,0,0);
+      $dgn: $primary-color;
+      $gy: rgb(128,128,128);
+      $gyT: rgba(128,128,128,0);
+      $bk: rgba($primary-color, 0.1);
+      $bkT: rgba($primary-color, 0.5);
+
+      .radar {
+      }
+
+      @keyframes scan {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(1turn);
+        }
+      }
+
       .material-icons {
-        color: $primary-color;
+        opacity: 0.15;
+        color: rgba($primary-color, 0.9);
         font-size: 2rem;
+        padding: 5rem;
+        border: 1px solid $primary-color;
+        border-radius: 6rem;
+        background:
+            radial-gradient($primary-color, lighten($primary-color, 10)),
+        ;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        font-size: 10px;
+        position: relative;
+        width: 20em;
+        height: 20em;
+        &:before {
+            animation: scan 15s linear infinite;
+            background:
+                linear-gradient(45deg, $gnT 6em, $gn) 0 0 / 50% 50%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            right: 0;
+        }
       }
 
       a#user_location {
