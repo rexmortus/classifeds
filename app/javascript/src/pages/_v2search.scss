@@ -180,6 +180,15 @@
       .nested {
         margin-left: 0;
         border-left: 1rem solid darken($warning-color, 5);
+
+        .selected {
+          background-color: darken($warning-color, 5);
+
+          &:hover {
+            background-color: darken($warning-color, 10)
+          }
+        }
+
       }
 
       .selected {
