@@ -73,17 +73,17 @@
         border: 2px solid white;
       }
 
+      .material-icons {
+        color: $primary-color;
+        font-size: 2rem;
+      }
+
       a#user_location {
         position: absolute;
         top: 0;
         text-align: center;
         font-weight: bold;
       }
-
-      // #map.hidden {
-      //   visibility: hidden;
-      //   height: 0px;
-      // }
 
       #distance-slider {
         width: calc(100% - 6px);
@@ -94,7 +94,6 @@
         padding: 0 1rem 0 1rem;
         background-color: rgba(lighten($alert-color, 25), .50);
         height: 50px;
-        // border: 2px solid white;
         border-top: 1px solid $light-gray;
         backdrop-filter: blur(5px);
       }
@@ -109,6 +108,13 @@
         color: white;
         font-weight: bold;
         text-align: center;
+        outline: none;
+        transition: outline .05s ease-in-out !important;
+
+        &:focus {
+          outline: 3px solid $primary-color;
+          outline-offset: 3px;
+        }
       }
 
       .input-group-field {
@@ -265,6 +271,11 @@
         #map-results-view {
           border: 1px solid $medium-gray;
           height: calc(100vh - 160px - 4rem - 4px);
+        }
+
+        .material-icons {
+          color: $primary-color;
+          font-size: 2.5rem;
         }
 
       }

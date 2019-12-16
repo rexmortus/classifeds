@@ -20,6 +20,7 @@ $(document).ready(function() {
     });
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
+    var location = $('#user_location').data('location');
     var searchRadius = parseInt($('#search_distance').val());
 
     map.on('load', function() {
@@ -34,14 +35,18 @@ $(document).ready(function() {
           "layout": {},
           "paint": {
               "fill-color": "#6e4d54",
-              "fill-opacity": 0.15
+              "fill-opacity": 0.15,
+              'fill-outline-color': '#6e4d54'
           }
       });
 
       window.map = map
       window.markers = [];
 
-      const marker = new mapboxgl.Marker()
+      let el = document.createElement('span');
+      el.innerHTML = '<i class="material-icons">gps_fixed</i>';
+
+      const marker = new mapboxgl.Marker(el)
         .setLngLat(coordinates)
         .addTo(map);
 
@@ -121,12 +126,15 @@ $(window).on('initialise-map-view', function() {
           "layout": {},
           "paint": {
               "fill-color": "#6e4d54",
-              "fill-opacity": 0.15
+              "fill-opacity": 0.15,
+              'fill-outline-color': '#6e4d54'
           }
       });
 
-      // Create a marker
-      const marker = new mapboxgl.Marker()
+      let el = document.createElement('span');
+      el.innerHTML = '<i class="material-icons">gps_fixed</i>';
+
+      const marker = new mapboxgl.Marker(el)
         .setLngLat(coordinates)
         .addTo(map);
 
@@ -153,7 +161,6 @@ $(window).on('initialise-map-view', function() {
     })
 
     window.addEventListener('remove-map-view', function() {
-      // smallMap.classList.remove('hidden');
       window.mapView = null;
     });
 
@@ -177,7 +184,8 @@ $(window).on('update-map-view', function() {
       "layout": {},
       "paint": {
           "fill-color": "#6e4d54",
-          "fill-opacity": 0.15
+          "fill-opacity": 0.15,
+          'fill-outline-color': '#6e4d54'
       }
   });
 

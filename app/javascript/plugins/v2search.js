@@ -71,6 +71,7 @@ if (form) {
     let valueNow = event.target.children[0].attributes[7].value;
     let sliderElement = event.target.children[0];
     sliderElement.textContent = "+" + searchRadius + "km";
+    sliderElement.blur();
 
     if (window.map.removeLayer && sliderElement.dataset.sliderInitialLoad == 'false') {
 
