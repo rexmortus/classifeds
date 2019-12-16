@@ -102,7 +102,7 @@ $(window).on('initialise-map-view', function() {
       el.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
 
       let emoji = document.createElement('span');
-      emoji.innerHTML = '<span class="badge warning emoji-marker">😎</span>';
+      emoji.innerHTML = '<span class="emoji-marker">😎</span>';
 
       new mapboxgl.Marker(emoji)
         .setLngLat(coordinates)
