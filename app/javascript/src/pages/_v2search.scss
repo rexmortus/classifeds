@@ -374,12 +374,9 @@ $bkT: rgba($primary-color, 0.5);
 
         .emoji-marker {
           font-size: .8rem;
-          // height: 2.2rem;
-          // width: 2.2rem;
-          background-color: rgba(lighten($primary-color, 45), .5);
+          background-color: rgba(black, 0.125);
           backdrop-filter: blur(5px);
-          border: 1px solid rgba($primary-color, .125);
-          // box-shadow: 0 0 3px rgba(black, 0.25);
+          border: 1px solid rgba(black, .125);
         }
 
         #map-results-view {
