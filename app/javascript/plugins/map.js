@@ -111,12 +111,28 @@ $(window).on('initialise-map-view', function(event) {
       // Add an emoji marker for each result
       results.forEach(result => {
 
+        let coords = result.coordinates.reverse()
+
+        var r = 1000/111300 // = 100 meters
+          , y0 = coords[0]
+          , x0 = coords[1]
+          , u = Math.random()
+          , v = Math.random()
+          , w = r * Math.sqrt(u)
+          , t = 2 * Math.PI * v
+          , x = w * Math.cos(t)
+          , y1 = w * Math.sin(t)
+          , x1 = x / Math.cos(y0)
+
+        let newY = y0 + y1
+        let newX = x0 + x1
+
         let element = document.createElement('span');
         element.classList.add('emoji-marker');
         element.innerHTML = result.emoji;
 
         let marker = new mapboxgl.Marker(element)
-          .setLngLat(result.coordinates.reverse())
+          .setLngLat([newY, newX])
           .addTo(map);
 
         window.markers.push(marker);
@@ -164,12 +180,28 @@ $(window).on('update-map-view', function(event) {
   // Add an emoji marker for each result
   results.forEach(result => {
 
+    let coords = result.coordinates.reverse()
+
+    var r = 1000/111300 // = 100 meters
+      , y0 = coords[0]
+      , x0 = coords[1]
+      , u = Math.random()
+      , v = Math.random()
+      , w = r * Math.sqrt(u)
+      , t = 2 * Math.PI * v
+      , x = w * Math.cos(t)
+      , y1 = w * Math.sin(t)
+      , x1 = x / Math.cos(y0)
+
+    let newY = y0 + y1
+    let newX = x0 + x1
+
     let element = document.createElement('span');
     element.classList.add('emoji-marker');
     element.innerHTML = result.emoji;
 
     let marker = new mapboxgl.Marker(element)
-      .setLngLat(result.coordinates.reverse())
+      .setLngLat([newY, newX])
       .addTo(window.mapView);
 
     window.markers.push(marker);
