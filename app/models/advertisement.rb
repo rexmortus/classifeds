@@ -31,7 +31,8 @@ class Advertisement < ApplicationRecord
     {
       emoji: self.emoji,
       coordinates: self.geocode,
-      title: self.title
+      title: self.title,
+      id: self.id
     }
   end
 

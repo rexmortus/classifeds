@@ -14,7 +14,7 @@ $(document).ready(function() {
       container: 'map',
       center: $('#user_location').data('geocode').slice().reverse(),
       zoom: 10,
-      style: 'mapbox://styles/mapbox/outdoors-v9',
+      style: 'mapbox://styles/mapbox/outdoors-v10',
       pitch: 0,
       interactive: false
     });
@@ -85,7 +85,7 @@ $(window).on('initialise-map-view', function(event) {
       container: 'map-results-view',
       center: $('#user_location').data('geocode').slice().reverse(),
       zoom: 10,
-      style: 'mapbox://styles/mapbox/outdoors-v9',
+      style: 'mapbox://styles/mapbox/outdoors-v10',
       pitch: 0,
       interactive: false,
     });
@@ -127,9 +127,12 @@ $(window).on('initialise-map-view', function(event) {
         let newY = y0 + y1
         let newX = x0 + x1
 
-        let element = document.createElement('span');
+        // Create the marker element
+        let element = document.createElement('a');
+        element.href = '/advertisements/' + result.id;
         element.classList.add('emoji-marker');
-        element.innerHTML = result.emoji;
+        element.dataset.content = result.title;
+        element.innerHTML = result.emoji + ' ';
 
         let marker = new mapboxgl.Marker(element)
           .setLngLat([newY, newX])
@@ -168,6 +171,7 @@ $(window).on('initialise-map-view', function(event) {
 
 $(window).on('update-map-view', function(event) {
 
+  // Get the results
   let results = JSON.parse(event.detail["data"])
 
   // clear markers
@@ -180,9 +184,11 @@ $(window).on('update-map-view', function(event) {
   // Add an emoji marker for each result
   results.forEach(result => {
 
+    // Get the co-ordinates
     let coords = result.coordinates.reverse()
 
-    var r = 900/111300 // = 100 meters
+    // Calculate a scatter within 900ms (just to be safe!)
+    var r = 900/111300
       , y0 = coords[0]
       , x0 = coords[1]
       , u = Math.random()
@@ -193,18 +199,28 @@ $(window).on('update-map-view', function(event) {
       , y1 = w * Math.sin(t)
       , x1 = x / Math.cos(y0)
 
+    // Here's our co-ordinates, scattered over 900m
     let newY = y0 + y1
     let newX = x0 + x1
 
-    let element = document.createElement('span');
+    // Create the marker element
+    let element = document.createElement('a');
+    element.href = '/advertisements/' + result.id;
     element.classList.add('emoji-marker');
-    element.innerHTML = result.emoji;
+    element.dataset.content =  result.title;
+    element.innerHTML = result.emoji + ' ';
 
+    // Add the marker to the map, and store it in the window.markers array
     let marker = new mapboxgl.Marker(element)
       .setLngLat([newY, newX])
       .addTo(window.mapView);
 
     window.markers.push(marker);
+
+    // Add an event listener
+    element.addEventListener('click', function(event) {
+      console.log(event.target.dataset.id)
+    })
 
   })
 

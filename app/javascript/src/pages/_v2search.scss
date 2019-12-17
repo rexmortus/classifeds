@@ -389,10 +389,32 @@ $bkT: rgba($primary-color, 0.5);
         padding: 2px;
 
         .emoji-marker {
-          @include label;
-          font-size: 1.5rem;
-          z-index: 99999999999;
-          text-shadow: 0px 1px rgba(black, 0.25);
+          font-size: 1.75rem;
+          z-index: 999;
+          color: $primary-color;
+          background-color: rgba(0,0,0,0);
+          font-weight: bold;
+          text-shadow: 0 0 3px rgba(black, 0.1);
+          transition: padding 0.2s;
+
+          &:hover {
+            font-size: .8rem;
+            outline: 1px solid $medium-gray;
+            border: 2px solid white;
+            cursor: pointer;
+            background-color: rgba(lighten($alert-color, 23.5), 0.75);
+            backdrop-filter: blur(6px);
+            padding: .5rem;
+            z-index: 9999;
+            box-shadow: 0 0 2px rgba(black, 0.25);
+            text-rendering: optimizeLegibility;
+            transform: scale(1.1);
+
+            &:after {
+              font-size: .8rem;
+              content: attr(data-content);
+            }
+          }
         }
 
         #map-results-view {
