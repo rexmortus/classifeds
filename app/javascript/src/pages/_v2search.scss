@@ -395,7 +395,7 @@ $bkT: rgba($primary-color, 0.5);
           background-color: rgba(0,0,0,0);
           font-weight: bold;
           text-shadow: 0 0 3px rgba(black, 0.1);
-          transition: padding 0.2s;
+          transition: padding 0.2s, margin-top 0.1s;
 
           &:hover {
             font-size: .8rem;
@@ -408,7 +408,7 @@ $bkT: rgba($primary-color, 0.5);
             z-index: 9999;
             box-shadow: 0 0 2px rgba(black, 0.25);
             text-rendering: optimizeLegibility;
-            transform: scale(1.1);
+            margin-top: -.35rem;
 
             &:after {
               font-size: .8rem;
