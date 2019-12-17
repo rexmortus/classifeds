@@ -42,17 +42,19 @@ if (!window.mapView) {
   });
 
   window.dispatchEvent(event);
+
 }
 
 <% else %>
+
 var event = new Event('remove-map-view');
 window.dispatchEvent(event);
 
 var resultsContainer =              document.getElementById('js-results-grid');
 resultsContainer.innerHTML =        '<%= j render "v2_search/partials/search_results", advertisements: @advertisements, view_type: @view_type_param %>'
+
 <% end %>
 
-<% if @view_type_param === 'masonry' %>
-  var event = new Event('refresh-masonry-layout');
-  window.dispatchEvent(event);
-<% end %>
+// Always refresh masonry layout
+var event = new Event('refresh-masonry-layout');
+window.dispatchEvent(event);

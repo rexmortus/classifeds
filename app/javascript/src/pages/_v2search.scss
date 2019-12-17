@@ -392,7 +392,6 @@ $bkT: rgba($primary-color, 0.5);
           font-size: 1.75rem;
           z-index: 999;
           color: $primary-color;
-          background-color: rgba(0,0,0,0);
           font-weight: bold;
           text-shadow: 0 0 3px rgba(black, 0.1);
           transition: padding 0.2s, margin-top 0.1s;
@@ -402,13 +401,23 @@ $bkT: rgba($primary-color, 0.5);
             outline: 1px solid $medium-gray;
             border: 2px solid white;
             cursor: pointer;
-            background-color: rgba(lighten($alert-color, 23.5), 0.75);
+            background-color: rgba(lighten($alert-color, 23.5), 0.65);
             backdrop-filter: blur(6px);
             padding: .5rem;
             z-index: 9999;
             box-shadow: 0 0 2px rgba(black, 0.25);
             text-rendering: optimizeLegibility;
             margin-top: -.35rem;
+
+            &:before {
+              content: '';
+              top: -8px;
+              left: -8px;
+              right: -8px;
+              bottom: -8px;
+              border: 3px solid $primary-color;
+              position: absolute;
+            }
 
             &:after {
               font-size: .8rem;

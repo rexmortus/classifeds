@@ -60,6 +60,7 @@ if (form) {
     document.getElementsByName('search[category_subcategory]').forEach(function(element) {
     	element.checked = false;
     })
+
     Rails.fire(form, 'submit');
   }
 
@@ -110,22 +111,15 @@ if (form) {
   // Event hooks
   $(form).on('ajax:before', function() {
     $('#search_query').blur();
-    appliedFiltersContainers.forEach(function(element) {
-      element.classList.add('submitting');
-    })
-    resultsContainer.classList.add('submitting');
   })
 
   $(form).on('ajax:success', function(event, xhr, status, error) {
     pckry.reloadItems();
     pckry.layout();
-    appliedFiltersContainers.forEach(function(element) {
-      element.classList.remove('submitting');
-    })
-    resultsContainer.classList.remove('submitting');
   });
 
   window.addEventListener('refresh-masonry-layout', function() {
+    pckry.reloadItems();
     pckry.layout();
   });
 
