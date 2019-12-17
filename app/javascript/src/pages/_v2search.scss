@@ -373,7 +373,9 @@ $bkT: rgba($primary-color, 0.5);
         padding: 2px;
 
         .emoji-marker {
-          font-size: 1.6rem;
+          @include label;
+          font-size: 1.5rem;
+          z-index: 99999999999;
         }
 
         #map-results-view {

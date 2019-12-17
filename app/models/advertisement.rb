@@ -27,6 +27,14 @@ class Advertisement < ApplicationRecord
     end.sort_by {|_key, value| value}.reverse
   end
 
+  def as_marker
+    {
+      emoji: self.emoji,
+      coordinates: self.geocode,
+      title: self.title
+    }
+  end
+
   def self.categories_as_form_collection
     self.categories.map.each_with_index do | (category, subcategories), category_id|
       values = subcategories.map.each_with_index do |subcategory, subcategory_id|

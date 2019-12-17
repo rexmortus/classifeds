@@ -21,12 +21,26 @@ viewTypeFilterContainer.innerHTML = '<%= j render "v2_search/partials/view_type_
 <% if @view_type_param === 'map' %>
 
 if (!window.mapView) {
+
   var resultsContainer =              document.getElementById('js-results-grid');
   resultsContainer.innerHTML =        '<%= j render "v2_search/partials/search_results", advertisements: @advertisements, view_type: @view_type_param %>'
-  var event = new Event('initialise-map-view');
+
+  var event = new CustomEvent('initialise-map-view', {
+    detail: {
+      data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+    }
+  });
+
   window.dispatchEvent(event);
+
 } else {
-  var event = new Event('update-map-view');
+
+  var event = new CustomEvent('update-map-view', {
+    detail: {
+      data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+    }
+  });
+
   window.dispatchEvent(event);
 }
 

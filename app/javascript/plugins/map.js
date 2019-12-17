@@ -66,7 +66,9 @@ $(document).ready(function() {
 });
 
 // Start up the big map
-$(window).on('initialise-map-view', function() {
+$(window).on('initialise-map-view', function(event) {
+
+  let results = JSON.parse(event.detail["data"])
 
   // Hide the small map
   var smallMap = document.getElementById('map');
@@ -85,7 +87,7 @@ $(window).on('initialise-map-view', function() {
       zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v9',
       pitch: 0,
-      interactive: true
+      interactive: false,
     });
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
@@ -98,21 +100,28 @@ $(window).on('initialise-map-view', function() {
       window.mapView = map
       window.markers = [];
 
-      let el = document.createElement('span');
-      el.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
+      // Create the center, spinning radar thing
+      let radar = document.createElement('span');
+      radar.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
 
-      let emoji = document.createElement('span');
-      emoji.innerHTML = '<span class="emoji-marker">😎</span>';
-
-      new mapboxgl.Marker(emoji)
+      let marker = new mapboxgl.Marker(radar)
         .setLngLat(coordinates)
         .addTo(map);
 
-      let marker = new mapboxgl.Marker(el)
-        .setLngLat(coordinates)
-        .addTo(map);
+      // Add an emoji marker for each result
+      results.forEach(result => {
 
-      window.markers.push(marker);
+        let element = document.createElement('span');
+        element.classList.add('emoji-marker');
+        element.innerHTML = result.emoji;
+
+        let marker = new mapboxgl.Marker(element)
+          .setLngLat(result.coordinates.reverse())
+          .addTo(map);
+
+        window.markers.push(marker);
+
+      })
 
       // Center the map on the new coordinates
       var center_x = coordinates[0];
@@ -141,7 +150,31 @@ $(window).on('initialise-map-view', function() {
   }
 })
 
-$(window).on('update-map-view', function() {
+$(window).on('update-map-view', function(event) {
+
+  let results = JSON.parse(event.detail["data"])
+
+  // clear markers
+  window.markers.forEach(marker => {
+    marker.remove();
+  });
+
+  window.markers = [];
+
+  // Add an emoji marker for each result
+  results.forEach(result => {
+
+    let element = document.createElement('span');
+    element.classList.add('emoji-marker');
+    element.innerHTML = result.emoji;
+
+    let marker = new mapboxgl.Marker(element)
+      .setLngLat(result.coordinates.reverse())
+      .addTo(window.mapView);
+
+    window.markers.push(marker);
+
+  })
 
   const coordinates = $('#user_location').data('geocode').slice().reverse()
   const searchRadius = parseInt($('#search_distance').val());
