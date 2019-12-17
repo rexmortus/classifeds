@@ -113,7 +113,7 @@ $(window).on('initialise-map-view', function(event) {
 
         let coords = result.coordinates.reverse()
 
-        var r = 1000/111300 // = 100 meters
+        var r = 900/111300 // = 100 meters
           , y0 = coords[0]
           , x0 = coords[1]
           , u = Math.random()
@@ -182,7 +182,7 @@ $(window).on('update-map-view', function(event) {
 
     let coords = result.coordinates.reverse()
 
-    var r = 1000/111300 // = 100 meters
+    var r = 900/111300 // = 100 meters
       , y0 = coords[0]
       , x0 = coords[1]
       , u = Math.random()
