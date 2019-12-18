@@ -52,6 +52,15 @@ if (form) {
     })
   });
 
+  // Changing search location
+  const saveLocationButton = document.getElementById('js-save-location');
+  const saveLocationModal = document.getElementById('js-change-location-modal');
+
+  saveLocationButton.addEventListener('click', function(event) {
+    $(saveLocationModal).foundation('close');
+    Rails.fire(form, 'submit');
+  })
+
   // A function to clear filters
   window.clearFilters = function() {
     document.getElementsByName('search[types][]').forEach(function(element) {

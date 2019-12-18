@@ -6,18 +6,29 @@
 }
 
 #js-change-location-modal {
-  background: none;
-  padding: none;
-  outline: none;
-  border: none;
-  height:500px;
 
-  .fieldset {
-    margin-top: 0;
-    padding-bottom: .4rem;
-    border-color: $primary-color;
-    background-color: rgba(lighten($alert-color, 25), .85);
+  border: none;
+  outline: none;
+  background: none;
+  background-color: none;
+  height:450px;
+
+  .fieldset-container {
+    padding: 1rem;
+    padding-top: .5rem;
+    background-color: rgba(lighten($alert-color, 25), 1);
     backdrop-filter: blur(3px);
+    border: 2px solid white;
+    outline: 1px solid $primary-color;
+
+    .fieldset {
+      margin: 0 0 0 0 !important;
+      // background-color: rgba(0,0,0,0) !important;
+      background-color: rgba(lighten($alert-color, 25), 1);
+      margin-top: 0;
+      padding-bottom: .4rem;
+      border-color: $primary-color;
+    }
   }
 }
 

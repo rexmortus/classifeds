@@ -1,4 +1,6 @@
 <div class="search-page-container">
+
+  <!-- The search form -->
   <%= simple_form_for :search,
     :method => :get,
     :remote => true,
@@ -8,6 +10,7 @@
     :url => search_path do |f|
   %>
 
+  <!-- A hidden input for location param -->
   <%= f.input :location,
     label: false,
     input_html: {
@@ -15,21 +18,21 @@
       value: @location_param
   } %>
 
-  <!-- Location filter  -->
-  <div class="reveal" id="js-change-location-modal" data-reveal>
-    <div class="row">
-      <div class="columns expand">
-        <fieldset class="fieldset">
-          <div class="columns small-12">
-            <%= f.input :modal_location,
-              label: false,
-              input_html: {
-                id: "address-input",
-                value: @location_param
-            } %>
-          </div>
-        </fieldset>
-      </div>
+  <!-- Location filter (hidden in a modal)  -->
+  <div class="reveal" id="js-change-location-modal" data-reveal data-close-on-click="false">
+    <div class="fieldset-container">
+      <fieldset class="fieldset">
+        <legend>Location</legend>
+        <div class="columns small-12">
+          <%= f.input :modal_location,
+            label: false,
+            input_html: {
+              id: "address-input",
+              value: @location_param
+          } %>
+          <a href="#" id="js-save-location" class="button primary expanded">Save Location</a>
+        </div>
+      </fieldset>
     </div>
   </div>
 
