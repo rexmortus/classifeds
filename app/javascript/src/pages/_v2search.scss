@@ -121,6 +121,11 @@ $bkT: rgba($primary-color, 0.5);
       text-align: center;
     }
 
+    .results-count {
+      color: $primary-color;
+      font-size: .9rem;
+    }
+
     .label.primary {
 
       a {
