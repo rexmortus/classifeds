@@ -123,4 +123,28 @@ if (form) {
     pckry.layout();
   });
 
+  // Location modal events
+  const locationModal = document.getElementById('js-change-location-modal');
+
+  // Focus the input on reveal
+  $(document).on(
+    'open.zf.reveal', '[data-reveal]', function () {
+      $('#address-input').focus().select();
+    }
+  );
+
+  // Some stuff to use the location value
+  const addressInput = document.getElementById('address-input');
+  const locationValue = document.getElementById('js-location-value');
+
+  addressInput.addEventListener('change', function(event) {
+    locationValue.value = event.target.value;
+  })
+
+  $(document).on(
+    'closed.zf.reveal', '[data-reveal]', function () {
+      Rails.fire(form, 'submit');
+    }
+  );
+
 }

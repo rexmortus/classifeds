@@ -27,6 +27,8 @@ if (!window.mapView) {
 
   var event = new CustomEvent('initialise-map-view', {
     detail: {
+      coordinates: <%= @geocode_param %>,
+      radius: <%= @distance_param %>,
       data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
     }
   });
@@ -37,6 +39,8 @@ if (!window.mapView) {
 
   var event = new CustomEvent('update-map-view', {
     detail: {
+      coordinates: <%= @geocode_param %>,
+      radius: <%= @distance_param %>,
       data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
     }
   });

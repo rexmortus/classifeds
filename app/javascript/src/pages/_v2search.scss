@@ -1,3 +1,30 @@
+#js-location-value {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#js-change-location-modal {
+  background: none;
+  padding: none;
+  outline: none;
+  border: none;
+  height:500px;
+
+  .fieldset {
+    margin-top: 0;
+    padding-bottom: .4rem;
+    border-color: $primary-color;
+    background-color: rgba(lighten($alert-color, 25), .85);
+    backdrop-filter: blur(3px);
+  }
+}
+
+.reveal-overlay {
+  backdrop-filter: blur(1px);
+}
+
 $gn: darken($success-color, 50);
 $gnT: rgba(0,192,0,0);
 $dgn: $primary-color;
@@ -136,6 +163,7 @@ $bkT: rgba($primary-color, 0.5);
     .map-container {
       position: relative;
       margin-bottom: 1rem !important;
+      border: 1px solid $medium-gray;
 
       .mapboxgl-canvas {
         border: 2px solid white;

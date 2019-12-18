@@ -43,17 +43,28 @@ class V2SearchController < ApplicationController
 
   def set_params
 
-    # Location/geocode param set from current_user or application default
-    user_signed_in? ? @location_param   = current_user.location : @location_param   = Rails.application.config.classifeds_default_location
-    user_signed_in? ? @geocode_param    = current_user.geocode  : @geocode_param    = Rails.application.config.classifeds_default_geocode
+    puts params
 
-    # Check for params
+    # Location/geocode param set from current_user or application default
+    if param_exists?(:location)
+      @location_param       = params[:search][:location]
+    elsif user_signed_in?
+      @location_param       = current_user.location
+    else
+      @location_param       = Rails.application.config.classifeds_default_location
+    end
+
+    # FYI Geocoder results are cached, so this shouldn't take long each time
+    @geocode_param = Geocoder.search(@location_param).first.coordinates
+
+    # Check for other search params
     param_exists?(:distance)             ? @distance_param   = params[:search][:distance].to_i        : @distance_param     = Rails.application.config.classifeds_default_search_distance
     param_exists?(:types)                ? @types_param      = params[:search][:types]                : @types_param        = []
     param_exists?(:category_subcategory) ? @categories_param = params[:search][:category_subcategory] : @categories_param  = []
     param_exists?(:query)                ? @query_param      = params[:search][:query]                : @query_param        = ""
     param_exists?(:view_type)            ? @view_type_param  = params[:search][:view_type]            : @view_type_param    = "masonry"
 
+    # Apply the filters
     @advertisements = filter(Advertisement.all)
 
   end
