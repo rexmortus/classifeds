@@ -94,6 +94,11 @@ class Advertisement < ApplicationRecord
       newY = y0 + y1
       newX = x0 + x1
 
+      puts "---"
+      puts "#{geocode[0]}"
+      puts "#{newY}"
+      puts "---"
+
       self.display_latitude = newY
       self.display_longitude = newX
       self.save!
