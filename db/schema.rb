@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_052745) do
+ActiveRecord::Schema.define(version: 2019_12_19_124438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_12_10_052745) do
     t.string "category_name"
     t.string "subcategory_name"
     t.string "emoji"
+    t.float "display_latitude"
+    t.float "display_longitude"
     t.index ["user_id"], name: "index_advertisements_on_user_id"
   end
 

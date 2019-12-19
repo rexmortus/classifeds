@@ -25,22 +25,6 @@ function addMarkers(results, mapView) {
     // Get the co-ordinates
     let coords = result.coordinates.reverse()
 
-    // Compute a scatter
-    var r = 900/111300 // = 900 meters *just to be safe for UI*
-      , y0 = coords[0]
-      , x0 = coords[1]
-      , u = Math.random()
-      , v = Math.random()
-      , w = r * Math.sqrt(u)
-      , t = 2 * Math.PI * v
-      , x = w * Math.cos(t)
-      , y1 = w * Math.sin(t)
-      , x1 = x / Math.cos(y0)
-
-    // Our scattered co-ordinates
-    let newY = y0 + y1
-    let newX = x0 + x1
-
     // Create the marker HTML element
     let element = document.createElement('a');
     element.href = '/advertisements/' + result.id;
@@ -50,8 +34,8 @@ function addMarkers(results, mapView) {
 
     let marker = new mapboxgl.Marker(element)
       .setLngLat([
-        newY,
-        newX
+        coords[0],
+        coords[1]
       ])
       .addTo(mapView);
 
