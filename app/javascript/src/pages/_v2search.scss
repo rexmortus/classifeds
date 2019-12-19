@@ -116,6 +116,8 @@ $bkT: rgba($primary-color, 0.5);
   margin-top: 1rem !important;
 
   .applied-filters {
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
 
     @include breakpoint(small only) {
       text-align: center;
@@ -395,6 +397,8 @@ $bkT: rgba($primary-color, 0.5);
   }
 
   .view-type-toggle {
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
 
     &:hover {
       color: lighten($success-color, 10);
@@ -426,7 +430,7 @@ $bkT: rgba($primary-color, 0.5);
       }
 
       .map-container {
-        height: calc(100vh - 160px - 4rem + 2px);
+        height: calc(100vh - 222px - 1rem);
 
         background-color: white;
         border: 1px solid $medium-gray;
@@ -472,7 +476,7 @@ $bkT: rgba($primary-color, 0.5);
 
         #map-results-view {
           border: 1px solid $medium-gray;
-          height: calc(100vh - 160px - 4rem - 4px);
+          height: calc(100vh - 228px - 1rem);
         }
 
         @keyframes scan {
