@@ -86,7 +86,7 @@ function centerMap(map, coordinates = $('#user_location').data('geocode').slice(
 // Start up the small map
 $(document).ready(function() {
 
-  var map = document.getElementById('js-small-map')
+  var map = document.getElementById('js-small-map');
 
   if (map) {
 
@@ -104,6 +104,8 @@ $(document).ready(function() {
     var coordinates = $('#user_location').data('geocode').slice().reverse()
     var location = $('#user_location').data('location');
     var searchRadius = parseInt($('#search_distance').val());
+
+    debugger;
 
     map.on('load', function() {
 

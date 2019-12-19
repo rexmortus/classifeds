@@ -3,7 +3,8 @@
   position: relative;
   transition: all .05s ease-in-out;
   cursor: pointer;
-  border: 1px solid $medium-gray;
+  border: 2px solid white;
+  outline: 1px solid $medium-gray;
 
   img {
     filter: grayscale(50%);
@@ -33,7 +34,7 @@
     img {
       filter: grayscale(0%);
       outline: 3px solid $primary-color;
-      outline-offset: 3px;
+      outline-offset: 5px;
     }
 
     .image-overlay {

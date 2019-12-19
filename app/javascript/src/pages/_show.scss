@@ -6,6 +6,48 @@ radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 
 radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
 radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
 
+// Animations
+@keyframes float {
+  0% {
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+    font-size: 1.75rem;;
+  }
+  50% {
+    text-shadow: 0px 5px 3px rgba(0,0,0,0.1);
+    font-size: 2rem;
+  }
+  100% {
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+    font-size: 1.75rem;
+  }
+}
+
+@keyframes shine{
+  10% {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+  }
+  100% {
+    opacity: 0;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+  }
+}
+
+// THE STYLES 👩‍🎨
+
+.search-distance-input {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .show-advertisement {
 
   .show-page-container {
@@ -19,13 +61,17 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .left-column {
 
+    margin-top: 1rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
     @include breakpoint(large) {
       min-width:400px;
       max-width:400px;
     }
 
     .map-container {
-      padding-bottom: 0px;
+      padding-top: .75rem;
 
       @include breakpoint(small) {
         margin-top: 0px;
@@ -39,8 +85,9 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       //   margin-top: 17px;
       // }
 
-      #map {
-        border: 1px solid $medium-gray;
+      #js-small-map {
+        border: 2px solid $white;
+        outline: 1px solid $medium-gray;
       }
     }
 
@@ -84,6 +131,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       border-color: $medium-gray !important;
 
       span {
+        animation: float 4s ease-in-out infinite;
         font-size: 4.25rem;
       }
     }
@@ -92,9 +140,13 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   .center-column {
 
+    .emoji-tags {
+      display: inline-block;
+    }
+
     .heading-container {
 
-      margin-top: 17px;
+      margin-top: 1rem;
 
       h1 {
         font-size: 1.8rem;
@@ -105,7 +157,9 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       }
 
       .material-icons {
+        padding-top: .5rem;
         color: $secondary-color;
+        font-size: 3rem;
         cursor: pointer;
       }
 
@@ -167,10 +221,12 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         font-weight: bold;
 
         &.new-reaction {
+
           margin-bottom: 0px;
           width: 100%;
           text-align: center;
           padding: 17px;
+
         }
 
         &.emoji {
@@ -259,6 +315,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
   .right-column {
 
     .images-container {
+
+      padding-top: 0.75rem;
 
       .packery-item {
         img {

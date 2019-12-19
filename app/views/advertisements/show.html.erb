@@ -17,10 +17,10 @@
 
         <!-- Map -->
         <fieldset class="fieldset map-container">
-          <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">
+          <legend id="user_location" data-geocode="<%= @advertisement.geocode %>" data-location="<%= @advertisement.location %>">
             <%= @advertisement.location %>
           </legend>
-          <div id='map' style="height: 300px;"></div><br>
+          <div id='js-small-map' style="height: 300px;" data-map-show-advertisement></div>
         </fieldset>
       </div>
 
@@ -162,3 +162,5 @@
       <%= f.input :emoji, :as => :hidden, :input_html => {value: ""} %>
   <% end %>
 <% end %>
+
+<input id="search_distance" class="search-distance-input" value="15"/>
