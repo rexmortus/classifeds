@@ -1,6 +1,22 @@
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js"
 import { createGeoJSONCircle } from "plugins/geojsoncircle"
 
+function addRadarMarker(map, coordinates) {
+  if (window.centerMarker) {
+    window.centerMarker.remove();
+    window.centerMarker = null;
+  }
+
+  let radarElement = document.createElement('span');
+  radarElement.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
+
+  let marker = new mapboxgl.Marker(radarElement)
+    .setLngLat(coordinates)
+    .addTo(map);
+
+  window.centerMarker = marker;
+}
+
 function addMarkers(results, mapView) {
 
   // Add an emoji marker for each result
@@ -46,25 +62,6 @@ function addMarkers(results, mapView) {
 
 function centerMap(map, coordinates = $('#user_location').data('geocode').slice().reverse(), searchRadius = parseInt($('#search_distance').val()), radar = false) {
 
-  // Refresh the radar marker each time
-  if (true) {
-
-    if (window.centerMarker) {
-      window.centerMarker.remove();
-      window.centerMarker = null;
-    }
-
-    let radarElement = document.createElement('span');
-    radarElement.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
-
-    let marker = new mapboxgl.Marker(radarElement)
-      .setLngLat(coordinates)
-      .addTo(map);
-
-    window.centerMarker = marker;
-
-  }
-
   const center_x = coordinates[0];
   const center_y = coordinates[1];
   const earth_radius = 6378.1;
@@ -80,7 +77,12 @@ function centerMap(map, coordinates = $('#user_location').data('geocode').slice(
     [
       [x1,y1],
       [x2,y2]
-    ], 50);
+    ], {padding: {
+      top: 0,
+      right: 0,
+      bottom: 40,
+      left: 0
+    }});
 }
 
 // Start up the small map
@@ -92,36 +94,29 @@ $(document).ready(function() {
 
     mapboxgl.accessToken = 'pk.eyJ1IjoicmV4bW9ydHVzIiwiYSI6ImNrMnplc3VscjAzYXUzb3IwNHBnaTJlZjMifQ.-gKFpHfNC1yfmO7c-rDLhw';
 
+    var coordinates = $('#user_location').data('geocode').slice().reverse()
+
     var map = new mapboxgl.Map({
       container: 'js-small-map',
-      center: $('#user_location').data('geocode').slice().reverse(),
+      center: coordinates,
       zoom: 10,
       style: 'mapbox://styles/mapbox/outdoors-v10',
       pitch: 0,
       interactive: false
     });
 
-    var coordinates = $('#user_location').data('geocode').slice().reverse()
-    var location = $('#user_location').data('location');
     var searchRadius = parseInt($('#search_distance').val());
-
-    debugger;
 
     map.on('load', function() {
 
+      // Save map to window object
       window.map = map
+
+      // Create an array to hold markers
       window.markers = [];
 
-      let el = document.createElement('span');
-      el.innerHTML = '<i class="material-icons rada">gps_fixed</i>';
-
-      // const marker = new mapboxgl.Marker(el)
-      //   .setLngLat(coordinates)
-      //   .addTo(map);
-      //
-      // window.markers.push(marker);
-
-      centerMap(window.map);
+      addRadarMarker(map, coordinates);
+      centerMap(window.map, coordinates, searchRadius);
     })
   }
 });
@@ -154,10 +149,17 @@ $(window).on('initialise-map-view', function(event) {
 
       // Save the map to the window global
       window.mapView = map
-      window.markers = [];
+
+      // clear markers
+      window.markers.forEach(marker => {
+        marker.remove();
+      });
+
+      // Add the radar marker
+      addRadarMarker(map, coordinates);
 
       // Add markers
-      let results = JSON.parse(event.detail.data)
+      let results = JSON.parse(event.detail.data);
       addMarkers(results, map);
 
       // Center the map
@@ -166,8 +168,25 @@ $(window).on('initialise-map-view', function(event) {
 
     })
 
-    window.addEventListener('remove-map-view', function() {
+    window.addEventListener('remove-map-view', function(event) {
+
+      // clear markers
+      window.markers.forEach(marker => {
+        marker.remove();
+      });
+
+      window.markers = [];
+
+      // Clear the mapView global
       window.mapView = null;
+
+      // Add the radar marker
+      var coordinates = event.detail["coordinates"].slice().reverse();
+      addRadarMarker(window.map, coordinates);
+
+      // Add markers
+      let results = JSON.parse(event.detail.data);
+      addMarkers(results, window.map);
     });
 
   }
@@ -184,12 +203,26 @@ $(window).on('update-map-view', function(event) {
 
   // Add an emoji marker for each result
   let results = JSON.parse(event.detail["data"])
-  addMarkers(results, window.mapView)
 
-  // Center the map
+  // Get the coords and search radius
   var coordinates = event.detail["coordinates"].slice().reverse();
   let searchRadius = event.detail.radius;
+
+  // Always center the small map
   centerMap(window.map, coordinates, searchRadius, false);
-  centerMap(window.mapView, coordinates, searchRadius, true);
+
+  // If the mapView is onscreen
+  if (window.mapView) {
+    // update the mapView
+    addRadarMarker(window.mapView, coordinates);
+    addMarkers(results, window.mapView)
+    centerMap(window.mapView, coordinates, searchRadius, true);
+  } else {
+    // update the small map
+    addRadarMarker(map, coordinates);
+    addMarkers(results, window.map)
+  }
+
+  // Add
 
 });

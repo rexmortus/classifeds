@@ -35,23 +35,17 @@ if (!window.mapView) {
 
   window.dispatchEvent(event);
 
-} else {
-
-  var event = new CustomEvent('update-map-view', {
-    detail: {
-      coordinates: <%= @geocode_param %>,
-      radius: <%= @distance_param %>,
-      data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
-    }
-  });
-
-  window.dispatchEvent(event);
-
 }
 
 <% else %>
 
-var event = new Event('remove-map-view');
+var event = new CustomEvent('remove-map-view', {
+  detail: {
+    coordinates: <%= @geocode_param %>,
+    radius: <%= @distance_param %>,
+    data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+  }
+});
 window.dispatchEvent(event);
 
 var resultsContainer =              document.getElementById('js-results-grid');
@@ -61,4 +55,15 @@ resultsContainer.innerHTML =        '<%= j render "v2_search/partials/search_res
 
 // Always refresh masonry layout
 var event = new Event('refresh-masonry-layout');
+window.dispatchEvent(event);
+
+// Always update the map
+var event = new CustomEvent('update-map-view', {
+  detail: {
+    coordinates: <%= @geocode_param %>,
+    radius: <%= @distance_param %>,
+    data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+  }
+});
+
 window.dispatchEvent(event);

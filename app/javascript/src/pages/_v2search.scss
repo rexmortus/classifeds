@@ -41,8 +41,8 @@ $gnT: rgba(0,192,0,0);
 $dgn: $primary-color;
 $gy: rgb(128,128,128);
 $gyT: rgba(128,128,128,0);
-$bk: rgba($primary-color, 0.1);
-$bkT: rgba($primary-color, 0.5);
+$bk: rgba($primary-color, 0.05);
+$bkT: rgba($primary-color, 0.4);
 
 @keyframes type_filters_pulse {
   0% {
@@ -148,8 +148,6 @@ $bkT: rgba($primary-color, 0.5);
       animation-duration: 7s;
       animation-iteration-count: infinite;
       background-color: $success-color;
-
-
     }
 
     .label.warning {
@@ -173,18 +171,22 @@ $bkT: rgba($primary-color, 0.5);
 
   .left-column {
 
+    margin-top: 0px !important;
+
     @include breakpoint(large) {
       min-width:400px;
       max-width:400px;
     }
 
     .map-container {
+      margin-top: 0px;
+      padding-top: 0px !important;
       position: relative;
       margin-bottom: 1rem !important;
       border: 1px solid $medium-gray;
 
       .mapboxgl-canvas {
-        border: 2px solid white;
+        border: 1px solid $medium-gray;
       }
 
       @keyframes scan {

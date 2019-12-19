@@ -1,3 +1,7 @@
-<% emoji.each do |react| %>
-  <span><%= react.emoji %> <strong><a href="#"><%= react.actor %></a> added a reaction</strong></span><br>
+<% if emoji.count > 0 %>
+  <div class="emoji-react-container">
+  <% emoji.each do |react| %>
+    <span><%= react.emoji %> <strong><a href="#"><%= react.actor %></a> added a reaction</strong></span><br>
+  <% end %>
+  </div>
 <% end %>
