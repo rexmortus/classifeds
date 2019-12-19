@@ -21,6 +21,7 @@
 <% else %>
   <span class="label alert">No Filters</span>
 <% end %>
+
 <span class="results-count">
-  (n) results
+  <%= @advertisements.count(:all) %> results
 </span>
