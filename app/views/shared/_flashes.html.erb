@@ -1,13 +1,15 @@
+<!-- Notices -->
 <% if notice %>
-<div class="callout warning" data-closable>
+<div class="callout warning toast" data-closable>
   <%= notice %>
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <% end %>
+
 <% if alert %>
-  <div class="callout alert" data-closable>
+  <div class="callout alert toast" data-closable>
     <%= alert %>
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>

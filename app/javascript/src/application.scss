@@ -13,6 +13,15 @@
 @import "src/pages/_show.scss";
 @import "src/pages/_new.scss";
 
+.toast {
+  position: absolute;
+  bottom: 0px;
+  right: 1rem;
+  padding: 2.5rem;
+  border: 2px solid white;
+  outline: 1px solid $medium-gray;
+}
+
 body {
 
   background-color: $body-background;
