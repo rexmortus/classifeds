@@ -114,6 +114,7 @@ $bkT: rgba($primary-color, 0.4);
 
 .search-page-container {
   margin-top: 1rem !important;
+  max-height: calc(100vh - 74px);
 
   .applied-filters {
     margin-top: 0rem;
@@ -170,6 +171,9 @@ $bkT: rgba($primary-color, 0.4);
   }
 
   .left-column {
+
+    max-height: calc(100vh - 75px - 1rem);
+    overflow-y: scroll;
 
     margin-top: 0px !important;
 
@@ -417,6 +421,8 @@ $bkT: rgba($primary-color, 0.4);
 
   .center-column {
 
+      max-height: calc(100vh - 151px - 1rem);
+
       .query-container {
 
         background-color: rgba(white, 0.5);
@@ -432,11 +438,16 @@ $bkT: rgba($primary-color, 0.4);
       }
 
       .map-container {
-        height: calc(100vh - 222px);
+        height: calc(100vh - 223px);
 
         background-color: white;
         border: 1px solid $medium-gray;
         padding: 2px;
+
+        #map-results-view {
+          border: 1px solid $medium-gray;
+          height: calc(100vh - 229px);
+        }
 
         @keyframes float {
         	0% {
@@ -490,11 +501,6 @@ $bkT: rgba($primary-color, 0.4);
               content: attr(data-content);
             }
           }
-        }
-
-        #map-results-view {
-          border: 1px solid $medium-gray;
-          height: calc(100vh - 228px);
         }
 
         @keyframes scan {
@@ -564,27 +570,25 @@ $bkT: rgba($primary-color, 0.4);
 
       #js-results-grid {
 
+          padding-left: 1px;
           margin-top: 3px;
+          max-height: calc(100vh - 222px);
+          overflow-y: scroll;
+          overflow-x: visible;
+          padding-top: 1px;
 
           .js-packery-item {
-            transition: all .05s ease-in-out;
             outline: none;
             outline-offset: 0px;
+            z-index: 9999;
+            transition: all .15s ease-in-out;
 
             img {
               width: 100%;
-              transition: all .05s ease-in-out;
-              opacity: 0.90;
-              filter: blur(0.3px) grayscale(15%);
             }
 
             .label.success {
               color: white;
-            }
-
-            .label {
-              transition: all .05s ease-in-out;
-              filter: grayscale(15%);
             }
 
             .warning {
@@ -594,20 +598,19 @@ $bkT: rgba($primary-color, 0.4);
             .emoji {
               transition: all .05s ease-in-out;
               opacity: 0.90;
-              filter: blur(0.3px) grayscale(15%);
+              filter: blur(0.3px);
             }
 
             &:hover {
-              outline: 3px solid $primary-color;
-              outline-offset: 3px;
+
+              .card {
+                border-color: $primary-color;
+                outline-color: $primary-color;
+              }
 
               img {
                 opacity: 1;
-                filter: blur(0) grayscale(0);
-              }
-
-              .label {
-                filter: grayscale(0);
+                filter: blur(0);
               }
 
               .emoji {
