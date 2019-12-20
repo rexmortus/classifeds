@@ -41,6 +41,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
 // THE STYLES 👩‍🎨
 
+// The actual search distance input should be hidden
 .search-distance-input {
   visibility: hidden;
   height: 0;
@@ -48,6 +49,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
   padding: 0;
 }
 
+// All styles declared as children of the main class
 .show-advertisement {
 
   .show-page-container {
@@ -77,19 +79,16 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         margin-top: 0px;
       }
 
-      // @include breakpoint(medium) {
-      //   margin-top: 17px;
-      // }
-      //
-      // @include breakpoint(large) {
-      //   margin-top: 17px;
-      // }
-
       #js-small-map {
         border: 2px solid $white;
         outline: 1px solid $medium-gray;
-      }
 
+        &.show-page-small-map {
+          .material-icons {
+            visibility: hidden;
+          }
+        }
+      }
     }
 
     .contact-container {
@@ -126,23 +125,16 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         margin-top: 0px !important;
       }
     }
-
-    .small-screen-emoji-container {
-      text-align: center;
-      border-color: $medium-gray !important;
-
-      span {
-        animation: float 4s ease-in-out infinite;
-        font-size: 4.25rem;
-      }
-    }
-
   }
 
   .center-column {
 
     .emoji-tags {
       display: inline-block;
+    }
+
+    .emoji-reacts {
+
     }
 
     .heading-container {
