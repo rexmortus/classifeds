@@ -245,11 +245,11 @@ $bkT: rgba($primary-color, 0.4);
         left: 3px;
         bottom: 3px;
         z-index: 999;
-        padding: 0 1rem 0 1rem;
+        padding: 2px 1rem 3px 1rem;
         background-color: rgba(lighten($alert-color, 25), .50);
         height: 50px;
-        border-top: 1px solid $light-gray;
         backdrop-filter: blur(5px);
+        //
       }
 
       .slider-fill {
