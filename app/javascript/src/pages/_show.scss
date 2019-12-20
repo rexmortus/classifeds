@@ -131,14 +131,8 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       display: inline-block;
 
       a {
-
-        z-index: 998;
+        
         border: 1px solid $light-gray;
-
-        span {
-          z-index: 999;
-        }
-
         padding-top: .5rem;
         text-align: center;
         position: relative;
