@@ -623,6 +623,14 @@ $bkT: rgba($primary-color, 0.4);
               border: 0.125rem solid white;
               background-color: lighten($alert-color, 23.5);
 
+              svg {
+                width: 100%;
+                padding-top: 1px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
               .card-location {
                 color: $primary-color !important;
                 margin-bottom: 0px;

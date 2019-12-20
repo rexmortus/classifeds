@@ -17,7 +17,9 @@
           <div class="row">
             <div class="columns small-expand medium-expand large-expand">
               <p><span class="label success"><%= ad.for %></span><span class="label warning"><%= ad.category_subcategory %></span></p>
-              <h5><span class="emoji"><%= ad.emoji %></span> <%= ad.title %></h5>
+              <svg viewBox="0 0 250 22">
+                <text x="0" y="15"><%= ad.emoji %></span> <%= ad.title %></text>
+              </svg>
               <p class="card-location"><strong><small><i class="fi-marker"></i> <%= ad.location %></small></strong></p>
             </div>
           </div>
