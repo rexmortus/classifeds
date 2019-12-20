@@ -64,11 +64,13 @@
     <!-- Page title -->
     <div class="row heading-container align-middle">
       <div class="column medium-10">
-        <h1><%= @advertisement.emoji %> <%= @advertisement.title %></h1>
+        <svg viewBox="0 0 200 21">
+          <text x="0" y="15"><%= @advertisement.emoji %> <%= @advertisement.title %></text>
+        </svg>
       </div>
-      <div class="column expand">
+      <!-- <div class="column expand">
         <h1 id="js-add-bookmark"><a><i class="material-icons">bookmark_border</i></a></h1>
-      </div>
+      </div> -->
     </div>
 
     <!-- Emoji reacts -->
@@ -92,7 +94,7 @@
         <%== @advertisement.body %>
         <!-- Poster Controls -->
         <div class="poster-controls">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && current_user === @advertisement.user %>
             <p>
               <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
                 |
@@ -128,7 +130,6 @@
           <% @advertisement.images.each_with_index do |image, index| %>
             <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= index %>">
               <img src="<%= url_for(image) %>">
-              <div class="image-overlay">🔎</div>
             </div>
           <% end %>
         </div>
