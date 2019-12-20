@@ -438,6 +438,7 @@ $bkT: rgba($primary-color, 0.4);
       }
 
       .map-container {
+        min-height: calc(100vh - 223px);
         height: calc(100vh - 223px);
 
         background-color: white;
@@ -446,6 +447,7 @@ $bkT: rgba($primary-color, 0.4);
 
         #map-results-view {
           border: 1px solid $medium-gray;
+          min-height: calc(100vh - 229px);
           height: calc(100vh - 229px);
         }
 
@@ -572,6 +574,8 @@ $bkT: rgba($primary-color, 0.4);
 
           padding-left: 1px;
           margin-top: 3px;
+          height: calc(100vh - 222px);
+          min-height: calc(100vh - 222px);
           max-height: calc(100vh - 222px);
           overflow-y: scroll;
           overflow-x: visible;
