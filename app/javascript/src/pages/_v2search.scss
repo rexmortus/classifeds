@@ -564,11 +564,13 @@ $bkT: rgba($primary-color, 0.4);
 
           .image-holder {
             img {
+              background-color: white;
               border: 1px solid $medium-gray;
             }
           }
 
           a {
+            font-weight: 400;
             text-decoration: underline;
           }
         }
@@ -589,6 +591,11 @@ $bkT: rgba($primary-color, 0.4);
             outline: none;
             outline-offset: 0px;
             transition: all .15s ease-in-out;
+
+            h5 {
+              font-weight: 400;
+              color: darken($primary-color, 5) !important;
+            }
 
             img {
               width: 100%;

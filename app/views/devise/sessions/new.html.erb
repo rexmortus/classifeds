@@ -1,24 +1,40 @@
-<div class="grid-x grid-padding-x grid-padding-y">
-  <div class="cell">
-    <h2>Log in</h2>
+<% if @user.errors.present? %>
+  <%= render 'shared/flashes', errors: @user.errors %>
+<% end %>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
-      </div>
-    <% end %>
+<div class="row" id="user_location" data-geocode="<%= Rails.application.config.classifeds_default_geocode %>" style="padding-top:2.5rem">
 
-    <%= render "devise/shared/links" %>
+  <div class="columns small-12 medium-12 large-12 expand" style="text-align: center;">
+    <h1>Sign in</h1>
+    <h4>to <strong><%= ENV["CLASSIFEDS_DOMAIN"] %></strong></h4>
   </div>
+
+  <div class="columns small-6 medium-3 medium-offset-3 large-6 large-6 large-offset-3">
+    <fieldset class="fieldset">
+      <legend><%= Rails.application.config.classifeds_default_location %></legend>
+      <div id="js-small-map" style="height: 300px;"></div>
+    </fieldset>
+  </div>
+  <div class="columns small-6 medium-3 large-6" style="padding-top: 1.5rem;">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :password,
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+  <div class="columns small-12 medium-6 medium-offset-3 large-6 large-offset-3">
+      <%= f.button :submit, "Log in",
+        class: 'button primary expanded'
+      %>
+  </div>
+
 </div>
+
+<% end %>
+
+<input id="search_distance" type="text" value="5">

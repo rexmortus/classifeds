@@ -17,35 +17,27 @@
       <div id="js-small-map" style="height: 300px;"></div>
     </fieldset>
   </div>
-  <div class="columns small-6 medium-3 large-6" style="padding-top: 2rem;">
+  <div class="columns small-6 medium-3 large-6" style="padding-top: 1.5rem;">
     <%= f.input :username,
                 required: true,
-                label: false,
                 autofocus: true,
                 :error => false,
-                placeholder: 'Username',
                 input_html: { autocomplete: "username" }%>
 
     <%= f.input :email,
                 required: true,
-                label: false,
                 autofocus: true,
                 :error => false,
-                placeholder: 'Email',
                 input_html: { autocomplete: "email" }%>
 
     <%= f.input :password,
                 required: true,
-                label: false,
                 :error => false,
-                placeholder: 'Password',
                 input_html: { autocomplete: "new-password" } %>
 
     <%= f.input :password_confirmation,
                 required: true,
-                label: false,
                 :error => false,
-                placeholder: 'Password Confirmation',
                 input_html: { autocomplete: "new-password" } %>
   </div>
   <div class="columns small-12 medium-6 medium-offset-3 large-6 large-offset-3">

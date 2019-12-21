@@ -1,4 +1,6 @@
 .toast {
+
+  color: $primary-color !important;
   position: absolute;
   bottom: 0px;
   right: 1rem;
@@ -9,25 +11,7 @@
   backdrop-filter: blur(3px);
   z-index: 1000;
 
-  &:after {
-
-    animation: shine 2s ease-out  infinite;
-    animation-fill-mode: forwards;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 12px;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-
-    background: rgba(255, 255, 255, 0.13);
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.13) 0%,
-      rgba(255, 255, 255, 0.13) 77%,
-      rgba(255, 255, 255, 0.5) 92%,
-      rgba(255, 255, 255, 0.0) 100%
-    );
+  span {
+    color: $primary-color !important;
   }
 }
