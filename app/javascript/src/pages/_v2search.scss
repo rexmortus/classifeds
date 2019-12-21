@@ -18,7 +18,7 @@
     padding-top: .5rem;
     border: 2px solid white;
     outline: 1px solid $primary-color;
-    @include diamond-pattern(lighten($alert-color, 22.5));
+    @include diamond-pattern(lighten($primary-color, 59));
 
     .fieldset {
       margin: 0 0 0 0 !important;
