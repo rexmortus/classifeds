@@ -108,12 +108,12 @@ if (form) {
   // Focus the input on reveal
   $(document).on(
     'open.zf.reveal', '[data-reveal]', function () {
-      $('#address-input').focus().select();
+      $('#algolia-places-input').focus().select();
     }
   );
 
   // Some stuff to use the location value
-  const addressInput = document.getElementById('address-input');
+  const addressInput = document.getElementById('algolia-places-input');
   const locationValue = document.getElementById('js-location-value');
 
   addressInput.addEventListener('change', function(event) {

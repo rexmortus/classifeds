@@ -117,56 +117,41 @@ $bkT: rgba($primary-color, 0.4);
   max-height: calc(100vh - 74px);
 
   .applied-filters {
+
     margin-top: 0rem;
     margin-bottom: 0.6rem;
 
-    @include breakpoint(small only) {
-      text-align: center;
+    .location-filter {
+      color: white;
+      @include diamond-pattern($primary-color);
+
+      a {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+
+    .type-filter {
+      color: white;
+      @include diamond-pattern($success-color);
+    }
+
+    .category-filter {
+      color: $primary-color;
+      @include diamond-pattern($warning-color);
+    }
+
+    .clear-filters {
+      color: white;
+      @include diamond-pattern($alert-color);
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .results-count {
       color: $primary-color;
       font-size: .9rem;
-    }
-
-    .label.primary {
-
-      a {
-        color: white;
-        text-decoration: underline;
-
-        &:hover {
-          color: lighten($primary-color, 54);
-        }
-
-      }
-
-    }
-
-    .label.success {
-      color: white;
-      animation-name: type_filters_pulse;
-      animation-duration: 7s;
-      animation-iteration-count: infinite;
-      background-color: $success-color;
-    }
-
-    .label.warning {
-      color: $primary-color;
-      animation-name: category_filters_pulse;
-      animation-duration: 7s;
-      animation-iteration-count: infinite;
-      background-color: $warning-color;
-    }
-
-    .label.alert {
-      color: white;
-
-      &:hover {
-        cursor: pointer;
-        background-color: darken($alert-color, 10);
-      }
-
     }
   }
 
@@ -298,10 +283,7 @@ $bkT: rgba($primary-color, 0.4);
 
       .selected {
         font-weight: bold;
-        animation-name: type_filters_pulse;
-        animation-duration: 7s;
-        animation-iteration-count: infinite;
-        background-color: $success-color;
+        @include diamond-pattern($success-color);
 
         a {
           color: white !important;
@@ -314,8 +296,8 @@ $bkT: rgba($primary-color, 0.4);
         }
 
         &:hover {
-          animation-name: none;
-          background-color: darken($success-color, 5);
+
+          @include diamond-pattern(darken($success-color, 5));
 
           a, i {
             color: darken(white, 5);
@@ -341,16 +323,13 @@ $bkT: rgba($primary-color, 0.4);
 
       .nested {
         margin-left: 0;
-        border-left: 1rem solid darken($warning-color, 2.5);
+        border-left: 1rem solid lighten($warning-color, 2.5);
 
         .selected {
-          animation-name: subcategories_filters_pulse;
-          animation-duration: 7s;
-          animation-iteration-count: infinite;
-          background-color: darken($warning-color, 2.5);
+          @include diamond-pattern(lighten($warning-color, 2.5));
 
           &:hover {
-            background-color: darken($warning-color, 5)
+            @include diamond-pattern(lighten($warning-color, 5));
           }
         }
 
@@ -358,10 +337,7 @@ $bkT: rgba($primary-color, 0.4);
 
       .selected {
         font-weight: bold;
-        animation-name: category_filters_pulse;
-        animation-duration: 7s;
-        animation-iteration-count: infinite;
-        background-color: $warning-color;
+        @include diamond-pattern($warning-color);
 
         a {
           color: $primary-color !important;
@@ -374,7 +350,7 @@ $bkT: rgba($primary-color, 0.4);
         }
 
         &:hover {
-          background-color: darken($warning-color, 5);
+          @include diamond-pattern(darken($warning-color, 5));
 
           a, i {
             color: darken($primary-color, 5);
@@ -425,11 +401,30 @@ $bkT: rgba($primary-color, 0.4);
 
       .query-container {
 
-        background-color: rgba(white, 0.5);
-        backdrop-filter: blur(1px);
-
+        @include diamond-pattern(lighten($blue-color, 64.5));
+        border: 2px solid white;
+        outline: 1px solid $medium-gray;
         padding-bottom: 0px;
-        border-color: $medium-gray;
+
+        input {
+          text-shadow: 1px 1px 1px rgba(white, 0.1);
+          color: $dark-gray;
+          background-color: rgba(black, 0.025);
+          border: 1px solid $medium-gray !important;
+          border: none;
+          backdrop-filter: blur(2px);
+          transition: border outline 1s ease-in-out;
+
+          &:focus {
+            box-shadow: none !important;
+            border: 1px solid $dark-gray !important;
+            outline: 3px solid $dark-gray !important;
+          }
+
+          &::placeholder {
+            color: darken($medium-gray, 5);
+          }
+        }
 
       }
 
@@ -551,21 +546,23 @@ $bkT: rgba($primary-color, 0.4);
       }
 
       .list-container {
-        @include callout-style($alert-color);
-        border: 1px solid $medium-gray;
+
+        @include diamond-pattern(lighten($blue-color, 64.5));
+        border: 2px solid white;
+        outline: 1px solid $medium-gray;
         padding: 1rem;
 
         table {
-          @include callout-style($alert-color);
           margin-bottom: 0px;
 
           .image-holder {
-            padding: 2px;
-            text-align: center;
-
             img {
               border: 1px solid $medium-gray;
             }
+          }
+
+          a {
+            text-decoration: underline;
           }
         }
       }
@@ -592,10 +589,12 @@ $bkT: rgba($primary-color, 0.4);
 
             .label.success {
               color: white;
+              @include diamond-pattern($success-color);
             }
 
             .warning {
               color: $primary-color;
+              @include diamond-pattern($warning-color);
             }
 
             .emoji {
@@ -627,7 +626,7 @@ $bkT: rgba($primary-color, 0.4);
               margin-bottom: 0 !important;
               outline: 1px solid $medium-gray;
               border: 0.125rem solid white;
-              background-color: lighten($alert-color, 23.5);
+              @include diamond-pattern(lighten($blue-color, 64.5));
 
               svg {
                 width: 100%;

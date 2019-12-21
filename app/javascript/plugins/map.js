@@ -79,27 +79,26 @@ $(document).ready(function() {
     mapboxgl.accessToken = 'pk.eyJ1IjoicmV4bW9ydHVzIiwiYSI6ImNrMnplc3VscjAzYXUzb3IwNHBnaTJlZjMifQ.-gKFpHfNC1yfmO7c-rDLhw';
 
     var coordinates = $('#user_location').data('geocode').slice().reverse()
+    var searchRadius = parseInt($('#search_distance').val());
 
     var map = new mapboxgl.Map({
       container: 'js-small-map',
       center: coordinates,
-      zoom: 10,
+      zoom: 8,
       style: 'mapbox://styles/mapbox/outdoors-v10',
       pitch: 0,
       interactive: false
     });
 
-    var searchRadius = parseInt($('#search_distance').val());
+    // Save map to window object
+    window.map = map
 
     map.on('load', function() {
-
-      // Save map to window object
-      window.map = map
 
       // Create an array to hold markers
       window.markers = [];
 
-      addRadarMarker(map, coordinates);
+      // addRadarMarker(map, coordinates);
       centerMap(window.map, coordinates, searchRadius);
     })
   }
@@ -112,6 +111,15 @@ $(window).on('initialise-map-view', function(event) {
   var map = document.getElementById('map-results-view')
 
   if (map) {
+
+    // clear markers
+    if (window.markers) {
+      window.markers.forEach(marker => {
+        marker.remove();
+      });
+    }
+
+    window.markers = [];
 
     // Get coordinates
     var coordinates = event.detail["coordinates"].slice().reverse();
@@ -179,9 +187,11 @@ $(window).on('initialise-map-view', function(event) {
 $(window).on('update-map-view', function(event) {
 
   // clear markers
-  window.markers.forEach(marker => {
-    marker.remove();
-  });
+  if (window.markers) {
+    window.markers.forEach(marker => {
+      marker.remove();
+    });
+  }
 
   window.markers = [];
 
@@ -199,6 +209,7 @@ $(window).on('update-map-view', function(event) {
   if (window.mapView) {
     // update the mapView
     addRadarMarker(window.mapView, coordinates);
+    // addMarkers(results, window.map);
     addMarkers(results, window.mapView)
     centerMap(window.mapView, coordinates, searchRadius, true);
   } else {
@@ -206,7 +217,5 @@ $(window).on('update-map-view', function(event) {
     addRadarMarker(map, coordinates);
     addMarkers(results, window.map)
   }
-
-  // Add
 
 });

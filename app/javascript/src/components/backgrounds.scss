@@ -1,0 +1,67 @@
+// Spiral gradient background
+$body-background-alt: darken($body-background, 1);
+
+$spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
+
+// (Shiny) diamond pattern for various UI elements
+@mixin diamond-pattern($color) {
+
+  position: relative;
+  background: $color;
+  background:
+  linear-gradient(115deg, transparent 75%, lighten($color, 2) 75%) 0 0,
+  linear-gradient(245deg, transparent 75%, lighten($color, 2) 75%) 0 0,
+  linear-gradient(115deg, transparent 75%, lighten($color, 2) 75%) 5px -10px,
+  linear-gradient(245deg, transparent 75%, lighten($color, 2) 75%) 5px -10px,
+  $color;
+  background-size: 10px 20px;
+
+  // Text shadow to help text pop a lil
+  text-shadow: 0px 1px 1px rgba(black, 0.10);
+
+  &:hover {
+    background: darken($color, 2);
+    background:
+    linear-gradient(115deg, transparent 75%, darken($color, 4) 75%) 0 0,
+    linear-gradient(245deg, transparent 75%, darken($color, 4) 75%) 0 0,
+    linear-gradient(115deg, transparent 75%, darken($color, 4) 75%) 5px -10px,
+    linear-gradient(245deg, transparent 75%, darken($color, 4) 75%) 5px -10px,
+    darken($color, 3);
+    background-size: 10px 20px;
+
+    &:after {
+      animation: none;
+      animation-fill-mode: none;
+      height: 0;
+      width: 0;
+    }
+
+  }
+
+  &:after {
+
+    animation: shine 2.5s ease-out infinite;
+    animation-fill-mode: forwards;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background: rgba(255, 255, 255, 0.10);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.10) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0.0) 100%
+    );
+  }
+
+}

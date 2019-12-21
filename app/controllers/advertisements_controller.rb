@@ -42,10 +42,10 @@ class AdvertisementsController < ApplicationController
     )
 
     @advertisement.images.attach(params[:images])
+    # NewAdvertisementJob.perform_now(@advertisement)
 
     respond_to do |format|
       if @advertisement.save
-        # NewAdvertisementJob.perform_now(@advertisement)
         format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully created.' }
         format.json { render :show, status: :created, location: @advertisement }
       else

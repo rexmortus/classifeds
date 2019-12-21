@@ -1,43 +1,5 @@
-$body-background-alt: darken($body-background, 1);
-
-$spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
-radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
-radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
-radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
-radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
-
-// Animations
-@keyframes float {
-  0% {
-    text-shadow: 0px 0px 3px rgba(0,0,0,0.2);
-    font-size: 1.75rem;;
-  }
-  50% {
-    text-shadow: 0px 5px 3px rgba(0,0,0,0.1);
-    font-size: 1.85rem;
-  }
-  100% {
-    text-shadow: 0px 0px 3px rgba(0,0,0,0.2);
-    font-size: 1.75rem;
-  }
-}
-
-@keyframes shine{
-  10% {
-   opacity: 0.25;
-   width: 100%;
-   transition-property: width, opacity;
-   transition-duration: 0.7s, 0.15s;
-   transition-timing-function: ease;
-  }
-  100% {
-   opacity: 0;
-   width: 0%;
-   transition-property: width, opacity;
-  }
-}
-
-// THE STYLES 👩‍🎨
+// Styles for 👩‍🎨
+// The show page! 🖼
 
 // The actual search distance input should be hidden
 .search-distance-input {
@@ -78,9 +40,6 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       }
 
       #js-small-map {
-        border: 2px solid $white;
-        outline: 1px solid $medium-gray;
-
         &.show-page-small-map {
           .material-icons {
             visibility: hidden;
@@ -131,61 +90,10 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
       display: inline-block;
 
       a {
-        
         border: 1px solid $light-gray;
         padding-top: .5rem;
         text-align: center;
-        position: relative;
-
-        background: $warning-color;
-        background:
-        linear-gradient(115deg, transparent 75%, lighten($warning-color, 3) 75%) 0 0,
-        linear-gradient(245deg, transparent 75%, lighten($warning-color, 3) 75%) 0 0,
-        linear-gradient(115deg, transparent 75%, lighten($warning-color, 3) 75%) 7px -15px,
-        linear-gradient(245deg, transparent 75%, lighten($warning-color, 3) 75%) 7px -15px,
-        $warning-color;
-        background-size: 15px 30px;
-
-        &:hover {
-          background: darken($warning-color, 3);
-          background:
-          linear-gradient(115deg, transparent 75%, darken($warning-color, 5) 75%) 0 0,
-          linear-gradient(245deg, transparent 75%, darken($warning-color, 5) 75%) 0 0,
-          linear-gradient(115deg, transparent 75%, darken($warning-color, 5) 75%) 7px -15px,
-          linear-gradient(245deg, transparent 75%, darken($warning-color, 5) 75%) 7px -15px,
-          darken($warning-color, 3);
-          background-size: 15px 30px;
-
-          &:after {
-            animation: none;
-            animation-fill-mode: none;
-            height: 0;
-            width: 0;
-          }
-
-        }
-
-        &:after {
-
-          animation: shine 2s ease-out  infinite;
-          animation-fill-mode: forwards;
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 12px;
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-
-          background: rgba(255, 255, 255, 0.13);
-          background: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.13) 0%,
-            rgba(255, 255, 255, 0.13) 77%,
-            rgba(255, 255, 255, 0.5) 92%,
-            rgba(255, 255, 255, 0.0) 100%
-          );
-        }
+        @include diamond-pattern($warning-color);
       }
     }
 
@@ -271,7 +179,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
         transition: all .05s ease-in-out;
 
         &.new-reaction {
-          background-color: #495567;
+          background-color: $blue-color;
           border: none !important;
           outline: none !important;
           color: white !important;

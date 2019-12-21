@@ -5,6 +5,26 @@ class Advertisement < ApplicationRecord
   has_many :emoji_react
   has_many_attached :images
 
+  # Validations
+  validates :title, length: {
+    in: 1..50,
+    message: "Title must be between 1 and 50 characters."
+  }
+  validates :body, length: {
+    minimum: 1,
+    message: "Body must be longer than 1 character."
+  }
+
+  # These will always
+  validates :location, presence: true
+  validates :for, presence: true
+  validates :category_subcategory, presence: true
+
+  validates :images, length: {
+    minimum: 1,
+    message: "Must have at least one image."
+  }
+
   # Geocoder
   geocoded_by :location
 
@@ -13,7 +33,7 @@ class Advertisement < ApplicationRecord
 
   # Event hooks
   after_validation :geocode, if: :will_save_change_to_location?
-  after_validation :display_geocode, if: :will_save_change_to_location?
+  before_save :display_geocode, if: :will_save_change_to_location?
 
   # Enums
   enum category: Rails.application.config.classifeds_categories
@@ -93,11 +113,6 @@ class Advertisement < ApplicationRecord
 
       newY = y0 + y1
       newX = x0 + x1
-
-      puts "---"
-      puts "#{geocode[0]}"
-      puts "#{newY}"
-      puts "---"
 
       self.display_latitude = newY
       self.display_longitude = newX

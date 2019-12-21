@@ -1,3 +1,8 @@
+#search_distance {
+  visibility: hidden;
+  height: 0;
+}
+
 .new-advertisement {
 
   .left-column {
@@ -7,12 +12,12 @@
       max-width:400px;
     }
 
-    #map {
+    #js-small-map {
 
-      @include breakpoint(medium only) {
-        height: 150px !important;
+      .material-icons {
+        color: $primary-color;
+        opacity: .35;
       }
-
     }
 
     svg {

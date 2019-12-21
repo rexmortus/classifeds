@@ -5,7 +5,7 @@ class EmojireactController < ApplicationController
   def create
 
     if @emoji_react.nil?
-      EmojiReact.create!(emoji: params[:emoji][:emoji], advertisement: @advertisement, actor: current_user.actor_id)
+      EmojiReact.create!(emoji: params[:emoji][:emoji], advertisement: @advertisement, actor: current_user.username)
     else
       @emoji_react.destroy
     end

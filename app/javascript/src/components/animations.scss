@@ -1,0 +1,29 @@
+@keyframes float {
+  0% {
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+    font-size: 1.75rem;;
+  }
+  50% {
+    text-shadow: 0px 5px 3px rgba(0,0,0,0.1);
+    font-size: 1.85rem;
+  }
+  100% {
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+    font-size: 1.75rem;
+  }
+}
+
+@keyframes shine{
+  10% {
+   opacity: 0.08;
+   width: 100%;
+   transition-property: width, opacity;
+   transition-duration: 0.7s, 0.15s;
+   transition-timing-function: ease;
+  }
+  100% {
+   opacity: 0.0;
+   width: 0%;
+   transition-property: width, opacity;
+  }
+}

@@ -27,7 +27,7 @@
           <%= f.input :modal_location,
             label: false,
             input_html: {
-              id: "address-input",
+              id: "algolia-places-input",
               value: @location_param
           } %>
           <a href="#" id="js-save-location" class="button primary expanded">Save Location</a>
@@ -57,7 +57,7 @@
         <div class="column small-12 medium-12 large-12 small-order-1 medium-order-1 large-order-">
 
           <!-- Map -->
-          <div class="map-container" id="user_location" data-geocode="<%= user_signed_in? ? current_user.geocode : Rails.application.config.classifeds_default_geocode %>">
+          <div class="map-container" id="user_location" data-geocode="<%= @geocode_param %>">
             <div class="inner-container">
               <div id='js-small-map' style="height: 300px;"></div>
               <!-- Distance slider -->

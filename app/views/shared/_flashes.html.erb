@@ -16,3 +16,18 @@
     </button>
   </div>
 <% end %>
+
+<!-- Render validation errors as toasts -->
+<% if defined?(errors) %>
+  <div class="callout alert toast" data-closable>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <p><strong>Validation errors:</strong></p>
+    <ul>
+      <% errors.messages.values.each do |error| %>
+        <li><%= error.first %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

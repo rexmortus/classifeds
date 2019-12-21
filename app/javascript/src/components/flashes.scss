@@ -1,0 +1,32 @@
+.toast {
+  position: absolute;
+  bottom: 0px;
+  right: 1rem;
+  padding: 1rem;
+  border: 2px solid white;
+  outline: 1px solid $medium-gray;
+  background-color: rgba(lighten($alert-color, 20), .75) !important;
+  backdrop-filter: blur(3px);
+
+  &:after {
+
+    animation: shine 2s ease-out  infinite;
+    animation-fill-mode: forwards;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.13) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0.0) 100%
+    );
+  }
+}

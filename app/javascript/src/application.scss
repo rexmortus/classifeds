@@ -4,23 +4,18 @@
 @import "instantsearch.css/themes/algolia-min.css";
 
 // Import component styles
-@import "src/components/search-filters-list.scss";
+@import "src/components/backgrounds.scss";
+@import "src/components/animations.scss";
+@import "src/components/small-map.scss";
+
+@import "src/components/flashes.scss";
 @import "src/components/emoji-picker.scss";
-@import "src/components/image-container.scss";
+@import "src/components/search-filters-list.scss";
 
 // Import page-specific styles
 @import "src/pages/_v2search.scss";
 @import "src/pages/_show.scss";
 @import "src/pages/_new.scss";
-
-.toast {
-  position: absolute;
-  bottom: 0px;
-  right: 1rem;
-  padding: 2.5rem;
-  border: 2px solid white;
-  outline: 1px solid $medium-gray;
-}
 
 body {
 

@@ -1,25 +1,25 @@
-<span class="label primary">
+<span class="label location-filter">
   Within <%= distance %> km of <a href="#" data-open="js-change-location-modal"><%= location %></a>
 </span>
 
 <% if types.present? %>
   <% types.each do |type| %>
-  <span class="label success"><%= type %></span>
+  <span class="label type-filter"><%= type %></span>
   <% end %>
 <% else %>
-  <span class="label success">All Types</span>
+  <span class="label type-filter">All Types</span>
 <% end %>
 
 <% if category.present? %>
-  <span class="label warning"><%= category %></span>
+  <span class="label category-filter"><%= category %></span>
 <% else %>
-  <span class="label warning">All Categories</span>
+  <span class="label category-filter">All Categories</span>
 <% end %>
 
 <% if types.present? || category.present? %>
-  <span class="label alert" onclick="window.clearFilters()">Clear Filters</span>
+  <span class="label clear-filters" onclick="window.clearFilters()">Clear Filters</span>
 <% else %>
-  <span class="label alert">No Filters</span>
+  <span class="label clear-filters">No Filters</span>
 <% end %>
 
 <span class="results-count">

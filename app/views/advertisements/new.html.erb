@@ -1,15 +1,11 @@
-<%= simple_form_for @advertisement, :multipart => true do |f| %>
+<% if @advertisement.errors.present? %>
+  <%= render 'shared/flashes', errors: @advertisement.errors %>
+<% end %>
 
-  <div class="row">
-    <div class="column">
-    </div>
-  </div>
+<%= simple_form_for @advertisement, :multipart => true do |f| %>
 
   <!-- Main row -->
   <div class="row new-advertisement">
-
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <!-- Left column (map, info, contact) -->
     <div class="column small-12 medium-3 large-3 left-column">
@@ -17,12 +13,12 @@
       <!-- Map / Location Selector -->
       <fieldset class="fieldset map-container">
         <legend id="user_location" data-geocode="<%= current_user.geocode %>">Location</legend>
-        <div id='map' style='width: 100%; height: 300px'></div><br>
+        <div id='js-small-map' style='width: 100%; height: 300px' data-new-page-map></div><br>
         <%=
           f.input :location,
           label: false,
           input_html: {
-            id: "address-input",
+            id: "algolia-places-input",
             value: current_user.location
           }
         %>
@@ -31,6 +27,8 @@
       <!-- Category / Subcategory -->
       <fieldset class="fieldset information-container">
         <legend>Info</legend>
+
+          <!-- Types filter -->
           <%=
             f.input :for,
             :label => 'Type',
@@ -39,6 +37,8 @@
             :include_hidden => false,
             :collection => Rails.application.config.classifeds_types
          %>
+
+         <!-- category_subcategory filter -->
          <%=
             f.input :category_name,
             :label => 'Category',
@@ -63,7 +63,8 @@
           <%=
             f.input :title,
             :placeholder => 'Title',
-            :label => false
+            :label => false,
+            :error => false
           %>
         </div>
 
@@ -73,7 +74,7 @@
           <%=
             f.input :emoji,
             :label => false,
-            :input_html => {value: '😀'},
+            :input_html => { value: '😀' },
             :as => :hidden
           %>
         </div>
@@ -86,6 +87,7 @@
           <%=
             f.input :body,
             :label => false,
+            :error => false,
             input_html: {
               id: "editor"
             }
@@ -123,3 +125,5 @@
 
   </div>
 <% end %>
+
+<input id="search_distance" type="text" value="5">
