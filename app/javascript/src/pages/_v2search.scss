@@ -18,7 +18,7 @@
     padding-top: .5rem;
     border: 2px solid white;
     outline: 1px solid $primary-color;
-    @include diamond-pattern(lighten($blue-color, 64.5));
+    @include diamond-pattern(lighten($alert-color, 22.5));
 
     .fieldset {
       margin: 0 0 0 0 !important;
@@ -401,36 +401,41 @@ $bkT: rgba($primary-color, 0.4);
       .query-container {
 
         margin-top: 1px;
-        @include diamond-pattern(lighten($blue-color, 64.5));
+        @include diamond-pattern(lighten($alert-color, 22.5));
         border: 2px solid white;
         outline: 1px solid $medium-gray;
         padding-bottom: 0px;
 
+        &:hover {
+
+          input {
+            background-color: rgba(white, 0.75);
+          }
+        }
+
         input {
           text-shadow: 1px 1px 1px rgba(white, 0.1);
           color: darken($dark-gray, 10);
-          background-color: transparent;
-          border: 1px solid darken($light-gray, 3.5) !important;
-          border: none;
-          backdrop-filter: blur(2px);
-          transition: border outline .2s ease-in-out;
+          background-color: rgba(white, 0.9);
+          // border: 1px solid darken($light-gray, 3.5);
+          border: 1px solid $medium-gray;
 
           &:hover {
-            background-color: rgba(white, 0.75);
+            border: 1px solid $alert-color !important;
             cursor: pointer;
           }
 
           &:focus {
             cursor: text;
             background-color: white;
-            color: $blue-color;
+            color: $alert-color;
             box-shadow: none !important;
-            border: 1px solid $light-gray !important;
-            outline: 3px solid $blue-color !important;
+            border: 1px solid $medium-gray !important;
+            outline: 3px solid $alert-color !important;
           }
 
           &::placeholder {
-            color: darken($medium-gray, 5);
+            color: darken($medium-gray, 10);
           }
         }
 
@@ -555,7 +560,7 @@ $bkT: rgba($primary-color, 0.4);
 
       .list-container {
 
-        @include diamond-pattern(lighten($blue-color, 64.5));
+        @include diamond-pattern(lighten($alert-color, 22.5));
         border: 2px solid white;
         outline: 1px solid $medium-gray;
         padding: 1rem;
@@ -613,7 +618,6 @@ $bkT: rgba($primary-color, 0.4);
             }
 
             .emoji {
-              transition: all .05s ease-in-out;
               opacity: 0.90;
               filter: blur(0.3px);
             }
@@ -643,7 +647,7 @@ $bkT: rgba($primary-color, 0.4);
               margin-bottom: 0 !important;
               outline: 1px solid $medium-gray;
               border: 0.125rem solid white;
-              @include diamond-pattern(lighten($blue-color, 64.5));
+              @include diamond-pattern(lighten($alert-color, 22.5));
 
               .card-location {
                 color: $primary-color !important;

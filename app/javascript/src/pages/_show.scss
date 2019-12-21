@@ -273,7 +273,7 @@
 
       .packery-item {
 
-        @include diamond-pattern(lighten($blue-color, 64.5));
+        background-color: white;
 
         img {
           border: 2px solid white;

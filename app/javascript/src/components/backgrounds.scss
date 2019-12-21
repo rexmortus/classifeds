@@ -10,6 +10,7 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 // (Shiny) diamond pattern for various UI elements
 @mixin diamond-pattern($color) {
 
+  transition: all .05s ease-in-out;
   position: relative;
   background: $color;
   background:

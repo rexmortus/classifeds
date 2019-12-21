@@ -5,6 +5,7 @@ class V2SearchController < ApplicationController
 
   # The main (only) search method 👈
   def search
+    @original_url = request.original_url
     set_params
   end
 

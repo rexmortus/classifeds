@@ -67,3 +67,6 @@ var event = new CustomEvent('update-map-view', {
 });
 
 window.dispatchEvent(event);
+
+window.history.pushState('page2', 'Title', '<%= @original_url %>');
+// window.history.pushState({"html": getElementById('content').innerHTML, "pageTitle": 'butts lol'},"", '<%= @original_url %>'));
