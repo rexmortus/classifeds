@@ -33,6 +33,10 @@
       border-bottom: 1px dotted $medium-gray;
       cursor: pointer !important;
 
+      &:before {
+        content: '→ '
+      }
+
       &:focus {
 
         &:before {

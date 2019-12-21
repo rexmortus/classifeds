@@ -1,13 +1,13 @@
-<!-- app/views/offers/show.html.erb -->
-<% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} | #{@advertisement.category_name} &gt; #{@advertisement.subcategory_name } | #{@advertisement.location}" %>
-<% content_for :meta_description, "#{strip_tags(@advertisement.body[0..197])}..." %>
+  <!-- app/views/offers/show.html.erb -->
+  <% content_for :meta_title, "#{@advertisement.emoji} #{@advertisement.title} | #{@advertisement.category_name} &gt; #{@advertisement.subcategory_name } | #{@advertisement.location}" %>
+  <% content_for :meta_description, "#{strip_tags(@advertisement.body[0..197])}..." %>
 
-<% if @advertisement.images.attached? %>
-<% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
-<% end %>
+  <% if @advertisement.images.attached? %>
+  <% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
+  <% end %>
 
-<!-- Main row -->
-<div class="row show-advertisement">
+  <!-- Main row -->
+  <div class="row show-advertisement">
 
   <div class="column sharing-column small-12 medium-12 large-12">
     <div class="row">
@@ -76,13 +76,8 @@
     <!-- Page title -->
     <div class="row heading-container align-middle">
       <div class="column medium-10">
-
           <h1><%= @advertisement.emoji %> <%= @advertisement.title %></h1>
-
       </div>
-      <!-- <div class="column expand">
-        <h1 id="js-add-bookmark"><a><i class="material-icons">bookmark_border</i></a></h1>
-      </div> -->
     </div>
 
     <!-- Emoji reacts -->
@@ -164,16 +159,16 @@
     </div>
 
   </div>
-</div>
+  </div>
 
-<!-- Hidden form (for submitting emoji reacts) -->
-<% if user_signed_in? %>
+  <!-- Hidden form (for submitting emoji reacts) -->
+  <% if user_signed_in? %>
   <%= simple_form_for :emoji,
       remote: true,
       authenticity_token: true,
       url: advertisement_react_path(@advertisement) do |f| %>
       <%= f.input :emoji, :as => :hidden, :input_html => {value: ""} %>
   <% end %>
-<% end %>
+  <% end %>
 
-<input id="search_distance" class="search-distance-input" value="15ek"/>
+  <input id="search_distance" class="search-distance-input" value="15ek"/>
