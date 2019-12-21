@@ -18,6 +18,7 @@ import "plugins/reveal-image"
 import "plugins/emoji-picker"
 import "plugins/uploader"
 import "plugins/images-container"
+import "plugins/share-ad"
 
 function fireOnReady() {
   $(document).foundation();

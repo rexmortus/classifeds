@@ -14,8 +14,8 @@
 
   .sharing-column {
     margin-top: 1rem;
-    margin-bottom: 0;
-    color: $secondary-color;
+    margin-bottom: -.5rem;
+    color: $dark-gray;
 
     .bookmark {
       color: $secondary-color;
@@ -27,12 +27,22 @@
     }
 
     a {
+      font-weight: 400;
       font-size: .85rem;
-      color: $secondary-color;
-      border-bottom: 1px dotted $secondary-color;
+      color: $dark-gray;
+      border-bottom: 1px dotted $medium-gray;
+      cursor: pointer !important;
+
+      &:focus {
+
+        &:after {
+          content: ' ✔'
+        }
+      }
 
       &:hover {
-        border-bottom: 1px solid $secondary-color;
+        color: $secondary-color;
+        border-bottom: 1px solid $dark-gray;
       }
     }
   }
