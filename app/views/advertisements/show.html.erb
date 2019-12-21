@@ -9,6 +9,18 @@
 <!-- Main row -->
 <div class="row show-advertisement">
 
+  <div class="column sharing-column small-12 medium-12 large-12">
+    <div class="row">
+        <div class="column small-12 medium-10 large-10">
+          ✦ <a href="#"><%= @original_url %></a>
+        </div>
+        <div class="column small-12 medium-2 large-2 bookmark">
+          <i class="material-icons">bookmark_border</i>
+        </div>
+    </div>
+
+  </div>
+
   <!-- Left column (map, info, contact) -->
   <div class="column small-12 medium-3 large-3 left-column small-order-2 medium-order-1 large-order-1">
 
@@ -20,7 +32,7 @@
           <legend id="user_location" data-geocode="<%= @advertisement.geocode %>" data-location="<%= @advertisement.location %>">
             <%= @advertisement.location %>
           </legend>
-          <div id='js-small-map' class="show-page-small-map" style="height: 300px;" data-map-show-advertisement="true"></div>
+          <div id='js-small-map' class="show-page-small-map" style="height: 300px;" data-map-show-advertisement="true" onclick="window.history.back()"></div>
         </fieldset>
       </div>
 

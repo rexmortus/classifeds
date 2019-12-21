@@ -620,6 +620,8 @@ $bkT: rgba($primary-color, 0.4);
 
             &:hover {
 
+              cursor: zoom-in;
+
               .card {
                 border-color: $primary-color;
                 outline-color: $primary-color;
@@ -642,14 +644,6 @@ $bkT: rgba($primary-color, 0.4);
               outline: 1px solid $medium-gray;
               border: 0.125rem solid white;
               @include diamond-pattern(lighten($blue-color, 64.5));
-
-              svg {
-                width: 100%;
-                padding-top: 1px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
 
               .card-location {
                 color: $primary-color !important;

@@ -12,6 +12,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1
   # GET /advertisements/1.json
   def show
+    @original_url = request.original_url
     @advertisement.punch(request)
   end
 
