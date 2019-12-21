@@ -408,17 +408,19 @@ $bkT: rgba($primary-color, 0.4);
         input {
           text-shadow: 1px 1px 1px rgba(white, 0.1);
           color: darken($dark-gray, 10);
-          background-color: rgba(white, 0.125);
-          border: 1px solid darken($light-gray, 2.5) !important;
+          background-color: transparent;
+          border: 1px solid darken($light-gray, 3.5) !important;
           border: none;
           backdrop-filter: blur(2px);
           transition: border outline .2s ease-in-out;
 
           &:hover {
-            background-color: rbga(white, 0.75) !important;
+            background-color: rgba(white, 0.75);
+            cursor: pointer;
           }
 
           &:focus {
+            cursor: text;
             background-color: white;
             color: $blue-color;
             box-shadow: none !important;
