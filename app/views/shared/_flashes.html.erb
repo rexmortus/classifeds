@@ -4,10 +4,8 @@
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
-  <p><strong>Notice:</strong></p>
-  <ul>
-      <li><%= notice %></li>
-  </ul>
+  <p><strong>ℹ️ Notice</strong></p>
+  <p><%= notice %></p>
 </div>
 <% end %>
 
@@ -16,10 +14,8 @@
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
-    <p><strong>Alert:</strong></p>
-    <ul>
-        <li><%= notice %></li>
-    </ul>
+    <p><strong>⚠️ Alert:</strong></p>
+    <p><%= alert %></p>
   </div>
 <% end %>
 
@@ -29,7 +25,7 @@
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
-    <p><strong>Validation errors:</strong></p>
+    <p><strong>🚨 Validation errors:</strong></p>
     <ul>
       <% errors.messages.values.each do |error| %>
         <li><%= error.first %></li>
