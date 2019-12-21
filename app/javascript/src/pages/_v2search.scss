@@ -407,18 +407,23 @@ $bkT: rgba($primary-color, 0.4);
 
         input {
           text-shadow: 1px 1px 1px rgba(white, 0.1);
-          color: $dark-gray;
-          background-color: rgba(white, 0.025);
-          border: 1px solid $medium-gray !important;
+          color: darken($dark-gray, 10);
+          background-color: rgba(white, 0.125);
+          border: 1px solid darken($light-gray, 2.5) !important;
           border: none;
           backdrop-filter: blur(2px);
           transition: border outline .2s ease-in-out;
 
+          &:hover {
+            background-color: rbga(white, 0.75) !important;
+          }
+
           &:focus {
             background-color: white;
+            color: $blue-color;
             box-shadow: none !important;
             border: 1px solid $light-gray !important;
-            outline: 3px solid $dark-gray !important;
+            outline: 3px solid $blue-color !important;
           }
 
           &::placeholder {
