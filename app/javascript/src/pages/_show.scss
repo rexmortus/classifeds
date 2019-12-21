@@ -35,8 +35,8 @@
 
       &:focus {
 
-        &:after {
-          content: ' ✔'
+        &:before {
+          content: '✔ '
         }
       }
 
@@ -118,46 +118,12 @@
 
   .center-column {
 
-    .emoji-tags {
-      display: inline-block;
-
-      a {
-        border: 1px solid $light-gray;
-        padding-top: .5rem;
-        text-align: center;
-        @include diamond-pattern($warning-color);
-      }
-    }
-
-    .heading-container {
-
-      svg {
-        color: $primary-color !important;
-        width: 100%;
-        padding-top: .5rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      #js-add-bookmark {
-        text-align: right;
-      }
-
-      .material-icons {
-        padding-top: 1rem;
-        color: $secondary-color;
-        font-size: 3rem;
-        cursor: pointer;
-      }
-
-    }
-
     @include breakpoint(small) {
 
     }
 
     @include breakpoint(medium) {
+
       .heading-container {
 
         h1 {
@@ -187,6 +153,59 @@
       }
     }
 
+    .emoji-tags {
+      display: inline-block;
+
+      a {
+        font-size: 2.5rem;
+        padding-top: .5rem;
+        padding-right: .5rem;
+        margin-bottom: .25rem;
+        text-align: center;
+        @include diamond-pattern(lighten($alert-color, 15));
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .new-reaction {
+      color: darken($alert-color, 5);
+      @include diamond-pattern(lighten($alert-color, 15));
+      text-shadow: 0px 1px rgba(white, .5);
+
+      &:hover {
+        color: white;
+        cursor: pointer;
+        text-shadow: 0px 1px rgba(black, .25);
+      }
+    }
+
+    .heading-container {
+
+      svg {
+        color: $primary-color !important;
+        width: 100%;
+        padding-top: .5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #js-add-bookmark {
+        text-align: right;
+      }
+
+      .material-icons {
+        padding-top: 1rem;
+        color: $secondary-color;
+        font-size: 3rem;
+        cursor: pointer;
+      }
+
+    }
+
     .poster-controls {
 
       a {
@@ -196,59 +215,6 @@
     }
 
     .emoji-reacts {
-
-      display: inline-block;
-      margin-bottom: 0px;
-      vertical-align: text-bottom;
-
-      .label {
-
-        cursor: pointer;
-        transition: all .05s ease-in-out;
-
-        &.new-reaction {
-          background-color: $blue-color;
-          border: none !important;
-          outline: none !important;
-          color: white !important;
-          margin-bottom: 0px;
-          width: 100%;
-          text-align: center;
-          padding: 17px;
-
-          &:hover {
-            background-color: darken(#495567, 5);
-          }
-        }
-
-        &.emoji {
-          border: 1px solid darken($warning-color, 5);
-          outline: 1px solid lighten($alert-color, 15);
-          font-size: 2.25rem;
-          margin-bottom: 4px;
-        }
-
-      }
-
-      @include breakpoint(medium) {
-        .label {
-
-          cursor: pointer;
-          color: $primary-color !important;
-          transition: all .05s ease-in-out;
-          font-weight: bold;
-
-          &.new-reaction {
-            padding: 0.33333rem 0.5rem;
-            width: auto !important;
-          }
-
-          &.emoji {
-            font-size: 2.25rem;
-            margin-bottom: 4px;
-          }
-        }
-      }
 
       @include breakpoint(large) {
         .label {

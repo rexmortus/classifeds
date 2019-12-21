@@ -51,9 +51,11 @@ if (addReactionButton) {
      if (event.target.classList.contains('new-reaction')) {
        picker.pickerVisible ? picker.hidePicker() : picker.showPicker(event.target);
      } else {
-       let emoji = event.target.dataset.emoji;
-       input.value = emoji;
-       Rails.fire(input.closest('form'), 'submit');
+       if (event.target.dataset.emoji !== undefined) {
+         let emoji = event.target.dataset.emoji;
+         input.value = emoji;
+         Rails.fire(input.closest('form'), 'submit');
+       }
      }
 
    })

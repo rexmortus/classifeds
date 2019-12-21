@@ -23,7 +23,7 @@ class EmojireactController < ApplicationController
   end
 
   def set_emoji_react
-    @emoji_react = EmojiReact.find_by(advertisement: @advertisement, emoji: params[:emoji][:emoji], actor: current_user.actor_id)
+    @emoji_react = EmojiReact.find_by(advertisement: @advertisement, emoji: params[:emoji][:emoji], actor: current_user.username)
   end
 
 end
