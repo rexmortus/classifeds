@@ -416,12 +416,11 @@ $bkT: rgba($primary-color, 0.4);
         input {
           text-shadow: 1px 1px 1px rgba(white, 0.1);
           color: darken($dark-gray, 10);
-          background-color: rgba(white, 0.9);
-          // border: 1px solid darken($light-gray, 3.5);
-          border: 1px solid $medium-gray;
+          background-color: rgba(white, 0.8);
+          border: 1px solid darken($light-gray, 4);
 
           &:hover {
-            border: 1px solid $alert-color !important;
+            border: 1px solid $medium-gray !important;
             cursor: pointer;
           }
 
