@@ -7,6 +7,7 @@
   outline: 1px solid $medium-gray;
   background-color: rgba(lighten($alert-color, 20), .75) !important;
   backdrop-filter: blur(3px);
+  z-index: 1000;
 
   &:after {
 

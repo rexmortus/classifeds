@@ -1,19 +1,25 @@
 <!-- Notices -->
 <% if notice %>
 <div class="callout alert toast" data-closable>
-  <%= notice %>
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
+  <p><strong>Notice:</strong></p>
+  <ul>
+      <li><%= notice %></li>
+  </ul>
 </div>
 <% end %>
 
 <% if alert %>
   <div class="callout alert toast" data-closable>
-    <%= alert %>
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
+    <p><strong>Alert:</strong></p>
+    <ul>
+        <li><%= notice %></li>
+    </ul>
   </div>
 <% end %>
 

@@ -1,87 +1,130 @@
-<%= simple_form_for @advertisement, :url => advertisement_path(@advertisement) do |f|  %>
-<div class="grid-x grid-padding-x grid-padding-y" id="algoliasearch" style="margin-top:-18px">
-  <div class="cell small-2 medium-4 large-3">
-    <div>
-      <div class="grid grid-x">
-        <div class="cell small-12 medium-12 large-12">
-          <fieldset class="fieldset">
-            <legend id="user_location" data-geocode="<%= current_user.geocode %>">
-              <strong>
-                <a href="#"><i class="fi-marker"></i> Location</a>
-              </strong>
-            </legend>
-            <div id='map' style='width: 100%; height: 300px;'></div><br>
-            <%= f.input :location,
-              label: false,
-              input_html: {
-                style: "margin-bottom: 0px;",
-                id: "address-input",
-                value: @advertisement.location.present? ? @advertisement.location : current_user.location
-              } %>
-          </fieldset>
-          <fieldset class="fieldset">
-            <legend><i class="fi-info"></i> Info</legend>
-             <%= f.input :for,
-               :label => 'Type',
-               :as => :select,
-               :include_blank => false,
-               :include_hidden => false,
-               :collection => Rails.application.config.classifeds_types %>
-             <%= f.input :category_name,
-                :label => 'Category',
-                :as => :grouped_select,
-                :collection => Advertisement.categories_as_form_collection,
-                :group_method => :last,
-                :group_label_method => :first,
-                :selected => [@advertisement.category_name, @advertisement.subcategory_name].to_s %>
-          </fieldset>
-          <fieldset class="fieldset">
-            <legend><i class="fi-at-sign"></i> Contact</legend>
-          </fieldset>
+<% if @advertisement.errors.present? %>
+  <%= render 'shared/flashes', errors: @advertisement.errors %>
+<% end %>
+
+<%= simple_form_for @advertisement, :multipart => true do |f| %>
+
+  <!-- Main row -->
+  <div class="row new-advertisement">
+
+    <!-- Left column (map, info, contact) -->
+    <div class="column small-12 medium-3 large-3 left-column">
+
+      <!-- Map / Location Selector -->
+      <fieldset class="fieldset map-container">
+        <legend id="user_location" data-geocode="<%= @advertisement.geocode %>">Location</legend>
+        <div id='js-small-map' style='width: 100%; height: 300px' data-new-page-map></div><br>
+        <%=
+          f.input :location,
+          label: false,
+          input_html: {
+            id: "algolia-places-input",
+            value: @advertisement.location
+          }
+        %>
+      </fieldset>
+
+      <!-- Category / Subcategory -->
+      <fieldset class="fieldset information-container">
+        <legend>Info</legend>
+
+          <!-- Types filter -->
+          <%=
+            f.input :for,
+            :label => 'Type',
+            :as => :select,
+            :include_blank => false,
+            :include_hidden => false,
+            :collection => Rails.application.config.classifeds_types
+         %>
+
+         <!-- category_subcategory filter -->
+         <%=
+            f.input :category_name,
+            :label => 'Category',
+            :as => :grouped_select,
+            :include_blank => false,
+            :include_hidden => false,
+            :collection => Advertisement.categories_as_form_collection,
+            :group_method => :last,
+            :group_label_method => :first,
+            :selected => [@advertisement.category_name, @advertisement.subcategory_name].to_s
+          %>
+      </fieldset>
+    </div>
+
+    <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
+    <div class="column small-12 medium-6 large-expand center-column">
+
+      <!-- Heading -->
+      <div class="row heading-container">
+
+        <!-- Advertisement Title -->
+        <div class="column small-12 medium-10 large-10">
+          <%=
+            f.input :title,
+            :placeholder => 'Title',
+            :label => false,
+            :error => false
+          %>
+        </div>
+
+        <!-- Advertisement Emoji -->
+        <div class="column small-12 medium-expand large-expand align-right align-middle">
+          <h1 class="js-emoji-picker">😀</h1>
+          <%=
+            f.input :emoji,
+            :label => false,
+            :input_html => { value: '😀' },
+            :as => :hidden
+          %>
+        </div>
+      </div>
+
+      <!-- Advertisement Body -->
+      <div class="row">
+
+        <div class="columns">
+          <%=
+            f.input :body,
+            :label => false,
+            :error => false,
+            input_html: {
+              id: "editor"
+            }
+          %>
+        </div>
+      </div>
+
+      <!-- Form Controls -->
+      <div class="row form-controls">
+
+        <div class="columns">
+          <%=
+            f.button :submit,
+            :class => "button primary expanded"
+          %>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cell small-12 medium-8 large-6">
-    <div class="grid-x grid-padding-x grid-padding-y">
-      <div class="cell" style="padding-top:45px">
 
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-          <div class="grid-x grid-padding-x grid-padding-y">
-            <div class="cell large-11">
-              <%= f.input :title,
-              :placeholder => 'Title',
-              :label => false
-              %>
-            </div>
-            <div class="cell large-1">
-              <h1 class="js-emoji-picker"><%= @advertisement.emoji %></h1>
-              <%= f.input :emoji,
-                :label => false,
-                :as => :hidden %>
-            </div>
-          </div>
-          <%= f.input :body, :label => false, input_html: {
-            id: "editor"
-          } %>
-
-          <div style="margin-top:20px; text-align: middle">
-            <%= f.button :submit, :class => "button" %>
-          </div>
-
-        <% end %>
-
-      </div>
+    <!-- Right column (images) -->
+    <div class="column small-12 medium-3 large-5 right-column">
+      <fieldset class="fieldset" style="padding-bottom: 10px;">
+        <legend>Images</legend>
+         <label for="advertisement_images">
+           <span class="button primary expanded">Select Images <span class="label image-count" id="js-images-count">0</span></span>
+         </label>
+        <%=
+          f.file_field :images,
+          :multiple => true,
+          :class => 'button'
+        %>
+        <div id="js-image-preview" class="images-container"></div>
+      </fieldset>
     </div>
 
   </div>
-  <div class="cell small-12 medium-8 large-3">
-    <fieldset class="fieldset">
-      <legend><i class="fi-camera"></i> Images</legend>
-      <div style="text-align: center; font-weight: bold;">
-        <button class="button"><i class="fi-plus"></i> Add Image</button>
-      </div>
-    </fieldset>
-  </div>
-</div>
+<% end %>
+
+<input id="search_distance" type="text" value="5">

@@ -274,6 +274,9 @@
       padding-top: 0.75rem;
 
       .packery-item {
+
+        @include diamond-pattern(lighten($blue-color, 64.5));
+
         img {
           border: 2px solid white;
           outline: 1px solid $medium-gray;
@@ -349,11 +352,17 @@
 
 .information {
 
-  .success, .primary {
-    color: white;
+  .location {
+    @include diamond-pattern($primary-color);
   }
 
-  .warning {
-    color: $primary-color;
+  .type {
+    @include diamond-pattern($success-color);
   }
+
+  .category {
+    color: $primary-color;
+    @include diamond-pattern($warning-color);
+  }
+
 }

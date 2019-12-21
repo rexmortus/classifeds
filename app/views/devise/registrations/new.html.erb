@@ -1,40 +1,61 @@
-<h2>Sign up</h2>
+<% if @user.errors.present? %>
+  <%= render 'shared/flashes', errors: @user.errors %>
+<% end %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
+<div class="row" id="user_location" data-geocode="<%= Rails.application.config.classifeds_default_geocode %>" style="padding-top:2.5rem">
+
+  <div class="columns small-12 medium-12 large-12 expand" style="text-align: center;">
+    <h1>Create a Classifeds account</h1>
+    <h4>on <strong><%= ENV["CLASSIFEDS_DOMAIN"] %></strong></h4>
+  </div>
+
+  <div class="columns small-6 medium-3 medium-offset-3 large-6 large-6 large-offset-3">
+    <fieldset class="fieldset">
+      <legend><%= Rails.application.config.classifeds_default_location %></legend>
+      <div id="js-small-map" style="height: 300px;"></div>
+    </fieldset>
+  </div>
+  <div class="columns small-6 medium-3 large-6" style="padding-top: 2rem;">
     <%= f.input :username,
                 required: true,
+                label: false,
                 autofocus: true,
+                :error => false,
+                placeholder: 'Username',
                 input_html: { autocomplete: "username" }%>
 
     <%= f.input :email,
                 required: true,
+                label: false,
                 autofocus: true,
+                :error => false,
+                placeholder: 'Email',
                 input_html: { autocomplete: "email" }%>
 
     <%= f.input :password,
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                label: false,
+                :error => false,
+                placeholder: 'Password',
                 input_html: { autocomplete: "new-password" } %>
+
     <%= f.input :password_confirmation,
                 required: true,
+                label: false,
+                :error => false,
+                placeholder: 'Password Confirmation',
                 input_html: { autocomplete: "new-password" } %>
-
-    <%= f.input :location,
-                required: true,
-                input_html: {
-                  autocomplete: "new-password",
-                  id: "address-input",
-                  placeholder: "Location"
-                } %>
-
+  </div>
+  <div class="columns small-12 medium-6 medium-offset-3 large-6 large-offset-3">
+      <%= f.button :submit, "Sign up",
+        class: 'button primary expanded'
+      %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+</div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+<input id="search_distance" type="text" value="5">

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :generate_keys, :generate_actor, :generate_webfinger
+  before_create :set_default_location
+  after_create :generate_keys, :generate_actor, :generate_webfinger, :set_default_location
   after_find :set_actor_id, :set_preferred_username
 
   has_many :followers
@@ -75,6 +76,10 @@ class User < ApplicationRecord
     }
     self.webfinger = webfinger.to_json.to_s
     self.save
+  end
+
+  def set_default_location
+    self.location = Rails.application.config.classifeds_default_location;
   end
 
   def set_actor_id
