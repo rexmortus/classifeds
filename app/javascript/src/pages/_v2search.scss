@@ -400,6 +400,7 @@ $bkT: rgba($primary-color, 0.4);
 
       .query-container {
 
+        margin-top: 1px;
         @include diamond-pattern(lighten($blue-color, 64.5));
         border: 2px solid white;
         outline: 1px solid $medium-gray;
