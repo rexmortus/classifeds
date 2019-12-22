@@ -647,20 +647,21 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 50. Table
 // ---------
 // what u e
+$table-hover: rgba(darken($alert-color, .25), 0.125);
 $table-background: transparent;
 $table-color-scale: 3%;
 $table-border: none;
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 5%;
-$table-row-hover: rgba(darken($table-background, $table-hover-scale), .025);
-$table-row-stripe-hover: rgba(darken($table-background, $table-color-scale + $table-hover-scale), .025);
+$table-row-hover: $table-hover;
+$table-row-stripe-hover: $table-hover;
 $table-is-striped: true;
 $table-striped-background: rgba(smart-scale($table-background, $table-color-scale), .0125);
 $table-stripe: even;
 $table-head-background: rgba(smart-scale($table-background, $table-color-scale / 2), .0125);
-$table-head-row-hover: rbga(darken($table-head-background, $table-hover-scale), .025);
+$table-head-row-hover: $table-hover;
 $table-foot-background: rgba(smart-scale($table-background, $table-color-scale), .0125);
-$table-foot-row-hover: rgba(darken($table-foot-background, $table-hover-scale), .025);
+$table-foot-row-hover: $table-hover;
 $table-head-font-color: $primary-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
