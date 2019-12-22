@@ -52,8 +52,8 @@
 <!-- List view -->
 <% elsif view_type === 'list' %>
 
-  <div class="list-container">
-    <table class="hover striped" style="width: 100">
+  <div class="list-container" style="width: 100%">
+    <table class="hover striped" style="width: 100%">
       <thead>
         <tr>
           <td style="text-align: right;">Title</td>
@@ -67,7 +67,11 @@
       <a href="/advertisements/<%= ad.id %>">
         <tr>
           <td width="250px" style="text-align: right;"><a href="/advertisements/<%= ad.id %>"><%= "#{ad.title}" %></a></td>
-          <td width="150px" class="image-holder"><img src="<%= url_for(ad.images.first) %>" /></td>
+          <td width="150px" class="image-holder">
+            <a href="/advertisements/<%= ad.id %>">
+              <img src="<%= url_for(ad.images.first) %>" />
+            </a>
+          </td>
           <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
         </tr>
       </a>

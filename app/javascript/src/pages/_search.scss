@@ -489,6 +489,7 @@ $bkT: rgba($primary-color, 0.4);
         }
 
         .material-icons {
+
           opacity: 0.1;
           color: rgba($primary-color, 0.9);
           font-size: 2rem;
@@ -498,27 +499,29 @@ $bkT: rgba($primary-color, 0.4);
           background:
               radial-gradient($primary-color, lighten($primary-color, 10)),
           ;
+
           background-repeat: no-repeat;
           border-radius: 50%;
           font-size: 10px;
           position: relative;
           width: 37.5rem;
           height: 37.5rem;
+
           &:before {
-              animation: scan 35s linear infinite;
-              background:
-                  linear-gradient(45deg, $gnT 6em, $gn) 0 0 / 50% 50%;
-              background-repeat: no-repeat;
-              border-radius: 50%;
-              content: "";
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              margin: auto;
-              left: 0;
-              right: 0;
-              top: 0;
-              right: 0;
+            animation: scan 35s linear infinite;
+            background:
+                linear-gradient(45deg, $gnT 6em, $gn) 0 0 / 50% 50%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            right: 0;
           }
         }
 
@@ -534,16 +537,32 @@ $bkT: rgba($primary-color, 0.4);
         table {
           margin-bottom: 0px;
 
-          .image-holder {
-            img {
-              background-color: white;
-              border: 1px solid $medium-gray;
+          img {
+            background-color: white;
+            border: 2px solid white;
+            outline: 1px solid $medium-gray;
+
+            &:hover {
+              cursor: zoom-in;
+              border: 2px solid $primary-color;
+              outline: 1px solid $primary-color;
             }
           }
 
           a {
-            font-weight: 400;
-            text-decoration: underline;
+            font-weight: bold;
+            border-bottom: 1px dotted $primary-color;
+            transition: outline .25s ease-in-out, outline-offset .25s ease-in-out;
+
+            &:hover {
+              cursor: point;
+              border-bottom: 1px solid $primary-color;
+            }
+
+            &:focus {
+              outline-offset: 3px;
+              outline: 3px solid $primary-color;
+            }
           }
         }
       }
@@ -617,7 +636,7 @@ $bkT: rgba($primary-color, 0.4);
               @include diamond-pattern(lighten($alert-color, 22.5));
 
               .card-section {
-                padding-top: .5rem;
+                padding-top: 1rem;
                 padding-bottom: .5rem;
               }
 
