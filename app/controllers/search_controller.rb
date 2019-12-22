@@ -1,4 +1,4 @@
-class V2SearchController < ApplicationController
+class SearchController < ApplicationController
 
   # This can all be done without logging in
   skip_before_action :authenticate_user!, only: [:search]

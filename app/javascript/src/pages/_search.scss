@@ -1,99 +1,670 @@
-.card {
+#js-location-value {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
 
-  .card-section {
+#js-change-location-modal {
 
-    span {
-      font-weight: bold;
+  border: none;
+  outline: none;
+  background: none;
+  background-color: none;
+  height:450px;
+
+  .fieldset-container {
+    padding: 1rem;
+    padding-top: .5rem;
+    border: 2px solid white;
+    outline: 1px solid $primary-color;
+    @include diamond-pattern(lighten($primary-color, 59));
+
+    .fieldset {
+      margin: 0 0 0 0 !important;
+      background: transparent;
+      background-color: transparent;
+      margin-top: 0;
+      padding-bottom: .4rem;
+      border-color: $primary-color;
     }
+  }
+}
 
-    span.primary {
+.reveal-overlay {
+  backdrop-filter: blur(1px);
+}
+
+$gn: darken($success-color, 50);
+$gnT: rgba(0,192,0,0);
+$dgn: $primary-color;
+$gy: rgb(128,128,128);
+$gyT: rgba(128,128,128,0);
+$bk: rgba($primary-color, 0.05);
+$bkT: rgba($primary-color, 0.4);
+
+.form-submit {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#mobile-filter-bar {
+  $body-background-alt: darken($body-background, 1);
+
+  $spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, $body-background-alt 10%, $body-background 10%, $body-background 23%, $body-background-alt 23%, $body-background-alt 30%, $body-background 30%, $body-background 43%, $body-background-alt 43%, $body-background-alt 50%, $body-background 50%, $body-background 63%, $body-background-alt 63%, $body-background-alt 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent),
+  radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%, $body-background 15%, $body-background-alt 15%, $body-background-alt 20%, $body-background 20%, $body-background 29%, $body-background-alt 29%, $body-background-alt 34%, $body-background 34%, $body-background 44%, $body-background-alt 44%, $body-background-alt 49%, transparent 49%, transparent);
+
+  background-image: $spiral-gradient;
+
+  background-size: 100px 50px;
+  border-bottom: 1px solid $medium-gray;
+  padding: 1rem;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .form-control {
+    border-color: $medium-gray !important;
+  }
+
+}
+
+.search-page-container {
+  margin-top: 1rem !important;
+  max-height: calc(100vh - 74px);
+
+  .applied-filters {
+
+    margin-top: 0rem;
+    margin-bottom: 0.6rem;
+
+    .location-filter {
       color: white;
+      @include diamond-pattern($primary-color);
+
+      a {
+        color: white;
+        text-decoration: underline;
+      }
     }
 
-    span.warning {
+    .type-filter {
+      color: white;
+      @include diamond-pattern($success-color);
+    }
+
+    .category-filter {
       color: $primary-color;
+      @include diamond-pattern($warning-color);
     }
 
-  }
-
-}
-
-a .card {
-  position: relative;
-  transition: all .05s ease-in-out;
-  background-color: rgba(255,255,255,1);
-
-
-  img {
-    width: 100%;
-    transition: all .05s ease-in-out;
-    opacity: 0.90;
-    filter: blur(0.5px) grayscale(35%);;
-  }
-
-  .card-location {
-    color: $primary-color !important;
-    margin-bottom: 0px;
-  }
-
-  .emoji {
-    opacity: 0.5;
-    transition: all .05s ease-in-out;
-  }
-
-}
-
-a .card:hover {
-  outline: 3px solid $primary-color;
-  outline-offset: 3px;
-  transform: scale(1.0125);
-
-  img {
-    opacity: 1;
-    filter: blur(0) grayscale(0);;
-  }
-
-  .emoji {
-    opacity: 1;
-    transform: scale(1.125);
-  }
-
-}
-
-.filter-labels {
-  font-weight: bold;
-
-  #clear-refinements {
-    a {
+    .clear-filters {
       color: white;
+      @include diamond-pattern($alert-color);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .results-count {
+      color: $primary-color;
+      font-size: .9rem;
     }
   }
 
-  .success {
-    color: white;
+  .left-column {
+
+    max-height: calc(100vh - 75px - 1rem);
+    overflow-y: scroll;
+
+    margin-top: 0px !important;
+
+    @include breakpoint(large) {
+      min-width:400px;
+      max-width:400px;
+    }
+
+    .map-container {
+      margin-top: 0px;
+      padding-top: 0px !important;
+      position: relative;
+      margin-bottom: 1rem !important;
+      border: 1px solid $medium-gray;
+
+      .mapboxgl-canvas {
+        border: 1px solid $medium-gray;
+      }
+
+      @keyframes scan {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(1turn);
+        }
+      }
+
+      .material-icons {
+        opacity: 0.05;
+        color: rgba($primary-color, 0.9);
+        font-size: 2rem;
+        padding: 5rem;
+        border: 1px solid $primary-color;
+        border-radius: 6rem;
+        background:
+            radial-gradient($primary-color, lighten($primary-color, 10)),
+        ;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        font-size: 10px;
+        position: relative;
+        width: 20em;
+        height: 20em;
+        &:before {
+            animation: scan 15s linear infinite;
+            background:
+                linear-gradient(45deg, $gnT 6em, $gn) 0 0 / 50% 50%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            right: 0;
+        }
+      }
+
+      a#user_location {
+        position: absolute;
+        top: 0;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      #distance-slider {
+        width: calc(100% - 6px);
+        position: absolute;
+        left: 3px;
+        bottom: 3px;
+        z-index: 999;
+        padding: 2px 1rem 3px 1rem;
+        background-color: rgba(lighten($alert-color, 25), .50);
+        height: 50px;
+        backdrop-filter: blur(5px);
+        //
+      }
+
+      .slider-fill {
+        background-color: lighten($primary-color, 40);
+      }
+
+      .slider-handle {
+        @include label;
+        width: 4rem;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        outline: none;
+        transition: outline .05s ease-in-out !important;
+
+        &:focus {
+          outline: 3px solid $primary-color;
+          outline-offset: 3px;
+        }
+      }
+
+      .input-group-field {
+        visibility: hidden;
+        height: 0;
+      }
+
+      @include breakpoint(small only) {
+        margin-top: 6.5rem !important;
+      }
+
+      .input-group-field {
+        text-align: right;
+      }
+
+    }
+
+    .type-filters-container {
+      margin-top: 0px;
+    }
+
+    #js-type-filters {
+
+      .selected {
+        font-weight: bold;
+        @include diamond-pattern($success-color);
+
+        a {
+          color: white !important;
+        }
+
+        i {
+          font-weight: bold;
+          margin-top: -4px;
+          float: right;
+        }
+
+        &:hover {
+
+          @include diamond-pattern(darken($success-color, .5));
+
+          a, i {
+            color: darken(white, 5);
+          }
+
+        }
+
+      }
+
+      a:focus {
+        z-index: 500;
+        font-weight: bold;
+        color: $success-color;
+        outline: 3px solid $success-color;
+        outline-offset: 3px;
+      }
+    }
+
+    #type-filter-inputs {
+      height: 0px;
+      visibility: hidden;
+    }
+
+    #js-category-filters {
+
+      .nested {
+        margin-left: 0;
+        border-left: 1rem solid $warning-color;
+
+        .selected {
+          @include diamond-pattern($warning-color);
+
+          &:hover {
+            @include diamond-pattern(lighten($warning-color, .1));
+          }
+        }
+
+      }
+
+      .selected {
+        font-weight: bold;
+        @include diamond-pattern($warning-color);
+
+        a {
+          color: $primary-color !important;
+        }
+
+        i {
+          font-weight: bold;
+          margin-top: -4px;
+          float: right;
+        }
+
+        &:hover {
+          @include diamond-pattern(lighten($warning-color, .1));
+
+          a, i {
+            color: darken($primary-color, 5);
+          }
+        }
+      }
+
+      a:focus {
+        z-index: 500;
+        outline: 3px solid $primary-color;
+        outline-offset: 3px;
+        color: $primary-color;
+        font-weight: bold;
+      }
+    }
+
+    #category-filter-inputs {
+      height: 0px;
+      visibility: hidden;
+    }
+
   }
 
-  [data-attribute="for"] {
-    color: white;
-    background-color: $primary-color;
+  #view-type-inputs {
+    height: 0px;
+    visibility: hidden;
   }
 
-  [data-attribute="category_name"] {
-    color: $primary-color;
-    background-color: $warning-color;
-  }
-
-  .clear-filters {
-    color: white;
-    cursor: pointer;
+  .view-type-toggle {
+    margin-top: 0rem;
+    margin-bottom: 0.6rem;
 
     &:hover {
-      background-color: darken($alert-color, 10);
+      color: lighten($success-color, 10);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    .selected {
+      color: $success-color;
     }
   }
-}
 
-.clear-filters:active {
-  outline-offset: 3px;
-  outline: 3px solid $primary-color;
+  .center-column {
+
+      max-height: calc(100vh - 151px - 1rem);
+
+      .query-container {
+
+        margin-top: 1px;
+        @include diamond-pattern(lighten($alert-color, 22.5));
+        border: 2px solid white;
+        outline: 1px solid $medium-gray;
+        padding-bottom: 0px;
+
+        &:hover {
+
+          input {
+            background-color: rgba(white, 0.75);
+          }
+        }
+
+        input {
+          text-shadow: 1px 1px 1px rgba(white, 0.1);
+          color: darken($dark-gray, 10);
+          background-color: rgba(white, 0.8);
+          border: 1px solid darken($light-gray, 4);
+
+          &:hover {
+            border: 1px solid $medium-gray !important;
+            cursor: pointer;
+          }
+
+          &:focus {
+            cursor: text;
+            background-color: white;
+            color: $alert-color;
+            box-shadow: none !important;
+            border: 1px solid $medium-gray !important;
+            outline: 3px solid $alert-color !important;
+          }
+
+          &::placeholder {
+            color: darken($medium-gray, 10);
+          }
+        }
+
+      }
+
+      .view-type-toggle {
+        text-align: right;
+      }
+
+      .map-container {
+        min-height: calc(100vh - 223px);
+        height: calc(100vh - 223px);
+
+        background-color: white;
+        border: 1px solid $medium-gray;
+        padding: 2px;
+
+        #map-results-view {
+          border: 1px solid $medium-gray;
+          min-height: calc(100vh - 229px);
+          height: calc(100vh - 229px);
+        }
+
+        @keyframes float {
+        	0% {
+        		text-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+        		font-size: 1.75rem;;
+        	}
+        	50% {
+        		text-shadow: 0px 5px 3px rgba(0,0,0,0.1);
+        		font-size: 2rem;
+        	}
+        	100% {
+        		text-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+        		font-size: 1.75rem;
+        	}
+        }
+
+        .emoji-marker {
+          animation: float 4s ease-in-out infinite;
+          z-index: 999;
+          color: $primary-color;
+          font-weight: bold;
+          text-shadow: 0 0 3px rgba(black, 0.1);
+          transition: padding 0.2s, margin-top 0.1s;
+
+          &:hover {
+            animation: none;
+            font-size: .8rem;
+            outline: 1px solid $medium-gray;
+            border: 2px solid white;
+            cursor: pointer;
+            background-color: rgba(lighten($alert-color, 23.5), 0.65);
+            backdrop-filter: blur(6px);
+            padding: .5rem;
+            z-index: 9999;
+            box-shadow: 0 0 2px rgba(black, 0.25);
+            text-rendering: optimizeLegibility;
+            margin-top: -.35rem;
+
+            &:before {
+              content: '';
+              top: -8px;
+              left: -8px;
+              right: -8px;
+              bottom: -8px;
+              border: 3px solid $primary-color;
+              position: absolute;
+            }
+
+            &:after {
+              font-size: .8rem;
+              content: attr(data-content);
+            }
+          }
+        }
+
+        @keyframes scan {
+          from {
+            transform: rotate(0);
+          }
+          to {
+            transform: rotate(1turn);
+          }
+        }
+
+        .material-icons {
+          opacity: 0.1;
+          color: rgba($primary-color, 0.9);
+          font-size: 2rem;
+          padding: 5rem;
+          border: 1px solid $primary-color;
+          border-radius: 6rem;
+          background:
+              radial-gradient($primary-color, lighten($primary-color, 10)),
+          ;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          font-size: 10px;
+          position: relative;
+          width: 37.5rem;
+          height: 37.5rem;
+          &:before {
+              animation: scan 35s linear infinite;
+              background:
+                  linear-gradient(45deg, $gnT 6em, $gn) 0 0 / 50% 50%;
+              background-repeat: no-repeat;
+              border-radius: 50%;
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              margin: auto;
+              left: 0;
+              right: 0;
+              top: 0;
+              right: 0;
+          }
+        }
+
+      }
+
+      .list-container {
+
+        @include diamond-pattern(lighten($alert-color, 22.5));
+        border: 2px solid white;
+        outline: 1px solid $medium-gray;
+        padding: 1rem;
+
+        table {
+          margin-bottom: 0px;
+
+          .image-holder {
+            img {
+              background-color: white;
+              border: 1px solid $medium-gray;
+            }
+          }
+
+          a {
+            font-weight: 400;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      #js-results-grid {
+
+          padding-left: 1px;
+          margin-top: 3px;
+          height: calc(100vh - 222px);
+          min-height: calc(100vh - 222px);
+          max-height: calc(100vh - 222px);
+          overflow-y: scroll;
+          overflow-x: visible;
+          padding-top: 1px;
+
+          .js-packery-item {
+            outline: none;
+            outline-offset: 0px;
+            transition: all .5s ease-in-out;
+            transition: border .1s ease-in-out, outline .1s ease-in-out;
+
+            h5 {
+              font-weight: 400;
+              color: darken($primary-color, 5) !important;
+            }
+
+            img {
+              width: 100%;
+            }
+
+            .label.success {
+              color: white;
+              @include diamond-pattern($success-color);
+            }
+
+            .warning {
+              color: $primary-color;
+              @include diamond-pattern($warning-color);
+            }
+
+            .emoji {
+              opacity: 0.90;
+              filter: blur(0.3px);
+            }
+
+            &:hover {
+
+              cursor: zoom-in;
+
+              .card {
+                border-color: $primary-color;
+                outline-color: $primary-color;
+              }
+
+              img {
+                opacity: 1;
+                filter: blur(0);
+              }
+
+              .emoji {
+                opacity: 1;
+                filter: blur(0) grayscale(0);
+              }
+
+            }
+
+            .card {
+              margin-bottom: 0 !important;
+              outline: 1px solid $medium-gray;
+              border: 0.125rem solid white;
+              @include diamond-pattern(lighten($alert-color, 22.5));
+
+              .card-location {
+                color: $primary-color !important;
+                margin-bottom: 0px;
+              }
+            }
+          }
+
+          // (container width - (columns * column width)) / number of gutters = gutter widt
+
+          @include breakpoint(small) {
+
+            .js-gutter-sizer {
+              width: calc(100% - (2 * 49%) / 1);
+            }
+
+            .js-packery-item {
+              width: 49%;
+            }
+
+          }
+
+          @include breakpoint(medium) {
+
+            .js-gutter-sizer {
+              width: calc(2rem / 2);
+            }
+
+            .js-packery-item {
+              width: calc(33.2345% - (2rem / 3));
+            }
+
+          }
+
+          @include breakpoint(large) {
+
+            .js-gutter-sizer {
+              width: calc(3rem / 4);
+            }
+
+            .js-packery-item {
+              width: calc(20% - (3rem / 5));
+            }
+          }
+      }
+
+      .no-results {
+        color: $dark-gray;
+      }
+
+  }
+
 }

@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
+  # Devise for users/accounts
   devise_for :users
 
-  get '/search', to: 'v2_search#search'
+  # Root is search
+  root to: 'search#search'
 
+  # Search
+  get '/search', to: 'search#search'
+
+  # Advertisement
   resources :advertisements, param: :uuid do
     post '/react', to: 'emojireact#create'
   end
 
-  get '/a/:category_id/:subcategory_id', to: 'advertisements#subcategory'
-
-
-  root to: 'v2_search#search'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Edit profile
+  get '/profile/edit', to: 'profiles#edit'
+  patch '/profile/edit', to: 'profiles#update'
 
   # Webfinger account lookup
   get '/.well-known/webfinger', to: 'webfinger#account'
@@ -25,9 +29,6 @@ Rails.application.routes.draw do
   # ActivityPub note
   get '/n/:uuid', to: 'notes#note_for_uuid'
 
-  # Edit profile
-  get '/profile/edit', to: 'profiles#edit'
-  patch '/profile/edit', to: 'profiles#update'
 
   # Show instance about page
   get '/about', to: 'profiles#about'
