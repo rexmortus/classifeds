@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     post '/react', to: 'emojireact#create'
   end
 
+  # Manage advertisements
+  get '/manage-advertisements', to: 'manageadvertisements#show'
+
   # Edit profile
   get '/profile/edit', to: 'profiles#edit'
   patch '/profile/edit', to: 'profiles#update'

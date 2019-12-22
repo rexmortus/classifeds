@@ -513,46 +513,6 @@ $bkT: rgba($primary-color, 0.4);
 
       }
 
-      .list-container {
-
-        @include diamond-pattern(lighten($alert-color, 22.5));
-        border: 2px solid white;
-        outline: 1px solid $medium-gray;
-        padding: 1rem;
-
-        table {
-          margin-bottom: 0px;
-
-          img {
-            background-color: white;
-            border: 2px solid white;
-            outline: 1px solid $medium-gray;
-
-            &:hover {
-              cursor: zoom-in;
-              border: 2px solid $primary-color;
-              outline: 1px solid $primary-color;
-            }
-          }
-
-          a {
-            font-weight: bold;
-            border-bottom: 1px dotted $primary-color;
-            transition: outline .25s ease-in-out, outline-offset .25s ease-in-out;
-
-            &:hover {
-              cursor: point;
-              border-bottom: 1px solid $primary-color;
-            }
-
-            &:focus {
-              outline-offset: 3px;
-              outline: 3px solid $primary-color;
-            }
-          }
-        }
-      }
-
       #js-results-grid {
 
           padding-left: 1px;

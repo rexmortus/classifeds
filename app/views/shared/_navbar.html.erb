@@ -112,7 +112,8 @@
           <li><%= link_to "Sign in", new_user_session_path %></li>
           <li><%= link_to "Register", new_user_registration_path %></li>
           <% else %>
-            <li><%= link_to 'Post Advertisement', new_advertisement_path %></li>
+            <li><%= link_to 'Post Ad', new_advertisement_path %></li>
+            <li><%= link_to 'My Ads', manage_advertisements_path %></li>
             <li><%= link_to "Edit Profile", '/profile/edit' %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path %></li>
           <% end %>

@@ -1,0 +1,56 @@
+<div class="row manage-ads">
+
+    <div class="columns small-12 medium-3 large-3 left-column">
+      <fieldset class="fieldset">
+        <legend>My Ads</legend>
+        <p><%= link_to 'Post Ad', new_advertisement_path %></p>
+      </fieldset>
+    </div>
+
+    <div class="columns small-12 medium-expand large-expand center-column">
+      <div class="list-container" style="width: 100%">
+        <table class="hover striped" style="width: 100%">
+          <thead>
+            <tr>
+              <td style="text-align: right;">Title</td>
+              <td>Image</td>
+              <td>Controls</td>
+            </tr>
+          </thead>
+        <tbody>
+      <% if @advertisements.present? %>
+        <% @advertisements.each do |ad| %>
+          <a href="/advertisements/<%= ad.id %>">
+            <tr>
+              <td width="175px" style="text-align: right;"><a href="/advertisements/<%= ad.id %>"><%= "#{ad.title}" %></a></td>
+              <td width="125px" class="image-holder">
+                <a href="/advertisements/<%= ad.id %>">
+                  <img draggable="false" src="<%= url_for(ad.images.first) %>" />
+                </a>
+              </td>
+              <td>
+                <% if user_signed_in? && current_user === ad.user %>
+                  <%= link_to 'Edit', edit_advertisement_path(ad) %>
+                  |
+                  <%= link_to 'Delete', advertisement_path(ad), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+                <% end %>
+              </td>
+            </tr>
+          </a>
+        <% end %>
+      <% else %>
+        <a href="#">
+          <tr>
+            <td width="250px" style="text-align: right;">
+              <a href="#">😿 No Results!</a>
+            </td>
+            <td width="150px" class="image-holder"><img draggable="false" src="<%= asset_path('no-results.gif') %>" /></td>
+            <td>Better luck next time.</td>
+          </tr>
+        </a>
+      <% end %>
+          <tbody>
+        </table>
+      </div>
+    </div>
+</div>
