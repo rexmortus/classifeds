@@ -43,42 +43,6 @@ $gyT: rgba(128,128,128,0);
 $bk: rgba($primary-color, 0.05);
 $bkT: rgba($primary-color, 0.4);
 
-@keyframes type_filters_pulse {
-  0% {
-    background-color: $success-color;
-  }
-  50% {
-    background-color: lighten($success-color, 10);
-  }
-  100 {
-    background-color: $success-color;
-  }
-}
-
-@keyframes category_filters_pulse {
-  0% {
-    background-color: $warning-color;
-  }
-  50% {
-    background-color: darken($warning-color, 2.5);
-  }
-  100 {
-    background-color: $warning-color;
-  }
-}
-
-@keyframes subcategory_filters_pulse {
-  0% {
-    background-color: darken($warning-color, 2.5);
-  }
-  50% {
-    background-color: darken($warning-color, 5);
-  }
-  100 {
-    background-color: darken($warning-color, 2.5);
-  }
-}
-
 .form-submit {
   visibility: hidden;
   height: 0;
@@ -296,7 +260,7 @@ $bkT: rgba($primary-color, 0.4);
 
         &:hover {
 
-          @include diamond-pattern(darken($success-color, 5));
+          @include diamond-pattern(darken($success-color, .5));
 
           a, i {
             color: darken(white, 5);
@@ -307,9 +271,11 @@ $bkT: rgba($primary-color, 0.4);
       }
 
       a:focus {
-        color: white;
+        z-index: 500;
         font-weight: bold;
-        background-color: $success-color;
+        color: $success-color;
+        outline: 3px solid $success-color;
+        outline-offset: 3px;
       }
     }
 
@@ -322,13 +288,13 @@ $bkT: rgba($primary-color, 0.4);
 
       .nested {
         margin-left: 0;
-        border-left: 1rem solid lighten($warning-color, 2.5);
+        border-left: 1rem solid $warning-color;
 
         .selected {
-          @include diamond-pattern(lighten($warning-color, 2.5));
+          @include diamond-pattern($warning-color);
 
           &:hover {
-            @include diamond-pattern(lighten($warning-color, 5));
+            @include diamond-pattern(lighten($warning-color, .1));
           }
         }
 
@@ -349,19 +315,20 @@ $bkT: rgba($primary-color, 0.4);
         }
 
         &:hover {
-          @include diamond-pattern(darken($warning-color, 5));
+          @include diamond-pattern(lighten($warning-color, .1));
 
           a, i {
             color: darken($primary-color, 5);
           }
-
         }
       }
 
       a:focus {
+        z-index: 500;
+        outline: 3px solid $primary-color;
+        outline-offset: 3px;
         color: $primary-color;
         font-weight: bold;
-        background-color: $warning-color;
       }
     }
 
@@ -595,7 +562,8 @@ $bkT: rgba($primary-color, 0.4);
           .js-packery-item {
             outline: none;
             outline-offset: 0px;
-            transition: all .15s ease-in-out;
+            transition: all .5s ease-in-out;
+            transition: border .1s ease-in-out, outline .1s ease-in-out;
 
             h5 {
               font-weight: 400;

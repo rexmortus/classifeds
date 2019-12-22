@@ -34,7 +34,7 @@
       cursor: pointer !important;
 
       &:before {
-        content: '→ '
+        content: '○ '
       }
 
       &:focus {
@@ -43,6 +43,8 @@
           content: '✔ '
         }
       }
+
+      transition: color .1s ease-in-out, border-bottom .1s ease-in-out;
 
       &:hover {
         color: $secondary-color;
@@ -70,6 +72,8 @@
 
       #js-small-map {
         &.show-page-small-map {
+
+          transition: border .1s ease-in-out, outline .1s ease-in-out;
 
           &:hover {
             outline: 1px solid $primary-color;
@@ -122,10 +126,6 @@
 
   .center-column {
 
-    @include breakpoint(small) {
-
-    }
-
     @include breakpoint(medium) {
 
       .heading-container {
@@ -157,6 +157,23 @@
       }
     }
 
+    .information {
+
+      .location {
+        @include diamond-pattern($primary-color);
+      }
+
+      .type {
+        @include diamond-pattern($success-color);
+      }
+
+      .category {
+        color: $primary-color;
+        @include diamond-pattern($warning-color);
+      }
+
+    }
+
     .emoji-tags {
       display: inline-block;
 
@@ -175,9 +192,11 @@
     }
 
     .new-reaction {
-      color: darken($alert-color, 5);
+      color: darken($alert-color, 7);
       @include diamond-pattern(lighten($alert-color, 15));
       text-shadow: 0px 1px rgba(white, .5);
+
+      transition: color 1s ease-in-out, text-shadow .1s ease-in-out;
 
       &:hover {
         color: white;
@@ -225,7 +244,9 @@
 
           cursor: pointer;
           color: $primary-color !important;
+
           transition: all .05s ease-in-out;
+
           font-weight: bold;
 
           &.new-reaction {
@@ -279,6 +300,8 @@
           border: 2px solid white;
           outline: 1px solid $medium-gray;
           width: 100%;
+
+          transition: border .1s ease-in-out, outline .1s ease-in-out;
 
           &:hover {
             cursor: zoom-in;
@@ -344,21 +367,4 @@
   border: 1px solid $medium-gray;
   display: block;
   max-height: 100%;
-}
-
-.information {
-
-  .location {
-    @include diamond-pattern($primary-color);
-  }
-
-  .type {
-    @include diamond-pattern($success-color);
-  }
-
-  .category {
-    color: $primary-color;
-    @include diamond-pattern($warning-color);
-  }
-
 }
