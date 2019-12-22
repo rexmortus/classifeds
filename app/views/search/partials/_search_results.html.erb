@@ -1,24 +1,47 @@
-<% if advertisements.present? %>
-
 <!-- Masonry view -->
 <% if view_type === 'masonry' %>
-  <div class="js-gutter-sizer"></div>
-  <% advertisements.each do |ad| %>
-    <a class="js-packery-item" href="/advertisements/<%= ad.id %>">
+
+<!-- Put the gutter sizer in for packery -->
+<div class="js-gutter-sizer"></div>
+
+  <!-- If there are hits, render them out -->
+  <% if advertisements.present? %>
+    <% advertisements.each do |ad| %>
+      <a class="js-packery-item" href="/advertisements/<%= ad.id %>">
+        <div class="card">
+          <div class="card-image">
+            <% if ad.images.attached? %>
+            <img height="300" width="300" src="<%= url_for(ad.images.first) %>" />
+            <% else %>
+            <img src="https://picsum.photos/320" />
+            <% end %>
+          </div>
+          <div class="card-section">
+            <div class="row">
+              <div class="columns small-expand medium-expand large-expand">
+                <h5><%= ad.emoji %> <%= ad.title %></h5>
+                <div class="card-info"><span class="label success"><%= ad.for %></span><span class="label warning"><%= ad.category_subcategory %></span></div>
+                <p class="card-location"><strong><small><%= ad.location %></small></strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+
+    <!-- Otherwise, render a single "not found" card -->
+    <% else %>
+    <a class="js-packery-item" href="#">
       <div class="card">
         <div class="card-image">
-          <% if ad.images.attached? %>
-          <img height="300" width="300" src="<%= url_for(ad.images.first) %>" />
-          <% else %>
-          <img src="https://picsum.photos/320" />
-          <% end %>
+          <img src="<%= asset_path('no-results.gif') %>" />
         </div>
         <div class="card-section">
           <div class="row">
             <div class="columns small-expand medium-expand large-expand">
-              <h5><%= ad.emoji %> <%= ad.title %></h5>
-              <div class="card-info"><span class="label success"><%= ad.for %></span><span class="label warning"><%= ad.category_subcategory %></span></div>
-              <p class="card-location"><strong><small><%= ad.location %></small></strong></p>
+              <h5>😿 No Results!</h5>
+              <div class="card-info"><span class="label success">Sorry</span><span class="label warning">Friend</span></div>
+              <p class="card-location"><strong><small>Better luck next time.</small></strong></p>
             </div>
           </div>
         </div>
@@ -28,37 +51,45 @@
 
 <!-- List view -->
 <% elsif view_type === 'list' %>
-<div class="list-container">
-    <table class="hover striped">
+
+  <div class="list-container">
+    <table class="hover striped" style="width: 100">
       <thead>
         <tr>
           <td style="text-align: right;">Title</td>
-          <td></td>
+          <td>Image</td>
           <td>Description</td>
         </tr>
       </thead>
+    <tbody>
+  <% if advertisements.present? %>
+    <% advertisements.each do |ad| %>
+      <a href="/advertisements/<%= ad.id %>">
+        <tr>
+          <td width="250px" style="text-align: right;"><a href="/advertisements/<%= ad.id %>"><%= "#{ad.title}" %></a></td>
+          <td width="150px" class="image-holder"><img src="<%= url_for(ad.images.first) %>" /></td>
+          <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
+        </tr>
+      </a>
+    <% end %>
+  <% else %>
+    <a href="#">
+      <tr>
+        <td width="250px" style="text-align: right;">
+          <a href="#">😿 No Results!</a>
+        </td>
+        <td width="150px" class="image-holder"><img src="<%= asset_path('no-results.gif') %>" /></td>
+        <td>Better luck next time.</td>
+      </tr>
+    </a>
+  <% end %>
       <tbody>
-        <% advertisements.each do |ad| %>
-          <a href="/advertisements/<%= ad.id %>">
-            <tr>
-              <td width="250px" style="text-align: right;"><a href="/advertisements/<%= ad.id %>"><%= "#{ad.title}" %></a></td>
-              <td width="150px" class="image-holder"><img src="<%= url_for(ad.images.first) %>" /></td>
-              <td><%= "#{strip_tags(ad.body[0..99])}..." %></td>
-            </tr>
-          </a>
-        <% end %>
-      </tbody>
     </table>
-
-</div>
+  </div>
 
 <!-- Map view -->
 <% elsif view_type === 'map' %>
 <div class="map-container">
   <div id='map-results-view'></div>
 </div>
-<% end %>
-
-<% else %>
-  <h5 class="no-results">😅 No results</h5>
 <% end %>
