@@ -616,9 +616,19 @@ $bkT: rgba($primary-color, 0.4);
               border: 0.125rem solid white;
               @include diamond-pattern(lighten($alert-color, 22.5));
 
+              .card-section {
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+              }
+
+              .card-info {
+                margin-bottom: .5rem;
+              }
+
               .card-location {
                 color: $primary-color !important;
-                margin-bottom: 0px;
+                margin-top: 0px ;
+                margin-bottom: 0px ;
               }
             }
           }
