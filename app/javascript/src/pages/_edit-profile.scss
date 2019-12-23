@@ -1,0 +1,34 @@
+.edit-profile {
+
+  .map-container {
+    padding-top: .75rem;
+    padding-bottom: .25rem;
+  }
+
+  .locale-container {
+    padding-bottom: .25rem;
+  }
+
+  .contact-methods {
+    padding-bottom: 0rem;
+    padding-top: .5rem;
+
+    table {
+
+      tr td {
+          padding-top: .25rem;
+          padding-bottom: .25rem;
+          padding-left: 0px;
+      }
+
+      input {
+        margin-bottom: 0px;
+      }
+
+      .public-input {
+        text-align: center;
+      }
+    }
+  }
+
+}

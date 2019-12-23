@@ -42,6 +42,10 @@ jp:
   contact_methods: "連絡方法"
   add_method: "メソッドを追加"
   update_user: "ユーザーを更新"
+  value: 値
+  private: 民間
+  public: 公衆
+  public_option_tooltip: 公開を選択すると、この連絡方法がすべての訪問者の広告に表示されます。
 
   datetime:
     distance_in_words:

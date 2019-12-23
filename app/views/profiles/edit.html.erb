@@ -4,7 +4,7 @@
 
 <%= simple_form_for @user, :url => profile_edit_path, :method => :patch do |f| %>
 
-<div class="row">
+<div class="row edit-profile">
 
   <div class="columns small-12 medium-12 large-12 expand" style="text-align: center;">
     <br>
@@ -12,9 +12,9 @@
   </div>
 
   <div class="columns small-6 medium-4 medium-offset-1 large-4">
-
+    
     <!-- Location -->
-    <fieldset class="fieldset">
+    <fieldset class="fieldset map-container">
       <legend id="user_location" data-geocode="<%= current_user.geocode %>"><%= t :location %></legend>
       <div id='js-small-map' style='width: 100%; height: 300px' data-new-page-map></div><br>
       <%= f.input :location,
@@ -26,7 +26,7 @@
     </fieldset>
 
     <!-- Locale -->
-    <fieldset class="fieldset">
+    <fieldset class="fieldset locale-container">
       <legend><%= t(:locale) %></legend>
       <%= f.input :locale,
         label: false,
@@ -38,21 +38,36 @@
   </div>
 
   <div class="columns small-6 medium-6 large-4">
+
     <!-- Contact Methods -->
-    <fieldset class="fieldset">
+    <fieldset class="fieldset contact-methods">
       <legend><%= t :contact_methods %></legend>
+
       <div class="row" id="js-edit-contact-methods">
-        <div class="columns small-4 medium-5 large-6">
-          <% @user.contact_methods_as_array.each_with_index do |method, index| %>
-          <input type="text" name="user[contact_methods][<%= index %>][name]" tabindex="<%= index + 2 %>" value="<%= method['name'] %>"></input>
-          <% end %>
+        <div class="columns expand">
+          <table class="table hover stripe">
+            <thead>
+              <tr>
+                <th><%= t :type %></th>
+                <th><%= t :value %></th>
+                <th data-tooltip title="<%= t :public_option_tooltip %>" class="top"><%= t :public %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.contact_methods_as_array.each_with_index do |method, index| %>
+              <tr>
+                <td><input type="text" name="user[contact_methods][<%= index %>][name]" tabindex="<%= index + 2 %>" value="<%= method['name'] %>"></input></td>
+                <td><input type="text" name="user[contact_methods][<%= index %>][value]" tabindex="<%= index + 2 %>" value="<%= method['value'] %>"></input></td>
+                <td class="public-input"><input type="checkbox" name="user[contact_methods][<%= index %>][public]" <%= "checked" if !method['public'].nil? %>>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
-        <div class="columns small-6 medium-7 large-6">
-          <% @user.contact_methods_as_array.each_with_index do |method, index| %>
-          <input type="text" name="user[contact_methods][<%= index %>][value]" tabindex="<%= index + 2 %>" value="<%= method['value'] %>"></input>
-          <% end %>
-        </div>
+
       </div>
+
+      <!-- Add a method button -->
       <div class="row">
         <div class="columns expand">
           <a href="#" class="button primary expanded" id="js-add-contact-method"><%= t :add_method %></a>
