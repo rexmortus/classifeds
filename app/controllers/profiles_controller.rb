@@ -7,9 +7,12 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    puts user_params
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update({
+          location: user_params[:location],
+          locale: user_params[:locale],
+          contact_methods: user_params[:contact_methods].values.to_json,
+        })
         format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -46,7 +49,7 @@ class ProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:location, :locale)
+    params.require(:user).permit(:location, :locale, :contact_methods => {})
   end
 
 end

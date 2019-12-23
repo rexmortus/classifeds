@@ -19,6 +19,7 @@ import "plugins/emoji-picker"
 import "plugins/uploader"
 import "plugins/images-container"
 import "plugins/share-ad"
+import "plugins/add-contact-methods"
 
 function fireOnReady() {
   $(document).foundation();

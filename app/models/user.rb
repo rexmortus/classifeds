@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_create :set_default_location
-  after_create :generate_keys, :generate_actor, :generate_webfinger, :set_default_location
+  before_create :set_default_location, :set_default_contact_method
+  after_create :generate_keys, :generate_actor, :generate_webfinger
   after_find :set_actor_id, :set_preferred_username
 
   has_many :followers
@@ -31,7 +31,28 @@ class User < ApplicationRecord
     }
   end
 
+  # Parse the contact methods into an array
+  def contact_methods_as_array
+    JSON.parse(self.contact_methods)
+  end
+
   private
+
+  # Just before the user is intially created
+  # set their default location to
+  # the instance default
+  # (they can change it later)
+  def set_default_location
+    self.location = Rails.application.config.classifeds_default_location;
+  end
+
+  # Just before the user is intially created
+  # set their default contact method to
+  # the email supplied when they signed up
+  # (they can change these later)
+  def set_default_contact_method
+    self.contact_methods = [{name: 'email', value: self.email}].to_json
+  end
 
   def generate_keys
     key = OpenSSL::PKey::RSA.new 2048
@@ -76,10 +97,6 @@ class User < ApplicationRecord
     }
     self.webfinger = webfinger.to_json.to_s
     self.save
-  end
-
-  def set_default_location
-    self.location = Rails.application.config.classifeds_default_location;
   end
 
   def set_actor_id

@@ -38,6 +38,8 @@ en:
   description: "Description"
   location: "Location"
   save_location: "Save Location"
+  add_method: "Add Method"
+  update_user: "Update User"
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

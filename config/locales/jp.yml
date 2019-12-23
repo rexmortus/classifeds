@@ -38,6 +38,10 @@ jp:
   description: "説明"
   location: "ロケーション"
   save_location: "位置を保存"
+  locale: ロケール
+  contact_methods: "連絡方法"
+  add_method: "メソッドを追加"
+  update_user: "ユーザーを更新"
 
   datetime:
     distance_in_words:

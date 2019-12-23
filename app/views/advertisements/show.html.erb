@@ -45,7 +45,10 @@
             <fieldset class="fieldset contact-container">
               <legend><%= t :contact %></legend>
               <dl>
-                <a href="#" class="button show-details expanded"><%= t :show_details %></a>
+                <% @advertisement.user.contact_methods_as_array.each do |method| %>
+                <dt><%= method["name"].capitalize %></dt>
+                <dd><%= method["value"] %></dd>
+                <% end %>
               </dl>
             </fieldset>
           </div>
@@ -56,7 +59,7 @@
               <legend><%= t :information %></legend>
               <dl>
                 <dt><%= t :posted_by %></dt>
-                <dd><a href="#"><%= @advertisement.user.preferred_username %></a></dd>
+                <dd><a href="#"><%= @advertisement.user.username %>@<%= ENV["CLASSIFEDS_DOMAIN"] %></a></dd>
                 <dt><%= t :listed %></dt>
                 <dd><a href="#"><%= time_ago_in_words(@advertisement.created_at) %> </a></dd>
                 <dt><%= t :last_updated %></dt>
