@@ -65,7 +65,8 @@ function centerMap(map, coordinates = $('#user_location').data('geocode').slice(
     ], {padding: {
       top: 0,
       right: 0,
-      bottom: 40,
+      // bottom: 40,
+      bottom: 0,
       left: 0
     }});
 }
