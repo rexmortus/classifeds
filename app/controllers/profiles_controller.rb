@@ -7,6 +7,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
+    puts user_params[:contact_methods].values.to_json
+
     respond_to do |format|
       if @user.update({
           location: user_params[:location],

@@ -21,6 +21,11 @@ class User < ApplicationRecord
     return JSON.parse(self.actor)
   end
 
+  # Parse the contact methods into an array
+  def contact_methods_as_array
+    JSON.parse(self.contact_methods)
+  end
+
   def followers_as_collection
     return {
       "@context": ["https://www.w3.org/ns/activitystreams"],
@@ -29,11 +34,6 @@ class User < ApplicationRecord
       "id": "#{JSON.parse(self.actor)['id']}/followers",
       "items": self.followers.map { |follower| follower.actor }
     }
-  end
-
-  # Parse the contact methods into an array
-  def contact_methods_as_array
-    JSON.parse(self.contact_methods)
   end
 
   private
