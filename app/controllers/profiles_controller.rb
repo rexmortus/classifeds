@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    puts user_params
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
