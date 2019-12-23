@@ -11,7 +11,7 @@
     <h1><%= t :edit_profile %></h1>
   </div>
 
-  <div class="columns small-6 medium-3 medium-offset-2 large-4">
+  <div class="columns small-6 medium-4 medium-offset-1 large-4">
 
     <!-- Location -->
     <fieldset class="fieldset">
@@ -37,17 +37,17 @@
 
   </div>
 
-  <div class="columns small-6 medium-5 large-4">
+  <div class="columns small-6 medium-6 large-4">
     <!-- Contact Methods -->
     <fieldset class="fieldset">
       <legend><%= t :contact_methods %></legend>
       <div class="row" id="js-edit-contact-methods">
-        <div class="columns small-6 medium-6 large-6">
+        <div class="columns small-4 medium-5 large-6">
           <% @user.contact_methods_as_array.each_with_index do |method, index| %>
           <input type="text" name="user[contact_methods][<%= index %>][name]" tabindex="<%= index + 2 %>" value="<%= method['name'] %>"></input>
           <% end %>
         </div>
-        <div class="columns small-6 medium-6 large-6">
+        <div class="columns small-6 medium-7 large-6">
           <% @user.contact_methods_as_array.each_with_index do |method, index| %>
           <input type="text" name="user[contact_methods][<%= index %>][value]" tabindex="<%= index + 2 %>" value="<%= method['value'] %>"></input>
           <% end %>
@@ -61,7 +61,7 @@
     </fieldset>
   </div>
 
-  <div class="columns small-12 medium-8 medium-offset-2 large-6 large-offset-3">
+  <div class="columns small-12 medium-10 medium-offset-1 large-6 large-offset-3">
     <%= f.button :submit, t(:update_user), :class => 'button primary expanded' %>
   </div>
 

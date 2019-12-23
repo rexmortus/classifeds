@@ -8,13 +8,11 @@ class ProfilesController < ApplicationController
 
   def update
 
-    puts user_params[:contact_methods].values.to_json
-
     respond_to do |format|
       if @user.update({
           location: user_params[:location],
           locale: user_params[:locale],
-          contact_methods: user_params[:contact_methods].values.to_json,
+          contact_methods: prepare_contact_methods,
         })
         format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -45,14 +43,19 @@ class ProfilesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_user
     @user = current_user
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:location, :locale, :contact_methods => {})
+  end
+
+  def prepare_contact_methods
+    user_params[:contact_methods].values.select do |method|
+      method[:name] != "" && method[:value] != ""
+    end.to_json
   end
 
 end
