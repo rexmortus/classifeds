@@ -39,9 +39,9 @@
         <div class="card-section">
           <div class="row">
             <div class="columns small-expand medium-expand large-expand">
-              <h5>😿 No Results!</h5>
-              <div class="card-info"><span class="label success">Sorry</span><span class="label warning">Friend</span></div>
-              <p class="card-location"><strong><small>Better luck next time.</small></strong></p>
+              <h5>😿 <%= t :no_results %></h5>
+              <div class="card-info"><span class="label success"><%= t :sorry %></span><span class="label warning"><%= t :friend %></span></div>
+              <p class="card-location"><strong><small><%= t :better_luck_next_time %></small></strong></p>
             </div>
           </div>
         </div>
@@ -56,9 +56,9 @@
     <table class="hover striped" style="width: 100%">
       <thead>
         <tr>
-          <td style="text-align: right;">Title</td>
-          <td>Image</td>
-          <td>Description</td>
+          <td style="text-align: right;"><%= t :title %></td>
+          <td><%= t :image %></td>
+          <td><%= t :description %></td>
         </tr>
       </thead>
     <tbody>
@@ -80,10 +80,10 @@
     <a href="#">
       <tr>
         <td width="250px" style="text-align: right;">
-          <a href="#">😿 No Results!</a>
+          <a href="#">😿 <%= t :no_results %></a>
         </td>
         <td width="150px" class="image-holder"><img draggable="false" src="<%= asset_path('no-results.gif') %>" /></td>
-        <td>Better luck next time.</td>
+        <td><%= t :better_luck_next_time %></td>
       </tr>
     </a>
   <% end %>

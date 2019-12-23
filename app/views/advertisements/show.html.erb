@@ -12,7 +12,7 @@
   <div class="column sharing-column small-12 medium-12 large-12">
     <div class="row">
         <div class="column small-12 medium-10 large-10">
-          <a id="js-share-advertisement" data-tooltip class="right" href="<%= @original_url %>" title="Click to Copy URL"><%= @original_url %></a>
+          <a id="js-share-advertisement" data-tooltip class="right" href="<%= @original_url %>" title="<%= t :click_to_copy_url %>"><%= @original_url %></a>
         </div>
         <div class="column small-12 medium-2 large-2 bookmark">
           <i class="material-icons">save</i>
@@ -43,10 +43,9 @@
           <!-- Contact Information -->
           <div class="column small-12 medium-12 large-12">
             <fieldset class="fieldset contact-container">
-              <legend>Contact</legend>
+              <legend><%= t :contact %></legend>
               <dl>
-                <dt>Email</dt>
-                <dd><a href="#"><%= @advertisement.user.email %></a></dd>
+                <a href="#" class="button show-details expanded"><%= t :show_details %></a>
               </dl>
             </fieldset>
           </div>
@@ -54,14 +53,14 @@
           <!-- Post Information -->
           <div class="column small-12 medium-12 large-12">
             <fieldset class="fieldset information-container">
-              <legend>Info</legend>
+              <legend><%= t :information %></legend>
               <dl>
-                <dt>Posted By</dt>
+                <dt><%= t :posted_by %></dt>
                 <dd><a href="#"><%= @advertisement.user.preferred_username %></a></dd>
-                <dt>Listed</dt>
-                <dd><a href="#"><%= time_ago_in_words(@advertisement.created_at) %> ago</a></dd>
-                <dt>Last Updated</dt>
-                <dd><a href="#"><%= time_ago_in_words(@advertisement.updated_at) %> ago</a></dd>
+                <dt><%= t :listed %></dt>
+                <dd><a href="#"><%= time_ago_in_words(@advertisement.created_at) %> </a></dd>
+                <dt><%= t :last_updated %></dt>
+                <dd><a href="#"><%= time_ago_in_words(@advertisement.updated_at) %> </a></dd>
               </dl>
             </fieldset>
           </div>
@@ -103,9 +102,9 @@
         <div class="poster-controls">
           <% if user_signed_in? && current_user === @advertisement.user %>
             <p>
-              <%= link_to 'Edit', edit_advertisement_path(@advertisement) %>
+              <%= link_to t(:edit), edit_advertisement_path(@advertisement) %>
                 |
-              <%= link_to 'Delete', advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+              <%= link_to t(:delete), advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
             </p>
           <% end %>
         </div>
@@ -119,7 +118,7 @@
         <div id="js-reacts" class="reacts-at-bottom">
           <%= render 'emojireact/emoji-reacts', emoji: @advertisement.emoji_react %>
         </div>
-        <p class="view-counter"><%= @advertisement.hits %> views</p>
+        <p class="view-counter"><%= @advertisement.hits %> <%= t :views %></p>
       </div>
     </div>
 
@@ -130,7 +129,7 @@
 
     <!-- Image container -->
     <fieldset class="fieldset show-pics images-container">
-      <legend>Images</legend>
+      <legend><%= t :images %></legend>
       <div class="images-inner-container">
         <div id="js-images-container" class="grid">
           <div class="gutter-sizer"></div>
@@ -171,4 +170,4 @@
   <% end %>
   <% end %>
 
-  <input id="search_distance" class="search-distance-input" value="15ek"/>
+  <input id="search_distance" class="search-distance-input" value="15"/>

@@ -22,7 +22,7 @@
   <div class="reveal" id="js-change-location-modal" data-reveal data-close-on-click="false">
     <div class="fieldset-container">
       <fieldset class="fieldset">
-        <legend>Location</legend>
+        <legend><%= t :location %></legend>
         <div class="columns small-12">
           <%= f.input :modal_location,
             label: false,
@@ -30,7 +30,7 @@
               id: "algolia-places-input",
               value: @location_param
           } %>
-          <a href="#" id="js-save-location" class="button primary expanded">Save Location</a>
+          <a href="#" id="js-save-location" class="button primary expanded"><%= t :save_location %></a>
         </div>
       </fieldset>
     </div>
@@ -82,7 +82,7 @@
 
           <!-- Type -->
           <fieldset class="fieldset type-filters-container">
-            <legend>Type</legend>
+            <legend><%= t :type %></legend>
             <div id="js-type-filters">
             <%= render 'search/partials/type_filters', filters: @types_param %>
             </div>
@@ -100,7 +100,7 @@
 
            <!-- Category -->
            <fieldset class="fieldset category-container">
-             <legend>Category</legend>
+             <legend><%= t :category %></legend>
              <div id="js-category-filters">
              <%= render 'search/partials/category_filters', filters: @categories_param %>
              </div>
@@ -130,7 +130,7 @@
               f.input :query,
               :label => false,
               :input_html => {
-                placeholder: "Search Classifeds",
+                placeholder: t(:query_placeholder),
                 autofocus: false,
                 value: @query_param
               }

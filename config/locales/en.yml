@@ -1,3 +1,44 @@
+en:
+  search: "Search"
+  categories: "Categories"
+  type: "Type"
+  category: "Category"
+  query_placeholder: "Search Classifeds"
+  post_ad: "Post Ad"
+  my_ads: "My Ads"
+  edit_profile: "Edit Profile"
+  sign_out: "Sign Out"
+  within: "Within"
+  of: "of"
+  all_types: "All Types"
+  all_categories: "All Categories"
+  clear_filters: "Clear Filters"
+  no_filters: "No Filters"
+  results: "results"
+  contact: "Contact"
+  show_details: "Show Details"
+  information: "Information"
+  posted_by: "Posted By"
+  listed: "Listed"
+  last_updated: "Last Updated"
+  ago: "ago"
+  add_reaction: "Add Reaction"
+  images: "Images"
+  edit: "Edit"
+  delete: "Delete"
+  added_a_reaction: "added a reaction"
+  views: "views"
+  click_to_copy_url: "Click to Copy URL"
+  no_results: "No Results!"
+  sorry: Sorry
+  friend: Friend
+  better_luck_next_time: 'Better luck next time.'
+  title: "Title"
+  image: "Image"
+  description: "Description"
+  location: "Location"
+  save_location: "Save Location"
+
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -28,6 +69,3 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
-en:
-  hello: "Hello world"

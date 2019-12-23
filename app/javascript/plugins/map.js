@@ -1,4 +1,5 @@
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js"
+import MapboxLanguage from '@mapbox/mapbox-gl-language'
 import { createGeoJSONCircle } from "plugins/geojsoncircle"
 
 function addRadarMarker(map, coordinates) {
@@ -100,6 +101,9 @@ $(document).ready(function() {
 
       // addRadarMarker(map, coordinates);
       centerMap(window.map, coordinates, searchRadius);
+
+      var language = new MapboxLanguage();
+      map.addControl(language);
     })
   }
 });
@@ -157,6 +161,9 @@ $(window).on('initialise-map-view', function(event) {
       // Center the map
       let searchRadius = event.detail.radius;
       centerMap(window.mapView, coordinates, searchRadius);
+
+      var language = new MapboxLanguage();
+      map.addControl(language);
 
     })
 

@@ -1,5 +1,5 @@
 <span class="label location-filter">
-  Within <%= distance %> km of <a href="#" data-open="js-change-location-modal"><%= location %></a>
+  <%= t :within %> <%= distance %> km <%= t :of %> <a href="#" data-open="js-change-location-modal"><%= location %></a>
 </span>
 
 <% if types.present? %>
@@ -7,21 +7,21 @@
   <span class="label type-filter"><%= type %></span>
   <% end %>
 <% else %>
-  <span class="label type-filter">All Types</span>
+  <span class="label type-filter"><%= t :all_types %></span>
 <% end %>
 
 <% if category.present? %>
   <span class="label category-filter"><%= category %></span>
 <% else %>
-  <span class="label category-filter">All Categories</span>
+  <span class="label category-filter"><%= t :all_categories %></span>
 <% end %>
 
 <% if types.present? || category.present? %>
-  <span class="label clear-filters" onclick="window.clearFilters()">Clear Filters</span>
+  <span class="label clear-filters" onclick="window.clearFilters()"><%= t :clear_filters %></span>
 <% else %>
-  <span class="label clear-filters">No Filters</span>
+  <span class="label clear-filters"><%= t :clear_filters %></span>
 <% end %>
 
 <span class="results-count">
-  <%= @advertisements.count(:all) %> results
+  <%= @advertisements.count(:all) %> <%= t :results %>
 </span>

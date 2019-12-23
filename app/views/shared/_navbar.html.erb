@@ -39,7 +39,7 @@
       </li>
       <li>
         <%= link_to search_path do %>
-        <i class="material-icons">search</i><span>Search</span>
+        <i class="material-icons">search</i><span><%= t :search %></span>
         <% end %>
       </li>
       <li>
@@ -62,12 +62,12 @@
       </li>
       <li>
         <%= link_to search_path do %>
-        Search
+        <%= t :search %>
         <% end %>
       </li>
       <ul class="menu vertical medium-horizontal" data-responsive-menu="medium-dropdown">
         <li class="dropdown menu has-submenu">
-          <a href="#">Categories</a>
+          <a href="#"><%= t :categories %></a>
           <ul class="submenu menu vertical" data-submenu="">
             <% Advertisement.categories_as_navbar_collection.each do |key, value| %>
             <li>
@@ -112,10 +112,10 @@
           <li><%= link_to "Sign in", new_user_session_path %></li>
           <li><%= link_to "Register", new_user_registration_path %></li>
           <% else %>
-            <li><%= link_to 'Post Ad', new_advertisement_path %></li>
-            <li><%= link_to 'My Ads', manage_advertisements_path %></li>
-            <li><%= link_to "Edit Profile", '/profile/edit' %></li>
-            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+            <li><%= link_to t(:post_ad), new_advertisement_path %></li>
+            <li><%= link_to t(:my_ads), manage_advertisements_path %></li>
+            <li><%= link_to t(:edit_profile), '/profile/edit' %></li>
+            <li><%= link_to t(:sign_out), destroy_user_session_path %></li>
           <% end %>
         </ul>
       </li>

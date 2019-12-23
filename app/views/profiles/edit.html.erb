@@ -16,14 +16,20 @@
 
       <div class="form-inputs">
         <%= f.input :location,
-                    required: true,
-                    input_html: {
-                      autocomplete: "new-password",
-                      id: "address-input",
-                      placeholder: "Location",
-                      value: @user.location.present? ? @user.location : current_user.location
-                    } %>
+          required: true,
+          input_html: {
+            autocomplete: "new-password",
+            id: "address-input",
+            placeholder: "Location",
+            value: @user.location.present? ? @user.location : current_user.location
+          } %>
       </div>
+
+      <%= f.input :locale,
+        label: t(:locale),
+        collection: I18n.available_locales,
+        selected: @user.locale
+      %>
 
       <div class="form-actions">
         <%= f.button :submit %>
