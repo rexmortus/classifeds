@@ -40,7 +40,13 @@ en:
   save_location: "Save Location"
   add_method: "Add Method"
   update_user: "Update User"
-  public_option_tooltip: "By selecting public, this contact method will appear on your ads to all vistors."
+  private: Private
+  public: Public
+  public_option_tooltip: "The contact method will appear on your ads to all vistors."
+  private_option_tooltip: "The contact method will appear on your ads ONLY to signed-in users, and a record will be kept of their request."
+  create_advertisement: "Create Advertisement"
+  private_contact_methods_tooltip: ""
+  show_private_contact_methods: "Show Private Details"
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

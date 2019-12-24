@@ -12,7 +12,9 @@
 
       <!-- Map / Location Selector -->
       <fieldset class="fieldset map-container">
-        <legend id="user_location" data-geocode="<%= current_user.geocode %>">Location</legend>
+        <legend id="user_location" data-geocode="<%= current_user.geocode %>">
+          <%= t :location %>
+        </legend>
         <div id='js-small-map' style='width: 100%; height: 300px' data-new-page-map></div><br>
         <%=
           f.input :location,
@@ -26,12 +28,12 @@
 
       <!-- Category / Subcategory -->
       <fieldset class="fieldset information-container">
-        <legend>Info</legend>
+        <legend><%= t :information %></legend>
 
           <!-- Types filter -->
           <%=
             f.input :for,
-            :label => 'Type',
+            :label => t(:type),
             :as => :select,
             :include_blank => false,
             :include_hidden => false,
@@ -41,7 +43,7 @@
          <!-- category_subcategory filter -->
          <%=
             f.input :category_name,
-            :label => 'Category',
+            :label => t(:category),
             :as => :grouped_select,
             :include_blank => false,
             :include_hidden => false,
@@ -62,7 +64,7 @@
         <div class="column small-12 medium-10 large-10">
           <%=
             f.input :title,
-            :placeholder => 'Title',
+            :placeholder => t(:title),
             :label => false,
             :error => false
           %>
@@ -101,6 +103,7 @@
         <div class="columns">
           <%=
             f.button :submit,
+            t(:create_advertisement),
             :class => "button primary expanded"
           %>
         </div>
@@ -109,8 +112,38 @@
 
     <!-- Right column (images) -->
     <div class="column small-12 medium-3 large-5 right-column">
-      <fieldset class="fieldset" style="padding-bottom: 10px;">
-        <legend>Images</legend>
+
+      <!-- Contact methods -->
+      <fieldset class="fieldset contact-methods">
+        <legend><%= t :contact_methods %></legend>
+        <p data-tooltip class="left" title="<%= t :public_option_tooltip %>"><%= t :public %></p>
+        <div class="public-methods-container">
+        <% @publicContactMethods.each_with_index do |method, index| %>
+          <input
+            id="public-checkbox<%= index %>"
+            name="advertisement[contact_methods][<%= method["name"] %>]"
+            type="checkbox"
+            <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
+          ><label title="<%= method["value"] %>"
+            data-toolip for="public-checkbox<%= index %>"><%= method["name"].capitalize %>
+          </label>
+        <% end %>
+        </div>
+        <p class="left" data-tooltip title="<%= t :private_option_tooltip %>"><%= t :private %></p>
+        <div class="private-methods-container">
+        <% @privateContactMethods.each_with_index do |method, index| %>
+          <input
+            id="private-checkbox<%= index %>"
+            name="advertisement[contact_methods][<%= method["name"] %>]"
+            type="checkbox"
+          ><label for="private-checkbox<%= index %>"><%= method["name"].capitalize %></label>
+        <% end %>
+        </div>
+      </fieldset>
+
+      <!-- Images -->
+      <fieldset class="fieldset image-container"">
+        <legend><%= t :images %></legend>
          <label for="advertisement_images">
            <span class="button primary expanded">Select Images <span class="label image-count" id="js-images-count">0</span></span>
          </label>

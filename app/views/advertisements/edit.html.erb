@@ -110,6 +110,36 @@
 
     <!-- Right column (images) -->
     <div class="column small-12 medium-3 large-5 right-column">
+
+      <!-- Contact methods -->
+      <fieldset class="fieldset contact-methods">
+        <legend><%= t :contact_methods %></legend>
+        <p data-tooltip class="left" title="<%= t :public_option_tooltip %>"><%= t :public %></p>
+        <div class="public-methods-container">
+        <% @publicContactMethods.each_with_index do |method, index| %>
+          <input
+            id="public-checkbox<%= index %>"
+            name="advertisement[contact_methods][<%= method["name"] %>]"
+            type="checkbox"
+            <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
+          ><label title="<%= method["value"] %>"
+            data-toolip for="public-checkbox<%= index %>"><%= method["name"] %>
+          </label>
+        <% end %>
+        </div>
+        <p class="left" data-tooltip title="<%= t :private_option_tooltip %>"><%= t :private %></p>
+        <div class="private-methods-container">
+        <% @privateContactMethods.each_with_index do |method, index| %>
+          <input
+            id="private-checkbox<%= index %>"
+            name="advertisement[contact_methods][<%= method["name"] %>]"
+            type="checkbox"
+            <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
+          ><label for="private-checkbox<%= index %>"><%= method["name"] %></label>
+        <% end %>
+        </div>
+      </fieldset>
+
       <fieldset class="fieldset" style="padding-bottom: 10px;">
         <legend>Images</legend>
          <label for="advertisement_images">

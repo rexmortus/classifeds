@@ -1,6 +1,32 @@
 // Styles for 👩‍🎨
 // The show page! 🖼
 
+#js-show-private-details-modal {
+
+  border: none;
+  outline: none;
+  background: none;
+  background-color: none;
+  height:450px;
+
+  .fieldset-container {
+    padding: 1rem;
+    padding-top: .5rem;
+    border: 2px solid white;
+    outline: 1px solid $primary-color;
+    @include diamond-pattern(lighten($primary-color, 59));
+
+    .fieldset {
+      margin: 0 0 0 0 !important;
+      background: transparent;
+      background-color: transparent;
+      margin-top: 0;
+      padding-bottom: .4rem;
+      border-color: $primary-color;
+    }
+  }
+}
+
 // The actual search distance input should be hidden
 .search-distance-input {
   visibility: hidden;

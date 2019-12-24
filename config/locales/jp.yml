@@ -46,6 +46,9 @@ jp:
   private: 民間
   public: 公衆
   public_option_tooltip: 公開を選択すると、この連絡方法がすべての訪問者の広告に表示されます。
+  private_option_tooltip: プライベートを選択すると、この連絡方法はサインインしているユーザーにのみ広告に表示され、リクエストの記録が保持されます。
+  create_advertisement: 広告を作成する
+  show_private_contact_methods: "プライベートの詳細を表示"
 
   datetime:
     distance_in_words:

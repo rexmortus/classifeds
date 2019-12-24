@@ -1,6 +1,10 @@
+# TODO refactor various pages to share one form
+
 class AdvertisementsController < ApplicationController
 
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
+  before_action :set_new_advertisement_contact_methods, only: [:new, :create]
+  before_action :set_contact_methods, only: [:edit, :update]
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   # GET /advertisements
@@ -13,6 +17,8 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1.json
   def show
     @original_url = request.original_url
+    @publicContactMethods = @advertisement.user.contact_methods_as_array.select { |method| !method['public'].nil? && @advertisement.contact_methods_as_array.include?(method["name"]) }
+    @privateContactMethods = @advertisement.user.contact_methods_as_array.select { |method| method['public'].nil? && @advertisement.contact_methods_as_array.include?(method["name"]) }
     @advertisement.punch(request)
   end
 
@@ -39,6 +45,7 @@ class AdvertisementsController < ApplicationController
       category_name: JSON.parse(advertisement_params[:category_name])[0],
       subcategory_name: JSON.parse(advertisement_params[:category_name])[1],
       location: params[:location],
+      contact_methods: params[:contact_methods].keys.to_json,
       for: params[:for]
     )
 
@@ -59,7 +66,14 @@ class AdvertisementsController < ApplicationController
   # PATCH/PUT /advertisements/1
   # PATCH/PUT /advertisements/1.json
   def update
+
     params = advertisement_params
+
+    # TODO fix this
+    if !params[:images].nil?
+      @advertisement.images.attach(params[:images])
+    end
+
     respond_to do |format|
       if @advertisement.update({
           title: params['title'],
@@ -68,6 +82,7 @@ class AdvertisementsController < ApplicationController
           category_name: JSON.parse(advertisement_params['category_name'])[0],
           subcategory_name: JSON.parse(advertisement_params['category_name'])[1],
           location: params['location'],
+          contact_methods: params[:contact_methods].keys.to_json,
           for: params['for']
         })
         format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully updated.' }
@@ -95,13 +110,23 @@ class AdvertisementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_advertisement
-      @advertisement = Advertisement.references([:emoji_react, :user]).find(params[:uuid])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_advertisement
+    @advertisement = Advertisement.references([:emoji_react, :user]).find(params[:uuid])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def advertisement_params
-      params.require(:advertisement).permit(:uuid, :title, :body, :published, :location, :category_name, :for, :emoji, :images => [])
-    end
+  def set_new_advertisement_contact_methods
+    @publicContactMethods = current_user.contact_methods_as_array.select { |method| !method['public'].nil? }
+    @privateContactMethods = current_user.contact_methods_as_array.select { |method| method['public'].nil? }
+  end
+
+  def set_contact_methods
+    @publicContactMethods = @advertisement.user.contact_methods_as_array.select { |method| !method['public'].nil? }
+    @privateContactMethods = @advertisement.user.contact_methods_as_array.select { |method| method['public'].nil? }
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def advertisement_params
+    params.require(:advertisement).permit(:uuid, :title, :body, :published, :location, :category_name, :for, :emoji, :images => [], :contact_methods => {})
+  end
 end

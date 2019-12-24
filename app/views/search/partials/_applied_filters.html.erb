@@ -19,7 +19,7 @@
 <% if types.present? || category.present? %>
   <span class="label clear-filters" onclick="window.clearFilters()"><%= t :clear_filters %></span>
 <% else %>
-  <span class="label clear-filters"><%= t :clear_filters %></span>
+  <span class="label clear-filters"><%= t :no_filters %></span>
 <% end %>
 
 <span class="results-count">

@@ -6,6 +6,27 @@
   <% content_for :meta_image, rails_blob_path(@advertisement.images.first, only_path: true) %>
   <% end %>
 
+  <!-- Location filter (hidden in a modal)  -->
+  <div class="reveal" id="js-show-private-details-modal" data-reveal data-close-on-click="true">
+    <div class="fieldset-container">
+      <fieldset class="fieldset">
+        <legend><%= t :private_details %></legend>
+        <div class="columns small-12">
+          <% if user_signed_in? %>
+            <dl>
+              <% @privateContactMethods.each do |method| %>
+              <dt><%= method["name"].capitalize %></dt>
+              <dd><a href="#"><%= method["value"] %></a></dd>
+              <% end %>
+            </dl>
+          <% else %>
+            <p>Sorry, you must sign in to do that.</p>
+          <% end %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
   <!-- Main row -->
   <div class="row show-advertisement">
 
@@ -45,11 +66,14 @@
             <fieldset class="fieldset contact-container">
               <legend><%= t :contact %></legend>
               <dl>
-                <% @advertisement.user.contact_methods_as_array.each do |method| %>
+                <% @publicContactMethods.each do |method| %>
                 <dt><%= method["name"].capitalize %></dt>
-                <dd><%= method["value"] %></dd>
+                <dd><a href="#"><%= method["value"] %></a></dd>
                 <% end %>
               </dl>
+              <% if @privateContactMethods.count > 0 %>
+                <a href="#" data-open="js-show-private-details-modal" class="button primary expanded"><%= t :show_private_contact_methods %></a>
+              <% end %>
             </fieldset>
           </div>
 

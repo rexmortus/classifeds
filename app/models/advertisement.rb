@@ -38,6 +38,14 @@ class Advertisement < ApplicationRecord
   # Enums
   enum category: Rails.application.config.classifeds_categories
 
+  def contact_methods_as_array
+    if self.contact_methods.nil?
+      []
+    else
+      JSON.parse(self.contact_methods)
+    end
+  end
+
   # Class method for creating form collection
   def self.categories_as_form_collection
     self.categories.map.each_with_index do | (category, subcategories), category_id|
