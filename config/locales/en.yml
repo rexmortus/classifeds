@@ -47,6 +47,9 @@ en:
   create_advertisement: "Create Advertisement"
   private_contact_methods_tooltip: ""
   show_private_contact_methods: "Show Private Details"
+  select_images: Select Images
+  private_details: Private Details
+  you_must_sign_in: Sorry, you must be signed in to do that.
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

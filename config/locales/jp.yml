@@ -4,13 +4,13 @@ jp:
   type: "タイプ"
   category: "カテゴリー"
   query_placeholder: "探す Classifeds"
-  post_ad: "広告後"
+  post_ad: "広告を送る"
   my_ads: "私の広告"
   edit_profile: "プロファイル編集"
   sign_out: "サインアウト"
   within: "以内"
   of: "の"
-  all_types: "いろんなタイプ"
+  all_types: "すべてのタイプ"
   all_categories: "すべてのカテゴリ"
   clear_filters: "フィルターをクリア"
   no_filters: "フィルターなし"
@@ -33,22 +33,27 @@ jp:
   sorry: ごめんなさい
   friend: 友だち
   better_luck_next_time: '次回は幸運を。'
-  title: "題名"
+  title: "表題"
   image: "画像"
   description: "説明"
   location: "ロケーション"
-  save_location: "位置を保存"
+  save_location: "ロケーションを保存"
   locale: ロケール
   contact_methods: "連絡方法"
-  add_method: "メソッドを追加"
+  add_method: "連絡方法を追加"
   update_user: "ユーザーを更新"
-  value: 値
-  private: 民間
+  value: データ
+  private: プライベート
   public: 公衆
   public_option_tooltip: 公開を選択すると、この連絡方法がすべての訪問者の広告に表示されます。
   private_option_tooltip: プライベートを選択すると、この連絡方法はサインインしているユーザーにのみ広告に表示され、リクエストの記録が保持されます。
   create_advertisement: 広告を作成する
   show_private_contact_methods: "プライベートの詳細を表示"
+  select_images: 画像を選択
+  private_details: プライベートの詳細
+  you_must_sign_in: 申し訳ありませんが、ログインするにはログインする必要があります。
+  my_advertisements: 私の広告
+  controls: コントロール
 
   datetime:
     distance_in_words:
@@ -64,7 +69,7 @@ jp:
       almost_x_years:
         one: ほぼ1年
         other: ほぼ%{count}年
-      half_a_minute: '30分'
+      half_a_minute: '30秒'
       less_than_x_minutes:
         zero: ゼロ分未満
         one: 1分未満

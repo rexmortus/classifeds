@@ -94,7 +94,7 @@
         <% if !user_signed_in? %>
         <a href="#">My Classifeds</a>
         <% else %>
-        <a href="#"><i class="material-icons">face</i> <span><%= current_user.username %></span></a>
+        <a href="#"><span><%= current_user.username %></span></a>
         <% end %>
         <ul class="menu vertical">
           <% if !user_signed_in? %>

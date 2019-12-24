@@ -145,7 +145,7 @@
       <fieldset class="fieldset image-container"">
         <legend><%= t :images %></legend>
          <label for="advertisement_images">
-           <span class="button primary expanded">Select Images <span class="label image-count" id="js-images-count">0</span></span>
+           <span class="button primary expanded"><%= t :select_images %> <span class="label image-count" id="js-images-count">0</span></span>
          </label>
         <%=
           f.file_field :images,
