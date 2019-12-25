@@ -391,12 +391,13 @@ $bkT: rgba($primary-color, 0.4);
       max-height: calc(100vh - 151px - 1rem);
 
       .query-container {
-        @include diamond-pattern(lighten($alert-color, 22.5));
+
         margin-top: 1px;
-        // border: 2x solid lighten($medium-gray, 25);
+        border-color: $medium-gray !important;
         padding-bottom: 0px;
         border-radius: .5rem;
-        box-shadow: 1px 1px 3px rgba(black, .1), inset 0 0 4px #FFFFFF;
+        box-shadow: 1px 1px 3px rgba(black, .1);
+        background-color: rgba(#faf0f1, .75);
 
         &:hover {
 
@@ -422,7 +423,7 @@ $bkT: rgba($primary-color, 0.4);
             background-color: white;
             color: $alert-color;
             box-shadow: none !important;
-            border: 1px solid $medium-gray !important;
+            border: 1px solid $dark-gray !important;
             outline: 3px solid $alert-color !important;
           }
 
