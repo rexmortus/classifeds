@@ -95,7 +95,7 @@ class Advertisement < ApplicationRecord
 
   # Return the advertisement as a mapbox marker
   def as_marker
-    {
+    return {
       emoji: self.emoji,
       coordinates: self.display_geocode,
       title: self.title,

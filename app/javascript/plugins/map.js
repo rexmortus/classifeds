@@ -156,7 +156,7 @@ $(window).on('initialise-map-view', function(event) {
       addRadarMarker(map, coordinates);
 
       // Add markers
-      let results = JSON.parse(event.detail.data);
+      let results = event.detail.data;
       addMarkers(results, map);
 
       // Center the map
@@ -185,7 +185,7 @@ $(window).on('initialise-map-view', function(event) {
       addRadarMarker(window.map, coordinates);
 
       // Add markers
-      let results = JSON.parse(event.detail.data);
+      let results = event.detail.data;
       addMarkers(results, window.map);
     });
 
@@ -204,7 +204,7 @@ $(window).on('update-map-view', function(event) {
   window.markers = [];
 
   // Add an emoji marker for each result
-  let results = JSON.parse(event.detail["data"])
+  let results = event.detail["data"]
 
   // Get the coords and search radius
   var coordinates = event.detail["coordinates"].slice().reverse();

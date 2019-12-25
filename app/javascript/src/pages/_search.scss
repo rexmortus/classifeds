@@ -126,8 +126,8 @@ $bkT: rgba($primary-color, 0.4);
     margin-top: 0px !important;
 
     @include breakpoint(large) {
-      min-width:400px;
-      max-width:400px;
+      min-width: 20rem !important;
+      max-width: 20rem !important;
     }
 
     .map-container {

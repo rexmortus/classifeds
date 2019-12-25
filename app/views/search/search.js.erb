@@ -2,21 +2,20 @@
 var typesFilterContainer =          document.getElementById('js-type-filters');;
 typesFilterContainer.innerHTML =    '<%= j render "search/partials/type_filters", filters: @types_param %>'
 
-// Category filters
+// // Category filters
 var categoryFilterContainer =       document.getElementById('js-category-filters')
 categoryFilterContainer.innerHTML = '<%= j render "search/partials/category_filters", filters: @categories_param %>'
-
-// Applied filters
+//
+// // Applied filters
 var appliedFiltersContainers =      document.querySelectorAll('[data-applied-filters]');
-appliedFiltersContainers.forEach(
-  function(element) {
-  element.innerHTML =               '<%= j render "search/partials/applied_filters", location: @location_param, distance: @distance_param, types: @types_param, category: @categories_param %>'
+appliedFiltersContainers.forEach(function(element) {
+    element.innerHTML =             '<%= j render "search/partials/applied_filters", location: @location_param, distance: @distance_param, types: @types_param, category: @categories_param %>'
 })
-
+//
 // View type filter
 var viewTypeFilterContainer =       document.querySelector('[data-view-type-toggle]');
 viewTypeFilterContainer.innerHTML = '<%= j render "search/partials/view_type_filters", view_type: @view_type_param %>'
-
+//
 // Map view container
 <% if @view_type_param === 'map' %>
 
@@ -29,7 +28,7 @@ if (!window.mapView) {
     detail: {
       coordinates: <%= @geocode_param %>,
       radius: <%= @distance_param %>,
-      data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+      data: <%= raw @advertisements.map { |ad| ad.as_marker }.to_json.gsub("</", "<\\/") %>
     }
   });
 
@@ -39,14 +38,19 @@ if (!window.mapView) {
 
 <% else %>
 
-var event = new CustomEvent('remove-map-view', {
-  detail: {
-    coordinates: <%= @geocode_param %>,
-    radius: <%= @distance_param %>,
-    data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
-  }
-});
-window.dispatchEvent(event);
+if (window.mapView) {
+
+  var event = new CustomEvent('remove-map-view', {
+    detail: {
+      coordinates: <%= @geocode_param %>,
+      radius: <%= @distance_param %>,
+      data: <%= raw @advertisements.map { |ad| ad.as_marker }.to_json.gsub("</", "<\\/") %>
+    }
+  });
+
+  window.dispatchEvent(event);
+
+}
 
 var resultsContainer =              document.getElementById('js-results-grid');
 resultsContainer.innerHTML =        '<%= j render "search/partials/search_results", advertisements: @advertisements, view_type: @view_type_param %>'
@@ -56,17 +60,16 @@ resultsContainer.innerHTML =        '<%= j render "search/partials/search_result
 // Always refresh masonry layout
 var event = new Event('refresh-masonry-layout');
 window.dispatchEvent(event);
-
+//
 // Always update the map
 var event = new CustomEvent('update-map-view', {
   detail: {
     coordinates: <%= @geocode_param %>,
     radius: <%= @distance_param %>,
-    data: '<%=raw @advertisements.map { |ad| ad.as_marker }.to_json %>'
+    data: <%= raw @advertisements.map { |ad| ad.as_marker }.to_json.gsub("</", "<\\/") %>
   }
 });
-
 window.dispatchEvent(event);
-
+//
 window.history.pushState('page2', 'Title', '<%= @original_url %>');
-// window.history.pushState({"html": getElementById('content').innerHTML, "pageTitle": 'butts lol'},"", '<%= @original_url %>'));
+// // window.history.pushState({"html": getElementById('content').innerHTML, "pageTitle": 'butts lol'},"", '<%= @original_url %>'));
