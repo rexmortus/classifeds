@@ -18,6 +18,11 @@
         color: $primary-color;
         opacity: .35;
       }
+
+      .form-group {
+        margin-top: -.25rem !important;
+      }
+
     }
 
     svg {
@@ -27,7 +32,13 @@
     }
 
     .map-container {
+      padding-top: .75rem;
       padding-bottom: 0px;
+
+      input {
+        margin-top: -.5rem;
+      }
+
     }
 
     .contact-container {
@@ -40,7 +51,8 @@
     }
 
     .information-container {
-      padding-bottom: 0px;
+      padding-bottom: .5rem;
+      padding-top: .75rem;
 
       dd a {
         font-size: $small-font-size;
