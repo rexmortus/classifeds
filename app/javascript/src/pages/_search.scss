@@ -84,6 +84,22 @@ $bkT: rgba($primary-color, 0.4);
     margin-top: 0rem;
     margin-bottom: 0.6rem;
 
+    .on-watchlist {
+      color: $medium-gray;
+      background: none;
+      background-color: none !important;
+      padding-left: 0px !important;
+      font-size: 1.5rem !important;
+      float: left;
+      margin-top: -.25rem;
+
+      &:hover {
+        cursor: pointer;
+        color: $success-color;
+      }
+
+    }
+
     .location-filter {
       color: white;
       @include diamond-pattern($primary-color);
