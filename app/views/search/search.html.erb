@@ -126,15 +126,17 @@
       <div class="row">
         <div class="column expand">
           <div class="callout alert query-container show-for-medium">
-            <%=
-              f.input :query,
-              :label => false,
-              :input_html => {
-                placeholder: t(:query_placeholder),
-                autofocus: false,
-                value: @query_param
-              }
-            %>
+            <div class="query-container-inner">
+              <%=
+                f.input :query,
+                :label => false,
+                :input_html => {
+                  placeholder: t(:query_placeholder),
+                  autofocus: false,
+                  value: @query_param
+                }
+              %>
+            </div>
           </div>
         </div>
       </div>
