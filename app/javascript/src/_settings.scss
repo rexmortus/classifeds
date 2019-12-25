@@ -171,7 +171,7 @@ $accordionmenu-padding: $global-menu-padding;
 $accordionmenu-nested-margin: $global-menu-nested-margin;
 $accordionmenu-submenu-padding: $accordionmenu-padding;
 $accordionmenu-arrows: true;
-$accordionmenu-arrow-color: $primary-color;
+$accordionmenu-arrow-color: $white;
 $accordionmenu-item-background: null;
 $accordionmenu-border: null;
 $accordionmenu-submenu-toggle-background: null;
@@ -290,7 +290,7 @@ $drilldown-nested-margin: 0;
 $drilldown-background: $white;
 $drilldown-submenu-padding: $drilldown-padding;
 $drilldown-submenu-background: $white;
-$drilldown-arrow-color: $primary-color;
+$drilldown-arrow-color: $white;
 $drilldown-arrow-size: 6px;
 
 // 17. Dropdown
@@ -310,7 +310,7 @@ $dropdown-sizes: (
 
 
 $dropdownmenu-arrows: true;
-$dropdownmenu-arrow-color: $anchor-color;
+$dropdownmenu-arrow-color: $white;
 $dropdownmenu-arrow-size: 6px;
 $dropdownmenu-arrow-padding: 1.5rem;
 $dropdownmenu-min-width: 200px;

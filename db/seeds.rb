@@ -20,7 +20,7 @@ puts 'Creating 10 books'
     location: Rails.application.config.classifeds_default_location
   )
 
-  url = URI.escape("https://picsum.photos/seed/#{ad.title}/#{rand(400...600)}/#{rand(600...800)}")
+  url = URI.escape("https://picsum.photos/seed/#{ad.title}/#{rand(600...800)}/#{rand(400...600)}")
 
   ad.images.attach(
     io: open(url),
@@ -29,7 +29,9 @@ puts 'Creating 10 books'
     identify: false
   )
 
-  ad.save
+  if ad.images.attached?
+    ad.save
+  end
 
 end
 
@@ -44,7 +46,7 @@ puts 'Creating 10 appliances'
     emoji: Emoji.all.sample.raw,
     for: 'Sale',
     category_name: 'Tools',
-    subcategory_name: 'Fiction',
+    subcategory_name: 'Home/Garden',
     location: Rails.application.config.classifeds_default_location
   )
 

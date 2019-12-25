@@ -34,29 +34,8 @@ body {
 
   background-size: 100px 50px;
 
-  fieldset legend {
-
-    .material-icons {
-
-      @include breakpoint(small) {
-        font-size: 22px;
-      }
-
-      @include breakpoint(medium) {
-        margin-top: 1px;
-        font-size: 16px;
-      }
-
-      @include breakpoint(large) {
-        margin-top: 1px;
-        font-size: 16px;
-      }
-
-    }
-
-    color: $primary-color;
-    font-weight: bold;
-    text-overflow: hidden;
+  fieldset {
+    border-radius: 1rem;
   }
 
   input {
@@ -83,36 +62,39 @@ body {
 
 .top-bar {
 
+  @include diamond-pattern($secondary-color);
   color: white !important;
+  box-shadow: 1px 1px 3px rgba(black, .1);
+  text-shadow: 1px 1px black;
 
-  .material-icons {
+  .menu {
 
-    @include breakpoint(small) {
-      font-size: 22px;
-    }
+    .is-active {
 
-    @include breakpoint(medium) {
-      margin-top: 1px;
-      font-size: 16px;
-    }
+      color: white;
 
-    @include breakpoint(large) {
-      margin-top: 1px;
-      font-size: 16px;
-    }
+      a {
 
-  }
-
-  ul {
-
-    li, a {
-      color: white !important;
-
-      &::after {
-        border-color: white transparent transparent !important;
       }
+
     }
+
   }
+
+
+  ul.dropdown {
+    background: none !important;
+
+    a {
+      color: white;
+    }
+
+    &:hover {
+      color: white !important;
+    }
+
+  }
+
 }
 
 .algolia-places button svg {

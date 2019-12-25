@@ -7,11 +7,12 @@
 
 #js-change-location-modal {
 
-  border: none;
+  border: 0px;
   outline: none;
   background: none;
   background-color: none;
   height:450px;
+  border-radius: 1rem !important;
 
   .fieldset-container {
     padding: 1rem;
@@ -84,8 +85,13 @@ $bkT: rgba($primary-color, 0.4);
     margin-top: 0rem;
     margin-bottom: 0.6rem;
 
+    .label {
+      box-shadow: 1px 1px 3px rgba(black, .1);
+    }
+
     .on-watchlist {
-      color: $medium-gray;
+      opacity: 0.25;
+      color: $success-color;
       background: none;
       background-color: none !important;
       padding-left: 0px !important;
@@ -94,8 +100,8 @@ $bkT: rgba($primary-color, 0.4);
       margin-top: -.25rem;
 
       &:hover {
+        opacity: 1;
         cursor: pointer;
-        color: $success-color;
       }
 
     }
@@ -152,6 +158,7 @@ $bkT: rgba($primary-color, 0.4);
       position: relative;
       margin-bottom: 1rem !important;
       border: 1px solid $medium-gray;
+      box-shadow: 1px 1px 3px rgba(black, .1);
 
       .mapboxgl-canvas {
         border: 1px solid $medium-gray;
@@ -263,6 +270,7 @@ $bkT: rgba($primary-color, 0.4);
       .selected {
         font-weight: bold;
         @include diamond-pattern($success-color);
+        box-shadow: 1px 1px 3px rgba(black, .5);
 
         a {
           color: white !important;
@@ -308,6 +316,7 @@ $bkT: rgba($primary-color, 0.4);
 
         .selected {
           @include diamond-pattern($warning-color);
+          box-shadow: 1px 1px 3px rgba(black, .1);
 
           &:hover {
             @include diamond-pattern(lighten($warning-color, .1));
@@ -382,12 +391,12 @@ $bkT: rgba($primary-color, 0.4);
       max-height: calc(100vh - 151px - 1rem);
 
       .query-container {
-
-        margin-top: 1px;
         @include diamond-pattern(lighten($alert-color, 22.5));
-        border: 2px solid white;
-        outline: 1px solid $medium-gray;
+        margin-top: 1px;
+        // border: 2x solid lighten($medium-gray, 25);
         padding-bottom: 0px;
+        border-radius: .5rem;
+        box-shadow: 1px 1px 3px rgba(black, .1), inset 0 0 4px #FFFFFF;
 
         &:hover {
 
@@ -401,6 +410,7 @@ $bkT: rgba($primary-color, 0.4);
           color: darken($dark-gray, 10);
           background-color: rgba(white, 0.8);
           border: 1px solid darken($light-gray, 4);
+          border-radius: .25rem;
 
           &:hover {
             border: 1px solid $medium-gray !important;
@@ -434,6 +444,7 @@ $bkT: rgba($primary-color, 0.4);
         background-color: white;
         border: 1px solid $medium-gray;
         padding: 2px;
+        box-shadow: 1px 1px 3px rgba(black, .1);
 
         #map-results-view {
           border: 1px solid $medium-gray;
@@ -545,6 +556,7 @@ $bkT: rgba($primary-color, 0.4);
             outline-offset: 0px;
             transition: all .5s ease-in-out;
             transition: border .1s ease-in-out, outline .1s ease-in-out;
+            box-shadow: 1px 1px 3px rgba(black, .1);
 
             h5 {
               font-weight: 400;
