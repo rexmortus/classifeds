@@ -7,10 +7,6 @@
 
   .left-column {
 
-    @include breakpoint(large) {
-      min-width:400px;
-      max-width:400px;
-    }
 
     #js-small-map {
 
@@ -33,7 +29,7 @@
 
     .map-container {
       padding-top: .75rem;
-      padding-bottom: 0px;
+      padding-bottom: .25rem;
 
       input {
         margin-top: -.5rem;
@@ -51,11 +47,48 @@
     }
 
     .information-container {
-      padding-bottom: .5rem;
+      padding-bottom: .25rem;
       padding-top: .75rem;
+
+      .info-label {
+        color: $primary-color;
+        text-align: left;
+        padding-left: 0px;
+        padding-top: .5rem;
+        font-size: .9rem;
+      }
 
       dd a {
         font-size: $small-font-size;
+        font-weight: bold;
+      }
+    }
+
+
+    .contact-methods {
+      padding-top: 1rem;
+      // padding-bottom: .25rem;
+
+      .has-tip {
+        font-size: .9rem;
+      }
+
+
+      .public-methods-container {
+        margin-bottom: 1.25rem;
+      }
+
+      .private-methods-container {
+
+      }
+
+
+      input {
+        margin-bottom: 0px;
+      }
+
+      label {
+        color: $primary-color;
         font-weight: bold;
       }
     }
@@ -79,8 +112,12 @@
       }
     }
 
+    .advertisement-emoji {
+      padding-left: .5rem;
+    }
+
     .js-emoji-picker {
-      text-align: right;
+      margin-top: -.25rem;
     }
 
     .form-controls {
@@ -90,35 +127,7 @@
 
   .right-column {
 
-    .contact-methods {
-      padding-top: 1rem;
-      // padding-bottom: .25rem;
-
-      .public-methods-container {
-        margin-bottom: 1.25rem;
-      }
-
-      .private-methods-container {
-
-      }
-
-      .has-tip {
-        display: block !important;
-      }
-
-      input {
-        margin-bottom: 0px;
-      }
-
-      label {
-        color: $primary-color;
-        font-weight: bold;
-      }
-    }
-
     .image-container {
-
-      padding-bottom: .25rem;
 
       #advertisement_images {
         display: none !important;
@@ -131,10 +140,10 @@
 
       .images-container {
 
-
-
         .packery-item {
-          width: 31.333%;
+          outline: 1px solid $medium-gray;
+          border: 2px solid white;
+          width: 100%;
         }
       }
     }

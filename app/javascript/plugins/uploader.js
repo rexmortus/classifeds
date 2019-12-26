@@ -13,7 +13,6 @@ if (previewContainer) {
     percentPosition: true,
     transitionDuration: 0,
   });
-
 }
 
 const imageInput = document.getElementById('advertisement_images');
@@ -37,7 +36,7 @@ function previewImages() {
     [].forEach.call(this.files, readAndPreview);
   }
 
-  packery.layout();
+  pckry.layout();
 
   function readAndPreview(file) {
 
@@ -64,9 +63,8 @@ function previewImages() {
 
         previewContainer.appendChild(div);
         pckry.addItems(div);
-        pckry.layout();
 
-    });
+      });
 
       reader.readAsDataURL(file);
     }

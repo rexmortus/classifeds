@@ -36,6 +36,11 @@ body {
 
   fieldset {
     border-radius: .5rem;
+
+    legend {
+      font-weight: bold;
+    }
+
   }
 
   input {
