@@ -125,11 +125,13 @@
     <div class="row">
       <div class="column">
         <%== @advertisement.body %>
-        <% if user_signed_in? && current_user === @advertisement.user %>
-          <%= link_to t(:edit), edit_advertisement_path(@advertisement) %>
-          |
-          <%= link_to t(:delete), advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-        <% end %>
+        <div class="poster-controls">
+          <% if user_signed_in? && current_user === @advertisement.user %>
+            <%= link_to t(:edit), edit_advertisement_path(@advertisement) %>
+            |
+            <%= link_to t(:delete), advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+          <% end %>
+        </div>
         <hr>
       </div>
     </div>
@@ -179,11 +181,11 @@
               src="<%= url_for(image) %>" />
           </div>
         <% end %>
-        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
-          <img class="carousel-cell-image" src="<%= @png.to_data_url %>" />
-        </div>
         <div class="carousel-cell" data-slide-id="emoji">
           <h1 style="font-size: 10rem;"><%= @advertisement.emoji %></h1>
+        </div>
+        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
+          <img class="carousel-cell-image" src="<%= @png.to_data_url %>" />
         </div>
       </div>
       <button class="close-button" data-close aria-label="Close reveal" type="button">
