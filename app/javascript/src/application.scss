@@ -114,6 +114,25 @@ body {
 
   }
 
+  .notifications {
+    font-size: 1rem;
+    margin-left: .75rem;
+    @include diamond-pattern(lighten(red, 25));
+    text-shadow: 1px 1px rgba(black, 0.25) !important;
+    border-radius: 2rem;
+    font-weight: bold;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    box-shadow: inset 0px 1px 1px rgba(black, 0.5);
+    // border:1px solid white;
+
+
+
+    .material-icons {
+      font-size: 1rem;
+    }
+  }
+
 }
 
 .algolia-places button svg {
@@ -121,9 +140,8 @@ body {
 }
 
 .fieldset {
-    // @include callout-style($alert-color);
-    background-color: rgba(white, 0.25);
-    backdrop-filter: blur(1px);
+  background-color: rgba(white, 0.25);
+  backdrop-filter: blur(1px);
 }
 
 // CKEditor styles

@@ -155,6 +155,9 @@
               <img src="<%= url_for(image) %>">
             </div>
           <% end %>
+          <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= @advertisement.images.count %>">
+            <img src="<%= @png.to_data_url %>" />
+          </div>
         </div>
       </div>
     </fieldset>
@@ -168,6 +171,9 @@
               src="<%= url_for(image) %>" />
           </div>
         <% end %>
+        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
+          <img class="carousel-cell-image" src="<%= @png.to_data_url %>" />
+        </div>
       </div>
       <button class="close-button" data-close aria-label="Close reveal" type="button">
         <span aria-hidden="true">&times;</span>

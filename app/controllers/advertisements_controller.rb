@@ -17,6 +17,20 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements/1.json
   def show
     @original_url = request.original_url
+
+    qrcode = RQRCode::QRCode.new(@original_url)
+    @png = qrcode.as_png(
+      bit_depth: 12,
+      border_modules: 0,
+      color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+      color: 'black',
+      file: nil,
+      fill: 'white',
+      module_px_size: 1,
+      resize_exactly_to: 32,
+      resize_gte_to: 32,
+      size: 300
+    )
     @publicContactMethods = @advertisement.user.contact_methods_as_array.select { |method| !method['public'].nil? && @advertisement.contact_methods_as_array.include?(method["name"]) }
     @privateContactMethods = @advertisement.user.contact_methods_as_array.select { |method| method['public'].nil? && @advertisement.contact_methods_as_array.include?(method["name"]) }
     @advertisement.punch(request)
