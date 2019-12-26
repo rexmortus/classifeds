@@ -7,4 +7,11 @@
     <a class="label warning emoji reaction new-reaction" href="#">➕</a>
   <% end %>
 </div>
+<% else %>
+<% if user_signed_in? %>
+<div style="margin-bottom:10px" class="emoji-tags">
+  <a class="label warning emoji reaction new-reaction" href="#">➕</a>
+</div>
+<% end %>
+
 <% end %>
