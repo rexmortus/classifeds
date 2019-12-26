@@ -211,6 +211,10 @@
         text-align: center;
         @include diamond-pattern(lighten($alert-color, 15));
 
+        span {
+          opacity: .5;
+        }
+
         &:hover {
           cursor: pointer;
         }
@@ -390,7 +394,8 @@
 }
 
 .carousel-cell img {
-  border: 1px solid $medium-gray;
+  outline: 1px solid $medium-gray;
+  border: 2px solid white;
   display: block;
   max-height: 100%;
 }

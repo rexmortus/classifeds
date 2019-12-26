@@ -37,6 +37,20 @@ body {
   fieldset {
     border-radius: .5rem;
 
+    dl {
+      dt {
+        font-size: .9rem;
+      }
+      dd {
+
+        a {
+          border-bottom: 1px dotted $primary-color;
+          margin-bottom: .5rem;
+          display: inline-block;
+        }
+      }
+    }
+
     legend {
       font-weight: bold;
     }

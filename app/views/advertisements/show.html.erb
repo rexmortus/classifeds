@@ -36,7 +36,7 @@
           <a id="js-share-advertisement" data-tooltip class="right" href="<%= @original_url %>" title="<%= t :click_to_copy_url %>"><%= @original_url %></a>
         </div>
         <div class="column small-12 medium-2 large-2 bookmark">
-          <i class="material-icons">save</i>
+          <i class="material-icons">save_alt</i>
         </div>
     </div>
 
@@ -125,16 +125,6 @@
     <div class="row">
       <div class="column">
         <%== @advertisement.body %>
-        <!-- Poster Controls -->
-        <div class="poster-controls">
-          <% if user_signed_in? && current_user === @advertisement.user %>
-            <p>
-              <%= link_to t(:edit), edit_advertisement_path(@advertisement) %>
-                |
-              <%= link_to t(:delete), advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
-            </p>
-          <% end %>
-        </div>
         <hr>
       </div>
     </div>

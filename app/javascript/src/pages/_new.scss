@@ -47,8 +47,8 @@
     }
 
     .information-container {
-      padding-bottom: .25rem;
-      padding-top: .75rem;
+      padding-bottom: .5rem;
+      padding-top: 1rem;
 
       .info-label {
         color: $primary-color;
@@ -64,34 +64,6 @@
       }
     }
 
-
-    .contact-methods {
-      padding-top: 1rem;
-      // padding-bottom: .25rem;
-
-      .has-tip {
-        font-size: .9rem;
-      }
-
-
-      .public-methods-container {
-        margin-bottom: 1.25rem;
-      }
-
-      .private-methods-container {
-
-      }
-
-
-      input {
-        margin-bottom: 0px;
-      }
-
-      label {
-        color: $primary-color;
-        font-weight: bold;
-      }
-    }
   }
 
   .center-column {
@@ -126,6 +98,43 @@
   }
 
   .right-column {
+
+    .contact-methods {
+      padding-top: .75rem;
+      // padding-bottom: .25rem;
+
+      .has-tip {
+        font-size: .9rem;
+      }
+
+      .public-methods-container, .private-methods-container {
+        // margin-bottom: 1.25rem;
+
+        input {
+          margin-top: 1rem;
+          margin-right: .5rem;
+        }
+
+        label {
+          color: $primary-color;
+          margin-bottom: 1rem;
+          font-weight: bold;
+
+          &:hover {
+            cursor: pointer;
+            background-color: rgba($primary-color, .05);
+          }
+
+          small {
+            font-size: .8rem !important;
+            font-weight: normal;
+            display: block;
+            color: $dark-gray;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
 
     .image-container {
 

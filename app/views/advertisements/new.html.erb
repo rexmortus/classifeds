@@ -8,7 +8,7 @@
   <div class="row new-advertisement">
 
     <!-- Left column (map, info, contact) -->
-    <div class="column small-12 medium-3 large-2 left-column large-offset-2">
+    <div class="column small-12 medium-3 large-3 left-column large-offset-1">
 
       <!-- Map / Location Selector -->
       <fieldset class="fieldset map-container">
@@ -68,33 +68,6 @@
          </div>
       </fieldset>
 
-      <!-- Contact methods -->
-      <fieldset class="fieldset contact-methods">
-        <legend><%= t :contact_methods %></legend>
-        <p data-tooltip class="top" title="<%= t :public_option_tooltip %>"><%= t :public %></p>
-        <div class="public-methods-container">
-        <% @publicContactMethods.each_with_index do |method, index| %>
-          <input
-            id="public-checkbox<%= index %>"
-            name="advertisement[contact_methods][<%= method["name"] %>]"
-            type="checkbox"
-            <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
-          ><label title="<%= method["value"] %>"
-            data-toolip for="public-checkbox<%= index %>"><%= method["name"].capitalize %>
-          </label>
-        <% end %>
-        </div>
-        <p class="top" data-tooltip title="<%= t :private_option_tooltip %>"><%= t :private %></p>
-        <div class="private-methods-container">
-        <% @privateContactMethods.each_with_index do |method, index| %>
-          <input
-            id="private-checkbox<%= index %>"
-            name="advertisement[contact_methods][<%= method["name"] %>]"
-            type="checkbox"
-          ><label for="private-checkbox<%= index %>"><%= method["name"].capitalize %></label>
-        <% end %>
-        </div>
-      </fieldset>
     </div>
 
     <!-- Center column (heading, emoji-reacts, content, emoji-react-info) -->
@@ -154,7 +127,54 @@
     </div>
 
     <!-- Right column (images) -->
-    <div class="column small-12 medium-3 large-2 right-column">
+    <div class="column small-12 medium-3 large-3 right-column">
+
+      <!-- Contact methods -->
+      <fieldset class="fieldset contact-methods">
+        <legend><%= t :contact_methods %></legend>
+        <p data-tooltip class="top" title="<%= t :public_option_tooltip %>"><%= t :public %></p>
+        <div class="public-methods-container">
+        <% @publicContactMethods.each_with_index do |method, index| %>
+          <div class="row">
+            <div class="columns small-1">
+              <input
+                id="public-checkbox<%= index %>"
+                name="advertisement[contact_methods][<%= method["name"] %>]"
+                type="checkbox"
+                <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
+              >
+            </div>
+            <div class="columns small-expand">
+              <label title="<%= method["value"] %>"
+                data-toolip for="public-checkbox<%= index %>">
+                <small><%= method["name"].capitalize %></small><%= method["value"] %>
+              </label>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        <p class="top" data-tooltip title="<%= t :private_option_tooltip %>"><%= t :private %></p>
+        <div class="private-methods-container">
+        <% @privateContactMethods.each_with_index do |method, index| %>
+        <div class="row">
+          <div class="columns small-1">
+            <input
+              id="private-checkbox<%= index %>"
+              name="advertisement[contact_methods][<%= method["name"] %>]"
+              type="checkbox"
+              <%= "checked" if @advertisement.contact_methods_as_array.include?(method["name"]) %>
+            >
+          </div>
+          <div class="columns small-expand">
+            <label title="<%= method["value"] %>"
+              data-toolip for="private-checkbox<%= index %>">
+              <small><%= method["name"].capitalize %></small><%= method["value"] %>
+            </label>
+          </div>
+        </div>
+        <% end %>
+        </div>
+      </fieldset>
 
       <!-- Images -->
       <fieldset class="fieldset image-container"">

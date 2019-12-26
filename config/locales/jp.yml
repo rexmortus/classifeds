@@ -54,6 +54,8 @@ jp:
   you_must_sign_in: 申し訳ありませんが、ログインするにはログインする必要があります。
   my_advertisements: 私の広告
   controls: コントロール
+  new_ad_type_toolip: Choose a type. The list of types managed by the instance owner.
+  new_ad_category_tooltip: Choose a category. The list of categories is managed by the instance owner.
 
   datetime:
     distance_in_words:
