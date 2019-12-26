@@ -30,6 +30,9 @@
       <fieldset class="fieldset information-container">
         <legend><%= t :information %></legend>
           <div class="row">
+            <div class="columns small-3 info-label">
+              <p data-tooltip title="<%= t :new_ad_type_toolip %>"><%= t :type %></p>
+            </div>
             <div class="columns small-9">
               <!-- Types filter -->
               <%=
@@ -42,13 +45,13 @@
                 :collection => Rails.application.config.classifeds_types
               %>
             </div>
-            <div class="columns small-3 info-label">
-              <p data-tooltip title="<%= t :new_ad_type_toolip %>"><%= t :type %></p>
-            </div>
           </div>
 
          <!-- category_subcategory filter -->
          <div class="row">
+           <div class="columns small-3 info-label">
+             <p data-tooltip title="<%= t :new_ad_category_tooltip %>"><%= t :category %></p>
+           </div>
            <div class="columns small-9">
              <%=
                 f.input :category_name,
@@ -61,9 +64,6 @@
                 :group_method => :last,
                 :group_label_method => :first
               %>
-           </div>
-           <div class="columns small-3 info-label">
-             <p data-tooltip title="<%= t :new_ad_category_tooltip %>"><%= t :category %></p>
            </div>
          </div>
       </fieldset>
