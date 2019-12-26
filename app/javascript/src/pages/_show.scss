@@ -328,7 +328,7 @@
         background-color: white;
 
         &.quote-container {
-          @include diamond-pattern(lighten($alert-color, 22.5));
+          @include diamond-pattern(lighten($alert-color, 22.5))
           border: 2px solid white;
           outline: 1px solid $medium-gray;
           text-align: center;
@@ -336,7 +336,6 @@
           line-height: 6rem;
           padding-top: 2rem;
           padding-bottom: .6rem;
-
 
           p {
             text-shadow: 3px 3px 3px rgba(black, .25);
