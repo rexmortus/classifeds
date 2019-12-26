@@ -102,7 +102,7 @@
     <!-- Page title -->
     <div class="row heading-container align-middle">
       <div class="column medium-10">
-          <h1><%= @advertisement.emoji %> <%= @advertisement.title %></h1>
+          <h1><%= @advertisement.title %></h1>
       </div>
     </div>
 
@@ -125,6 +125,11 @@
     <div class="row">
       <div class="column">
         <%== @advertisement.body %>
+        <% if user_signed_in? && current_user === @advertisement.user %>
+          <%= link_to t(:edit), edit_advertisement_path(@advertisement) %>
+          |
+          <%= link_to t(:delete), advertisement_path(@advertisement), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+        <% end %>
         <hr>
       </div>
     </div>
@@ -155,6 +160,9 @@
               <img src="<%= url_for(image) %>">
             </div>
           <% end %>
+          <div class="image-container quote-container packery-item js-reveal-carousel" data-slide-id="emoji">
+            <p data-slide-id="emoji"><%= @advertisement.emoji %></p>
+          </div>
           <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= @advertisement.images.count %>">
             <img src="<%= @png.to_data_url %>" />
           </div>
@@ -173,6 +181,9 @@
         <% end %>
         <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
           <img class="carousel-cell-image" src="<%= @png.to_data_url %>" />
+        </div>
+        <div class="carousel-cell" data-slide-id="emoji">
+          <h1 style="font-size: 10rem;"><%= @advertisement.emoji %></h1>
         </div>
       </div>
       <button class="close-button" data-close aria-label="Close reveal" type="button">
