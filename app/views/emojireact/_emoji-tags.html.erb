@@ -3,11 +3,8 @@
   <% grouped_emoji.each do |emoji, count| %>
     <a href="#" class="label warning emoji reaction" data-emoji="<%= emoji %>"><%= emoji %> <%= count if count > 1 %></a>
   <% end %>
-</div>
-<% end %>
-
-<% if user_signed_in? %>
-<div>
-  <a class="label new-reaction hide-for-small" href="#"><%= t :add_reaction %></a>
+  <% if user_signed_in? %>
+    <a class="label warning emoji reaction new-reaction" href="#">➕</a>
+  <% end %>
 </div>
 <% end %>

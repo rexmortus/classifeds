@@ -36,7 +36,9 @@
           <a id="js-share-advertisement" data-tooltip class="right" href="<%= @original_url %>" title="<%= t :click_to_copy_url %>"><%= @original_url %></a>
         </div>
         <div class="column small-12 medium-2 large-2 bookmark">
-          <i class="material-icons">save_alt</i>
+          <i class="material-icons">print</i>
+          <i class="material-icons">share</i>
+          <i class="material-icons">bookmark_outline</i>
         </div>
     </div>
 
@@ -114,9 +116,6 @@
           <span class="label type"><%= @advertisement.for %></span>
           <span class="label category"><%= @advertisement.category_name %> > <%= @advertisement.subcategory_name %></span>
         </p>
-        <div class="emoji-reacts" id="js-top-emoji">
-          <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
-        </div>
         <hr>
       </div>
     </div>
@@ -133,6 +132,14 @@
           <% end %>
         </div>
         <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <div class="emoji-reacts" id="js-top-emoji">
+          <%= render 'emojireact/emoji-tags', grouped_emoji: @advertisement.grouped_emoji %>
+        </div>
       </div>
     </div>
 
