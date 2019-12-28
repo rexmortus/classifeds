@@ -40,8 +40,9 @@
 
   .sharing-column {
     margin-top: 1rem;
-    margin-bottom: 0rem;
+    margin-bottom: .5rem;
     color: $dark-gray;
+
 
     .bookmark {
       color: $secondary-color;
@@ -49,14 +50,22 @@
     }
 
     .material-icons {
-      font-size: 2.6rem;
+      padding-top: .5rem;
+      font-size: 1.4rem;
+
+      &:hover {
+        cursor: pointer;
+        color: $primary-color;
+      }
     }
 
     a {
       font-weight: 400;
       font-size: .85rem;
-      color: $medium-gray;
-      border-bottom: 1px dotted $medium-gray;
+      color: lighten($dark-gray, 10);
+      padding: .5rem;
+      padding-bottom: 0rem;
+      border-bottom: none;
       cursor: pointer !important;
 
       &:before {
@@ -74,7 +83,7 @@
 
       &:hover {
         color: $secondary-color;
-        border-bottom: 1px solid $dark-gray;
+        // border-bottom: 1px solid $dark-gray;
       }
     }
   }
@@ -159,6 +168,7 @@
         h1 {
           margin-bottom: 3px;
           font-size: 2.4rem;
+          text-shadow: 1px 1px 3px rgba(black, 0.05);
         }
 
       }
@@ -313,15 +323,15 @@
 
         background-color: white;
 
-        &.quote-container {
+        &.emoji-container {
           @include diamond-pattern(lighten($alert-color, 22.5))
           border: 2px solid white;
           outline: 1px solid $medium-gray;
           text-align: center;
           font-size: 6rem;
           line-height: 6rem;
-          padding-top: 2rem;
-          padding-bottom: .6rem;
+          padding-top: 2.6rem;
+          padding-bottom: 1.05rem;
 
           p {
             text-shadow: 3px 3px 3px rgba(black, .25);

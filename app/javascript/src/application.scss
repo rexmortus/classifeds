@@ -34,8 +34,14 @@ body {
 
   background-size: 100px 50px;
 
+  hr {
+    border-color: lighten($primary-color, 49);
+    border-style: dashed;
+  }
+
   fieldset {
     border-radius: .5rem;
+    border-color: lighten($primary-color, 49) !important;
 
     dl {
       dt {
@@ -44,7 +50,7 @@ body {
       dd {
 
         a {
-          border-bottom: 1px dotted $primary-color;
+          border-bottom: 1px dotted lighten($primary-color, 40);
           margin-bottom: .5rem;
           display: inline-block;
         }

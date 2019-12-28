@@ -169,10 +169,12 @@
               <img src="<%= url_for(image) %>">
             </div>
           <% end %>
-          <div class="image-container quote-container packery-item js-reveal-carousel" data-slide-id="emoji">
+          <!-- "Emoji container" -->
+          <div class="image-container emoji-container packery-item js-reveal-carousel" data-slide-id="<%= @advertisement.images.count %>">
             <p data-slide-id="emoji"><%= @advertisement.emoji %></p>
           </div>
-          <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= @advertisement.images.count %>">
+          <!-- QR Code container -->
+          <div class="image-container packery-item js-reveal-carousel" data-slide-id="<%= @advertisement.images.count + 1 %>">
             <img src="<%= @png.to_data_url %>" />
           </div>
         </div>
@@ -188,10 +190,10 @@
               src="<%= url_for(image) %>" />
           </div>
         <% end %>
-        <div class="carousel-cell" data-slide-id="emoji">
+        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
           <h1 style="font-size: 10rem;"><%= @advertisement.emoji %></h1>
         </div>
-        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count %>">
+        <div class="carousel-cell" data-slide-id="<%= @advertisement.images.count + 1 %>">
           <img class="carousel-cell-image" src="<%= @png.to_data_url %>" />
         </div>
       </div>
