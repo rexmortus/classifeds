@@ -7,7 +7,7 @@
   <!-- If there are hits, render them out -->
   <% if advertisements.present? %>
     <% advertisements.each do |ad| %>
-      <a class="js-packery-item" href="/advertisements/<%= ad.id %>">
+      <a class="js-packery-item" href="/advertisements/<%= ad.id %>" data-emoji="<%= ad.emoji %>">
         <div class="card">
           <div class="card-image">
             <% if ad.images.attached? %>

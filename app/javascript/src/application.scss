@@ -21,8 +21,8 @@
 
 body {
 
-  background-color: $body-background;
-  $body-background-alt: darken($body-background, 1);
+  $body-background: lighten($body-background, 1.5);
+  $body-background-alt: darken($body-background, 1.5);
 
   $spiral-gradient: radial-gradient(circle at 100% 150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),
   radial-gradient(circle at 0    150%, $body-background 24%, $body-background-alt 24%, $body-background-alt 28%, $body-background 28%, $body-background 36%, $body-background-alt 36%, $body-background-alt 40%, transparent 40%, transparent),

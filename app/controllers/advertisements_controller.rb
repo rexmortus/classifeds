@@ -50,6 +50,11 @@ class AdvertisementsController < ApplicationController
   def create
     params = advertisement_params
 
+    contact_methods = []
+    if params[:contact_methods]
+      contact_methods = params[:contact_methods].keys.to_json
+    end
+
     @advertisement = Advertisement.new(
       user: current_user,
       title: params[:title],
@@ -59,7 +64,7 @@ class AdvertisementsController < ApplicationController
       category_name: JSON.parse(advertisement_params[:category_name])[0],
       subcategory_name: JSON.parse(advertisement_params[:category_name])[1],
       location: params[:location],
-      contact_methods: params[:contact_methods].keys.to_json,
+      contact_methods: contact_methods,
       for: params[:for]
     )
 
@@ -88,6 +93,12 @@ class AdvertisementsController < ApplicationController
       @advertisement.images.attach(params[:images])
     end
 
+    # TODO fix this too (this doens't belong here)
+    contact_methods = []
+    if params[:contact_methods]
+      contact_methods = params[:contact_methods].keys.to_json
+    end
+
     respond_to do |format|
       if @advertisement.update({
           title: params['title'],
@@ -96,7 +107,7 @@ class AdvertisementsController < ApplicationController
           category_name: JSON.parse(advertisement_params['category_name'])[0],
           subcategory_name: JSON.parse(advertisement_params['category_name'])[1],
           location: params['location'],
-          contact_methods: params[:contact_methods].keys.to_json,
+          contact_methods: contact_methods,
           for: params['for']
         })
         format.html { redirect_to advertisement_path(@advertisement), notice: 'Advertisement was successfully updated.' }

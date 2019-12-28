@@ -80,6 +80,10 @@ $bkT: rgba($primary-color, 0.4);
   margin-top: 1rem !important;
   max-height: calc(100vh - 74px);
 
+  .applied-filters-row {
+    
+  }
+
   .applied-filters {
 
     margin-top: 0rem;
@@ -562,6 +566,17 @@ $bkT: rgba($primary-color, 0.4);
           padding-top: 1px;
 
           .js-packery-item {
+
+            &:before {
+              content: attr(data-emoji);
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 100%;
+              font-size: 20rem;
+              opacity: .05;
+            }
+
             outline: none;
             outline-offset: 0px;
             transition: all .5s ease-in-out;

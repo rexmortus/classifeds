@@ -63,6 +63,8 @@
 
         <div class="row">
 
+          <% if @advertisement.contact_methods_as_array.count > 0 %>
+
           <!-- Contact Information -->
           <div class="column small-12 medium-12 large-12">
             <fieldset class="fieldset contact-container">
@@ -78,6 +80,8 @@
               <% end %>
             </fieldset>
           </div>
+
+          <% end %>
 
           <!-- Post Information -->
           <div class="column small-12 medium-12 large-12">
