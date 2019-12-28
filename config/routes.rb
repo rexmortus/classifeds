@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Devise for users/accounts
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
 
   # Root is search
   root to: 'search#search'

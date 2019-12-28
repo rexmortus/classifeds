@@ -2,10 +2,11 @@
 
 class AdvertisementsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
   before_action :set_new_advertisement_contact_methods, only: [:new, :create]
   before_action :set_contact_methods, only: [:edit, :update]
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :user_confirmed?, only: [:new, :create, :edit, :update]
 
   # GET /advertisements
   # GET /advertisements.json
@@ -148,6 +149,12 @@ class AdvertisementsController < ApplicationController
   def set_contact_methods
     @publicContactMethods = @advertisement.user.contact_methods_as_array.select { |method| !method['public'].nil? }
     @privateContactMethods = @advertisement.user.contact_methods_as_array.select { |method| method['public'].nil? }
+  end
+
+  def user_confirmed?
+    if current_user.confirmed? === false
+      redirect_to root_path, notice: 'You must confirm your account.'
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

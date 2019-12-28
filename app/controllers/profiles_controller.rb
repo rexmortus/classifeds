@@ -1,7 +1,13 @@
 class ProfilesController < ApplicationController
 
   skip_before_action :authenticate_user!, :verify_authenticity_token, only: [:about]
+
+  # Set the user
   before_action :set_user, only: [:edit, :update]
+
+  # authenticate_user! is called everytime
+  # We also check if the user is confirmed
+  before_action :user_confirmed?
 
   def edit
   end
@@ -46,6 +52,12 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def user_confirmed?
+    if @user.confirmed? === false
+      redirect_to root_path, notice: 'You must confirm your account.'
+    end
   end
 
   def user_params
