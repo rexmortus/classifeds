@@ -1,17 +1,20 @@
 .toast {
 
-  color: $primary-color !important;
+  color: white !important;
   position: absolute;
   bottom: 0px;
   right: 1rem;
   padding: 1rem;
-  border: 2px solid white;
-  outline: 1px solid $medium-gray;
-  background-color: rgba(lighten($alert-color, 20), .75) !important;
+  border: 1px solid white;
+  border-radius: .5rem;
+  background-color: rgba(darken($blue-color, 10), .75) !important;
   backdrop-filter: blur(3px);
+  box-shadow: inset 0px 0px 3px rbga(black, .5);
+  text-shadow: 1px 1px 1px rgba(black, .5);
+
   z-index: 1000;
 
   span {
-    color: $primary-color !important;
+    color: white !important;
   }
 }

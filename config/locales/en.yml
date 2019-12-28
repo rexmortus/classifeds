@@ -52,7 +52,10 @@ en:
   you_must_sign_in: Sorry, you must be signed in to do that.
   new_ad_type_toolip: Choose a type. The list of types managed by the instance owner.
   new_ad_category_tooltip: Choose a category. The list of categories is managed by the instance owner.
-
+  title_validation_message: Title must be between 1 and 50 characters
+  body_validation_message: Body must be longer than 1 character
+  validation_errors: Validation errors
+  image_validation_message: Must have at least one image
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.

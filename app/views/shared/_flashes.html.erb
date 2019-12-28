@@ -4,7 +4,7 @@
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
-  <p><strong>Notice:</strong></p>
+  <p><strong>💁🏼‍♂️ <%= t(:notice) %></strong></p>
   <p><%= notice %></p>
 </div>
 <% end %>
@@ -14,7 +14,7 @@
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
-    <p><strong>Alert:</strong></p>
+    <p><strong>🚨 Alert</strong></p>
     <p><%= alert %></p>
   </div>
 <% end %>
@@ -25,7 +25,7 @@
     <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
-    <p><strong>Validation errors:</strong></p>
+    <p><strong>⚠️ <%= t :validation_errors %></strong></p>
     <ul>
       <% errors.messages.values.each do |error| %>
         <li><%= error.first %></li>

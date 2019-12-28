@@ -8,11 +8,11 @@ class Advertisement < ApplicationRecord
   # Validations
   validates :title, length: {
     in: 1..50,
-    message: "Title must be between 1 and 50 characters."
+    message: I18n.t(:title_validation_message)
   }
   validates :body, length: {
     minimum: 1,
-    message: "Body must be longer than 1 character."
+    message: I18n.t(:body_validation_message)
   }
 
   # These will always
@@ -22,7 +22,7 @@ class Advertisement < ApplicationRecord
 
   validates :images, length: {
     minimum: 1,
-    message: "Must have at least one image."
+    message: I18n.t(:image_validation_message)
   }
 
   # Geocoder

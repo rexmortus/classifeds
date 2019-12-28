@@ -54,8 +54,12 @@ jp:
   you_must_sign_in: 申し訳ありませんが、ログインするにはログインする必要があります。
   my_advertisements: 私の広告
   controls: コントロール
-  new_ad_type_toolip: Choose a type. The list of types managed by the instance owner.
-  new_ad_category_tooltip: Choose a category. The list of categories is managed by the instance owner.
+  new_ad_type_toolip: タイプを選択します。インスタンス所有者が管理するタイプのリスト。
+  new_ad_category_tooltip: カテゴリを選択。カテゴリのリストは、インスタンス所有者によって管理されます。
+  title_validation_message: タイトルは1〜50文字でなければなりません
+  body_validation_message: 本文は1文字より長くする必要があります
+  validation_errors: 検証エラー
+  image_validation_message: 少なくとも1つの画像が必要です
 
   datetime:
     distance_in_words:

@@ -1,7 +1,7 @@
 default_location: Melbourne, Victoria, Australia
 default_locale: en
 max_search_distance: 150
-default_search_distance: 25
+default_search_distance: 5
 
 types:
   - Karma

@@ -141,6 +141,9 @@
 
     .image-container {
 
+      padding-top: .5rem;
+      padding-bottom: 0rem;
+
       #advertisement_images {
         display: none !important;
       }
@@ -152,11 +155,16 @@
 
       .images-container {
         padding-bottom: 0rem;
+        margin-bottom: 1rem;
 
         .packery-item {
           outline: 1px solid $medium-gray;
           border: 2px solid white;
           width: 100%;
+
+          img {
+            width: 100%;
+          }
         }
       }
     }

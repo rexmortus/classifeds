@@ -12,13 +12,12 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
 
   transition: all .05s ease-in-out;
   position: relative;
-  background: $color;
+  background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
   background:
-  linear-gradient(319deg, rgba(#ffbd77, .09) 0%, rgba(#f0f4a4, .09) 37%, rgba(#acfcd9, .09) 100%),
-  linear-gradient(115deg, transparent 75%, lighten($color, 2) 75%) 0 0,
-  linear-gradient(245deg, transparent 75%, lighten($color, 2) 75%) 0 0,
-  linear-gradient(115deg, transparent 75%, lighten($color, 2) 75%) 5px -10px,
-  linear-gradient(245deg, transparent 75%, lighten($color, 2) 75%) 5px -10px,
+  linear-gradient(115deg, transparent 68%, lighten($color, 2) 68%) 0 0,
+  linear-gradient(245deg, transparent 68%, lighten($color, 2) 68%) 0 0,
+  linear-gradient(115deg, transparent 68%, lighten($color, 2) 68%) 5px -10px,
+  linear-gradient(245deg, transparent 68%, lighten($color, 2) 68%) 5px -10px,
   $color;
   background-size: 10px 20px;
 
@@ -26,13 +25,13 @@ radial-gradient(circle at 0    50%, $body-background-alt 5%, $body-background 5%
   text-shadow: 0px 1px 1px rgba(black, 0.10);
 
   &:hover {
-    background: darken($color, 2);
+    background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
     background:
     linear-gradient(319deg, rgba(#ffbd77, .09) 0%, rgba(#f0f4a4, .09) 37%, rgba(#acfcd9, .09) 100%),
-    linear-gradient(115deg, transparent 75%, darken($color, 4) 75%) 0 0,
-    linear-gradient(245deg, transparent 75%, darken($color, 4) 75%) 0 0,
-    linear-gradient(115deg, transparent 75%, darken($color, 4) 75%) 5px -10px,
-    linear-gradient(245deg, transparent 75%, darken($color, 4) 75%) 5px -10px,
+    linear-gradient(115deg, transparent 69%, darken($color, 2.5) 69%) 0 0,
+    linear-gradient(245deg, transparent 69%, darken($color, 2.5) 69%) 0 0,
+    linear-gradient(115deg, transparent 69%, darken($color, 2.5) 69%) 5px -10px,
+    linear-gradient(245deg, transparent 69%, darken($color, 2.5) 69%) 5px -10px,
     darken($color, 3);
     background-size: 10px 20px;
 
