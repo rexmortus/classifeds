@@ -83,7 +83,13 @@ if (form) {
     sliderElement.textContent = "+" + searchRadius + "km";
     sliderElement.blur();
 
-    Rails.fire(form, 'submit');
+    if (event.target.dataset.initialLoad === "") {
+      event.target.removeAttribute('data-initial-load')
+    } else {
+      Rails.fire(form, 'submit');
+    }
+
+    console.log(event.target.dataset)
 
   });
 

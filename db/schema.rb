@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_212502) do
+ActiveRecord::Schema.define(version: 2019_12_29_045754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_212502) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "punches", id: :serial, force: :cascade do |t|
+  create_table "punches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "punchable_id", null: false
     t.string "punchable_type", limit: 20, null: false
     t.datetime "starts_at", null: false
@@ -124,6 +124,21 @@ ActiveRecord::Schema.define(version: 2019_12_28_212502) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "watchlists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "category"
+    t.string "subcategory"
+    t.string "query"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "types"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
   end
 
 end

@@ -90,7 +90,7 @@ class SearchController < ApplicationController
 
   # List of allowed params ☑️☑️🛑
   def search_params
-    params.require(:search).permit(:query, :location, :distance, :types, :category_subcategory, :view_type)
+    params.require(:search).permit(:query, :location, :distance, :category_subcategory, :view_type, :types => [])
   end
 
 end

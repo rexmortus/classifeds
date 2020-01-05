@@ -62,7 +62,7 @@
               <div id='js-small-map' style="height: 300px;"></div>
               <!-- Distance slider -->
               <div id="distance-slider">
-                <div class="slider" id="radius-slider" data-slider data-initial-start="<%= @distance_param %>" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
+                <div class="slider" data-initial-load id="radius-slider" data-slider data-initial-start="<%= @distance_param %>" data-start="1" data-end="<%= Rails.application.config.classifeds_max_search_distance %>" data-step="5">
                   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="search_distance" data-slider-initial-load="true">Loading</span>
                   <span class="slider-fill" data-slider-fill></span>
                 </div>
@@ -172,5 +172,49 @@
       </div>
     </div>
   </div>
+  <!-- Right columns (only for desktop) -->
+  <div class="column small-12 medium-3 large-2 right-column show-for-large">
+    <fieldset class="fieldset watchlist">
+      <legend>Watchlists</legend>
+      <% if user_signed_in? %>
+        <hr>
+        <a href="#" class="button primary expanded">👈 <strong>Make this</strong> a watchlist</a>
+        <hr >
+        <a class="all-watchlists" href="#">My Watchlists</a>
+        <div class="watchlist-container">
+          <% current_user.watchlists.each do |watchlist| %>
+            <%= link_to search_path(:search => {
+              query: watchlist.query,
+              location: watchlist.location,
+              types: JSON.parse(watchlist.types),
+              geocode: watchlist.geocode,
+              category_subcategory: "#{watchlist.category} > #{watchlist.subcategory}",
+            }) do %>
+            <span class="label warning watchlist-name"><%= watchlist.name %></span>
+            <% end %>
+          <% end %>
+        </div>
+        <hr>
+      <% else %>
+        <a class="all-watchlists" href="#">Sign in to save watchlists</a>
+      <% end %>
+      <div class="watchlist-preview">
+        <span class="watchlist-name">🏡 Local Top 5 <small>(+1)<small></span>
+      </div>
+      <ul class="watchlist-result">
+      <% Advertisement.first(6).each_with_index do |ad, index| %>
+      <li <% if index === 5%>class="last"<% end %>><%= ad.emoji %> <%= ad.title %></li>
+      <% end %>
+      </ul>
+      <div class="watchlist-preview">
+        <span class="watchlist-name">🌐 Federated Top 5 <small>(+1)</small></span>
+      </div>
+      <ul class="watchlist-result">
+      <% Advertisement.first(6).each_with_index do |ad, index| %>
+      <li <% if index === 5%>class="last"<% end %>><%= ad.emoji %> <%= ad.title %></li>
+      <% end %>
+      </ul>
+    </fieldset>
+  <div>
   <% end %>
 </div>

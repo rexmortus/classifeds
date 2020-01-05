@@ -1,6 +1,6 @@
-class CreatePunchesTable < ActiveRecord::Migration[4.2]
+class CreatePunchesTable < ActiveRecord::Migration[5.2]
   def self.up
-    create_table :punches do |t|
+    create_table :punches, id: :uuid do |t|
       t.integer :punchable_id, :null => false
       t.string :punchable_type, :null => false, :limit => 20
       t.datetime :starts_at, :null => false

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :followers
   has_many :notes
   has_many :advertisements
+  has_many :watchlists
 
   attr_reader :actor_id, :preferred_username
 

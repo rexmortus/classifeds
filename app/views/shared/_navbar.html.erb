@@ -75,9 +75,15 @@
               <ul class="submenu menu vertical" data-submenu="">
                 <% value.each do |item| %>
                 <li>
-                  <a href="/search?search[category_subcategory]=<%= key %> > <%= item[0] %>")>
-                    <%= item[0] %>
-                  </a>
+                  <%= link_to search_path(:search => {
+                    # query: watchlist.query,
+                    # location: watchlist.location,
+                    # types: JSON.parse(watchlist.types),
+                    # geocode: watchlist.geocode,
+                    category_subcategory: "#{key} > #{item[0]}",
+                  }) do %>
+                  <%= item[0] %>
+                  <% end %>
                 </li>
                 <% end %>
               </ul>
