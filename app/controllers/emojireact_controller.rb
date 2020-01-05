@@ -4,8 +4,10 @@ class EmojireactController < ApplicationController
 
   def create
 
+    # If there is no Emoji react, then create one and notify the poster
     if @emoji_react.nil?
-      EmojiReact.create!(emoji: params[:emoji][:emoji], advertisement: @advertisement, actor: current_user.username)
+      emoji = EmojiReact.create!(emoji: params[:emoji][:emoji], advertisement: @advertisement, actor: current_user.username)
+      emoji.notify :users
     else
       @emoji_react.destroy
     end

@@ -125,7 +125,9 @@
           <% end %>
         </ul>
       </li>
-      <li><a href="#" class="notifications">0</a></li>
+      <% if user_signed_in? %>
+      <li><a href="<%= user_notifications_path(current_user) %>" class="notifications"><%= current_user.notifications.unopened_only.count %></a></li>
+      <% end %>
     </ul>
 
   </div>

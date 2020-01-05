@@ -1,22 +1,33 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
 
-  before_create :set_default_location, :set_default_contact_method
-  after_create :generate_keys, :generate_actor, :generate_webfinger
+  # Devise
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :confirmable
+
+  # Event hooks
   after_find :set_actor_id, :set_preferred_username
+  before_create :set_default_location, :set_default_contact_method
+  after_validation :geocode, if: :will_save_change_to_location?
+  after_create :generate_keys, :generate_actor, :generate_webfinger
 
+  # Relationships
   has_many :followers
   has_many :notes
   has_many :advertisements
   has_many :watchlists
 
+  # Interface
   attr_reader :actor_id, :preferred_username
 
+  # Geocode
   geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+
+  # Notifications
+  acts_as_target
 
   def actor_as_hash
     return JSON.parse(self.actor)
@@ -55,6 +66,7 @@ class User < ApplicationRecord
     self.contact_methods = [{name: 'email', value: self.email}].to_json
   end
 
+  # Generate keys for the ActivityPub actor
   def generate_keys
     key = OpenSSL::PKey::RSA.new 2048
     self.pubkey = key.public_key.to_s
