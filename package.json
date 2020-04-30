@@ -18,7 +18,7 @@
     "foundation-sites": "^6.5.3",
     "imagesloaded": "^4.1.4",
     "instantsearch.css": "^7.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-emoji-picker": "^0.2.2",
     "mapbox-gl": "^1.5.1",
     "motion-ui": "^2.0.3",
